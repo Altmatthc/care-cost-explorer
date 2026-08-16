@@ -1367,11 +1367,17 @@ def main():
                 continue
 
             # Already have fresh data? Leave the server alone.
+            existing = carry_over(h)
             fresh = (prior.get("status") == STATUS_OK
                      and prior.get("last_success")
-                     and days_since(prior["last_success"]) < args.max_age)
+                     and days_since(prior["last_success"]) < args.max_age
+                     and bool(existing))     # status says OK but data is gone -> rescan
+            if (prior.get("status") == STATUS_OK and not existing
+                    and not args.refresh_all):
+                print(f"    ↻ {h['name']}: marked current but no records found; "
+                      f"re-scanning")
             if fresh and not args.refresh_all and not only:
-                kept = carry_over(h)
+                kept = existing
                 carried.update(kept)
                 stats["skipped"] += 1
                 age = int(days_since(prior["last_success"]))
@@ -1468,7 +1474,23 @@ def main():
         merged = consolidate(all_rows)
         for rec in merged.values():
             rec["shared_source"] = rec["hospital_id"] in shared_ids
-        merged.update(carried)          # keep data for hospitals we skipped
+        merged.update(carried)          # data for hospitals skipped as fresh
+
+        # Anything collected on an earlier run for a hospital we did NOT touch
+        # this time must survive. Without this, a targeted run (--only, or a
+        # single shard) silently wipes every other hospital's prices.
+        touched = {h["id"] for h in shard}
+        preserved = 0
+        for key, rec in prev_prices.items():
+            if rec.get("hospital_id") in touched:
+                continue                # rescanned; the new records replace it
+            if key not in merged:
+                merged[key] = rec
+                preserved += 1
+        if preserved:
+            print(f"[prices] preserved {preserved} record(s) for "
+                  f"{len(set(r.get('hospital_id') for r in prev_prices.values())) - len(touched)} "
+                  f"hospital(s) not scanned in this run")
 
         if args.shards > 1:
             price_path = DATA / f"{args.region}-prices-{args.shard}.json"

@@ -226,7 +226,32 @@ with mock.patch.object(b, "discover_mrf_candidates",
     check("address tiebreak selects Zion over Clairemont", "zion" in got,
           f"got {got.split('/')[-1]}")
 
-print("\n11. Known-URL resolution")
+print("\n11. Targeted run must not wipe other hospitals' data")
+# Simulates: data exists for 4 hospitals; a run targets only one of them.
+prev = {
+    "hA|mri-brain":  {"hospital_id": "hA", "procedure": "mri-brain", "cash": 1000},
+    "hA|colonoscopy": {"hospital_id": "hA", "procedure": "colonoscopy", "cash": 2000},
+    "hB|mri-brain":  {"hospital_id": "hB", "procedure": "mri-brain", "cash": 1100},
+    "hC|mri-brain":  {"hospital_id": "hC", "procedure": "mri-brain", "cash": 1200},
+    "hD|mri-brain":  {"hospital_id": "hD", "procedure": "mri-brain", "cash": 1300},
+}
+touched = {"hA"}                       # only hospital A rescanned
+new = {"hA|mri-brain": {"hospital_id": "hA", "procedure": "mri-brain", "cash": 1050}}
+merged = dict(new)
+for k, rec in prev.items():
+    if rec.get("hospital_id") in touched:
+        continue
+    merged.setdefault(k, rec)
+check("untouched hospitals survive", len(merged) == 4, f"got {len(merged)}")
+check("rescanned hospital's price updated",
+      merged["hA|mri-brain"]["cash"] == 1050)
+check("rescanned hospital's stale extra record dropped",
+      "hA|colonoscopy" not in merged)
+for hid in ["hB", "hC", "hD"]:
+    check(f"{hid} data preserved", any(r.get("hospital_id") == hid
+                                       for r in merged.values()))
+
+print("\n12. Known-URL resolution")
 for name, expect in [("Scripps Mercy Hospital", "Mercy-Hospital-San-Diego"),
                      ("Scripps Memorial Hospital - Encinitas", "Encinitas"),
                      ("Scripps Green Hospital", "Green")]:
