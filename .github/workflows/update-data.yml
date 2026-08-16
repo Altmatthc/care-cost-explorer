@@ -1,0 +1,134 @@
+name: Update hospital price data
+
+# Runs entirely on GitHub's servers. You never need a terminal — start it from
+# the Actions tab in your browser, or let the schedule run it automatically.
+
+on:
+  workflow_dispatch:          # a "Run workflow" button appears in the Actions tab
+    inputs:
+      region:
+        description: "Which region to refresh"
+        required: true
+        default: san-diego
+        type: choice
+        options: [san-diego, california, us]
+      shards:
+        description: "Split across N parallel jobs (raise for bigger regions)"
+        required: false
+        default: "1"
+  schedule:
+    - cron: "0 9 1 * *"       # 1st of each month, 9am UTC
+                              # hospitals must update files at least quarterly,
+                              # so monthly keeps us comfortably current
+
+permissions:
+  contents: write             # lets the job commit refreshed data back
+
+jobs:
+  # ---------------------------------------------------------------------
+  # Stage 1+2: build the hospital registry and geocode it (fast, single job)
+  # ---------------------------------------------------------------------
+  registry:
+    runs-on: ubuntu-latest
+    outputs:
+      region: ${{ steps.cfg.outputs.region }}
+      shards: ${{ steps.cfg.outputs.shards }}
+      matrix: ${{ steps.cfg.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: cfg
+        run: |
+          REGION="${{ github.event.inputs.region || 'san-diego' }}"
+          SHARDS="${{ github.event.inputs.shards || '1' }}"
+          echo "region=$REGION" >> $GITHUB_OUTPUT
+          echo "shards=$SHARDS" >> $GITHUB_OUTPUT
+          echo "matrix=$(python3 -c "import json;print(json.dumps(list(range($SHARDS))))")" >> $GITHUB_OUTPUT
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install requests
+
+      - name: Build registry from CMS
+        run: python scripts/build_data.py --region ${{ steps.cfg.outputs.region }} --stage registry
+
+      - name: Geocode addresses
+        run: python scripts/build_data.py --region ${{ steps.cfg.outputs.region }} --stage geocode
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: registry
+          path: data/*-hospitals.json
+
+  # ---------------------------------------------------------------------
+  # Stage 3: download and parse price files, split across parallel jobs.
+  # This is the slow part — price files are huge.
+  # ---------------------------------------------------------------------
+  prices:
+    needs: registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 350        # GitHub caps free jobs at 6 hours
+    strategy:
+      fail-fast: false          # one bad hospital shouldn't kill the run
+      matrix:
+        shard: ${{ fromJson(needs.registry.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: registry
+          path: data/
+
+      - name: Parse price files
+        run: |
+          python scripts/build_data.py \
+            --region ${{ needs.registry.outputs.region }} \
+            --stage prices \
+            --shard ${{ matrix.shard }} \
+            --shards ${{ needs.registry.outputs.shards }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prices-${{ matrix.shard }}
+          path: data/*-prices*.json
+
+  # ---------------------------------------------------------------------
+  # Merge shards and commit the result so the live site picks it up.
+  # ---------------------------------------------------------------------
+  publish:
+    needs: [registry, prices]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: incoming/
+
+      - name: Merge shards
+        run: |
+          mkdir -p data
+          find incoming -name '*-hospitals.json' -exec cp {} data/ \;
+          python scripts/merge_shards.py --region ${{ needs.registry.outputs.region }}
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name  "price-data-bot"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No changes to publish."
+          else
+            git commit -m "Refresh ${{ needs.registry.outputs.region }} price data ($(date -u +%Y-%m-%d))"
+            git push
+          fi
