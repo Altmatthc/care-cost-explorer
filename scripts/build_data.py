@@ -510,10 +510,21 @@ def pick_matching_file(hospital_name: str, domain: str,
     if verbose:
         print(f"      {len(cands)} file(s) published by {domain}")
 
-    # Cheap pass first: does the filename itself name the hospital?
-    ranked = sorted(cands, key=lambda u: not names_match(hospital_name, u.split("/")[-1]))
+    # Rank by how well the FILENAME resembles the hospital, best first. A
+    # boolean sort left large systems in alphabetical order — Kaiser publishes
+    # 41 files and the San Diego one sorted past the cutoff behind a run of
+    # Northern California files.
+    scored = sorted(
+        ((match_score(hospital_name, u.split("/")[-1]), u) for u in cands),
+        key=lambda t: -t[0])
+    if verbose and scored:
+        top = ", ".join(f"{s:.2f} {u.split('/')[-1][:44]}" for s, u in scored[:3])
+        print(f"      best filename matches: {top}")
 
-    for i, url in enumerate(ranked[:12]):     # cap the work on huge systems
+    # Check every candidate with any token overlap, then fall back to the rest.
+    plausible = [u for s, u in scored if s > 0]
+    remainder = [u for s, u in scored if s == 0]
+    for url in (plausible + remainder)[:25]:
         ok, why = verify_file_belongs(hospital_name, url)
         if ok:
             if verbose:
@@ -609,6 +620,20 @@ def name_tokens(s: str) -> set[str]:
     return distinctive or toks
 
 
+def match_score(expected: str, actual: str) -> float:
+    """
+    Similarity between a CMS facility name and a candidate file's name.
+    Returns 0..1. Used both to rank candidates and to accept or reject them.
+    """
+    a, b = name_tokens(expected), name_tokens(actual)
+    if not a or not b:
+        return 1.0
+    shared = a & b
+    if not shared:
+        return 0.0
+    return max(len(shared) / len(a), len(shared) / len(b))
+
+
 def names_match(expected: str, actual: str, threshold: float = 0.6) -> bool:
     """
     Compare a CMS facility name against the name inside a price file.
@@ -619,13 +644,10 @@ def names_match(expected: str, actual: str, threshold: float = 0.6) -> bool:
     a, b = name_tokens(expected), name_tokens(actual)
     if not a or not b:
         return True          # nothing to compare on; don't block
-    shared = a & b
     # Compare in both directions. A system may name its file more briefly than
     # CMS names the facility ("San Diego Medical Center" vs "Kaiser Foundation
     # Hospital - San Diego"), which a one-directional check would reject.
-    # Taking the better of the two still rejects genuinely different
-    # facilities, since those share no distinctive tokens at all.
-    return max(len(shared) / len(a), len(shared) / len(b)) >= threshold
+    return match_score(expected, actual) >= threshold
 
 
 def read_identity(url: str) -> dict:
