@@ -167,6 +167,74 @@ TARGET_CODES = {
 UA = {"User-Agent": "care-cost-explorer/1.0 (public price transparency tool)"}
 
 
+# ---------------------------------------------------------------------------
+# HOSPITAL WEBSITE RESOLUTION
+# The CMS registry has no website field, so we can't discover /cms-hpt.txt
+# without knowing each hospital's domain. Two-tier approach:
+#   DOMAIN_HINTS  maps hospital-name patterns to the system's domain, which is
+#                 enough for cms-hpt.txt discovery to take over.
+#   KNOWN_MRF     hardcodes file URLs already confirmed by hand, for systems
+#                 where automatic discovery fails.
+# Both are keyed by lowercase substring match on the CMS facility name.
+# Add entries here as you expand to new regions.
+# ---------------------------------------------------------------------------
+DOMAIN_HINTS = [
+    ("scripps",              "scripps.org"),
+    ("sharp",                "sharp.com"),
+    ("uc san diego",         "health.ucsd.edu"),
+    ("ucsd",                 "health.ucsd.edu"),
+    ("jacobs medical",       "health.ucsd.edu"),
+    ("east campus",          "health.ucsd.edu"),
+    ("kaiser",               "healthy.kaiserpermanente.org"),
+    ("rady",                 "rchsd.org"),
+    ("palomar",              "palomarhealth.org"),
+    ("pomerado",             "palomarhealth.org"),
+    ("tri-city",             "tricitymed.org"),
+    ("tri city",             "tricitymed.org"),
+    ("alvarado",             "alvaradohospital.com"),
+    ("paradise valley",      "pvhospital.org"),
+    ("naval medical",        None),          # federal, exempt from the rule
+    ("veterans affairs",     None),          # federal, exempt
+    ("va medical",           None),
+]
+
+# Verified by hand from the system's own price transparency page.
+KNOWN_MRF = {
+    "scripps green":
+        "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv",
+    "scripps memorial hospital encinitas":
+        "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv",
+    "scripps memorial hospital la jolla":
+        "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv",
+    "scripps mercy hospital chula vista":
+        "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-Chula-Vista_standardcharges.csv",
+    "scripps mercy hospital san diego":
+        "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv",
+}
+
+
+def resolve_source(name: str) -> tuple[Optional[str], Optional[str]]:
+    """
+    Given a CMS facility name, return (known_mrf_url, domain).
+    Longest pattern wins so 'scripps mercy hospital san diego' beats 'scripps'.
+    """
+    n = (name or "").lower()
+
+    mrf = None
+    for pattern in sorted(KNOWN_MRF, key=len, reverse=True):
+        if pattern in n:
+            mrf = KNOWN_MRF[pattern]
+            break
+
+    domain = None
+    for pattern, dom in sorted(DOMAIN_HINTS, key=lambda x: len(x[0]), reverse=True):
+        if pattern in n:
+            domain = dom
+            break
+
+    return mrf, domain
+
+
 # ===========================================================================
 # STAGE 1 — REGISTRY
 # ===========================================================================
@@ -296,7 +364,8 @@ def fetch_registry(region: str, debug: bool = False,
     for r in rows:
         ccn = field(r, "facility_id", "provider_id", "ccn", "federal_provider_number")
         stars_raw = field(r, "hospital_overall_rating", "overall_rating")
-        website = field(r, "website", "hospital_website", "url")
+        fac_name = field(r, "facility_name", "provider_name", "name")
+        known_mrf, domain = resolve_source(fac_name)
         hospitals.append({
             "id": f"ccn-{ccn}" if ccn else f"x-{len(hospitals)}",
             "ccn": ccn,
@@ -311,10 +380,16 @@ def fetch_registry(region: str, debug: bool = False,
             "type": field(r, "hospital_type", "type"),
             "stars": int(stars_raw) if stars_raw.isdigit() else None,
             "hasER": field(r, "emergency_services", "has_emergency_services").lower().startswith("y"),
-            "website": website,
-            "lat": None, "lng": None, "mrf_url": None,
+            "domain": domain,
+            "lat": None, "lng": None, "mrf_url": known_mrf,
         })
+    with_src = sum(1 for h in hospitals if h["mrf_url"] or h["domain"])
     print(f"  -> {len(hospitals)} hospitals in {cfg['label']}")
+    print(f"     {with_src} have a known price-file source, "
+          f"{len(hospitals) - with_src} need one added to DOMAIN_HINTS")
+    for h in hospitals:
+        if not (h["mrf_url"] or h["domain"]):
+            print(f"       ? {h['name']}")
     return hospitals
 
 
@@ -528,10 +603,11 @@ def main():
         for h in shard:
             url = h.get("mrf_url")
             if not url:
-                domain = re.sub(r"^www\.", "",
-                                (h.get("website") or "").replace("https://", "")
-                                .replace("http://", "").split("/")[0])
+                domain = h.get("domain")
+                if not domain:
+                    _, domain = resolve_source(h.get("name", ""))
                 if domain:
+                    print(f"    ... discovering price file for {h['name']} via {domain}")
                     url = discover_mrf(domain)
                     h["mrf_url"] = url
             if not url:
