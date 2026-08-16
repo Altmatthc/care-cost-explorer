@@ -391,6 +391,7 @@ def fetch_registry(region: str, debug: bool = False,
             "stars": int(stars_raw) if stars_raw.isdigit() else None,
             "hasER": field(r, "emergency_services", "has_emergency_services").lower().startswith("y"),
             "domain": domain,
+            "verified_source": bool(known_mrf),
             "lat": None, "lng": None, "mrf_url": known_mrf,
         })
     with_src = sum(1 for h in hospitals if h["mrf_url"] or h["domain"])
@@ -514,6 +515,227 @@ def stream_rows(url: str) -> Iterator[dict]:
             yield dict(zip(header, row))
 
 
+# ---------------------------------------------------------------------------
+# FILE IDENTITY VERIFICATION
+# cms-hpt.txt discovery returns whichever file a system happens to list first.
+# For a multi-hospital system that file may belong to an entirely different
+# facility — in testing, San Diego Kaiser hospitals resolved to a Northern
+# California file. Verify the file names the hospital we asked for; if it
+# clearly doesn't, refuse it. No data is better than another hospital's data.
+# ---------------------------------------------------------------------------
+# Only words that carry no distinguishing power. "Memorial", "Community" and
+# similar are deliberately NOT here: they are exactly what separates
+# "Sharp Memorial" from "Sharp Chula Vista".
+GENERIC_TOKENS = {
+    "hospital", "medical", "center", "centre", "health", "healthcare", "hlthcr",
+    "the", "of", "and", "for", "inc", "llc", "system", "campus", "care",
+    "ctr", "med", "svcs", "hosp",
+}
+
+
+def name_tokens(s: str) -> set[str]:
+    toks = {t for t in _flatten(s).split() if len(t) > 2}
+    distinctive = toks - GENERIC_TOKENS
+    return distinctive or toks
+
+
+def names_match(expected: str, actual: str, threshold: float = 0.6) -> bool:
+    """
+    Compare a CMS facility name against the name inside a price file.
+    Compares distinctive tokens only, so "Scripps Mercy Hospital" still
+    matches "Scripps Mercy Hospital San Diego", while "Sharp Memorial"
+    does not match "Sharp Chula Vista".
+    """
+    a, b = name_tokens(expected), name_tokens(actual)
+    if not a or not b:
+        return True          # nothing to compare on; don't block
+    overlap = len(a & b) / len(a)
+    return overlap >= threshold
+
+
+def read_identity(url: str) -> dict:
+    """Read a price file's metadata header without downloading the whole file."""
+    ident = {"hospital_name": "", "location_name": "", "address": "", "raw": ""}
+    try:
+        if url.lower().split("?")[0].endswith(".json"):
+            with requests.get(url, stream=True, headers=UA, timeout=120) as r:
+                r.raise_for_status()
+                head = next(r.iter_content(60000), b"").decode("utf-8", "replace")
+            ident["raw"] = head[:400]
+            m = re.search(r'"hospital_name"\s*:\s*"([^"]{2,120})"', head)
+            if m:
+                ident["hospital_name"] = m.group(1)
+            m = re.search(r'"(?:location_name|hospital_location)"\s*:\s*\[?\s*"([^"]{2,120})"', head)
+            if m:
+                ident["location_name"] = m.group(1)
+            return ident
+
+        with requests.get(url, stream=True, headers=UA, timeout=120) as r:
+            r.raise_for_status()
+            lines = []
+            for raw in r.iter_lines(decode_unicode=False):
+                if raw:
+                    lines.append(raw.decode("utf-8", "replace"))
+                if len(lines) >= 4:
+                    break
+        rows = list(csv.reader(lines))
+        if len(rows) >= 2:
+            hdr = [c.strip().lower() for c in rows[0]]
+            vals = rows[1]
+            rec = dict(zip(hdr, vals))
+            ident["hospital_name"] = rec.get("hospital_name", "")
+            ident["location_name"] = rec.get("location_name", "") or rec.get("hospital_location", "")
+            ident["address"] = rec.get("hospital_address", "")
+            ident["raw"] = " | ".join(vals[:5])
+    except Exception as e:
+        print(f"      identity check failed: {e}")
+    return ident
+
+
+def verify_file_belongs(hospital_name: str, url: str) -> tuple[bool, str]:
+    """Return (ok, explanation) for whether this file belongs to this hospital."""
+    ident = read_identity(url)
+    candidates = [ident["hospital_name"], ident["location_name"], url.split("/")[-1]]
+    candidates = [c for c in candidates if c]
+    if not candidates:
+        return True, "no identifying metadata; accepted"
+    for c in candidates:
+        if names_match(hospital_name, c):
+            return True, f"matches '{c[:60]}'"
+    return False, (f"file identifies as '{candidates[0][:60]}' "
+                   f"which does not match '{hospital_name}'")
+
+
+# ---------------------------------------------------------------------------
+# JSON price files
+# CMS publishes a JSON schema alongside the CSV templates. Structure:
+#   { "hospital_name": ..., "standard_charge_information": [
+#       { "description": ...,
+#         "code_information": [ {"code": "70551", "type": "CPT"}, ... ],
+#         "standard_charges": [
+#           { "gross_charge": .., "discounted_cash": .., "minimum": .., "maximum": ..,
+#             "payers_information": [
+#               {"payer_name": .., "plan_name": .., "standard_charge_dollar": ..,
+#                "estimated_amount": ..} ] } ] } ] }
+# These files are as large as the CSVs, so they're streamed with ijson rather
+# than loaded whole.
+# ---------------------------------------------------------------------------
+JSON_ARRAY_KEYS = ("standard_charge_information", "standard_charges", "charges")
+
+
+def detect_json_array_key(url: str) -> Optional[str]:
+    """Read just the head of the file to find which top-level array holds the data."""
+    try:
+        with requests.get(url, stream=True, headers=UA, timeout=120) as resp:
+            resp.raise_for_status()
+            head = b""
+            for chunk in resp.iter_content(65536):
+                head += chunk
+                if len(head) > 400_000:
+                    break
+            text = head.decode("utf-8", "replace")
+            for key in JSON_ARRAY_KEYS:
+                if re.search(rf'"{key}"\s*:\s*\[', text):
+                    return key
+    except Exception as e:
+        print(f"      could not inspect JSON head: {e}")
+    return None
+
+
+def stream_json_items(url: str, array_key: str) -> Iterator[dict]:
+    """Stream items out of a large JSON file without loading it into memory."""
+    try:
+        import ijson
+    except ImportError:
+        print("      ijson not installed - cannot stream JSON. "
+              "Add 'ijson' to the workflow's pip install step.")
+        return
+    with requests.get(url, stream=True, headers=UA, timeout=600) as resp:
+        resp.raise_for_status()
+        resp.raw.decode_content = True
+        for item in ijson.items(resp.raw, f"{array_key}.item"):
+            yield item
+
+
+def _num(v) -> Optional[float]:
+    try:
+        f = float(v)
+        return round(f, 2) if f > 0 else None
+    except (TypeError, ValueError):
+        return None
+
+
+def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> list[dict]:
+    """Parse a CMS-schema JSON price file."""
+    array_key = detect_json_array_key(url)
+    if not array_key:
+        if verbose:
+            print("      JSON file, but no recognized standard-charge array found.")
+        return []
+    if verbose:
+        print(f"      JSON format, reading '{array_key}'")
+
+    found, scanned, types_seen, samples = [], 0, {}, []
+    for item in stream_json_items(url, array_key):
+        scanned += 1
+        codes = item.get("code_information") or item.get("codes") or []
+        if isinstance(codes, dict):
+            codes = [codes]
+
+        pid = None
+        for c in codes:
+            code = str(c.get("code", "")).strip()
+            ctype = str(c.get("type", "")).strip()
+            if ctype:
+                types_seen[norm_type(ctype)] = types_seen.get(norm_type(ctype), 0) + 1
+            if len(samples) < 12 and code and code not in samples:
+                samples.append(f"{code}[{ctype or '?'}]")
+            hit = match_code(code, ctype)
+            if hit:
+                pid = hit
+                break
+        if not pid:
+            continue
+
+        desc = str(item.get("description", ""))[:120]
+        charges = item.get("standard_charges") or []
+        if isinstance(charges, dict):
+            charges = [charges]
+
+        for ch in charges:
+            base = {
+                "hospital_id": hospital_id,
+                "procedure": pid,
+                "cash": _num(ch.get("discounted_cash")),
+                "gross": _num(ch.get("gross_charge")),
+                "min": _num(ch.get("minimum")),
+                "max": _num(ch.get("maximum")),
+                "description": desc,
+            }
+            payers = ch.get("payers_information") or []
+            if isinstance(payers, dict):
+                payers = [payers]
+            if not payers:
+                found.append({**base, "payer": None, "rate": None})
+                continue
+            for p in payers:
+                rate = (_num(p.get("standard_charge_dollar"))
+                        or _num(p.get("estimated_amount"))
+                        or _num(p.get("standard_charge_negotiated_dollar")))
+                name = str(p.get("payer_name") or "").strip() or None
+                plan = str(p.get("plan_name") or "").strip()
+                if name and plan:
+                    name = f"{name} {plan}"
+                found.append({**base, "payer": name, "rate": rate})
+
+    if verbose:
+        print(f"      scanned {scanned:,} items | code types seen: "
+              f"{dict(sorted(types_seen.items(), key=lambda x: -x[1])[:6])}")
+        if not found:
+            print(f"      NO MATCHES. Sample codes in file: {samples}")
+    return found
+
+
 def col(keys, *needles) -> Optional[str]:
     """CMS templates vary (tall vs wide, v1 vs v2). Match columns loosely."""
     for n in needles:
@@ -624,6 +846,9 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     Prints what it detected so a zero-row result is diagnosable without
     re-downloading a very large file.
     """
+    if url.lower().split("?")[0].endswith(".json"):
+        return extract_prices_json(hospital_id, url, verbose=verbose)
+
     found: list[dict] = []
     keys = None
     code_pairs: list[tuple[str, Optional[str]]] = []
@@ -745,11 +970,37 @@ def probe(url: str, rows: int = 40):
     waiting through another full run.
     """
     print(f"probing {url}")
+
+    if url.lower().split("?")[0].endswith(".json"):
+        key = detect_json_array_key(url)
+        print(f"  JSON file. standard-charge array: {key or 'NOT FOUND'}")
+        if not key:
+            print("  Top of file:")
+            with requests.get(url, stream=True, headers=UA, timeout=120) as r:
+                r.raise_for_status()
+                head = next(r.iter_content(4000), b"")
+            print("  " + head.decode("utf-8", "replace")[:1500])
+            return
+        shown = 0
+        for item in stream_json_items(url, key):
+            codes = item.get("code_information") or []
+            charges = item.get("standard_charges") or []
+            payers = (charges[0].get("payers_information") if charges else []) or []
+            print(f"    {str(item.get('description',''))[:52]:54s} "
+                  f"codes={[(c.get('code'), c.get('type')) for c in codes][:3]}")
+            if shown == 0 and charges:
+                print(f"      charge keys: {sorted(charges[0].keys())}")
+                if payers:
+                    print(f"      payer keys:  {sorted(payers[0].keys())}")
+            shown += 1
+            if shown >= rows:
+                break
+        return
+
     seen = 0
     for row in stream_rows(url):
         if "_raw_json_line" in row:
-            print("  (JSON file — first line)")
-            print("  " + row["_raw_json_line"][:600])
+            print("  (unexpected JSON content)")
             return
         if seen == 0:
             print(f"  columns ({len(row)}):")
@@ -822,7 +1073,7 @@ def main():
     if args.stage in ("all", "prices"):
         shard = [h for i, h in enumerate(hospitals) if i % args.shards == args.shard]
         print(f"[prices] shard {args.shard+1}/{args.shards}: {len(shard)} hospitals")
-        all_rows, stats = [], {"found": 0, "no_mrf": 0, "error": 0}
+        all_rows, stats = [], {"found": 0, "no_mrf": 0, "error": 0, "wrong_file": 0}
         url_users: dict[str, list[str]] = {}
         cache: dict[str, list[dict]] = {}
         for h in shard:
@@ -839,6 +1090,19 @@ def main():
                 stats["no_mrf"] += 1
                 print(f"    - {h['name']}: no price file found")
                 continue
+            # Discovered files are unverified — a system's cms-hpt.txt often
+            # points at one arbitrary facility. Files we hardcoded were checked
+            # by hand, so only verify the discovered ones.
+            if not h.get("verified_source"):
+                ok, why = verify_file_belongs(h["name"], url)
+                if not ok:
+                    stats["wrong_file"] = stats.get("wrong_file", 0) + 1
+                    print(f"    ✗ {h['name']}: REJECTED — {why}")
+                    h["mrf_url"] = None
+                    h["rejected_url"] = url
+                    continue
+                print(f"      identity ok ({why})")
+
             url_users.setdefault(url, []).append(h["name"])
             h["source_url"] = url
             try:
@@ -881,7 +1145,12 @@ def main():
             price_path = DATA / f"{args.region}-prices-{args.shard}.json"
         price_path.write_text(json.dumps(merged, indent=1))
         reg_path.write_text(json.dumps(hospitals, indent=1))
-        print(f"[prices] {stats}")
+        print(f"\n[prices] {stats}")
+        if stats.get("wrong_file"):
+            print(f"[prices] {stats['wrong_file']} hospital(s) had a file that "
+                  f"belongs to a different facility. Those were rejected rather "
+                  f"than imported. To fix, find the correct URL and add it to "
+                  f"KNOWN_MRF in this script.")
         print(f"[prices] wrote {price_path}")
 
 
