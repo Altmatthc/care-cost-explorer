@@ -198,9 +198,11 @@ DOMAIN_HINTS = [
     ("va medical",           None),
 ]
 
-# Verified by hand from the system's own price transparency page.
+# Verified by hand from each system's own price transparency page.
+# Keys are matched against a punctuation-stripped facility name, so
+# "Scripps Memorial Hospital - Encinitas" matches "scripps memorial hospital encinitas".
 KNOWN_MRF = {
-    "scripps green":
+    "scripps green hospital":
         "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv",
     "scripps memorial hospital encinitas":
         "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv",
@@ -210,7 +212,15 @@ KNOWN_MRF = {
         "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-Chula-Vista_standardcharges.csv",
     "scripps mercy hospital san diego":
         "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv",
+    # CMS lists the Hillcrest campus simply as "Scripps Mercy Hospital"
+    "scripps mercy hospital":
+        "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv",
 }
+
+
+def _flatten(s: str) -> str:
+    """Lowercase and strip punctuation so naming variants compare equal."""
+    return re.sub(r"[^a-z0-9 ]", " ", str(s or "").lower())
 
 
 def resolve_source(name: str) -> tuple[Optional[str], Optional[str]]:
@@ -218,17 +228,17 @@ def resolve_source(name: str) -> tuple[Optional[str], Optional[str]]:
     Given a CMS facility name, return (known_mrf_url, domain).
     Longest pattern wins so 'scripps mercy hospital san diego' beats 'scripps'.
     """
-    n = (name or "").lower()
+    n = " ".join(_flatten(name).split())
 
     mrf = None
     for pattern in sorted(KNOWN_MRF, key=len, reverse=True):
-        if pattern in n:
+        if " ".join(_flatten(pattern).split()) in n:
             mrf = KNOWN_MRF[pattern]
             break
 
     domain = None
     for pattern, dom in sorted(DOMAIN_HINTS, key=lambda x: len(x[0]), reverse=True):
-        if pattern in n:
+        if " ".join(_flatten(pattern).split()) in n:
             domain = dom
             break
 
@@ -572,6 +582,29 @@ def find_code_columns(keys: list[str]) -> list[tuple[str, Optional[str]]]:
     return pairs
 
 
+# Wide format embeds the payer in the column name:
+#   standard_charge|aetna hmo/ppo|negotiated_dollar
+# Tall format instead has one payer_name column plus standard_charge|negotiated_dollar.
+WIDE_RATE_RE = re.compile(
+    r"^standard_charge\|(?P<payer>.+?)\|(?:negotiated_dollar|negotiated_rate)$")
+WIDE_ALT_RE = re.compile(
+    r"^(?:estimated_amount|median_amount)\|(?P<payer>.+?)$")
+
+
+def find_wide_payers(keys: list[str]) -> dict[str, dict]:
+    """Map payer name -> {rate column, fallback column} for wide-format files."""
+    payers: dict[str, dict] = {}
+    for k in keys:
+        m = WIDE_RATE_RE.match(k.strip().lower())
+        if m:
+            payers.setdefault(m.group("payer").strip(), {})["rate"] = k
+    for k in keys:
+        m = WIDE_ALT_RE.match(k.strip().lower())
+        if m:
+            payers.setdefault(m.group("payer").strip(), {})["alt"] = k
+    return payers
+
+
 def money(v) -> Optional[float]:
     if v in (None, ""):
         return None
@@ -596,6 +629,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     code_pairs: list[tuple[str, Optional[str]]] = []
     cash_c = gross_c = payer_c = rate_c = desc_c = None
     median_c = min_c = max_c = None
+    wide_payers: dict[str, dict] = {}
     scanned = 0
     types_seen: dict[str, int] = {}
     sample_codes: list[str] = []
@@ -619,11 +653,16 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             min_c = col(keys, "standard_charge|min", "_min", "minimum")
             max_c = col(keys, "standard_charge|max", "_max", "maximum")
             desc_c = col(keys, "description")
+            wide_payers = find_wide_payers(keys)
             if verbose:
                 print(f"      columns: {len(keys)} | code slots: "
                       f"{[c for c, _ in code_pairs]}")
-                print(f"      cash={cash_c} gross={gross_c} "
-                      f"payer={payer_c} rate={rate_c}")
+                if wide_payers:
+                    print(f"      WIDE format: {len(wide_payers)} payer columns "
+                          f"e.g. {list(wide_payers)[:3]}")
+                else:
+                    print(f"      TALL format: payer={payer_c} rate={rate_c}")
+                print(f"      cash={cash_c} gross={gross_c}")
 
         for code_c, type_c in code_pairs:
             code = (row.get(code_c) or "").strip()
@@ -639,18 +678,33 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             if not pid:
                 continue
 
-            rate = money(row.get(rate_c)) or money(row.get(median_c))
-            found.append({
+            base = {
                 "hospital_id": hospital_id,
                 "procedure": pid,
                 "cash": money(row.get(cash_c)),
                 "gross": money(row.get(gross_c)),
-                "payer": (row.get(payer_c) or "").strip() or None,
-                "rate": rate,
                 "min": money(row.get(min_c)),
                 "max": money(row.get(max_c)),
                 "description": (row.get(desc_c) or "")[:120],
-            })
+            }
+
+            if wide_payers:
+                # One row carries every payer's rate in its own column.
+                any_rate = False
+                for pname, cols in wide_payers.items():
+                    rate = money(row.get(cols.get("rate"))) or money(row.get(cols.get("alt")))
+                    if rate is None:
+                        continue
+                    any_rate = True
+                    found.append({**base, "payer": pname, "rate": rate})
+                if not any_rate:
+                    found.append({**base, "payer": None, "rate": None})
+            else:
+                found.append({
+                    **base,
+                    "payer": (row.get(payer_c) or "").strip() or None,
+                    "rate": money(row.get(rate_c)) or money(row.get(median_c)),
+                })
             break  # one procedure per row is enough
 
     if verbose:
@@ -769,6 +823,8 @@ def main():
         shard = [h for i, h in enumerate(hospitals) if i % args.shards == args.shard]
         print(f"[prices] shard {args.shard+1}/{args.shards}: {len(shard)} hospitals")
         all_rows, stats = [], {"found": 0, "no_mrf": 0, "error": 0}
+        url_users: dict[str, list[str]] = {}
+        cache: dict[str, list[dict]] = {}
         for h in shard:
             url = h.get("mrf_url")
             if not url:
@@ -783,16 +839,44 @@ def main():
                 stats["no_mrf"] += 1
                 print(f"    - {h['name']}: no price file found")
                 continue
+            url_users.setdefault(url, []).append(h["name"])
+            h["source_url"] = url
             try:
-                rows = extract_prices(h["id"], url)
+                if url in cache:
+                    # Same file already parsed for another facility in this system.
+                    rows = [{**r, "hospital_id": h["id"]} for r in cache[url]]
+                    print(f"    ✓ {h['name']}: {len(rows)} rows "
+                          f"(reused, same file as {url_users[url][0]})")
+                else:
+                    rows = extract_prices(h["id"], url)
+                    cache[url] = rows
+                    print(f"    ✓ {h['name']}: {len(rows)} matching rows")
                 all_rows.extend(rows)
                 stats["found"] += 1
-                print(f"    ✓ {h['name']}: {len(rows)} matching rows")
             except Exception as e:
                 stats["error"] += 1
                 print(f"    ! {h['name']}: {e}")
 
+        # Flag any file serving more than one facility. Those prices are
+        # system-wide, not specific to the hospital, and the site must say so
+        # rather than implying a per-hospital price it doesn't actually have.
+        shared = {u: names for u, names in url_users.items() if len(names) > 1}
+        if shared:
+            print("\n[prices] SHARED FILES — these facilities publish one "
+                  "system-wide file, so their prices are identical by source:")
+            for u, names in shared.items():
+                print(f"    {u.split('/')[-1][:60]}")
+                for n in names:
+                    print(f"        - {n}")
+        shared_ids = set()
+        for u, names in shared.items():
+            for h in shard:
+                if h.get("source_url") == u:
+                    shared_ids.add(h["id"])
+
         merged = consolidate(all_rows)
+        for rec in merged.values():
+            rec["shared_source"] = rec["hospital_id"] in shared_ids
         if args.shards > 1:
             price_path = DATA / f"{args.region}-prices-{args.shard}.json"
         price_path.write_text(json.dumps(merged, indent=1))

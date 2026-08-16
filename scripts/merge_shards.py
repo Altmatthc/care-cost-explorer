@@ -76,11 +76,17 @@ def main():
         site.setdefault(proc, {})[hid] = {
             "cash": rec.get("cash"),
             "gross": rec.get("gross"),
+            "min": rec.get("min"),
+            "max": rec.get("max"),
             "payers": payers,
+            "shared": bool(rec.get("shared_source")),
         }
 
     out = DATA / f"{args.region}.json"
-    out.write_text(json.dumps({"region": args.region, "prices": site},
+    from datetime import date
+    out.write_text(json.dumps({"region": args.region,
+                               "updated": date.today().isoformat(),
+                               "prices": site},
                               separators=(",", ":")))
     size_kb = out.stat().st_size / 1024
     print(f"wrote {out.name} ({size_kb:.0f} KB, {len(site)} procedures)")
