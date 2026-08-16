@@ -14,6 +14,7 @@
   "stars": 3,
   "hasER": true,
   "domain": "pvhospital.org",
+  "verified_source": false,
   "lat": 32.68613,
   "lng": -117.08359,
   "mrf_url": null
@@ -33,6 +34,7 @@
   "stars": 5,
   "hasER": true,
   "domain": "health.ucsd.edu",
+  "verified_source": false,
   "lat": 32.75381,
   "lng": -117.16555,
   "mrf_url": null
@@ -52,6 +54,7 @@
   "stars": 4,
   "hasER": true,
   "domain": null,
+  "verified_source": false,
   "lat": 32.77915,
   "lng": -117.00847,
   "mrf_url": null
@@ -71,6 +74,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "scripps.org",
+  "verified_source": true,
   "lat": 32.7513,
   "lng": -117.16107,
   "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv"
@@ -90,6 +94,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "sharp.com",
+  "verified_source": false,
   "lat": 32.8002,
   "lng": -117.15528,
   "mrf_url": null
@@ -109,6 +114,7 @@
   "stars": 3,
   "hasER": true,
   "domain": "palomarhealth.org",
+  "verified_source": false,
   "lat": 33.12625,
   "lng": -117.07592,
   "mrf_url": null
@@ -128,6 +134,7 @@
   "stars": 1,
   "hasER": true,
   "domain": "tricitymed.org",
+  "verified_source": false,
   "lat": null,
   "lng": null,
   "mrf_url": null
@@ -147,6 +154,7 @@
   "stars": null,
   "hasER": true,
   "domain": null,
+  "verified_source": false,
   "lat": null,
   "lng": null,
   "mrf_url": null
@@ -166,6 +174,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "sharp.com",
+  "verified_source": false,
   "lat": 32.61748,
   "lng": -117.02221,
   "mrf_url": null
@@ -185,6 +194,7 @@
   "stars": null,
   "hasER": true,
   "domain": null,
+  "verified_source": false,
   "lat": 32.7246,
   "lng": -117.14463,
   "mrf_url": null
@@ -204,6 +214,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "sharp.com",
+  "verified_source": false,
   "lat": 32.69426,
   "lng": -117.16804,
   "mrf_url": null
@@ -223,6 +234,7 @@
   "stars": 5,
   "hasER": true,
   "domain": "scripps.org",
+  "verified_source": true,
   "lat": 32.88506,
   "lng": -117.22268,
   "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv"
@@ -242,6 +254,7 @@
   "stars": 5,
   "hasER": false,
   "domain": "scripps.org",
+  "verified_source": true,
   "lat": 32.89757,
   "lng": -117.24188,
   "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv"
@@ -261,6 +274,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "scripps.org",
+  "verified_source": true,
   "lat": 33.03629,
   "lng": -117.28537,
   "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv"
@@ -280,6 +294,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "healthy.kaiserpermanente.org",
+  "verified_source": false,
   "lat": 32.79292,
   "lng": -117.09543,
   "mrf_url": null
@@ -299,6 +314,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "palomarhealth.org",
+  "verified_source": false,
   "lat": 32.996,
   "lng": -117.05786,
   "mrf_url": null
@@ -318,6 +334,7 @@
   "stars": 4,
   "hasER": true,
   "domain": "healthy.kaiserpermanente.org",
+  "verified_source": false,
   "lat": 33.12896,
   "lng": -117.16792,
   "mrf_url": null
@@ -337,6 +354,7 @@
   "stars": 5,
   "hasER": true,
   "domain": null,
+  "verified_source": false,
   "lat": null,
   "lng": null,
   "mrf_url": null
@@ -356,6 +374,7 @@
   "stars": null,
   "hasER": false,
   "domain": "rchsd.org",
+  "verified_source": false,
   "lat": 32.79866,
   "lng": -117.15086,
   "mrf_url": null
