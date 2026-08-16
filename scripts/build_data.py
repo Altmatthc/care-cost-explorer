@@ -499,7 +499,8 @@ def discover_mrf(domain: str) -> Optional[str]:
 
 
 def pick_matching_file(hospital_name: str, domain: str,
-                       verbose: bool = True) -> Optional[str]:
+                       verbose: bool = True,
+                       expected_address: str = "") -> Optional[str]:
     """
     From everything a system publishes, return the file that identifies itself
     as this hospital. Returns None rather than guessing.
@@ -524,16 +525,38 @@ def pick_matching_file(hospital_name: str, domain: str,
     # Check every candidate with any token overlap, then fall back to the rest.
     plausible = [u for s, u in scored if s > 0]
     remainder = [u for s, u in scored if s == 0]
+    passing: list[tuple[float, str, str]] = []
     for url in (plausible + remainder)[:25]:
-        ok, why = verify_file_belongs(hospital_name, url)
-        if ok:
-            if verbose:
-                print(f"      selected {url.split('/')[-1][:70]} ({why})")
-            return url
+        ident = read_identity(url)
+        names = [n for n in (ident["hospital_name"], ident["location_name"],
+                             url.split("/")[-1]) if n]
+        best_name = max((match_score(hospital_name, n) for n in names), default=0.0)
+        if best_name < 0.6:
+            continue
+        addr = address_score(expected_address, ident.get("address", "")) \
+            if expected_address else 0.0
+        label = names[0][:60] if names else url.split("/")[-1][:60]
+        passing.append((best_name + addr, url, f"{label} (name {best_name:.2f}"
+                        + (f", address {addr:.2f}" if expected_address else "") + ")"))
+        # A perfect name match with no competing candidate needs no tiebreak.
+        if best_name >= 0.99 and not expected_address:
+            break
+
+    if passing:
+        passing.sort(key=lambda t: -t[0])
+        if verbose and len(passing) > 1:
+            print(f"      {len(passing)} candidate(s) matched; "
+                  f"choosing best by name + address:")
+            for s, u, why in passing[:4]:
+                print(f"        {s:.2f}  {why}")
+        best = passing[0]
+        if verbose:
+            print(f"      selected {best[1].split('/')[-1][:70]} ({best[2]})")
+        return best[1]
     if verbose:
         print(f"      none of {len(cands)} published files identify as "
               f"'{hospital_name}'. What was published:")
-        for url in ranked[:8]:
+        for url in [u for _, u in scored[:8]]:
             ident = read_identity(url)
             label = ident.get("hospital_name") or ident.get("location_name") or "?"
             print(f"        {url.split('/')[-1][:66]}")
@@ -614,10 +637,23 @@ GENERIC_TOKENS = {
 }
 
 
+# Filenames carry boilerplate that dilutes the real name: an EIN, the words
+# "standard charges", a region code, a language code, the extension. Kaiser's
+# "941105628-san-diego-clairemont-medical-center-standard-charges-scal-en.csv"
+# scored 0.50 purely because of this padding.
+FILE_NOISE = {
+    "standard", "charges", "standardcharges", "chargemaster", "csv", "json",
+    "xlsx", "scal", "ncal", "nw", "co", "mas", "hi", "ga", "en", "es",
+    "shoppable", "services", "price", "prices", "pricing", "transparency",
+    "machine", "readable", "file", "cdm", "list", "final", "current",
+}
+
+
 def name_tokens(s: str) -> set[str]:
-    toks = {t for t in _flatten(s).split() if len(t) > 2}
-    distinctive = toks - GENERIC_TOKENS
-    return distinctive or toks
+    toks = {t for t in _flatten(s).split()
+            if len(t) > 2 and not t.isdigit()}
+    distinctive = toks - GENERIC_TOKENS - FILE_NOISE
+    return distinctive or (toks - FILE_NOISE) or toks
 
 
 def match_score(expected: str, actual: str) -> float:
@@ -687,6 +723,33 @@ def read_identity(url: str) -> dict:
     except Exception as e:
         print(f"      identity check failed: {e}")
     return ident
+
+
+def address_score(expected: str, actual: str) -> float:
+    """
+    Compare street addresses. Kaiser publishes both a Clairemont and a Zion
+    file for San Diego and CMS lists one "Kaiser Foundation Hospital - San
+    Diego", so the name alone can't decide. The street address can.
+    """
+    def parts(s):
+        s = _flatten(s)
+        nums = {t for t in s.split() if t.isdigit()}
+        words = {t for t in s.split()
+                 if len(t) > 2 and not t.isdigit()
+                 and t not in {"road", "street", "avenue", "drive", "boulevard",
+                               "lane", "way", "suite", "ste", "the"}}
+        return nums, words
+
+    en, ew = parts(expected)
+    an, aw = parts(actual)
+    if not (en or ew) or not (an or aw):
+        return 0.0
+    score = 0.0
+    if en & an:
+        score += 0.6                      # same street number is strong evidence
+    if ew and aw:
+        score += 0.4 * len(ew & aw) / len(ew)
+    return min(score, 1.0)
 
 
 def verify_file_belongs(hospital_name: str, url: str) -> tuple[bool, str]:
@@ -1333,7 +1396,10 @@ def main():
                     continue
                 if domain:
                     print(f"    ... discovering price file for {h['name']} via {domain}")
-                    url = pick_matching_file(h["name"], domain)
+                    url = pick_matching_file(
+                        h["name"], domain,
+                        expected_address=f"{h.get('address','')} "
+                                         f"{h.get('city','')} {h.get('zip','')}")
                     h["mrf_url"] = url
                     if url:
                         h["verified_source"] = True

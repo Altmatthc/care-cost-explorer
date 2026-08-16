@@ -175,7 +175,58 @@ with mock.patch.object(b, "discover_mrf_candidates", lambda d: cands), \
         got = b.pick_matching_file(target, "x.com", verbose=False) or ""
         check(f"{target[:32]} picks its own file", expect in got, f"got {got[-50:]}")
 
-print("\n9. Known-URL resolution")
+print("\n9. No-match path (the branch that crashed a live run)")
+with mock.patch.object(b, "discover_mrf_candidates",
+                       lambda d: ["https://x/completely-unrelated-clinic.csv",
+                                  "https://x/another-unrelated-facility.csv"]), \
+     mock.patch.object(b, "read_identity",
+                       lambda u: {"hospital_name": "Unrelated Clinic",
+                                  "location_name": "", "address": "", "raw": ""}):
+    try:
+        res = b.pick_matching_file("Sharp Memorial Hospital", "x.com", verbose=True)
+        check("no-match path returns None without raising", res is None, f"got {res}")
+    except Exception as e:
+        check("no-match path returns None without raising", False, f"raised {e!r}")
+
+print("\n10. Kaiser-style filename scoring and address tiebreak")
+kaiser = ["941105628-san-diego-clairemont-medical-center-standard-charges-scal-en.csv",
+          "941105628-san-diego-zion-medical-center-standard-charges-scal-en.csv",
+          "941105628-san-marcos-medical-center-standard-charges-scal-en.csv",
+          "941105628-antioch-medical-center-standard-charges-ncal-en.csv"]
+check("San Diego file clears threshold",
+      b.match_score("Kaiser Foundation Hospital - San Diego", kaiser[0]) >= 0.6,
+      f"{b.match_score('Kaiser Foundation Hospital - San Diego', kaiser[0]):.2f}")
+check("San Marcos file clears threshold",
+      b.match_score("Kaiser Foundation Hospital - San Marcos", kaiser[2]) >= 0.6)
+check("Antioch stays rejected for San Diego",
+      b.match_score("Kaiser Foundation Hospital - San Diego", kaiser[3]) < 0.6)
+check("San Marcos does not match San Diego file",
+      b.match_score("Kaiser Foundation Hospital - San Marcos", kaiser[1]) < 0.6)
+
+addrs = {"clairemont": "7060 CLAIREMONT MESA BLVD; SAN DIEGO, CA, 92111",
+         "zion": "4647 ZION AVE; SAN DIEGO, CA, 92120"}
+check("address distinguishes Zion from Clairemont",
+      b.address_score("4647 Zion Ave San Diego 92120", addrs["zion"]) >
+      b.address_score("4647 Zion Ave San Diego 92120", addrs["clairemont"]))
+
+
+def kaiser_ident(url):
+    seg = url.split("941105628-")[1].split("-medical-center")[0]
+    a = addrs.get("zion") if "zion" in seg else addrs.get("clairemont", "")
+    return {"hospital_name": seg.replace("-", " ").upper() + " MEDICAL CENTER",
+            "location_name": "", "address": a, "raw": ""}
+
+
+with mock.patch.object(b, "discover_mrf_candidates",
+                       lambda d: [f"https://kp.org/{f}" for f in kaiser]), \
+     mock.patch.object(b, "read_identity", kaiser_ident):
+    got = b.pick_matching_file("Kaiser Foundation Hospital - San Diego", "kp.org",
+                               verbose=False,
+                               expected_address="4647 Zion Ave San Diego 92120") or ""
+    check("address tiebreak selects Zion over Clairemont", "zion" in got,
+          f"got {got.split('/')[-1]}")
+
+print("\n11. Known-URL resolution")
 for name, expect in [("Scripps Mercy Hospital", "Mercy-Hospital-San-Diego"),
                      ("Scripps Memorial Hospital - Encinitas", "Encinitas"),
                      ("Scripps Green Hospital", "Green")]:
