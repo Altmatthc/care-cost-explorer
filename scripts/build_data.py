@@ -595,6 +595,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     keys = None
     code_pairs: list[tuple[str, Optional[str]]] = []
     cash_c = gross_c = payer_c = rate_c = desc_c = None
+    median_c = min_c = max_c = None
     scanned = 0
     types_seen: dict[str, int] = {}
     sample_codes: list[str] = []
@@ -610,8 +611,13 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             cash_c = col(keys, "discounted_cash", "cash_price", "self_pay", "cash")
             gross_c = col(keys, "gross_charge", "gross")
             payer_c = col(keys, "payer_name", "payer")
-            rate_c = col(keys, "negotiated_dollar", "negotiated_rate",
-                         "allowed_amount", "negotiated")
+            rate_c = col(keys, "negotiated_dollar", "negotiated_rate", "negotiated")
+            # CY2026 rule: when a contract is a percentage or algorithm rather
+            # than a flat dollar amount, hospitals must publish actual allowed
+            # amounts instead. Use those when no dollar rate is present.
+            median_c = col(keys, "median_amount", "allowed_amount")
+            min_c = col(keys, "standard_charge|min", "_min", "minimum")
+            max_c = col(keys, "standard_charge|max", "_max", "maximum")
             desc_c = col(keys, "description")
             if verbose:
                 print(f"      columns: {len(keys)} | code slots: "
@@ -633,13 +639,16 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             if not pid:
                 continue
 
+            rate = money(row.get(rate_c)) or money(row.get(median_c))
             found.append({
                 "hospital_id": hospital_id,
                 "procedure": pid,
                 "cash": money(row.get(cash_c)),
                 "gross": money(row.get(gross_c)),
                 "payer": (row.get(payer_c) or "").strip() or None,
-                "rate": money(row.get(rate_c)),
+                "rate": rate,
+                "min": money(row.get(min_c)),
+                "max": money(row.get(max_c)),
                 "description": (row.get(desc_c) or "")[:120],
             })
             break  # one procedure per row is enough
@@ -659,8 +668,13 @@ def consolidate(rows: list[dict]) -> dict:
         k = f"{r['hospital_id']}|{r['procedure']}"
         rec = out.setdefault(k, {
             "hospital_id": r["hospital_id"], "procedure": r["procedure"],
-            "cash": None, "gross": None, "payers": {}, "description": r["description"],
+            "cash": None, "gross": None, "min": None, "max": None,
+            "payers": {}, "description": r["description"],
         })
+        if r.get("min") and not rec["min"]:
+            rec["min"] = r["min"]
+        if r.get("max") and not rec["max"]:
+            rec["max"] = r["max"]
         if r["cash"] and not rec["cash"]:
             rec["cash"] = r["cash"]
         if r["gross"] and not rec["gross"]:
