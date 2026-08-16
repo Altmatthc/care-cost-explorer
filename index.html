@@ -916,6 +916,13 @@ function isSharedSource(proc, hospitalId){
 }
 
 function livePriceFor(proc, hospitalId, payerId){
+  // Emergency care requires an actual emergency department. CMS publishes
+  // this flag per hospital; without this check the live path listed ER visits
+  // at surgical and specialty hospitals that have no ER.
+  if(settingOf(proc) === 'emergency'){
+    const info = hospitalInfo[hospitalId];
+    if(!info || info.hasER === false) return null;
+  }
   const byHosp = LIVE.prices[proc.id];
   if(!byHosp) return null;
   const rec = byHosp[hospitalId];
