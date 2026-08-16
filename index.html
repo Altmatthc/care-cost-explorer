@@ -893,6 +893,11 @@ async function loadLiveData(region = 'san-diego'){
       };
     });
 
+    // The id->hospital lookup was built from the placeholder list at startup;
+    // rebuild it or every live-data lookup by id silently misses.
+    Object.keys(hospitalById).forEach(k => delete hospitalById[k]);
+    hospitals.forEach(x => { hospitalById[x.id] = x; });
+
     LIVE = pRaw;
     SCAN_STATUS = pRaw.status || {};
     document.querySelector('.banner').innerHTML =
@@ -913,6 +918,14 @@ function isSharedSource(proc, hospitalId){
   const byHosp = LIVE && LIVE.prices[proc.id];
   const rec = byHosp && byHosp[hospitalId];
   return !!(rec && rec.shared);
+}
+
+function identicalTo(proc, hospitalId){
+  const byHosp = LIVE && LIVE.prices[proc.id];
+  const rec = byHosp && byHosp[hospitalId];
+  const ids = (rec && rec.identical_to) || [];
+  return ids.map(id => (hospitalById[id] && hospitalById[id].name) || null)
+            .filter(Boolean);
 }
 
 function livePriceFor(proc, hospitalId, payerId){
@@ -1077,8 +1090,8 @@ function renderResults(){
 
   const payerName = payerById[state.payerId].name;
   document.getElementById('costNote').innerHTML = state.payerId === 'cash'
-    ? `<b>What you'd pay:</b> these are cash prices — what the hospital charges someone without insurance. Many hospitals discount this further if you ask, and nonprofit hospitals must offer financial assistance if you qualify.`
-    : `<b>What you'd pay:</b> these are the rates ${payerName} has negotiated — not your final bill. If you haven't met your deductible you may owe the full amount shown; after that you typically owe a percentage. Check your plan's deductible and coinsurance.`;
+    ? `<b>What you'd pay:</b> these are the hospital's cash prices — the facility charge for someone without insurance. <b>Doctors usually bill separately</b>, so a surgeon, anesthesiologist or radiologist fee is typically on top of the figure shown. Hospitals often discount cash prices further if you ask, and nonprofit hospitals must offer financial assistance if you qualify. For a full personalised total, ask the hospital for a "good faith estimate" — you're entitled to one.`
+    : `<b>What you'd pay:</b> these are the rates ${payerName} has negotiated for the facility — not your final bill. If you haven't met your deductible you may owe the full amount shown; after that you typically owe a percentage. <b>Doctors usually bill separately</b>, so surgeon and anesthesia fees are generally on top. Check your plan's deductible and coinsurance.`;
   document.getElementById('resultCount').textContent =
     `${validPrices.length} of ${hospitals.length} hospitals offer this · ${payerName} · near ZIP ${state.zip}`;
 
@@ -1104,9 +1117,12 @@ function renderResults(){
         this price may cover either procedure.</div>`;
     }
     if(LIVE && isSharedSource(proc, h.id)){
-      inner += `<div class="shared-note">System-wide price — this hospital's ` +
-               `network publishes one price file covering several of its ` +
-               `facilities, so this figure may not be specific to this location.</div>`;
+      const twins = identicalTo(proc, h.id);
+      inner += `<div class="shared-note">System-wide price — this figure is ` +
+        (twins.length
+          ? `identical to ${twins.join(" and ")}, so this hospital's network `
+          : `published for several facilities at once, so this hospital's network `) +
+        `appears to set prices system-wide rather than per location.</div>`;
     }
 
     // network status
