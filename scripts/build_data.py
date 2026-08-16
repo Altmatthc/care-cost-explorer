@@ -478,56 +478,142 @@ def col(keys, *needles) -> Optional[str]:
     return None
 
 
-def extract_prices(hospital_id: str, url: str) -> list[dict]:
-    """Pull only rows matching TARGET_CODES, capturing cash price and payer rates."""
-    found, keys = [], None
-    code_c = type_c = cash_c = gross_c = payer_c = rate_c = desc_c = None
+def norm_code(v: str) -> str:
+    """Codes appear as '470', '0470', '70551 '. Compare them consistently."""
+    v = re.sub(r"[^A-Za-z0-9]", "", str(v or "").upper())
+    return v.lstrip("0") or v
+
+
+def norm_type(v: str) -> str:
+    """'MS-DRG', 'MSDRG', 'DRG', 'CPT®' -> comparable form."""
+    return re.sub(r"[^A-Z0-9]", "", str(v or "").upper())
+
+
+# Build a fast lookup: normalized code -> list of (normalized type, procedure id)
+_CODE_INDEX: dict[str, list[tuple[str, str]]] = {}
+for (_t, _c), _pid in TARGET_CODES.items():
+    _CODE_INDEX.setdefault(norm_code(_c), []).append((norm_type(_t), _pid))
+
+
+def match_code(code: str, ctype: str) -> Optional[str]:
+    """Return the procedure id this code/type pair refers to, if any."""
+    cands = _CODE_INDEX.get(norm_code(code))
+    if not cands:
+        return None
+    ct = norm_type(ctype)
+    for want_type, pid in cands:
+        # Accept exact, either-direction substring (DRG vs MSDRG), a blank
+        # type, or the interchangeable CPT/HCPCS pair.
+        if (not ct
+                or ct == want_type
+                or want_type in ct or ct in want_type
+                or (ct in ("CPT", "HCPCS") and want_type in ("CPT", "HCPCS"))):
+            return pid
+    return None
+
+
+def find_code_columns(keys: list[str]) -> list[tuple[str, Optional[str]]]:
+    """
+    CMS tall format allows several code slots (code|1 .. code|4), each with its
+    own type column. Hospitals commonly put a revenue code in slot 1 and the
+    CPT in a later slot, so every slot must be checked.
+    """
+    pairs = []
+    for k in keys:
+        kl = k.lower()
+        if "code" not in kl or "type" in kl:
+            continue
+        if any(skip in kl for skip in ("zip", "postal", "geo")):
+            continue
+        type_col = None
+        for cand in keys:
+            cl = cand.lower()
+            if cl.startswith(kl) and "type" in cl:
+                type_col = cand
+                break
+        if type_col is None:
+            type_col = col(keys, kl + "|type", kl + "_type", "code_type", "code|1|type")
+        pairs.append((k, type_col))
+    return pairs
+
+
+def money(v) -> Optional[float]:
+    if v in (None, ""):
+        return None
+    s = re.sub(r"[^\d.]", "", str(v))
+    if not s or s.count(".") > 1:
+        return None
+    try:
+        f = float(s)
+        return round(f, 2) if f > 0 else None
+    except ValueError:
+        return None
+
+
+def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dict]:
+    """
+    Pull only rows matching TARGET_CODES, capturing cash price and payer rates.
+    Prints what it detected so a zero-row result is diagnosable without
+    re-downloading a very large file.
+    """
+    found: list[dict] = []
+    keys = None
+    code_pairs: list[tuple[str, Optional[str]]] = []
+    cash_c = gross_c = payer_c = rate_c = desc_c = None
+    scanned = 0
+    types_seen: dict[str, int] = {}
+    sample_codes: list[str] = []
 
     for row in stream_rows(url):
         if "_raw_json_line" in row:
-            continue  # JSON hospitals need a per-schema parser; logged as unsupported
+            continue
+        scanned += 1
+
         if keys is None:
             keys = list(row.keys())
-            code_c = col(keys, "code|1", "code_1", "code", "hcpcs", "cpt")
-            type_c = col(keys, "code|1|type", "code_1_type", "code_type")
-            cash_c = col(keys, "discounted_cash", "cash_price", "self_pay")
+            code_pairs = find_code_columns(keys)
+            cash_c = col(keys, "discounted_cash", "cash_price", "self_pay", "cash")
             gross_c = col(keys, "gross_charge", "gross")
             payer_c = col(keys, "payer_name", "payer")
-            rate_c = col(keys, "standard_charge|negotiated_dollar",
-                         "negotiated_dollar", "negotiated_rate", "allowed_amount")
+            rate_c = col(keys, "negotiated_dollar", "negotiated_rate",
+                         "allowed_amount", "negotiated")
             desc_c = col(keys, "description")
+            if verbose:
+                print(f"      columns: {len(keys)} | code slots: "
+                      f"{[c for c, _ in code_pairs]}")
+                print(f"      cash={cash_c} gross={gross_c} "
+                      f"payer={payer_c} rate={rate_c}")
 
-        code = (row.get(code_c) or "").strip().upper()
-        if not code:
-            continue
-        ctype = (row.get(type_c) or "CPT").strip().upper()
-        key = None
-        for (t, c), pid in TARGET_CODES.items():
-            if code == c and (t in ctype or ctype in ("", "CPT", "HCPCS")):
-                key = pid
-                break
-        if not key:
-            continue
+        for code_c, type_c in code_pairs:
+            code = (row.get(code_c) or "").strip()
+            if not code:
+                continue
+            ctype = (row.get(type_c) or "").strip() if type_c else ""
+            if len(sample_codes) < 12 and code not in sample_codes:
+                sample_codes.append(f"{code}[{ctype or '?'}]")
+            if ctype:
+                types_seen[norm_type(ctype)] = types_seen.get(norm_type(ctype), 0) + 1
 
-        def money(v):
-            if not v:
-                return None
-            v = re.sub(r"[^\d.]", "", str(v))
-            try:
-                f = float(v)
-                return round(f, 2) if f > 0 else None
-            except ValueError:
-                return None
+            pid = match_code(code, ctype)
+            if not pid:
+                continue
 
-        found.append({
-            "hospital_id": hospital_id,
-            "procedure": key,
-            "cash": money(row.get(cash_c)),
-            "gross": money(row.get(gross_c)),
-            "payer": (row.get(payer_c) or "").strip() or None,
-            "rate": money(row.get(rate_c)),
-            "description": (row.get(desc_c) or "")[:120],
-        })
+            found.append({
+                "hospital_id": hospital_id,
+                "procedure": pid,
+                "cash": money(row.get(cash_c)),
+                "gross": money(row.get(gross_c)),
+                "payer": (row.get(payer_c) or "").strip() or None,
+                "rate": money(row.get(rate_c)),
+                "description": (row.get(desc_c) or "")[:120],
+            })
+            break  # one procedure per row is enough
+
+    if verbose:
+        print(f"      scanned {scanned:,} rows | code types seen: "
+              f"{dict(sorted(types_seen.items(), key=lambda x: -x[1])[:6])}")
+        if not found:
+            print(f"      NO MATCHES. Sample codes in file: {sample_codes}")
     return found
 
 
@@ -549,6 +635,32 @@ def consolidate(rows: list[dict]) -> dict:
     return out
 
 
+def probe(url: str, rows: int = 40):
+    """
+    Peek at a price file's structure without downloading the whole thing.
+    Use this to diagnose a hospital that returns zero matches, instead of
+    waiting through another full run.
+    """
+    print(f"probing {url}")
+    seen = 0
+    for row in stream_rows(url):
+        if "_raw_json_line" in row:
+            print("  (JSON file — first line)")
+            print("  " + row["_raw_json_line"][:600])
+            return
+        if seen == 0:
+            print(f"  columns ({len(row)}):")
+            for k in row:
+                print(f"    - {k}")
+            print(f"  detected code slots: {find_code_columns(list(row))}")
+            print("  first rows:")
+        vals = {k: v for k, v in list(row.items())[:8] if v}
+        print(f"    {vals}")
+        seen += 1
+        if seen >= rows:
+            break
+
+
 # ===========================================================================
 # MAIN
 # ===========================================================================
@@ -556,7 +668,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--region", default="san-diego", choices=list(REGIONS))
     ap.add_argument("--stage", default="all",
-                    choices=["all", "registry", "geocode", "prices"])
+                    choices=["all", "registry", "geocode", "prices", "probe"])
+    ap.add_argument("--url", default="", help="file URL to inspect with --stage probe")
     ap.add_argument("--shard", type=int, default=0, help="which shard (0-indexed)")
     ap.add_argument("--shards", type=int, default=1, help="total shards")
     ap.add_argument("--limit", type=int, default=0, help="cap hospitals, for testing")
@@ -564,6 +677,13 @@ def main():
     ap.add_argument("--no-type-filter", action="store_true",
                     help="keep every facility type (use if the type filter finds nothing)")
     args = ap.parse_args()
+
+    if args.stage == "probe":
+        if not args.url:
+            print("--stage probe needs --url", file=sys.stderr)
+            sys.exit(1)
+        probe(args.url)
+        return
 
     DATA.mkdir(exist_ok=True)
     reg_path = DATA / f"{args.region}-hospitals.json"
