@@ -171,6 +171,27 @@
   .cash-win b{font-weight:700;}
   .badge-spread{background:#F2ECF7;color:#6A4C88;}
   .badge-markup{background:#F7F1E4;color:#8A6A2E;}
+  .badge-btn{border:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;
+    font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:4px;transition:filter .12s;}
+  .badge-btn:hover{filter:brightness(.94);}
+  .badge-btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .badge-caret{font-size:12px;line-height:1;transition:transform .15s;opacity:.7;}
+  .badge-btn[aria-expanded="true"] .badge-caret{transform:rotate(90deg);}
+  .badge-detail{display:none;}
+  .badge-detail.open{display:block;margin-top:10px;padding:12px 14px;
+    background:#F7FAFA;border:1px solid var(--line);border-radius:7px;}
+  .bd-title{font-family:'Fraunces',serif;font-size:14px;color:var(--teal-dark);
+    margin-bottom:6px;}
+  .bd-body{font-size:12.5px;line-height:1.6;color:var(--ink);}
+  .bd-body a{color:var(--teal-dark);font-weight:600;}
+  .bd-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px;}
+  .bd-table td{padding:4px 0;border-bottom:1px solid #E6ECEC;}
+  .bd-table td.num{text-align:right;font-family:'IBM Plex Mono',monospace;
+    white-space:nowrap;padding-left:12px;}
+  .bd-table td.muted{color:var(--muted);font-size:11.5px;}
+  .bd-cash td{border-bottom:none;border-top:1.5px solid var(--line);
+    font-weight:600;padding-top:7px;}
   .approx{font-size:9.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;
     background:#EDF1F1;padding:1px 4px;border-radius:3px;}
   .chg{display:inline-block;margin-top:7px;font-size:11.5px;font-weight:600;
@@ -872,10 +893,27 @@ window.addEventListener('resize', () => {
   }
 });
 
-// At startup, load only the small manifest. The actual price data is fetched
-// after the user enters a ZIP, so nobody downloads a region they don't need.
+// At startup, load only the small manifest — the price data itself waits
+// until a ZIP tells us which region to fetch. But say so honestly in the
+// banner, rather than claiming "placeholder" when real data is available.
 loadManifest().then(m => {
-  if(m) console.log('regions available:', Object.keys(m).join(', '));
+  const banner = document.querySelector('.banner');
+  if(!m || !Object.keys(m).length || !banner) return;
+
+  const regions = Object.values(m);
+  const hospitals = regions.reduce((n, r) => n + (r.hospitals || 0), 0);
+  const areas = [...new Set(regions.flatMap(r => r.states || []))];
+  const updated = regions.map(r => r.updated).filter(Boolean).sort().pop();
+
+  banner.classList.add('live');
+  banner.innerHTML =
+    `<b>Live data.</b> Real prices for ${hospitals} hospital` +
+    `${hospitals === 1 ? '' : 's'}` +
+    `${areas.length ? ' in ' + esc(areas.join(', ')) : ''}, from each ` +
+    `hospital's federally required price file` +
+    `${updated ? `, last refreshed ${esc(updated)}` : ''}. ` +
+    `Prices load once you enter your ZIP code. They are what hospitals ` +
+    `publish, not a quote — doctors usually bill separately.`;
 });
 
 function selectRegion(key){
@@ -1064,7 +1102,14 @@ async function loadLiveData(region = 'san-diego'){
       });
       hospitalInfo[h.id] = {
         stars: h.stars, erWait: null, trauma: null, beds: null,
-        aid: true, networks: [...payersSeen],
+        // Financial assistance: nonprofit and government hospitals must
+        // maintain a written policy under IRS 501(r). For-profit hospitals
+        // aren't federally required to, though several states (California
+        // among them) require one of every hospital. Derived from CMS
+        // ownership rather than assumed.
+        ownership: h.ownership || h.system || '',
+        aid: /non-?profit|government|church|voluntary/i.test(h.ownership || h.system || ''),
+        networks: [...payersSeen],
         hasER: h.hasER,
       };
     });
@@ -1169,6 +1214,30 @@ function tierOf(price, sorted){
   return 'high';
 }
 
+// Delegated: result cards are rebuilt on every render, so binding to each
+// badge individually would leak handlers and break after a re-sort.
+document.getElementById('resultsList').addEventListener('click', e => {
+  const btn = e.target.closest('.badge-btn');
+  if(!btn) return;
+  e.stopPropagation();                       // don't also fly the map to the pin
+  const card = btn.closest('.card');
+  const panel = card.querySelector('.badge-detail');
+  const key = btn.dataset.badge;
+  const open = btn.getAttribute('aria-expanded') === 'true';
+
+  card.querySelectorAll('.badge-btn').forEach(b =>
+    b.setAttribute('aria-expanded', 'false'));
+
+  if(open){                                   // clicking the open one closes it
+    panel.innerHTML = '';
+    panel.classList.remove('open');
+    return;
+  }
+  btn.setAttribute('aria-expanded', 'true');
+  panel.innerHTML = badgeDetail(key, btn.dataset.h, btn.dataset.p);
+  panel.classList.add('open');
+});
+
 document.querySelectorAll('.sort-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
@@ -1194,6 +1263,111 @@ function ageText(iso){
   if(d === 1) return "yesterday";
   if(d < 30) return `${d} days ago`;
   return `${Math.round(d/30)} months ago`;
+}
+
+function badge(key, cls, label, hid, pid){
+  // Buttons rather than spans: keyboard-reachable, and it signals that the
+  // figure has an explanation behind it rather than being a bare assertion.
+  return `<button type="button" class="tier-tag ${cls} badge-btn"
+    data-badge="${esc(key)}" data-h="${esc(hid)}" data-p="${esc(pid)}"
+    aria-expanded="false">${esc(label)}<span class="badge-caret">›</span></button>`;
+}
+
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+function badgeDetail(key, hid, pid){
+  const proc = procById[pid];
+  const rec = LIVE ? (LIVE.prices[pid] || {})[hid] : null;
+  const hosp = hospitalById[hid] || {};
+  const info = hospitalInfo[hid] || {};
+  if(!rec && key !== 'aid') return '<div class="bd-body">No detail available.</div>';
+
+  if(key === 'spread'){
+    const payers = Object.entries(rec.payers || {})
+      .sort((a,b) => a[1] - b[1]);
+    if(!payers.length) return '<div class="bd-body">No payer detail published.</div>';
+    const lo = payers[0], hi = payers[payers.length-1];
+    let out = `<div class="bd-title">What ${esc(hosp.name)} charges different
+      insurers for ${esc(proc.name)}</div>
+      <div class="bd-body">Same hospital, same procedure. The most expensive
+      plan pays <b>${money(hi[1] - lo[1])} more</b> than the cheapest —
+      ${rec.spread}× the difference. You can't usually change this, but it
+      shows how little these prices track the cost of care.</div>
+      <table class="bd-table">`;
+    payers.forEach(([name, val]) => {
+      const pct = ((val / lo[1]) * 100 - 100);
+      out += `<tr><td>${esc((payerById[name] || {}).name || name)}</td>
+        <td class="num">${money(val)}</td>
+        <td class="num muted">${pct < 1 ? 'lowest' : '+' + pct.toFixed(0) + '%'}</td></tr>`;
+    });
+    if(rec.cash) out += `<tr class="bd-cash"><td>Cash price (no insurance)</td>
+      <td class="num">${money(rec.cash)}</td><td class="num muted"></td></tr>`;
+    return out + `</table>`;
+  }
+
+  if(key === 'markup'){
+    const diff = rec.gross - rec.cash;
+    return `<div class="bd-title">List charge vs cash price</div>
+      <div class="bd-body">
+        The <b>list charge</b> (or "chargemaster" price) is what appears on an
+        itemised bill before any discount: <b>${money(rec.gross)}</b>.<br>
+        The <b>cash price</b> for someone paying directly is
+        <b>${money(rec.cash)}</b> — ${money(diff)} less.
+        <br><br>
+        Almost nobody pays the list charge, but it's the figure an uninsured
+        patient is billed first, and what an out-of-network claim is calculated
+        from. It's worth asking for the cash price by name.
+      </div>`;
+  }
+
+  if(key === 'tier'){
+    const all = Object.values(LIVE.prices[pid] || {})
+      .map(r => r.cash).filter(Boolean).sort((a,b) => a-b);
+    if(!all.length) return '<div class="bd-body">No comparison available.</div>';
+    const lo = all[0], hi = all[all.length-1], mine = rec.cash;
+    const cheaper = all.filter(v => v < mine).length;
+    return `<div class="bd-title">How this compares locally</div>
+      <div class="bd-body">
+        Across ${all.length} hospitals publishing a price for
+        ${esc(proc.name)}, the range is <b>${money(lo)}</b> to
+        <b>${money(hi)}</b>.<br>
+        This hospital charges <b>${money(mine)}</b>${
+          cheaper === 0 ? ' — the lowest published price in the area.'
+          : `, with ${cheaper} hospital${cheaper===1?'':'s'} charging less.`}
+        ${mine > lo ? `<br><br>Choosing the cheapest instead would save
+          <b>${money(mine - lo)}</b> on the facility charge.` : ''}
+      </div>`;
+  }
+
+  if(key === 'aid'){
+    const own = (info.ownership || '').toLowerCase();
+    const nonprofit = /non-?profit|church|voluntary/.test(own);
+    const page = safeUrl(estimatorLink(hosp));
+    return `<div class="bd-title">Financial assistance at ${esc(hosp.name)}</div>
+      <div class="bd-body">
+        ${nonprofit
+          ? `This is a <b>non-profit hospital</b>, so US tax rules (IRS
+             §501(r)) require it to maintain a written Financial Assistance
+             Policy, publicise it, and limit what it charges people who
+             qualify.`
+          : `This is a <b>government-run hospital</b>, which generally
+             maintains a charity care or discount payment policy.`}
+        <br><br>
+        Assistance is usually income-based and often covers people well above
+        the poverty line — some policies reach several times it, and many
+        patients who would qualify never ask. You can request an application
+        at any point, <b>including after you've been billed</b>.
+        <br><br>
+        Amounts aren't published in the price files, so this tool can't tell
+        you what you'd receive. Ask the hospital's billing department for their
+        Financial Assistance Policy by name.
+        ${page ? `<br><br><a href="${esc(page)}" target="_blank"
+          rel="noopener noreferrer">Open ${esc(hosp.system || 'the hospital')}'s
+          billing page →</a>` : ''}
+      </div>`;
+  }
+
+  return '<div class="bd-body">No detail available.</div>';
 }
 
 function priceChange(proc, hospitalId){
@@ -1349,7 +1523,31 @@ function renderResults(){
   const setting = settingOf(proc);
 
   // Only offer sorts that mean something for this kind of care
-  document.querySelectorAll('.sort-btn').forEach(btn => {
+  // Delegated: result cards are rebuilt on every render, so binding to each
+// badge individually would leak handlers and break after a re-sort.
+document.getElementById('resultsList').addEventListener('click', e => {
+  const btn = e.target.closest('.badge-btn');
+  if(!btn) return;
+  e.stopPropagation();                       // don't also fly the map to the pin
+  const card = btn.closest('.card');
+  const panel = card.querySelector('.badge-detail');
+  const key = btn.dataset.badge;
+  const open = btn.getAttribute('aria-expanded') === 'true';
+
+  card.querySelectorAll('.badge-btn').forEach(b =>
+    b.setAttribute('aria-expanded', 'false'));
+
+  if(open){                                   // clicking the open one closes it
+    panel.innerHTML = '';
+    panel.classList.remove('open');
+    return;
+  }
+  btn.setAttribute('aria-expanded', 'true');
+  panel.innerHTML = badgeDetail(key, btn.dataset.h, btn.dataset.p);
+  panel.classList.add('open');
+});
+
+document.querySelectorAll('.sort-btn').forEach(btn => {
     const s = btn.dataset.sort;
     const relevant = s === 'price' || s === 'distance'
       || (s === 'rating' && ['emergency','inpatient','outpatient','recurring'].includes(setting))
@@ -1502,17 +1700,21 @@ function renderResults(){
     const liveRec = LIVE ? (LIVE.prices[proc.id] || {})[h.id] : null;
     inner += `<div class="badge-row">`;
     if(liveRec && liveRec.spread >= 1.5){
-      inner += `<span class="tier-tag badge-spread" title="Insurers pay very
-        different amounts here for identical care">Insurers differ
-        ${liveRec.spread}×</span>`;
+      inner += badge('spread', 'badge-spread',
+                     `Insurers differ ${liveRec.spread}×`, h.id, proc.id);
     }
     if(liveRec && liveRec.markup >= 2){
-      inner += `<span class="tier-tag badge-markup" title="The hospital's list
-        charge compared with its cash price">List charge ${liveRec.markup}× cash</span>`;
+      inner += badge('markup', 'badge-markup',
+                     `List charge ${liveRec.markup}× cash`, h.id, proc.id);
     }
-    if(price!=null) inner += `<span class="tier-tag tier-${tier}">${tier==='low'?'Lowest third':tier==='mid'?'Middle third':'Highest third'}</span>`;
-    if(info.aid) inner += `<span class="tier-tag badge-aid">Financial aid available</span>`;
-    inner += `</div>`;
+    if(price!=null){
+      inner += badge('tier', `tier-${tier}`,
+        tier==='low'?'Lowest third':tier==='mid'?'Middle third':'Highest third',
+        h.id, proc.id);
+    }
+    if(info.aid) inner += badge('aid', 'badge-aid',
+                                'Financial aid available', h.id, proc.id);
+    inner += `</div><div class="badge-detail" data-for="${esc(h.id)}"></div>`;
 
     // The hospital's own estimator can price the whole encounter including
     // doctors' fees, which these published files can't. Link to their page
