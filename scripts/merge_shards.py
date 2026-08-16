@@ -91,6 +91,41 @@ def main():
         except Exception as e:
             print(f"  could not read status file: {e}")
 
+    # ------------------------------------------------------------------
+    # Detect hospitals publishing IDENTICAL prices.
+    # Kaiser selects a per-facility file for San Diego (Zion) and San Marcos,
+    # yet both produce the same figures — the chargemaster is system-wide.
+    # Presenting that as facility-specific pricing implies a precision the
+    # data doesn't have, so flag it and let the site say so.
+    # ------------------------------------------------------------------
+    import hashlib
+
+    sig: dict[str, list[str]] = {}
+    for hid in {h for byh in site.values() for h in byh}:
+        parts = []
+        for proc in sorted(site):
+            rec = site[proc].get(hid)
+            if not rec:
+                continue
+            parts.append(f"{proc}:{rec.get('cash')}:{rec.get('gross')}:"
+                         f"{sorted((rec.get('payers') or {}).items())}")
+        if parts:
+            digest = hashlib.sha1("|".join(parts).encode()).hexdigest()
+            sig.setdefault(digest, []).append(hid)
+
+    identical = {d: hs for d, hs in sig.items() if len(hs) > 1}
+    if identical:
+        print("\nHospitals publishing identical prices (flagged as system-wide):")
+        for hs in identical.values():
+            print("  " + ", ".join(hs))
+            for hid in hs:
+                for proc in site:
+                    if hid in site[proc]:
+                        site[proc][hid]["shared"] = True
+                        site[proc][hid]["identical_to"] = [x for x in hs if x != hid]
+    else:
+        print("\nNo two hospitals publish identical prices.")
+
     out = DATA / f"{args.region}.json"
     from datetime import date
     out.write_text(json.dumps({"region": args.region,

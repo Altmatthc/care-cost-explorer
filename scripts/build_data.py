@@ -1261,6 +1261,71 @@ def days_since(iso: str) -> float:
         return 1e6
 
 
+def verify_code(url: str, code: str, limit: int = 6):
+    """
+    Print the raw rows a price file holds for one billing code, with every
+    column, plus the values this pipeline extracts from them.
+
+    This is the check that proves a number on the site is the number in the
+    hospital's file — not a plausible-looking figure read from the wrong
+    column. Use it whenever a price looks surprising.
+    """
+    print(f"looking for code {code} in {url}\n")
+    want = norm_code(code)
+    shown = 0
+
+    if url.lower().split("?")[0].endswith(".json"):
+        key = detect_json_array_key(url)
+        if not key:
+            print("  no standard-charge array found")
+            return
+        for item in stream_json_items(url, key):
+            codes = item.get("code_information") or []
+            if not any(norm_code(str(c.get("code", ""))) == want for c in codes):
+                continue
+            print(f"  description: {item.get('description','')}")
+            print(f"  codes: {[(c.get('code'), c.get('type')) for c in codes]}")
+            for ch in (item.get("standard_charges") or []):
+                print(f"    gross={ch.get('gross_charge')} "
+                      f"cash={ch.get('discounted_cash')} "
+                      f"min={ch.get('minimum')} max={ch.get('maximum')} "
+                      f"setting={ch.get('setting')}")
+                for p in (ch.get("payers_information") or [])[:6]:
+                    print(f"      {p.get('payer_name')} / {p.get('plan_name')}: "
+                          f"dollar={p.get('standard_charge_dollar')} "
+                          f"est={p.get('estimated_amount')}")
+            shown += 1
+            print()
+            if shown >= limit:
+                break
+        if not shown:
+            print(f"  code {code} not present in this file")
+        return
+
+    keys = None
+    code_pairs = []
+    for row in stream_rows(url):
+        if keys is None:
+            keys = list(row.keys())
+            code_pairs = find_code_columns(keys)
+        if not any(norm_code(row.get(c, "")) == want for c, _ in code_pairs):
+            continue
+        print(f"  --- match {shown+1} ---")
+        for k, v in row.items():
+            if str(v).strip():
+                print(f"    {k} = {v}")
+        shown += 1
+        print()
+        if shown >= limit:
+            break
+    if not shown:
+        print(f"  code {code} not present in this file")
+    else:
+        print(f"  The pipeline reads 'standard_charge|discounted_cash' as the "
+              f"cash price\n  and 'standard_charge|gross' as the list charge. "
+              f"Compare those above\n  against what the site displays.")
+
+
 # ===========================================================================
 # MAIN
 # ===========================================================================
@@ -1268,8 +1333,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--region", default="san-diego", choices=list(REGIONS))
     ap.add_argument("--stage", default="all",
-                    choices=["all", "registry", "geocode", "prices", "probe"])
-    ap.add_argument("--url", default="", help="file URL to inspect with --stage probe")
+                    choices=["all", "registry", "geocode", "prices",
+                             "probe", "verify"])
+    ap.add_argument("--url", default="", help="file URL for --stage probe/verify")
+    ap.add_argument("--code", default="", help="billing code to look up with --stage verify")
     ap.add_argument("--shard", type=int, default=0, help="which shard (0-indexed)")
     ap.add_argument("--shards", type=int, default=1, help="total shards")
     ap.add_argument("--limit", type=int, default=0, help="cap hospitals, for testing")
@@ -1285,6 +1352,13 @@ def main():
     ap.add_argument("--no-type-filter", action="store_true",
                     help="keep every facility type (use if the type filter finds nothing)")
     args = ap.parse_args()
+
+    if args.stage == "verify":
+        if not (args.url and args.code):
+            print("--stage verify needs --url and --code", file=sys.stderr)
+            sys.exit(1)
+        verify_code(args.url, args.code)
+        return
 
     if args.stage == "probe":
         if not args.url:
