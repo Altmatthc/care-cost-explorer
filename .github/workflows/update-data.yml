@@ -16,6 +16,16 @@ on:
         description: "Split across N parallel jobs (raise for bigger regions)"
         required: false
         default: "1"
+      mode:
+        description: "incremental = only hospitals missing or stale; full = re-scan everything"
+        required: false
+        default: incremental
+        type: choice
+        options: [incremental, full]
+      only:
+        description: "Optional: scan only these hospitals (comma-separated name fragments)"
+        required: false
+        default: ""
   schedule:
     - cron: "0 9 1 * *"       # 1st of each month, 9am UTC
                               # hospitals must update files at least quarterly,
@@ -89,13 +99,29 @@ jobs:
           name: registry
           path: data/
 
+      # The committed data/ from previous runs is what lets the pipeline skip
+      # hospitals it already read and honour host cooldowns.
+      - name: Restore previously collected data
+        run: |
+          git checkout HEAD -- data/ 2>/dev/null || true
+          ls -la data/ || true
+
       - name: Parse price files
         run: |
-          python scripts/build_data.py \
+          EXTRA=""
+          if [ "${{ github.event.inputs.mode }}" = "full" ]; then
+            EXTRA="--refresh-all"
+          fi
+          if [ -n "${{ github.event.inputs.only }}" ]; then
+            EXTRA="$EXTRA --only '${{ github.event.inputs.only }}'"
+          fi
+          eval python scripts/build_data.py \
             --region ${{ needs.registry.outputs.region }} \
             --stage prices \
             --shard ${{ matrix.shard }} \
-            --shards ${{ needs.registry.outputs.shards }}
+            --shards ${{ needs.registry.outputs.shards }} \
+            --max-age 30 \
+            --cooldown-days 1 $EXTRA
 
       - uses: actions/upload-artifact@v4
         with:
