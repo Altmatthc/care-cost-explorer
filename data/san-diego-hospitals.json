@@ -53,7 +53,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "domain": null,
+  "domain": "sharp.com",
   "verified_source": false,
   "lat": 32.77915,
   "lng": -117.00847,
