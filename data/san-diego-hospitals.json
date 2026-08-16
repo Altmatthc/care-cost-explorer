@@ -73,7 +73,7 @@
   "domain": "scripps.org",
   "lat": 32.7513,
   "lng": -117.16107,
-  "mrf_url": null
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv"
  },
  {
   "id": "ccn-050100",
@@ -263,7 +263,7 @@
   "domain": "scripps.org",
   "lat": 33.03629,
   "lng": -117.28537,
-  "mrf_url": null
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv"
  },
  {
   "id": "ccn-050515",
