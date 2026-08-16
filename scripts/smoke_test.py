@@ -254,14 +254,41 @@ for hid in ["hB", "hC", "hD"]:
 print("\n12. Shared MS-DRG 470 splits into hip vs knee")
 pid = b.match_code("470", "MS-DRG")
 check("470 maps to the shared id", pid == "joint-replacement", f"got {pid}")
-check("knee description resolves to knee",
-      b.refine_by_description(pid, "TOTAL KNEE ARTHROPLASTY") == "knee-replacement")
-check("hip description resolves to hip",
-      b.refine_by_description(pid, "MAJOR HIP REPLACEMENT W/O MCC") == "hip-replacement")
-check("ambiguous description is dropped, not guessed",
-      b.refine_by_description(pid, "MAJOR JOINT REPLACEMENT LOWER EXTREMITY") is None)
+check("knee description resolves to knee only",
+      b.refine_by_description(pid, "TOTAL KNEE ARTHROPLASTY") == ["knee-replacement"])
+check("hip description resolves to hip only",
+      b.refine_by_description(pid, "MAJOR HIP REPLACEMENT W/O MCC") == ["hip-replacement"])
+# The official DRG 470 title names both; the rate is the same either way, so
+# the row must populate BOTH procedures rather than being discarded.
+official = ("MAJOR HIP AND KNEE JOINT REPLACEMENT OR REATTACHMENT OF "
+            "LOWER EXTREMITY WITHOUT MCC")
+check("official DRG title populates both procedures",
+      sorted(b.refine_by_description(pid, official)) ==
+      ["hip-replacement", "knee-replacement"])
+check("generic 'joint' description populates both",
+      len(b.refine_by_description(pid, "MAJOR JOINT REPLACEMENT LOWER EXTREMITY")) == 2)
 check("unshared codes pass through untouched",
-      b.refine_by_description("mri-brain", "anything") == "mri-brain")
+      b.refine_by_description("mri-brain", "anything") == ["mri-brain"])
+check("specific knee CPT maps to knee", b.match_code("27447", "CPT") == "knee-replacement")
+check("specific hip CPT maps to hip", b.match_code("27130", "CPT") == "hip-replacement")
+
+# End-to-end: a DRG 470 row must yield rows for both procedures
+_buf = io.StringIO()
+_w = csv.writer(_buf)
+_w.writerow(["hospital_name", "version"])
+_w.writerow(["Joint Test Hospital", "3.0.0"])
+_w.writerow(["description", "code|1", "code|1|type", "standard_charge|gross",
+             "standard_charge|discounted_cash", "payer_name",
+             "standard_charge|negotiated_dollar"])
+_w.writerow([official, "470", "MS-DRG", "88000", "38500", "Aetna", "31000"])
+_lines = _buf.getvalue().strip().split("\n")
+with mock.patch.object(b, "stream_rows", lambda u: rows_from(_lines)):
+    _out = b.extract_prices("hj", "http://x/j.csv", verbose=False)
+_procs = sorted({r["procedure"] for r in _out})
+check("DRG 470 row produces hip AND knee records",
+      _procs == ["hip-replacement", "knee-replacement"], f"got {_procs}")
+check("both carry the same rate (DRG pays the same either way)",
+      len({r["rate"] for r in _out}) == 1)
 
 print("\n13. Sharded run preserves only genuinely untouched hospitals")
 all_h = [{"id": f"h{i}"} for i in range(4)]
