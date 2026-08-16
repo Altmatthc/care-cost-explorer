@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Diego Care Cost Explorer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1F24; --bg:#EEF3F3; --panel:#FFFFFF; --line:#D7E1E1;
+    --teal:#1B6E62; --teal-dark:#12463F; --teal-soft:#E1F0EC;
+    --coral:#C24A32; --muted:#5C7371;
+    --lowtag:#1B6E62; --midtag:#B98A1E; --hightag:#C24A32;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;}
+  .app{display:flex;flex-direction:column;min-height:100vh;}
+
+  header{padding:20px 24px 16px;border-bottom:1px solid var(--line);background:var(--panel);flex-shrink:0;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin:0 0 4px;color:var(--teal-dark);}
+  .sub{color:var(--muted);font-size:13.5px;max-width:640px;line-height:1.5;}
+  .banner{margin-top:12px;background:#FBF3E7;border:1px solid #E8D3A8;color:#6B4E16;font-size:12px;padding:8px 12px;border-radius:6px;max-width:820px;line-height:1.5;}
+  .banner b{font-weight:600;}
+
+  main{flex:1;display:flex;justify-content:center;padding:28px 20px 60px;}
+  .screen{width:100%;max-width:920px;display:none;}
+  .screen.active{display:block;}
+
+  .step-title{font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--teal-dark);margin:0 0 6px;}
+  .step-sub{color:var(--muted);font-size:14px;margin:0 0 24px;}
+
+  /* ---- Screen 1: body picker ---- */
+  .body-layout{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;}
+  .body-svg-wrap{position:relative;flex-shrink:0;}
+  .hotspot{cursor:pointer;fill:var(--teal);fill-opacity:0.06;stroke:var(--teal);stroke-width:1.4;stroke-opacity:0.30;transition:fill-opacity .15s, stroke-opacity .15s;}
+  .hotspot:hover, .hotspot.hover{fill-opacity:0.30;stroke-opacity:0.9;}
+  .body-outline{fill:#E4EBEA;stroke:#B9C9C7;stroke-width:1.5;}
+
+  /* --- anatomy layers --- */
+  .anatomy{transition:opacity .25s;}
+  #bodySvg.simple .anatomy{opacity:0;pointer-events:none;}
+  .organ{stroke-width:1;stroke-opacity:.55;}
+  .brain{fill:#D8B8C4;stroke:#A87F90;}
+  .lung{fill:#CBD9DE;stroke:#8FA6AF;}
+  .heart{fill:#C4746B;stroke:#9B5349;}
+  .liver{fill:#B08968;stroke:#8A6647;}
+  .gallbladder{fill:#8FA86B;stroke:#6C8450;}
+  .stomach{fill:#D0A98F;stroke:#A8836A;}
+  .kidney{fill:#A9736B;stroke:#84544D;}
+  .intestine{fill:none;stroke:#C0946F;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.85;}
+  .appendix{fill:#C0946F;stroke:#966D4C;stroke-width:1;}
+  .bladder{fill:#C8B9D6;stroke:#9B8AAC;}
+  .organ-line{fill:none;stroke:#9AA8A7;stroke-width:1.1;stroke-opacity:.6;stroke-linecap:round;}
+
+  .bone{fill:#EFEADD;stroke:#C2B79E;stroke-width:1.2;}
+  .bone-line{fill:none;stroke:#C2B79E;stroke-width:2;stroke-linecap:round;}
+  .bone-line.thick{stroke:#EFEADD;stroke-width:7;stroke-linecap:round;paint-order:stroke;}
+  .joint{fill:#EFEADD;stroke:#C2B79E;stroke-width:1.4;}
+  .ribs path{stroke-width:2.2;}
+
+  .anatomy-toggle{display:block;margin:10px auto 0;padding:6px 14px;border:1px solid var(--line);
+    border-radius:20px;background:#fff;color:var(--muted);font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;}
+  .anatomy-toggle:hover{border-color:var(--teal);color:var(--teal-dark);}
+
+  .region-list{display:flex;flex-direction:column;gap:4px;min-width:220px;}
+  .region-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:#fff;transition:background .12s, border-color .12s;}
+  .region-row:hover, .region-row.hover{background:var(--teal-soft);border-color:var(--teal);}
+  .region-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+  .region-name{font-weight:600;font-size:14.5px;}
+  .region-examples{font-size:12px;color:var(--muted);margin-top:1px;}
+
+  .general-btn{margin-top:22px;display:block;width:100%;text-align:center;padding:13px;border:1px dashed var(--line);border-radius:8px;background:transparent;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;cursor:pointer;}
+  .general-btn:hover{border-color:var(--teal);color:var(--teal-dark);}
+
+  /* ---- Screen 2: procedure + zip ---- */
+  .back-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:16px;font-family:'IBM Plex Mono',monospace;}
+  .back-link:hover{color:var(--teal-dark);}
+  .form-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;max-width:460px;}
+  label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;}
+  select, input[type=text]{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font-family:'Inter',sans-serif;font-size:14.5px;background:#fff;color:var(--ink);}
+  select:focus, input:focus{outline:2px solid var(--teal);outline-offset:1px;}
+  .field{margin-bottom:16px;}
+  .submit-btn{width:100%;padding:13px;border:none;border-radius:6px;background:var(--teal);color:#fff;font-weight:600;font-size:14.5px;cursor:pointer;margin-top:4px;}
+  .submit-btn:hover{background:var(--teal-dark);}
+  .submit-btn:disabled{background:#B9C9C7;cursor:not-allowed;}
+  .zip-error{color:var(--coral);font-size:12.5px;margin-top:6px;display:none;}
+  .zip-status{color:var(--muted);font-size:12.5px;margin-top:6px;display:none;}
+
+  /* ---- Screen 3: results ---- */
+  .results-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .sort-toggle{display:flex;gap:6px;}
+  .sort-btn{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--line);border-radius:5px;background:#fff;cursor:pointer;color:var(--muted);}
+  .sort-btn.active{background:var(--teal);border-color:var(--teal);color:#fff;}
+
+  .results-body{display:flex;gap:20px;flex-wrap:wrap;}
+  .results-list{flex:1 1 380px;min-width:300px;}
+  .result-count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:10px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:10px;cursor:pointer;}
+  .card:hover{border-color:var(--teal);}
+  .card-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .card-name{font-weight:600;font-size:14.5px;}
+  .card-price{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;color:var(--teal-dark);white-space:nowrap;}
+  .card-meta{font-size:12px;color:var(--muted);margin-top:2px;}
+  .card-dist{display:flex;gap:14px;margin-top:8px;font-size:12px;color:var(--teal-dark);font-family:'IBM Plex Mono',monospace;}
+  .card-dist span{display:flex;align-items:center;gap:4px;}
+  .tier-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-top:8px;}
+  .tier-low{background:#E1F0EC;color:var(--lowtag);}
+  .tier-mid{background:#FBF0DA;color:var(--midtag);}
+  .tier-high{background:#F7E4DE;color:var(--hightag);}
+  .no-data{color:var(--muted);font-size:12px;font-style:italic;}
+  .price-label{font-size:10.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:1px;}
+  .net-row{margin-top:9px;font-size:12.5px;font-weight:500;padding:5px 9px;border-radius:5px;display:inline-block;}
+  .in-net{background:#E1F0EC;color:var(--teal-dark);}
+  .out-net{background:#F7E4DE;color:var(--hightag);}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:11px;padding-top:11px;border-top:1px solid var(--line);}
+  .detail{display:flex;flex-direction:column;gap:1px;}
+  .dl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .dv{font-size:13px;font-weight:500;}
+  .stars{color:#C9A227;letter-spacing:-1px;}
+  .badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .badge-aid{background:#EAF0F7;color:#33587F;}
+  .setting-note{background:#fff;border-left:3px solid var(--teal);padding:11px 14px;border-radius:0 6px 6px 0;font-size:13px;line-height:1.55;color:var(--muted);margin-bottom:10px;}
+  .cost-note{background:#F4F8F7;border:1px solid var(--line);padding:11px 14px;border-radius:6px;font-size:12.5px;line-height:1.55;color:var(--ink);margin-bottom:16px;}
+  .cost-note b{color:var(--teal-dark);}
+
+  .map-col{flex:1 1 380px;min-width:300px;height:520px;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  #map{height:100%;width:100%;}
+  .leaflet-popup-content{font-family:'Inter',sans-serif;font-size:13px;min-width:190px;}
+  .popup-name{font-family:'Fraunces',serif;font-size:15px;font-weight:500;margin-bottom:4px;color:var(--teal-dark);}
+  .popup-price{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;}
+
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:#C6D3D2;border-radius:4px;}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="eyebrow">San Diego Metro &middot; Hospital Price Transparency</div>
+    <h1>Care Cost Explorer</h1>
+    <div class="sub">Find what San Diego hospitals charge for a procedure, sorted by price and distance from you.</div>
+    <div class="banner"><b>Prototype — placeholder data.</b> Hospital names, locations, and ZIP distances are real. Prices, insurance networks, CMS ratings, and ER wait times are representative placeholders for design purposes. At launch these come from real public sources: prices and payer networks from each hospital's federally required price file, ratings and ER waits from CMS Care Compare.</div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: body picker -->
+    <div class="screen active" id="screen-body">
+      <div class="step-title">Where do you need care?</div>
+      <div class="step-sub">Tap the part of the body you need care for — organs and bones are labeled to help you find it.</div>
+      <div class="body-layout">
+        <div class="body-svg-wrap">
+          <svg width="250" height="600" viewBox="0 0 260 600" id="bodySvg" role="img" aria-label="Body diagram — select an area">
+            <!-- ========== SILHOUETTE ========== -->
+            <g class="silhouette">
+              <ellipse class="body-outline" cx="130" cy="50" rx="29" ry="37"/>
+              <path class="body-outline" d="M116,78 C116,90 114,96 108,100 L152,100 C146,96 144,90 144,78 Z"/>
+              <path class="body-outline" d="M120,97 C104,99 88,105 79,116 C70,127 66,143 65,160
+                C64,177 63,193 66,209 C69,225 72,241 73,257 C74,273 74,289 78,304
+                C82,320 92,332 102,338 L158,338 C168,332 178,320 182,304
+                C186,289 186,273 187,257 C188,241 191,225 194,209 C197,193 196,177 195,160
+                C194,143 190,127 181,116 C172,105 156,99 140,97 Z"/>
+              <path class="body-outline" d="M79,117 C68,124 60,138 56,157 C52,177 48,201 44,225
+                C40,249 36,272 34,292 C32,306 33,318 37,327 C40,334 49,335 54,329
+                C58,322 60,309 62,293 C65,273 69,250 73,226 C77,202 81,180 85,160
+                C88,143 90,131 92,122 Z"/>
+              <path class="body-outline" d="M181,117 C192,124 200,138 204,157 C208,177 212,201 216,225
+                C220,249 224,272 226,292 C228,306 227,318 223,327 C220,334 211,335 206,329
+                C202,322 200,309 198,293 C195,273 191,250 187,226 C183,202 179,180 175,160
+                C172,143 170,131 168,122 Z"/>
+              <path class="body-outline" d="M100,340 C93,362 89,392 88,422 C87,452 89,481 91,506
+                C93,528 94,548 94,562 C94,572 99,578 109,578 C119,578 124,572 124,562
+                C124,548 123,528 123,506 C123,481 124,452 125,422 C126,392 127,362 128,340 Z"/>
+              <path class="body-outline" d="M160,340 C167,362 171,392 172,422 C173,452 171,481 169,506
+                C167,528 166,548 166,562 C166,572 161,578 151,578 C141,578 136,572 136,562
+                C136,548 137,528 137,506 C137,481 136,452 135,422 C134,392 133,362 132,340 Z"/>
+              <path class="body-outline" d="M94,570 C88,576 82,582 82,588 C82,592 86,594 94,594 L122,594 C126,594 126,590 125,585 L124,570 Z"/>
+              <path class="body-outline" d="M166,570 C172,576 178,582 178,588 C178,592 174,594 166,594 L138,594 C134,594 134,590 135,585 L136,570 Z"/>
+            </g>
+
+            <!-- ========== ANATOMY (toggleable) ========== -->
+            <g class="anatomy" id="anatomyLayer">
+
+              <!-- ---- ORGANS (drawn first, ribs overlay them) ---- -->
+              <!-- brain -->
+              <path class="organ brain" d="M114,38 C112,28 120,22 130,22 C140,22 148,28 146,38
+                C148,46 144,54 138,58 L122,58 C116,54 112,46 114,38 Z"/>
+              <path class="organ-line" d="M130,24 L130,58 M120,30 C126,34 124,42 119,46 M140,30 C134,34 136,42 141,46"/>
+
+              <!-- lungs -->
+              <path class="organ lung" d="M116,120 C106,122 98,132 95,148 C92,164 93,180 97,192
+                C100,200 108,202 114,198 C118,190 120,172 120,154 C120,138 119,126 116,120 Z"/>
+              <path class="organ lung" d="M144,120 C154,122 162,132 165,148 C168,164 167,180 163,192
+                C160,200 152,202 146,198 C142,190 140,172 140,154 C140,138 141,126 144,120 Z"/>
+              <!-- trachea -->
+              <path class="organ-line" d="M130,100 L130,124 M130,124 L120,134 M130,124 L140,134"/>
+
+              <!-- heart -->
+              <path class="organ heart" d="M130,142 C126,134 116,133 112,141 C108,149 113,160 122,170
+                L131,179 L140,169 C148,159 152,148 148,140 C144,133 134,134 130,142 Z"/>
+
+              <!-- liver -->
+              <path class="organ liver" d="M92,196 C104,192 122,193 132,198 C134,206 132,216 126,221
+                C114,227 100,226 93,220 C89,214 89,203 92,196 Z"/>
+              <!-- gallbladder -->
+              <path class="organ gallbladder" d="M118,219 C122,219 125,222 125,227 C125,231 122,234 118,233 C115,232 114,228 114,224 Z"/>
+
+              <!-- stomach -->
+              <path class="organ stomach" d="M140,196 C150,194 160,200 162,210 C164,220 158,229 149,230
+                C143,230 139,226 139,220 C142,216 144,208 140,196 Z"/>
+
+              <!-- kidneys -->
+              <path class="organ kidney" d="M104,228 C99,228 96,234 96,241 C96,248 99,253 104,252 C107,251 108,245 108,240 C108,234 107,229 104,228 Z"/>
+              <path class="organ kidney" d="M156,228 C161,228 164,234 164,241 C164,248 161,253 156,252 C153,251 152,245 152,240 C152,234 153,229 156,228 Z"/>
+
+              <!-- intestines -->
+              <path class="organ intestine" d="M100,258 C100,252 112,250 120,252 C130,254 134,262 130,268
+                C126,274 114,272 110,278 C106,284 114,290 126,290 C138,290 148,286 152,278
+                C156,270 150,262 144,258 C138,254 134,250 140,248 C148,246 158,250 160,258"/>
+              <!-- appendix -->
+              <circle class="organ appendix" cx="106" cy="292" r="4"/>
+
+              <!-- bladder / uterus -->
+              <path class="organ bladder" d="M130,300 C138,300 144,306 144,313 C144,320 138,325 130,325
+                C122,325 116,320 116,313 C116,306 122,300 130,300 Z"/>
+
+              <!-- ---- SKELETON ---- -->
+              <!-- skull -->
+              <path class="bone" d="M130,16 C144,16 154,28 154,44 C154,56 150,66 144,72
+                C142,78 142,82 140,84 L120,84 C118,82 118,78 116,72 C110,66 106,56 106,44 C106,28 116,16 130,16 Z"/>
+              <!-- spine -->
+              <g class="bone-line">
+                <path d="M130,96 L130,290"/>
+                <path d="M122,108 L138,108 M122,122 L138,122 M122,136 L138,136 M122,150 L138,150
+                         M122,164 L138,164 M122,178 L138,178 M122,192 L138,192 M122,206 L138,206
+                         M122,220 L138,220 M122,234 L138,234 M122,248 L138,248 M122,262 L138,262 M122,276 L138,276"/>
+              </g>
+              <!-- clavicles -->
+              <path class="bone-line" d="M126,106 C114,102 100,104 88,110 M134,106 C146,102 160,104 172,110"/>
+              <!-- sternum -->
+              <path class="bone" d="M126,116 L134,116 L134,180 L130,190 L126,180 Z"/>
+              <!-- ribs -->
+              <g class="bone-line ribs">
+                <path d="M126,122 C112,120 100,126 96,138 M134,122 C148,120 160,126 164,138"/>
+                <path d="M126,136 C110,134 96,141 92,154 M134,136 C150,134 164,141 168,154"/>
+                <path d="M126,150 C108,148 93,156 89,170 M134,150 C152,148 167,156 171,170"/>
+                <path d="M126,164 C108,162 92,171 89,185 M134,164 C152,162 168,171 171,185"/>
+                <path d="M126,178 C109,177 95,186 93,199 M134,178 C151,177 165,186 167,199"/>
+                <path d="M126,192 C112,192 100,200 98,211 M134,192 C148,192 160,200 162,211"/>
+              </g>
+              <!-- pelvis -->
+              <path class="bone" d="M96,286 C90,296 90,312 96,322 C102,330 112,334 122,332
+                C126,326 126,316 122,310 C114,306 106,298 104,288 Z"/>
+              <path class="bone" d="M164,286 C170,296 170,312 164,322 C158,330 148,334 138,332
+                C134,326 134,316 138,310 C146,306 154,298 156,288 Z"/>
+
+              <!-- arm bones -->
+              <path class="bone-line thick" d="M84,124 C76,142 70,168 64,196"/>
+              <path class="bone-line thick" d="M64,200 C58,228 50,262 44,296 M60,200 C54,228 46,262 40,296"/>
+              <circle class="joint" cx="64" cy="198" r="5"/>
+              <path class="bone-line" d="M42,300 L38,318 M46,300 L44,318 M50,300 L50,318"/>
+
+              <path class="bone-line thick" d="M176,124 C184,142 190,168 196,196"/>
+              <path class="bone-line thick" d="M196,200 C202,228 210,262 216,296 M200,200 C206,228 214,262 220,296"/>
+              <circle class="joint" cx="196" cy="198" r="5"/>
+              <path class="bone-line" d="M218,300 L222,318 M214,300 L216,318 M210,300 L210,318"/>
+
+              <!-- leg bones: femur, knee, tibia/fibula -->
+              <path class="bone-line thick" d="M108,342 C104,376 102,402 102,424"/>
+              <circle class="joint" cx="103" cy="430" r="7"/>
+              <path class="bone-line thick" d="M103,438 C104,470 106,504 107,556 M110,438 C111,470 113,502 114,554"/>
+              <path class="bone-line" d="M100,570 L92,586 M107,570 L104,588 M114,570 L116,586"/>
+
+              <path class="bone-line thick" d="M152,342 C156,376 158,402 158,424"/>
+              <circle class="joint" cx="157" cy="430" r="7"/>
+              <path class="bone-line thick" d="M157,438 C156,470 154,504 153,556 M150,438 C149,470 147,502 146,554"/>
+              <path class="bone-line" d="M160,570 L168,586 M153,570 L156,588 M146,570 L144,586"/>
+            </g>
+
+            <!-- ========== CLICKABLE REGIONS ========== -->
+            <circle class="hotspot" data-region="head" cx="130" cy="55" r="41"/>
+            <rect class="hotspot" data-region="chest" x="68" y="100" width="124" height="76" rx="14"/>
+            <rect class="hotspot" data-region="arm" x="28" y="112" width="52" height="222" rx="18"/>
+            <rect class="hotspot" data-region="arm" x="180" y="112" width="52" height="222" rx="18"/>
+            <rect class="hotspot" data-region="abdomen" x="66" y="179" width="128" height="66" rx="14"/>
+            <rect class="hotspot" data-region="back" x="66" y="248" width="128" height="32" rx="11"/>
+            <rect class="hotspot" data-region="pelvis" x="70" y="283" width="120" height="54" rx="14"/>
+            <rect class="hotspot" data-region="knee" x="80" y="345" width="100" height="250" rx="20"/>
+          </svg>
+          <button class="anatomy-toggle" id="anatomyToggle" aria-pressed="true">Hide anatomy</button>
+        </div>
+        <div class="region-list" id="regionList"></div>
+      </div>
+      <button class="general-btn" id="generalBtn">NOT SURE / GENERAL CARE &rarr; SEE ALL PROCEDURES</button>
+    </div>
+
+    <!-- SCREEN 2: procedure + zip -->
+    <div class="screen" id="screen-procedure">
+      <div class="back-link" id="backToBody">&larr; CHANGE BODY AREA</div>
+      <div class="step-title" id="procTitle">Select a procedure</div>
+      <div class="step-sub" id="procSub"></div>
+      <div class="form-card">
+        <div class="field">
+          <label for="procedureSelect">Procedure</label>
+          <select id="procedureSelect"></select>
+        </div>
+        <div class="field">
+          <label for="payerSelect">Your insurance</label>
+          <select id="payerSelect"></select>
+        </div>
+        <div class="field">
+          <label for="zipInput">Your ZIP code</label>
+          <input type="text" id="zipInput" placeholder="e.g. 92101" maxlength="5" inputmode="numeric">
+          <div class="zip-error" id="zipError">Couldn't find that ZIP code — double check and try again.</div>
+          <div class="zip-status" id="zipStatus">Looking up location…</div>
+        </div>
+        <button class="submit-btn" id="findBtn">Find hospitals</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: results -->
+    <div class="screen" id="screen-results">
+      <div class="back-link" id="backToProc">&larr; CHANGE PROCEDURE / ZIP</div>
+      <div class="results-header">
+        <div>
+          <div class="step-title" id="resultsTitle" style="margin-bottom:2px;">Results</div>
+          <div class="result-count" id="resultCount"></div>
+        </div>
+        <div class="sort-toggle">
+          <button class="sort-btn active" data-sort="price">Lowest price</button>
+          <button class="sort-btn" data-sort="distance">Nearest</button>
+          <button class="sort-btn" data-sort="rating">Highest rated</button>
+          <button class="sort-btn" data-sort="wait">Shortest ER wait</button>
+        </div>
+      </div>
+      <div class="setting-note" id="settingNote"></div>
+      <div class="cost-note" id="costNote"></div>
+      <div class="results-body">
+        <div class="results-list" id="resultsList"></div>
+        <div class="map-col"><div id="map"></div></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ---------------------------------------------------------------------------
+// HOSPITALS — real San Diego metro hospitals, real approximate coordinates.
+// ---------------------------------------------------------------------------
+const hospitals = [
+  { id:"scripps-green", name:"Scripps Green Hospital", system:"Scripps Health", city:"La Jolla", lat:32.8674, lng:-117.2359 },
+  { id:"scripps-lajolla", name:"Scripps Memorial Hospital La Jolla", system:"Scripps Health", city:"La Jolla", lat:32.8656, lng:-117.2298 },
+  { id:"scripps-encinitas", name:"Scripps Memorial Hospital Encinitas", system:"Scripps Health", city:"Encinitas", lat:33.0630, lng:-117.2426 },
+  { id:"scripps-mercy-sd", name:"Scripps Mercy Hospital San Diego", system:"Scripps Health", city:"Hillcrest", lat:32.7530, lng:-117.1600 },
+  { id:"scripps-mercy-cv", name:"Scripps Mercy Hospital Chula Vista", system:"Scripps Health", city:"Chula Vista", lat:32.6216, lng:-117.0114 },
+  { id:"sharp-memorial", name:"Sharp Memorial Hospital", system:"Sharp HealthCare", city:"Serra Mesa", lat:32.8103, lng:-117.1611 },
+  { id:"sharp-marybirch", name:"Sharp Mary Birch Hospital for Women & Newborns", system:"Sharp HealthCare", city:"Serra Mesa", lat:32.8110, lng:-117.1605 },
+  { id:"sharp-grossmont", name:"Sharp Grossmont Hospital", system:"Sharp HealthCare", city:"La Mesa", lat:32.7936, lng:-117.0011 },
+  { id:"sharp-cv", name:"Sharp Chula Vista Medical Center", system:"Sharp HealthCare", city:"Chula Vista", lat:32.6187, lng:-117.0067 },
+  { id:"sharp-coronado", name:"Sharp Coronado Hospital", system:"Sharp HealthCare", city:"Coronado", lat:32.6900, lng:-117.1750 },
+  { id:"ucsd-hillcrest", name:"UC San Diego Health – Hillcrest Medical Center", system:"UC San Diego Health", city:"Hillcrest", lat:32.7545, lng:-117.1646 },
+  { id:"ucsd-jacobs", name:"UC San Diego Health – Jacobs Medical Center", system:"UC San Diego Health", city:"La Jolla", lat:32.8756, lng:-117.2400 },
+  { id:"kaiser-zion", name:"Kaiser Permanente Zion Medical Center", system:"Kaiser Permanente", city:"San Diego", lat:32.7442, lng:-117.0842 },
+  { id:"kaiser-sd", name:"Kaiser Permanente San Diego Medical Center", system:"Kaiser Permanente", city:"Clairemont Mesa", lat:32.8290, lng:-117.1750 },
+  { id:"radys", name:"Rady Children's Hospital", system:"Rady Children's Health", city:"Serra Mesa", lat:32.7554, lng:-117.1548 },
+  { id:"palomar-escondido", name:"Palomar Medical Center Escondido", system:"Palomar Health", city:"Escondido", lat:33.1192, lng:-117.0864 },
+  { id:"palomar-poway", name:"Palomar Medical Center Poway", system:"Palomar Health", city:"Poway", lat:32.9628, lng:-117.0359 },
+  { id:"tricity", name:"Tri-City Medical Center", system:"Tri-City Healthcare", city:"Oceanside", lat:33.1959, lng:-117.3256 },
+  { id:"alvarado", name:"Alvarado Hospital Medical Center", system:"Prime Healthcare", city:"San Diego", lat:32.7757, lng:-117.0994 },
+  { id:"paradise-valley", name:"Paradise Valley Hospital", system:"Prime Healthcare", city:"National City", lat:32.6725, lng:-117.0989 },
+];
+
+// ---------------------------------------------------------------------------
+// HOSPITAL ATTRIBUTES — PLACEHOLDER values for UI development.
+// Real sources at deployment:
+//   stars     -> CMS Care Compare overall hospital rating (public API)
+//   erWait    -> CMS measure OP-18, median ED time to departure (public)
+//   networks  -> derived from each hospital's own MRF, which lists every payer
+//                it has negotiated rates with (real data, no extra source needed)
+//   trauma / beds -> CA HCAI facility data (public)
+// ---------------------------------------------------------------------------
+const ALL_PAYERS = ["aetna","anthem","blueshield","cigna","healthnet","uhc","medicare","medical"];
+const hospitalInfo = {
+  "scripps-green":     { stars:5, erWait:null, trauma:null,   beds:173, aid:true,  networks:["aetna","anthem","blueshield","cigna","uhc","medicare"] },
+  "scripps-lajolla":   { stars:4, erWait:186,  trauma:null,   beds:434, aid:true,  networks:ALL_PAYERS },
+  "scripps-encinitas": { stars:4, erWait:171,  trauma:null,   beds:177, aid:true,  networks:ALL_PAYERS },
+  "scripps-mercy-sd":  { stars:3, erWait:243,  trauma:"I",    beds:700, aid:true,  networks:ALL_PAYERS },
+  "scripps-mercy-cv":  { stars:3, erWait:228,  trauma:null,   beds:186, aid:true,  networks:ALL_PAYERS },
+  "sharp-memorial":    { stars:4, erWait:214,  trauma:"II",   beds:476, aid:true,  networks:ALL_PAYERS },
+  "sharp-marybirch":   { stars:4, erWait:null, trauma:null,   beds:206, aid:true,  networks:ALL_PAYERS },
+  "sharp-grossmont":   { stars:3, erWait:236,  trauma:null,   beds:536, aid:true,  networks:ALL_PAYERS },
+  "sharp-cv":          { stars:4, erWait:207,  trauma:null,   beds:343, aid:true,  networks:ALL_PAYERS },
+  "sharp-coronado":    { stars:4, erWait:142,  trauma:null,   beds:59,  aid:true,  networks:["aetna","anthem","blueshield","cigna","medicare"] },
+  "ucsd-hillcrest":    { stars:5, erWait:281,  trauma:"I",    beds:390, aid:true,  networks:ALL_PAYERS },
+  "ucsd-jacobs":       { stars:5, erWait:252,  trauma:null,   beds:245, aid:true,  networks:ALL_PAYERS },
+  "kaiser-zion":       { stars:4, erWait:198,  trauma:null,   beds:394, aid:true,  networks:["kaiser","medicare","medical"] },
+  "kaiser-sd":         { stars:4, erWait:191,  trauma:null,   beds:321, aid:true,  networks:["kaiser","medicare","medical"] },
+  "radys":             { stars:5, erWait:164,  trauma:"I-P",  beds:551, aid:true,  networks:ALL_PAYERS },
+  "palomar-escondido": { stars:3, erWait:264,  trauma:"II",   beds:288, aid:true,  networks:ALL_PAYERS },
+  "palomar-poway":     { stars:3, erWait:219,  trauma:null,   beds:107, aid:true,  networks:ALL_PAYERS },
+  "tricity":           { stars:3, erWait:247,  trauma:null,   beds:388, aid:true,  networks:ALL_PAYERS },
+  "alvarado":          { stars:2, erWait:289,  trauma:null,   beds:306, aid:false, networks:["aetna","anthem","cigna","uhc","medicare","medical"] },
+  "paradise-valley":   { stars:2, erWait:272,  trauma:null,   beds:301, aid:false, networks:["anthem","healthnet","medicare","medical"] },
+};
+
+const payers = [
+  { id:"cash",       name:"Cash / self-pay (no insurance)", factor:1.00 },
+  { id:"aetna",      name:"Aetna",                          factor:0.74 },
+  { id:"anthem",     name:"Anthem Blue Cross",              factor:0.71 },
+  { id:"blueshield", name:"Blue Shield of California",      factor:0.76 },
+  { id:"cigna",      name:"Cigna",                          factor:0.78 },
+  { id:"healthnet",  name:"Health Net",                     factor:0.69 },
+  { id:"uhc",        name:"UnitedHealthcare",               factor:0.75 },
+  { id:"kaiser",     name:"Kaiser Permanente",              factor:0.58 },
+  { id:"medicare",   name:"Medicare",                       factor:0.42 },
+  { id:"medical",    name:"Medi-Cal",                       factor:0.36 },
+];
+const payerById = Object.fromEntries(payers.map(p => [p.id, p]));
+
+function formatWait(min){
+  if(min == null) return null;
+  const h = Math.floor(min/60), m = min%60;
+  return h ? `${h}h ${m}m` : `${m}m`;
+}
+
+// ---------------------------------------------------------------------------
+// PROCEDURES — placeholder pricing model.
+// Each procedure has a base price; each hospital has a price index. Placeholder
+// price = base x index. When real MRF data is wired in, replace priceFor()
+// with a lookup against the ingested prices and delete this model entirely.
+// ---------------------------------------------------------------------------
+const priceIndex = {
+  "scripps-green":0.92,"scripps-lajolla":0.98,"scripps-encinitas":0.89,
+  "scripps-mercy-sd":1.14,"scripps-mercy-cv":1.02,
+  "sharp-memorial":1.24,"sharp-marybirch":1.20,"sharp-grossmont":1.09,
+  "sharp-cv":1.00,"sharp-coronado":1.16,
+  "ucsd-hillcrest":1.52,"ucsd-jacobs":1.48,
+  "kaiser-zion":0.62,"kaiser-sd":0.62,
+  "radys":0.95,
+  "palomar-escondido":0.90,"palomar-poway":0.93,
+  "tricity":0.87,"alvarado":1.32,"paradise-valley":1.15,
+};
+
+// Facilities with narrow service lines.
+const MATERNITY = ["scripps-lajolla","scripps-encinitas","scripps-mercy-sd","scripps-mercy-cv",
+  "sharp-marybirch","sharp-grossmont","sharp-cv","ucsd-hillcrest","ucsd-jacobs",
+  "kaiser-zion","kaiser-sd","palomar-escondido","palomar-poway","tricity","paradise-valley"];
+const MAJOR_SURGERY = ["scripps-green","scripps-lajolla","scripps-encinitas","scripps-mercy-sd",
+  "scripps-mercy-cv","sharp-memorial","sharp-grossmont","sharp-cv","ucsd-hillcrest","ucsd-jacobs",
+  "kaiser-zion","kaiser-sd","palomar-escondido","palomar-poway","tricity","alvarado","paradise-valley"];
+
+// base = typical cash price; kids = also offered at children's hospital
+const procedures = [
+  // --- Everyday / walk-in ---
+  { id:"iv-hydration",   name:"IV fluids / hydration therapy",      code:"CPT 96360", base:620,   kids:true },
+  { id:"iv-infusion",    name:"IV infusion, therapeutic (per hour)", code:"CPT 96365", base:850,  kids:true },
+  { id:"blood-cbc",      name:"Blood test — complete blood count",   code:"CPT 85025", base:95,   kids:true },
+  { id:"blood-metabolic",name:"Blood test — metabolic panel",        code:"CPT 80053", base:115,  kids:true },
+  { id:"strep-test",     name:"Rapid strep test",                    code:"CPT 87880", base:70,   kids:true },
+  { id:"flu-shot",       name:"Flu vaccine",                         code:"CPT 90686", base:58,   kids:true },
+  { id:"urgent-care",    name:"Urgent care visit",                   code:"CPT 99213", base:310,  kids:true },
+  { id:"laceration",     name:"Stitches / laceration repair",        code:"CPT 12002", base:820,  kids:true },
+  { id:"cast-fracture",  name:"Cast for simple fracture",            code:"CPT 29075", base:930,  kids:true },
+  { id:"er-level3",      name:"Emergency room visit, level 3",       code:"CPT 99283", base:1650, kids:true },
+  { id:"er-level4",      name:"Emergency room visit, level 4",       code:"CPT 99284", base:2600, kids:true },
+  { id:"er-level5",      name:"Emergency room visit, level 5",       code:"CPT 99285", base:4200, kids:true },
+  { id:"physical-therapy",name:"Physical therapy session",           code:"CPT 97110", base:255,  kids:true },
+  { id:"allergy-test",   name:"Allergy testing panel",               code:"CPT 95004", base:920,  kids:true },
+  { id:"sleep-study",    name:"Sleep study (polysomnography)",       code:"CPT 95810", base:3200, kids:true },
+
+  // --- Head & neck ---
+  { id:"mri-brain",      name:"MRI, brain, without contrast",        code:"CPT 70551", base:1700, kids:true },
+  { id:"ct-head",        name:"CT scan, head",                       code:"CPT 70450", base:1200, kids:true },
+  { id:"hearing-test",   name:"Hearing test (audiometry)",           code:"CPT 92557", base:255,  kids:true },
+  { id:"cataract",       name:"Cataract surgery",                    code:"CPT 66984", base:5500, only:MAJOR_SURGERY },
+  { id:"thyroid-us",     name:"Ultrasound, thyroid",                 code:"CPT 76536", base:460,  kids:true },
+  { id:"tonsillectomy",  name:"Tonsillectomy",                       code:"CPT 42826", base:7500, kids:true },
+
+  // --- Chest & heart ---
+  { id:"chest-xray",     name:"X-ray, chest",                        code:"CPT 71046", base:265,  kids:true },
+  { id:"ekg",            name:"EKG / electrocardiogram",             code:"CPT 93000", base:185,  kids:true },
+  { id:"echocardiogram", name:"Echocardiogram",                      code:"CPT 93306", base:1300, kids:true },
+  { id:"stress-test",    name:"Cardiac stress test",                 code:"CPT 93015", base:1500 },
+  { id:"cardiac-cath",   name:"Cardiac catheterization, diagnostic", code:"CPT 93458", base:10500, only:MAJOR_SURGERY },
+  { id:"mammogram-screen",name:"Mammogram, screening",               code:"CPT 77067", base:305 },
+  { id:"mammogram-diag", name:"Mammogram, diagnostic",               code:"CPT 77065", base:480 },
+
+  // --- Abdomen & digestive ---
+  { id:"ct-abd-pelvis",  name:"CT, abdomen & pelvis, with contrast", code:"CPT 74177", base:1400, kids:true },
+  { id:"us-abdomen",     name:"Ultrasound, abdomen",                 code:"CPT 76700", base:475,  kids:true },
+  { id:"colonoscopy",    name:"Colonoscopy, screening",              code:"CPT 45378", base:2600 },
+  { id:"endoscopy",      name:"Upper endoscopy (EGD)",               code:"CPT 43235", base:2200, kids:true },
+  { id:"appendectomy",   name:"Appendectomy, laparoscopic",          code:"CPT 44970", base:16500, kids:true },
+  { id:"gallbladder",    name:"Gallbladder removal (laparoscopic)",  code:"CPT 47562", base:17500, only:MAJOR_SURGERY },
+  { id:"hernia-repair",  name:"Hernia repair, inguinal",             code:"CPT 49505", base:12000, kids:true },
+
+  // --- Pelvis & reproductive ---
+  { id:"vaginal-delivery",name:"Vaginal delivery, uncomplicated",    code:"MS-DRG 775", base:13000, only:MATERNITY },
+  { id:"cesarean",       name:"Cesarean section, uncomplicated",     code:"MS-DRG 786", base:20500, only:MATERNITY },
+  { id:"us-pregnancy",   name:"Ultrasound, pregnancy",               code:"CPT 76805", base:425,  only:MATERNITY },
+  { id:"pap-smear",      name:"Pap smear / cervical screening",      code:"CPT 88175", base:185 },
+  { id:"iud-insertion",  name:"IUD insertion",                       code:"CPT 58300", base:1100 },
+  { id:"hysterectomy",   name:"Hysterectomy, laparoscopic",          code:"CPT 58571", base:22000, only:MAJOR_SURGERY },
+  { id:"prostate-biopsy",name:"Prostate biopsy",                     code:"CPT 55700", base:3200, only:MAJOR_SURGERY },
+  { id:"lithotripsy",    name:"Kidney stone treatment (lithotripsy)",code:"CPT 50590", base:12500, only:MAJOR_SURGERY },
+  { id:"dialysis",       name:"Dialysis session",                    code:"CPT 90935", base:1250, kids:true },
+
+  // --- Arms, hands & shoulders ---
+  { id:"xray-extremity", name:"X-ray, arm / wrist / hand",           code:"CPT 73110", base:225,  kids:true },
+  { id:"carpal-tunnel",  name:"Carpal tunnel release",               code:"CPT 64721", base:6500, only:MAJOR_SURGERY },
+  { id:"shoulder-scope", name:"Shoulder arthroscopy",                code:"CPT 29827", base:14500, only:MAJOR_SURGERY },
+  { id:"joint-injection",name:"Cortisone joint injection",           code:"CPT 20610", base:560,  kids:true },
+
+  // --- Back & spine ---
+  { id:"mri-spine",      name:"MRI, lumbar spine",                   code:"CPT 72148", base:1900, kids:true },
+  { id:"epidural-inj",   name:"Epidural steroid injection",          code:"CPT 62323", base:2200 },
+  { id:"spinal-fusion",  name:"Lumbar spinal fusion",                code:"MS-DRG 460", base:78000, only:MAJOR_SURGERY },
+
+  // --- Legs, knees & feet ---
+  { id:"mri-knee",       name:"MRI, knee",                           code:"CPT 73721", base:1500, kids:true },
+  { id:"xray-leg",       name:"X-ray, knee / ankle / foot",          code:"CPT 73562", base:230,  kids:true },
+  { id:"knee-scope",     name:"Knee arthroscopy",                    code:"CPT 29881", base:11000, only:MAJOR_SURGERY },
+  { id:"knee-replacement",name:"Total knee replacement",             code:"MS-DRG 470", base:40000, only:MAJOR_SURGERY },
+  { id:"hip-replacement",name:"Total hip replacement",               code:"MS-DRG 470", base:42000, only:MAJOR_SURGERY },
+
+  // --- Cancer care ---
+  { id:"chemo-infusion", name:"Chemotherapy infusion session",       code:"CPT 96413", base:2800, kids:true },
+  { id:"biopsy-needle",  name:"Needle biopsy",                       code:"CPT 19083", base:2400 },
+];
+
+// ---------------------------------------------------------------------------
+// CARE SETTING — drives which hospital details are relevant to show, and
+// which hospitals can even provide the service.
+//   emergency  = walk in, unscheduled. Wait time and trauma level matter.
+//   inpatient  = you stay overnight. Quality, length of stay matter.
+//   outpatient = scheduled procedure, home same day. Quality, distance matter.
+//   imaging    = scheduled scan. Price and distance matter; little else.
+//   lab        = blood draw / quick test. Price and distance only.
+//   recurring  = repeated sessions. Distance matters a lot; total course cost matters most.
+//   clinic     = routine visit or shot.
+// ---------------------------------------------------------------------------
+const SETTING = {
+  // emergency / walk-in
+  "er-level3":"emergency","er-level4":"emergency","er-level5":"emergency",
+  "urgent-care":"emergency","laceration":"emergency","cast-fracture":"emergency",
+  // labs & quick tests
+  "blood-cbc":"lab","blood-metabolic":"lab","strep-test":"lab","pap-smear":"lab",
+  // imaging
+  "mri-brain":"imaging","ct-head":"imaging","mri-spine":"imaging","mri-knee":"imaging",
+  "ct-abd-pelvis":"imaging","us-abdomen":"imaging","us-pregnancy":"imaging","thyroid-us":"imaging",
+  "chest-xray":"imaging","xray-extremity":"imaging","xray-leg":"imaging",
+  "mammogram-screen":"imaging","mammogram-diag":"imaging","echocardiogram":"imaging",
+  // clinic visits / minor
+  "flu-shot":"clinic","hearing-test":"clinic","ekg":"clinic","allergy-test":"clinic",
+  "joint-injection":"clinic","iud-insertion":"clinic","stress-test":"clinic",
+  // recurring courses of care
+  "physical-therapy":"recurring","dialysis":"recurring","chemo-infusion":"recurring",
+  "iv-infusion":"recurring","iv-hydration":"clinic",
+  // scheduled outpatient procedures
+  "colonoscopy":"outpatient","endoscopy":"outpatient","cataract":"outpatient",
+  "carpal-tunnel":"outpatient","knee-scope":"outpatient","shoulder-scope":"outpatient",
+  "epidural-inj":"outpatient","biopsy-needle":"outpatient","prostate-biopsy":"outpatient",
+  "sleep-study":"outpatient","hernia-repair":"outpatient","lithotripsy":"outpatient",
+  "cardiac-cath":"outpatient","tonsillectomy":"outpatient",
+  // inpatient stays
+  "appendectomy":"inpatient","gallbladder":"inpatient","hysterectomy":"inpatient",
+  "knee-replacement":"inpatient","hip-replacement":"inpatient","spinal-fusion":"inpatient",
+  "vaginal-delivery":"inpatient","cesarean":"inpatient",
+};
+
+// Typical inpatient length of stay (nights) and typical course length for
+// recurring care — placeholders, real values come from CMS MS-DRG data.
+const TYPICAL_STAY = {
+  "appendectomy":1,"gallbladder":1,"hysterectomy":1,"knee-replacement":2,
+  "hip-replacement":2,"spinal-fusion":3,"vaginal-delivery":2,"cesarean":3,
+};
+const TYPICAL_COURSE = {
+  "physical-therapy":{n:12,unit:"sessions"},
+  "dialysis":{n:156,unit:"sessions/year"},
+  "chemo-infusion":{n:8,unit:"infusions"},
+  "iv-infusion":{n:6,unit:"infusions"},
+};
+
+// What each setting means for the person choosing, shown above results.
+const SETTING_NOTE = {
+  emergency:"Emergency care isn't something you shop for in advance — but if you have a choice, wait time and trauma level matter as much as price. Only hospitals with an emergency department are shown.",
+  inpatient:"This involves an overnight stay. The price shown covers the typical stay; a longer stay costs more. Hospital quality ratings matter most here.",
+  outpatient:"A scheduled procedure you go home from the same day. You can compare and book ahead, so price and quality are both worth weighing.",
+  imaging:"Scans are highly shoppable — the same scan costs very different amounts across hospitals, and the result is the same regardless of where you go.",
+  lab:"Routine lab work is the most shoppable care there is. Independent labs are often cheaper than hospitals for the same test.",
+  recurring:"You'll need this repeatedly, so a small price difference multiplies — and a shorter drive matters more than usual.",
+  clinic:"A routine visit or minor procedure. Price and convenience are the main factors.",
+};
+
+function settingOf(proc){ return SETTING[proc.id] || "clinic"; }
+
+// Returns placeholder price, or null if the hospital doesn't offer the service.
+function priceFor(proc, hospitalId, payerId){
+  if(typeof LIVE !== 'undefined' && LIVE) return livePriceFor(proc, hospitalId, payerId);
+  if(proc.only && !proc.only.includes(hospitalId)) return null;
+  // Emergency care requires an actual emergency department.
+  if(settingOf(proc) === "emergency"){
+    const inf = hospitalInfo[hospitalId];
+    if(!inf || inf.erWait == null) return null;
+  }
+  if(hospitalId === "radys" && !proc.kids) return null;                 // pediatric only
+  if(hospitalId === "sharp-marybirch" && !(proc.only === MATERNITY ||
+     ["mammogram-screen","mammogram-diag","pap-smear","iud-insertion","blood-cbc","us-pregnancy"].includes(proc.id))) return null;
+  if(hospitalId === "sharp-coronado" && proc.base > 20000) return null;  // small community hospital
+  const idx = priceIndex[hospitalId];
+  if(idx == null) return null;
+  const payer = payerById[payerId] || payerById.cash;
+  const info = hospitalInfo[hospitalId];
+  // Out-of-network: no negotiated rate exists, so the cash price applies.
+  const inNetwork = payerId === 'cash' || (info && info.networks.includes(payerId));
+  const factor = inNetwork ? payer.factor : 1.00;
+  const raw = proc.base * idx * factor;
+  return raw > 1000 ? Math.round(raw/100)*100 : Math.round(raw/5)*5;
+}
+
+function isInNetwork(hospitalId, payerId){
+  if(payerId === 'cash') return true;
+  if(payerId === 'tricare') return true;
+  const info = hospitalInfo[hospitalId];
+  return !!(info && info.networks.includes(payerId));
+}
+
+// ---------------------------------------------------------------------------
+// BODY REGIONS
+// ---------------------------------------------------------------------------
+const regions = {
+  head:    { name:"Head, Eyes & Throat", examples:"Brain, thyroid, ears, eyes",
+             procedures:["mri-brain","ct-head","hearing-test","cataract","thyroid-us","tonsillectomy","strep-test"] },
+  chest:   { name:"Chest & Heart",       examples:"Heart, lungs, ribs, breast",
+             procedures:["chest-xray","ekg","echocardiogram","stress-test","cardiac-cath","mammogram-screen","mammogram-diag"] },
+  arm:     { name:"Arms, Hands & Shoulders", examples:"Shoulder, elbow, wrist, hand",
+             procedures:["xray-extremity","joint-injection","carpal-tunnel","shoulder-scope"] },
+  abdomen: { name:"Abdomen & Digestive", examples:"Stomach, liver, gallbladder, intestines, kidneys",
+             procedures:["ct-abd-pelvis","us-abdomen","colonoscopy","endoscopy","appendectomy","gallbladder","hernia-repair"] },
+  back:    { name:"Back & Spine",        examples:"Spine, discs, lower back",
+             procedures:["mri-spine","epidural-inj","physical-therapy","spinal-fusion"] },
+  pelvis:  { name:"Pelvis & Reproductive", examples:"Bladder, uterus, prostate, pregnancy",
+             procedures:["us-pregnancy","vaginal-delivery","cesarean","pap-smear","iud-insertion","hysterectomy","prostate-biopsy","lithotripsy","dialysis"] },
+  knee:    { name:"Legs, Knees & Feet",  examples:"Hip, knee, ankle, foot",
+             procedures:["mri-knee","xray-leg","knee-scope","knee-replacement","hip-replacement"] },
+  everyday:{ name:"Everyday & Urgent Care", examples:"IV fluids, labs, stitches, ER visits",
+             procedures:["iv-hydration","iv-infusion","blood-cbc","blood-metabolic","strep-test","flu-shot","urgent-care","laceration","cast-fracture","er-level3","er-level4","er-level5","physical-therapy","allergy-test","sleep-study"] },
+  cancer:  { name:"Cancer Care",         examples:"Chemotherapy, biopsy",
+             procedures:["chemo-infusion","biopsy-needle","mammogram-diag","prostate-biopsy"] },
+  general: { name:"General / Not sure",  examples:"All procedures",
+             procedures: null },  // filled below
+};
+regions.general.procedures = procedures.map(p => p.id);
+
+
+const hospitalById = Object.fromEntries(hospitals.map(h => [h.id, h]));
+const procById = Object.fromEntries(procedures.map(p => [p.id, p]));
+
+// ---------------------------------------------------------------------------
+// ZIP CENTROIDS — San Diego County, built in so lookup works with no network.
+// Approximate centroids, good enough for distance ranking. At deployment,
+// swap in the full US ZIP dataset (free from US Census / GeoNames).
+// ---------------------------------------------------------------------------
+const ZIPS = {
+  "92101":[32.717,-117.163],"92102":[32.717,-117.121],"92103":[32.748,-117.168],
+  "92104":[32.741,-117.128],"92105":[32.741,-117.093],"92106":[32.724,-117.238],
+  "92107":[32.745,-117.246],"92108":[32.775,-117.145],"92109":[32.795,-117.240],
+  "92110":[32.762,-117.208],"92111":[32.803,-117.170],"92113":[32.696,-117.121],
+  "92114":[32.708,-117.055],"92115":[32.762,-117.070],"92116":[32.764,-117.125],
+  "92117":[32.825,-117.196],"92118":[32.678,-117.176],"92119":[32.805,-117.032],
+  "92120":[32.795,-117.070],"92121":[32.897,-117.202],"92122":[32.858,-117.208],
+  "92123":[32.800,-117.135],"92124":[32.813,-117.098],"92126":[32.913,-117.142],
+  "92127":[33.020,-117.115],"92128":[33.005,-117.070],"92129":[32.960,-117.125],
+  "92130":[32.945,-117.215],"92131":[32.917,-117.080],"92139":[32.685,-117.045],
+  "92154":[32.565,-117.070],"92173":[32.555,-117.045],"92037":[32.845,-117.265],
+  "91910":[32.640,-117.070],"91911":[32.605,-117.060],"91913":[32.630,-116.985],
+  "91914":[32.655,-116.945],"91915":[32.620,-116.945],"91932":[32.578,-117.118],
+  "91941":[32.760,-117.010],"91942":[32.790,-117.020],"91945":[32.735,-117.032],
+  "91950":[32.665,-117.095],"91977":[32.720,-116.985],"91978":[32.730,-116.945],
+  "92019":[32.785,-116.900],"92020":[32.795,-116.960],"92021":[32.815,-116.900],
+  "92071":[32.845,-116.975],"92065":[33.030,-116.855],"92064":[32.975,-117.030],
+  "92024":[33.045,-117.265],"92075":[32.995,-117.255],"92014":[32.960,-117.245],
+  "92025":[33.110,-117.060],"92026":[33.185,-117.110],"92027":[33.130,-116.995],
+  "92029":[33.095,-117.130],"92028":[33.375,-117.235],
+  "92069":[33.155,-117.150],"92078":[33.125,-117.180],
+  "92081":[33.170,-117.230],"92083":[33.195,-117.245],"92084":[33.215,-117.215],
+  "92054":[33.200,-117.370],"92056":[33.190,-117.290],"92057":[33.245,-117.315],
+  "92058":[33.235,-117.375],
+  "92008":[33.155,-117.335],"92009":[33.095,-117.265],"92010":[33.165,-117.300],
+  "92011":[33.105,-117.305],
+};
+
+// ---------------------------------------------------------------------------
+// STATE + SCREEN NAV
+// ---------------------------------------------------------------------------
+let state = { region:null, procedureId:null, payerId:'cash', zip:null, zipLat:null, zipLng:null, sort:'price' };
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ---- Screen 1 ----
+const regionListEl = document.getElementById('regionList');
+Object.entries(regions).forEach(([key, r]) => {
+  if(key === 'general') return;  const row = document.createElement('div');
+  row.className = 'region-row';
+  row.dataset.region = key;
+  row.innerHTML = `<span class="region-dot"></span><div><div class="region-name">${r.name}</div><div class="region-examples">${r.examples}</div></div>`;
+  row.addEventListener('click', () => selectRegion(key));
+  row.addEventListener('mouseenter', () => setHotspotHover(key, true));
+  row.addEventListener('mouseleave', () => setHotspotHover(key, false));
+  regionListEl.appendChild(row);
+});
+
+document.querySelectorAll('.hotspot').forEach(h => {
+  h.addEventListener('click', () => selectRegion(h.dataset.region));
+  h.addEventListener('mouseenter', () => setRowHover(h.dataset.region, true));
+  h.addEventListener('mouseleave', () => setRowHover(h.dataset.region, false));
+});
+function setHotspotHover(region, on){
+  document.querySelectorAll(`.hotspot[data-region="${region}"]`).forEach(el => el.classList.toggle('hover', on));
+}
+function setRowHover(region, on){
+  const el = document.querySelector(`.region-row[data-region="${region}"]`);
+  if(el) el.classList.toggle('hover', on);
+}
+
+const payerSelect = document.getElementById('payerSelect');
+payers.forEach(p => {
+  const opt = document.createElement('option');
+  opt.value = p.id; opt.textContent = p.name;
+  payerSelect.appendChild(opt);
+});
+
+const anatomyToggle = document.getElementById('anatomyToggle');
+const bodySvg = document.getElementById('bodySvg');
+anatomyToggle.addEventListener('click', () => {
+  const simple = bodySvg.classList.toggle('simple');
+  anatomyToggle.textContent = simple ? 'Show anatomy' : 'Hide anatomy';
+  anatomyToggle.setAttribute('aria-pressed', String(!simple));
+});
+
+document.getElementById('generalBtn').addEventListener('click', () => selectRegion('general'));
+
+// Try to load real data on startup; falls back to placeholders silently.
+loadLiveData('san-diego');
+
+function selectRegion(key){
+  state.region = key;
+  const r = regions[key];
+  document.getElementById('procTitle').textContent = key === 'general' ? 'All procedures' : r.name;
+  document.getElementById('procSub').textContent = key === 'general'
+    ? 'Browse every procedure we track.'
+    : `Common procedures for this area. Not what you need? Go back and pick another area, or browse all.`;
+  const sel = document.getElementById('procedureSelect');
+  sel.innerHTML = '';
+  r.procedures.forEach(pid => {
+    const p = procById[pid];
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = `${p.name} (${p.code})`;
+    sel.appendChild(opt);
+  });
+  document.getElementById('zipInput').value = state.zip || '';
+  clearZipMessages();
+  showScreen('screen-procedure');
+}
+
+document.getElementById('backToBody').addEventListener('click', () => showScreen('screen-body'));
+document.getElementById('backToProc').addEventListener('click', () => showScreen('screen-procedure'));
+
+// ---- Screen 2: ZIP lookup (live, via public Zippopotam API — real, no key needed) ----
+const zipInput = document.getElementById('zipInput');
+const zipError = document.getElementById('zipError');
+const zipStatus = document.getElementById('zipStatus');
+const findBtn = document.getElementById('findBtn');
+
+function clearZipMessages(){
+  zipError.style.display = 'none';
+  zipStatus.style.display = 'none';
+}
+
+findBtn.addEventListener('click', async () => {
+  const zip = zipInput.value.trim();
+  clearZipMessages();
+  if(!/^\d{5}$/.test(zip)){
+    zipError.textContent = 'Enter a valid 5-digit ZIP code.';
+    zipError.style.display = 'block';
+    return;
+  }
+  // 1. Built-in San Diego County table — instant, works offline.
+  if(ZIPS[zip]){
+    state.zip = zip;
+    [state.zipLat, state.zipLng] = ZIPS[zip];
+    state.procedureId = document.getElementById('procedureSelect').value;
+    state.payerId = document.getElementById('payerSelect').value;
+    renderResults();
+    showScreen('screen-results');
+    return;
+  }
+
+  // 2. Outside San Diego County — try the live lookup if network is available.
+  zipStatus.style.display = 'block';
+  findBtn.disabled = true;
+  try{
+    const resp = await fetch(`https://api.zippopotam.us/us/${zip}`);
+    if(!resp.ok) throw new Error('not found');
+    const data = await resp.json();
+    state.zip = zip;
+    state.zipLat = parseFloat(data.places[0].latitude);
+    state.zipLng = parseFloat(data.places[0].longitude);
+    state.procedureId = document.getElementById('procedureSelect').value;
+    state.payerId = document.getElementById('payerSelect').value;
+    renderResults();
+    showScreen('screen-results');
+  }catch(e){
+    zipError.textContent = "That ZIP is outside San Diego County. This early version covers San Diego County only — try a local ZIP like 92117.";
+    zipError.style.display = 'block';
+  }finally{
+    zipStatus.style.display = 'none';
+    findBtn.disabled = false;
+  }
+});
+
+// ---------------------------------------------------------------------------
+// LIVE DATA LOADER
+// Looks for real data produced by the pipeline. If found, it replaces the
+// placeholder model entirely. If not (or if it fails), the placeholder model
+// stays and the banner keeps saying so — the site never silently shows fake
+// numbers as if they were real.
+// ---------------------------------------------------------------------------
+let LIVE = null;   // { prices: { procedureId: { hospitalId: {cash,gross,payers} } } }
+
+async function loadLiveData(region = 'san-diego'){
+  try{
+    const [hRes, pRes] = await Promise.all([
+      fetch(`data/${region}-hospitals.json`),
+      fetch(`data/${region}.json`),
+    ]);
+    if(!hRes.ok || !pRes.ok) return false;
+
+    const hRaw = await hRes.json();
+    const pRaw = await pRes.json();
+    if(!pRaw.prices || !Object.keys(pRaw.prices).length) return false;
+
+    // Replace hospital list with the real registry (only geocoded ones are mappable)
+    const live = hRaw.filter(h => h.lat != null && h.lng != null);
+    if(!live.length) return false;
+
+    hospitals.length = 0;
+    live.forEach(h => hospitals.push({
+      id:h.id, name:h.name, system:h.system || h.type || '', city:h.city,
+      lat:h.lat, lng:h.lng,
+    }));
+
+    // Real hospital attributes from CMS
+    Object.keys(hospitalInfo).forEach(k => delete hospitalInfo[k]);
+    live.forEach(h => {
+      const payersSeen = new Set();
+      Object.values(pRaw.prices).forEach(byHosp => {
+        const rec = byHosp[h.id];
+        if(rec) Object.keys(rec.payers || {}).forEach(p => payersSeen.add(p));
+      });
+      hospitalInfo[h.id] = {
+        stars: h.stars, erWait: null, trauma: null, beds: null,
+        aid: true, networks: [...payersSeen],
+        hasER: h.hasER,
+      };
+    });
+
+    LIVE = pRaw;
+    document.querySelector('.banner').innerHTML =
+      `<b>Live data.</b> Prices and insurance networks come from each hospital's ` +
+      `federally required price file; hospital details from CMS. ` +
+      `Last refreshed ${pRaw.updated || 'recently'}. Prices are what hospitals ` +
+      `publish, not a quote — your final bill depends on your plan and the care you receive.`;
+    document.querySelector('.banner').classList.add('live');
+    return true;
+  }catch(e){
+    console.log('No live data yet, using placeholder model:', e.message);
+    return false;
+  }
+}
+
+// Real price lookup, used in place of the placeholder model when LIVE is loaded.
+function livePriceFor(proc, hospitalId, payerId){
+  const byHosp = LIVE.prices[proc.id];
+  if(!byHosp) return null;
+  const rec = byHosp[hospitalId];
+  if(!rec) return null;
+  if(payerId === 'cash') return rec.cash ? Math.round(rec.cash) : null;
+  const negotiated = (rec.payers || {})[payerId];
+  if(negotiated) return Math.round(negotiated);
+  return rec.cash ? Math.round(rec.cash) : null;   // out of network -> cash price
+}
+
+// ---- Screen 3: results ----
+function haversineMiles(lat1, lng1, lat2, lng2){
+  const toRad = d => d * Math.PI / 180;
+  const R = 3958.8;
+  const dLat = toRad(lat2-lat1), dLng = toRad(lng2-lng1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+const map = L.map('map', { zoomControl:true });
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap contributors &copy; CARTO', maxZoom: 19
+}).addTo(map);
+map.setView([32.83,-117.14], 10);
+let markers = {}, zipMarker = null;
+const tierColor = { low:'#1B6E62', mid:'#B98A1E', high:'#C24A32', none:'#9AA8A7' };
+
+function tierOf(price, sorted){
+  if(price == null) return 'none';
+  const idx = sorted.indexOf(price);
+  const third = Math.ceil(sorted.length/3);
+  if(idx < third) return 'low';
+  if(idx < third*2) return 'mid';
+  return 'high';
+}
+
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.sort = btn.dataset.sort;
+    renderResults();
+  });
+});
+
+function renderResults(){
+  const proc = procById[state.procedureId];
+  document.getElementById('resultsTitle').textContent = proc.name;
+
+  Object.values(markers).forEach(m => map.removeLayer(m));
+  markers = {};
+  if(zipMarker) map.removeLayer(zipMarker);
+
+  let rows = hospitals.map(h => {
+    const price = priceFor(proc, h.id, state.payerId);
+    const info = hospitalInfo[h.id] || {};
+    const distance = haversineMiles(state.zipLat, state.zipLng, h.lat, h.lng);
+    const driveMin = Math.round(distance / 25 * 60); // ~25mph avg, estimated
+    return { h, price, info, distance, driveMin, inNetwork: isInNetwork(h.id, state.payerId) };
+  });
+  const validPrices = rows.filter(r=>r.price!=null).map(r=>r.price).sort((a,b)=>a-b);
+
+  if(state.sort === 'price')         rows.sort((a,b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+  else if(state.sort === 'distance') rows.sort((a,b) => a.distance - b.distance);
+  else if(state.sort === 'rating')   rows.sort((a,b) => (b.info.stars ?? 0) - (a.info.stars ?? 0));
+  else if(state.sort === 'wait')     rows.sort((a,b) => (a.info.erWait ?? Infinity) - (b.info.erWait ?? Infinity));
+
+  const setting = settingOf(proc);
+
+  // Only offer sorts that mean something for this kind of care
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    const s = btn.dataset.sort;
+    const relevant = s === 'price' || s === 'distance'
+      || (s === 'rating' && ['emergency','inpatient','outpatient','recurring'].includes(setting))
+      || (s === 'wait' && setting === 'emergency');
+    btn.style.display = relevant ? '' : 'none';
+    if(!relevant && btn.classList.contains('active')){
+      btn.classList.remove('active');
+      document.querySelector('.sort-btn[data-sort="price"]').classList.add('active');
+      state.sort = 'price';
+    }
+  });
+
+  document.getElementById('settingNote').textContent = SETTING_NOTE[setting] || '';
+
+  const payerName = payerById[state.payerId].name;
+  document.getElementById('costNote').innerHTML = state.payerId === 'cash'
+    ? `<b>What you'd pay:</b> these are cash prices — what the hospital charges someone without insurance. Many hospitals discount this further if you ask, and nonprofit hospitals must offer financial assistance if you qualify.`
+    : `<b>What you'd pay:</b> these are the rates ${payerName} has negotiated — not your final bill. If you haven't met your deductible you may owe the full amount shown; after that you typically owe a percentage. Check your plan's deductible and coinsurance.`;
+  document.getElementById('resultCount').textContent =
+    `${validPrices.length} of ${hospitals.length} hospitals offer this · ${payerName} · near ZIP ${state.zip}`;
+
+  const listEl = document.getElementById('resultsList');
+  listEl.innerHTML = '';
+  rows.forEach(({h, price, info, distance, driveMin, inNetwork}) => {
+    const tier = tierOf(price, validPrices);
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const priceLabel = state.payerId === 'cash' ? 'cash price'
+                     : inNetwork ? 'negotiated rate' : 'cash price (out of network)';
+
+    let inner = `<div class="card-top"><div class="card-name">${h.name}</div>`;
+    inner += price!=null
+      ? `<div style="text-align:right;"><div class="card-price">$${price.toLocaleString()}</div><div class="price-label">${priceLabel}</div></div>`
+      : `<div class="no-data">not offered here</div>`;
+    inner += `</div><div class="card-meta">${h.system} &middot; ${h.city}</div>`;
+
+    // network status
+    if(state.payerId !== 'cash'){
+      inner += inNetwork
+        ? `<div class="net-row in-net">✓ In network with ${payerName}</div>`
+        : `<div class="net-row out-net">✕ Out of network — you'd likely pay the full cash price</div>`;
+    }
+
+    // detail grid — only fields relevant to this kind of care
+    const show = {
+      wait:   setting === 'emergency',
+      trauma: setting === 'emergency',
+      stay:   setting === 'inpatient',
+      course: setting === 'recurring',
+      rating: ['emergency','inpatient','outpatient','recurring'].includes(setting),
+      beds:   setting === 'inpatient',
+    };
+
+    inner += `<div class="detail-grid">`;
+    inner += `<div class="detail"><span class="dl">Distance</span><span class="dv">${distance.toFixed(1)} mi &middot; ~${driveMin} min</span></div>`;
+    if(show.wait && info.erWait != null)
+      inner += `<div class="detail"><span class="dl">Median ER wait</span><span class="dv">${formatWait(info.erWait)}</span></div>`;
+    if(show.trauma && info.trauma){
+      const label = info.trauma === 'I-P' ? 'Level I (pediatric)' : `Level ${info.trauma}`;
+      inner += `<div class="detail"><span class="dl">Trauma center</span><span class="dv">${label}</span></div>`;
+    }
+    if(show.rating && info.stars != null){
+      const filled = '★'.repeat(info.stars) + '☆'.repeat(5-info.stars);
+      inner += `<div class="detail"><span class="dl">CMS rating</span><span class="dv"><span class="stars">${filled}</span> ${info.stars}/5</span></div>`;
+    }
+    if(show.stay && TYPICAL_STAY[proc.id] != null)
+      inner += `<div class="detail"><span class="dl">Typical stay</span><span class="dv">${TYPICAL_STAY[proc.id]} night${TYPICAL_STAY[proc.id]>1?'s':''}</span></div>`;
+    if(show.beds && info.beds != null)
+      inner += `<div class="detail"><span class="dl">Hospital size</span><span class="dv">${info.beds} beds</span></div>`;
+    if(show.course && price != null && TYPICAL_COURSE[proc.id]){
+      const c = TYPICAL_COURSE[proc.id];
+      inner += `<div class="detail"><span class="dl">Typical course (${c.n} ${c.unit})</span><span class="dv">~$${(price*c.n).toLocaleString()} total</span></div>`;
+    }
+    inner += `</div>`;
+
+    // badges
+    inner += `<div class="badge-row">`;
+    if(price!=null) inner += `<span class="tier-tag tier-${tier}">${tier==='low'?'Lowest third':tier==='mid'?'Middle third':'Highest third'}</span>`;
+    if(info.aid) inner += `<span class="tier-tag badge-aid">Financial aid available</span>`;
+    inner += `</div>`;
+
+    card.innerHTML = inner;
+    card.addEventListener('click', () => { map.flyTo([h.lat,h.lng], 13, {duration:0.6}); markers[h.id].openPopup(); });
+    listEl.appendChild(card);
+
+    const marker = L.circleMarker([h.lat, h.lng], { radius: price!=null?8:6, fillColor: tierColor[tier], color:'#fff', weight:2, fillOpacity:0.9 }).addTo(map);
+    marker.bindPopup(
+      `<div class="popup-name">${h.name}</div>` +
+      `<div class="popup-price" style="color:${tierColor[tier]}">${price!=null?'$'+price.toLocaleString():'Not offered'}</div>` +
+      `<div style="font-size:12px;color:#5C7371;margin-top:4px;">${distance.toFixed(1)} mi &middot; ~${driveMin} min drive</div>` +
+      (info.stars!=null?`<div style="font-size:12px;color:#5C7371;">CMS rating ${info.stars}/5${info.erWait?` &middot; ER wait ${formatWait(info.erWait)}`:''}</div>`:'')
+    );
+    markers[h.id] = marker;
+  });
+
+  zipMarker = L.marker([state.zipLat, state.zipLng], {
+    icon: L.divIcon({ className:'', html:`<div style="width:16px;height:16px;background:#C24A32;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #C24A32;"></div>` })
+  }).addTo(map).bindPopup(`Your ZIP: ${state.zip}`);
+
+  const bounds = L.latLngBounds([[state.zipLat, state.zipLng], ...hospitals.map(h=>[h.lat,h.lng])]);
+  map.fitBounds(bounds, { padding:[30,30] });
+}
+</script>
+</body>
+</html>
