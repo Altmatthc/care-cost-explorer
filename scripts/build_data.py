@@ -442,6 +442,31 @@ def discover_mrf(domain: str) -> Optional[str]:
     return None
 
 
+# A real code column is exactly "code", "code|1", "code_1" etc. Matching
+# loosely on the substring "code" is what previously caused the parser to
+# mistake a hospital's legal attestation paragraph (which contains the word
+# "encoded") for the column header row.
+CODE_COL_RE = re.compile(r"^code\s*[|_]?\s*\d*$")
+CHARGE_HINTS = ("standard_charge", "gross_charge", "discounted_cash",
+                "cash_price", "negotiated", "payer_name")
+
+
+def looks_like_header(cells: list[str]) -> bool:
+    """
+    CMS v2/v3 files begin with two metadata rows before the real header.
+    Identify the header by requiring a genuine code column, plus either a
+    description column or a recognizable charge column. Long prose cells are
+    ignored so attestation text can't masquerade as a header.
+    """
+    cl = [c.strip().lower() for c in cells if len(c.strip()) < 80]
+    if not cl:
+        return False
+    has_code = any(CODE_COL_RE.match(c) for c in cl)
+    has_desc = any(c == "description" for c in cl)
+    has_charge = any(any(h in c for h in CHARGE_HINTS) for c in cl)
+    return has_code and (has_desc or has_charge)
+
+
 def stream_rows(url: str) -> Iterator[dict]:
     """
     Stream a price file without loading it into memory. These run 30MB-1GB;
@@ -450,22 +475,32 @@ def stream_rows(url: str) -> Iterator[dict]:
     with requests.get(url, stream=True, headers=UA, timeout=180) as resp:
         resp.raise_for_status()
         if url.lower().endswith(".json"):
-            # Large JSON: fall back to a line-oriented scan for code/price pairs.
             for raw in resp.iter_lines(decode_unicode=True):
                 if raw:
                     yield {"_raw_json_line": raw}
             return
+
         lines = (l.decode("utf-8", "replace") for l in resp.iter_lines() if l)
-        # CMS files carry 2-3 metadata rows before the real header.
         header = None
+        preamble = []
         for row in csv.reader(lines):
             if header is None:
-                lowered = [c.strip().lower() for c in row]
-                if any("code" in c for c in lowered) and any(
-                    "charge" in c or "price" in c or "rate" in c for c in lowered
-                ):
-                    header = lowered
+                if looks_like_header(row):
+                    header = [c.strip().lower() for c in row]
+                else:
+                    preamble.append(row)
+                    if len(preamble) > 25:
+                        # Fall back: use the widest row seen, which in practice
+                        # is the header, rather than giving up entirely.
+                        widest = max(preamble, key=len)
+                        if len(widest) > 3:
+                            header = [c.strip().lower() for c in widest]
+                            print(f"      (header not identified; falling back "
+                                  f"to widest row, {len(header)} columns)")
+                        else:
+                            return
                 continue
+            # Rows shorter than the header are padded; longer ones truncated.
             yield dict(zip(header, row))
 
 
