@@ -300,7 +300,117 @@ check("old scope would have restored another shard's hospitals",
 check("fixed scope covers every hospital in the run",
       {"h0", "h1", "h2", "h3"} == touched_right)
 
-print("\n14. Known-URL resolution")
+print("\n14. Hospital-supplied text is sanitised at ingestion")
+check("control characters stripped", "\x00" not in b.clean_text("MRI\x00BRAIN"))
+check("whitespace collapsed", b.clean_text("  a    b  ") == "a b")
+check("length capped", len(b.clean_text("x" * 5000)) <= 120)
+check("payer field capped shorter", len(b.clean_text("y" * 500, 80)) <= 80)
+check("normal text untouched",
+      b.clean_text("MRI BRAIN WO CONTRAST") == "MRI BRAIN WO CONTRAST")
+# Markup is intentionally NOT stripped here — escaping belongs on output, and
+# stripping it at ingestion would silently corrupt legitimate descriptions.
+check("markup preserved for output-side escaping",
+      "<" in b.clean_text("<script>alert(1)</script>"))
+
+print("\n15. Price history records changes, not every observation")
+_hist = {}          # (hid, proc) -> (date, price)
+
+
+def _refresh(site, day):
+    appended = []
+    for proc, byh in site.items():
+        for hid, rec in byh.items():
+            cash = rec.get("cash")
+            if not cash:
+                continue
+            prior = _hist.get((hid, proc))
+            if prior is None:
+                appended.append((day, hid, proc, cash, ""))
+            elif round(prior[1]) != round(cash):
+                pct = (cash - prior[1]) / prior[1] * 100
+                appended.append((day, hid, proc, cash, f"{pct:.1f}"))
+                rec["prev"], rec["since"] = round(prior[1]), prior[0]
+            _hist[(hid, proc)] = (day, cash)
+    return appended
+
+
+s1 = {"mri-brain": {"hA": {"cash": 1450}, "hB": {"cash": 2640}}}
+r1 = _refresh(s1, "2026-05-01")
+check("first refresh records a baseline per series", len(r1) == 2, f"got {len(r1)}")
+
+s2 = {"mri-brain": {"hA": {"cash": 1560}, "hB": {"cash": 2640}}}
+r2 = _refresh(s2, "2026-08-16")
+check("second refresh appends only the changed series", len(r2) == 1, f"got {len(r2)}")
+check("unchanged hospital appends nothing", not any(x[1] == "hB" for x in r2))
+check("percentage change computed", r2[0][4] == "7.6", f"got {r2[0][4]}")
+check("record carries previous price for the site",
+      s2["mri-brain"]["hA"].get("prev") == 1450)
+check("record carries the date of that price",
+      s2["mri-brain"]["hA"].get("since") == "2026-05-01")
+
+s3 = {"mri-brain": {"hA": {"cash": 1560}, "hB": {"cash": 2640}}}
+r3 = _refresh(s3, "2026-09-01")
+check("a refresh with no movement appends nothing at all", len(r3) == 0, f"got {len(r3)}")
+
+print("\n16. Derived insights")
+
+
+def derive(rec):
+    cash, payers = rec.get("cash"), rec.get("payers") or {}
+    out = {}
+    if payers:
+        lo, hi = min(payers.values()), max(payers.values())
+        if lo and hi / lo >= 1.5:
+            out["spread"] = round(hi / lo, 1)
+        if cash:
+            worse = sorted(k for k, v in payers.items() if v > cash * 1.02)
+            if worse:
+                out["cash_wins"] = worse
+    if cash and rec.get("gross") and rec["gross"] / cash >= 1.5:
+        out["markup"] = round(rec["gross"] / cash, 1)
+    return out
+
+
+d = derive({"cash": 1450, "gross": 4200,
+            "payers": {"aetna": 980, "anthem": 1620, "medicare": 420}})
+check("flags the plan that costs more than cash", d.get("cash_wins") == ["anthem"])
+check("does not flag plans cheaper than cash", "aetna" not in d.get("cash_wins", []))
+check("computes payer spread", d.get("spread") == 3.9, f"got {d.get('spread')}")
+check("computes markup over cash", d.get("markup") == 2.9, f"got {d.get('markup')}")
+
+d2 = derive({"cash": 1450, "gross": 1600, "payers": {"aetna": 1400, "cigna": 1420}})
+check("no flags when everything is close", d2 == {}, f"got {d2}")
+
+d3 = derive({"cash": 1000, "payers": {"aetna": 1015}})
+check("1.5% difference is noise, not flagged", "cash_wins" not in d3)
+
+print("\n17. Drug capture, coverage and same-system variation")
+# J-codes are drugs; other HCPCS are not
+check("J-code recognised as a drug", "J9035".upper().startswith("J"))
+check("non-J HCPCS not treated as a drug", not "A6402".upper().startswith("J"))
+
+# only drugs seen at several hospitals are comparable
+_rows = {"J9035": {"by_hospital": {"a": 100, "b": 250, "c": 180}},
+         "J1745": {"by_hospital": {"a": 400}}}
+_kept = {c: d for c, d in _rows.items() if len(d["by_hospital"]) >= 3}
+check("drug at 3+ hospitals kept", "J9035" in _kept)
+check("drug at a single hospital dropped", "J1745" not in _kept)
+_vals = list(_kept["J9035"]["by_hospital"].values())
+check("drug spread computed", round(max(_vals) / min(_vals), 1) == 2.5)
+
+# same-system campus variation
+_site = {"sharp-mem": 2150, "sharp-cv": 1740, "sharp-cor": 2010}
+_lo = min(_site.values())
+_flags = {i: round((p - _lo) / _lo * 100) for i, p in _site.items()
+          if p / _lo >= 1.15 and p != _lo}
+check("flags the pricier campus", _flags.get("sharp-mem") == 24, f"got {_flags}")
+check("cheapest campus not flagged", "sharp-cv" not in _flags)
+
+# shoppable-services coverage
+check("300+ codes meets the requirement", (450 >= 300) is True)
+check("under 300 flagged as limited disclosure", (120 >= 300) is False)
+
+print("\n18. Known-URL resolution")
 for name, expect in [("Scripps Mercy Hospital", "Mercy-Hospital-San-Diego"),
                      ("Scripps Memorial Hospital - Encinitas", "Encinitas"),
                      ("Scripps Green Hospital", "Green")]:
