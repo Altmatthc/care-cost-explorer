@@ -190,6 +190,10 @@
   .popup-name{font-family:'Fraunces',serif;font-size:15px;font-weight:500;margin-bottom:4px;color:var(--teal-dark);}
   .popup-price{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;}
 
+  .site-footer{border-top:1px solid var(--line);background:var(--panel);
+    padding:16px 24px;font-size:12px;color:var(--muted);line-height:1.6;}
+  .site-footer a{color:var(--teal-dark);}
+  .foot-legal{margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;}
   ::-webkit-scrollbar{width:8px;}
   ::-webkit-scrollbar-thumb{background:#C6D3D2;border-radius:4px;}
 </style>
@@ -417,6 +421,19 @@
       </div>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div>Prices come from files hospitals must publish under
+      <a href="https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency"
+         target="_blank" rel="noopener noreferrer">45 CFR Part 180</a>.
+      They are not quotes, and doctors usually bill separately.</div>
+    <div class="foot-legal">
+      <a href="https://github.com/Altmatthc/care-cost-explorer"
+         target="_blank" rel="noopener noreferrer">Source code</a> ·
+      Code: PolyForm Noncommercial 1.0.0 · Data: CC BY-NC-SA 4.0 ·
+      Map © OpenStreetMap contributors, © CARTO
+    </div>
+  </footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>

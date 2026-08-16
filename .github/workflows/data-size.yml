@@ -1,0 +1,32 @@
+name: Data size report
+
+# Shows current data size and projected repository growth.
+# Run it occasionally rather than discovering a size problem at 5 GB.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 1 */3 *"        # quarterly
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # needed to measure real history size
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Data size
+        run: python scripts/data_size_report.py
+
+      - name: Price movements
+        run: |
+          set -euo pipefail
+          for f in data/*-history.csv; do
+            [ -e "$f" ] || continue
+            region=$(basename "$f" -history.csv)
+            echo "=============================================="
+            python scripts/price_trends.py --region "$region" --top 15
+          done
