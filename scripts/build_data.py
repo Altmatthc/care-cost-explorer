@@ -83,6 +83,20 @@ REGIONS = {
     },
 }
 
+# Every state as its own region. Nationwide coverage is built by refreshing
+# states on a rotation rather than attempting one enormous run: ~5,400
+# hospitals is roughly 415 hours of downloading, which cannot fit in GitHub's
+# 6-hour job limit no matter how it's sharded.
+US_STATES = [
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID",
+    "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS",
+    "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK",
+    "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV",
+    "WI", "WY", "DC", "PR",
+]
+for _s in US_STATES:
+    REGIONS.setdefault(_s.lower(), {"label": _s, "state": _s, "counties": None})
+
 # Hospital types worth including. Psychiatric and specialty facilities publish
 # price files too, but they aren't what people comparison-shop.
 KEEP_TYPES = {
@@ -704,7 +718,8 @@ def names_match(expected: str, actual: str, threshold: float = 0.6) -> bool:
 
 def read_identity(url: str) -> dict:
     """Read a price file's metadata header without downloading the whole file."""
-    ident = {"hospital_name": "", "location_name": "", "address": "", "raw": ""}
+    ident = {"hospital_name": "", "location_name": "", "address": "",
+             "last_updated": "", "version": "", "raw": ""}
     try:
         if url.lower().split("?")[0].endswith(".json"):
             with SESSION.get(url, stream=True, headers=UA, timeout=120) as r:
@@ -735,6 +750,11 @@ def read_identity(url: str) -> dict:
             ident["hospital_name"] = rec.get("hospital_name", "")
             ident["location_name"] = rec.get("location_name", "") or rec.get("hospital_location", "")
             ident["address"] = rec.get("hospital_address", "")
+            # Freshness and schema version are published in every file's header
+            # and nobody aggregates them. A file last updated two years ago is
+            # a compliance signal in itself.
+            ident["last_updated"] = rec.get("last_updated_on", "")
+            ident["version"] = rec.get("version", "")
             ident["raw"] = " | ".join(vals[:5])
     except Exception as e:
         print(f"      identity check failed: {e}")
@@ -873,7 +893,7 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
         if not pid:
             continue
 
-        desc = str(item.get("description", ""))[:120]
+        desc = clean_text(item.get("description"))
         resolved_ids = refine_by_description(pid, desc)
         charges = item.get("standard_charges") or []
         if isinstance(charges, dict):
@@ -899,7 +919,7 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
                 rate = (_num(p.get("standard_charge_dollar"))
                         or _num(p.get("estimated_amount"))
                         or _num(p.get("standard_charge_negotiated_dollar")))
-                name = str(p.get("payer_name") or "").strip() or None
+                name = clean_text(p.get("payer_name"), 80) or None
                 plan = str(p.get("plan_name") or "").strip()
                 if name and plan:
                     name = f"{name} {plan}"
@@ -1035,6 +1055,19 @@ def find_wide_payers(keys: list[str]) -> dict[str, dict]:
     return payers
 
 
+def clean_text(v, limit: int = 120) -> str:
+    """
+    Normalise hospital-supplied text before it reaches the published data.
+    The site escapes on output, but keeping junk out of the files means a
+    stray control character or a megabyte-long description can't degrade the
+    data or the page. Defence at both ends.
+    """
+    s = str(v or "")
+    s = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s[:limit]
+
+
 def money(v) -> Optional[float]:
     if v in (None, ""):
         return None
@@ -1066,6 +1099,20 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     scanned = 0
     types_seen: dict[str, int] = {}
     sample_codes: list[str] = []
+    # CMS requires a dollar amount wherever one can be expressed. Hospitals
+    # that answer with "percentage" or "algorithm" instead are technically
+    # compliant but practically useless to a patient. Nobody measures how
+    # often that happens; we can, because we're reading every row anyway.
+    quality = {"dollar": 0, "percentage": 0, "algorithm": 0}
+    # Coverage: how many distinct billing codes this hospital publishes a cash
+    # price for. CMS requires 300 shoppable services; nobody aggregates how
+    # many hospitals actually meet it.
+    coded_with_cash: set = set()
+    # Drugs are billed under HCPCS "J" codes. Rather than guess which J-code
+    # maps to which drug — a good way to publish wrong data — capture them all
+    # with their descriptions and let the merge step keep the ones that appear
+    # at enough hospitals to compare.
+    drugs: dict[str, dict] = {}
 
     for row in stream_rows(url):
         if "_raw_json_line" in row:
@@ -1098,11 +1145,28 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
                     print(f"      TALL format: payer={payer_c} rate={rate_c}")
                 print(f"      cash={cash_c} gross={gross_c}")
 
+        row_cash = money(row.get(cash_c))
         for code_c, type_c in code_pairs:
             code = (row.get(code_c) or "").strip()
             if not code:
                 continue
             ctype = (row.get(type_c) or "").strip() if type_c else ""
+
+            nt = norm_type(ctype)
+            if row_cash and nt in ("CPT", "HCPCS", "MSDRG", "DRG", "APC"):
+                coded_with_cash.add(f"{nt}:{norm_code(code)}")
+
+            # HCPCS J-codes are drugs administered in a facility.
+            if nt == "HCPCS" and code.upper().startswith("J") and row_cash:
+                key = code.upper()
+                d = drugs.setdefault(key, {
+                    "code": key,
+                    "description": clean_text(row.get(desc_c), 90),
+                    "cash": row_cash,
+                    "gross": money(row.get(gross_c)),
+                })
+                if row_cash < d["cash"]:
+                    d["cash"] = row_cash
             if len(sample_codes) < 12 and code not in sample_codes:
                 sample_codes.append(f"{code}[{ctype or '?'}]")
             if ctype:
@@ -1112,6 +1176,15 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             if not pid:
                 continue
 
+            pct_c = col(keys, "negotiated_percentage")
+            algo_c = col(keys, "negotiated_algorithm")
+            if money(row.get(rate_c)):
+                quality["dollar"] += 1
+            elif pct_c and str(row.get(pct_c) or "").strip():
+                quality["percentage"] += 1
+            elif algo_c and str(row.get(algo_c) or "").strip():
+                quality["algorithm"] += 1
+
             base = {
                 "hospital_id": hospital_id,
                 "procedure": pid,
@@ -1120,7 +1193,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
                 "min": money(row.get(min_c)),
                 "max": money(row.get(max_c)),
                 "location": (row.get(loc_c) or "").strip() if loc_c else "",
-                "description": (row.get(desc_c) or "")[:120],
+                "description": clean_text(row.get(desc_c)),
             }
 
             # A shared code (MS-DRG 470) can cover more than one procedure.
@@ -1134,13 +1207,13 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
                         if rate is None:
                             continue
                         any_rate = True
-                        found.append({**rec, "payer": pname, "rate": rate})
+                        found.append({**rec, "payer": clean_text(pname, 80), "rate": rate})
                     if not any_rate:
                         found.append({**rec, "payer": None, "rate": None})
                 else:
                     found.append({
                         **rec,
-                        "payer": (row.get(payer_c) or "").strip() or None,
+                        "payer": clean_text(row.get(payer_c), 80) or None,
                         "rate": money(row.get(rate_c)) or money(row.get(median_c)),
                     })
             break  # one code slot per row is enough
@@ -1148,6 +1221,19 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     if verbose:
         print(f"      scanned {scanned:,} rows | code types seen: "
               f"{dict(sorted(types_seen.items(), key=lambda x: -x[1])[:6])}")
+        tot = sum(quality.values())
+        if tot:
+            print(f"      rate quality: {quality['dollar']*100//tot}% dollar amounts, "
+                  f"{quality['percentage']*100//tot}% percentage-only, "
+                  f"{quality['algorithm']*100//tot}% algorithm-only")
+    if verbose:
+        print(f"      coverage: {len(coded_with_cash):,} distinct codes with a "
+              f"cash price | {len(drugs)} drug (J) codes captured")
+    meta = {"quality": quality,
+            "codes_with_cash": len(coded_with_cash),
+            "drugs": drugs}
+    for r in found:
+        r["_meta"] = meta
         if not found:
             print(f"      NO MATCHES. Sample codes in file: {sample_codes}")
     return found
@@ -1173,6 +1259,8 @@ def consolidate(rows: list[dict]) -> dict:
             rec["gross"] = r["gross"]
         if r["payer"] and r["rate"]:
             rec["payers"][r["payer"]] = r["rate"]
+        if r.get("_meta") and "_meta" not in rec:
+            rec["_meta"] = r["_meta"]
     return out
 
 
@@ -1226,6 +1314,55 @@ def probe(url: str, rows: int = 40):
         seen += 1
         if seen >= rows:
             break
+
+
+# ---------------------------------------------------------------------------
+# CONDITIONAL FETCHING
+# Hospitals must update these files at least annually; most change quarterly at
+# most. Re-downloading a 3GB file that hasn't changed is the single biggest
+# waste in a refresh. Store each file's ETag / Last-Modified and ask the server
+# whether it changed — a 304 response means we skip the download entirely.
+# ---------------------------------------------------------------------------
+def file_unchanged(url: str, cache: dict) -> bool:
+    """True if the server says this file hasn't changed since we last read it."""
+    entry = cache.get(url)
+    if not entry:
+        return False
+    headers = {}
+    if entry.get("etag"):
+        headers["If-None-Match"] = entry["etag"]
+    if entry.get("last_modified"):
+        headers["If-Modified-Since"] = entry["last_modified"]
+    if not headers:
+        return False
+    try:
+        r = SESSION.get(url, headers=headers, stream=True, timeout=60)
+        r.close()
+        if r.status_code == 304:
+            return True
+        # Some servers ignore conditional headers but still report size.
+        clen = r.headers.get("Content-Length")
+        if (clen and entry.get("length") and clen == entry["length"]
+                and r.headers.get("ETag", entry.get("etag")) == entry.get("etag")):
+            return True
+    except requests.RequestException:
+        pass
+    return False
+
+
+def remember_file(url: str, cache: dict):
+    """Record validators so the next run can ask 'has this changed?'"""
+    try:
+        r = SESSION.get(url, stream=True, timeout=60)
+        cache[url] = {
+            "etag": r.headers.get("ETag"),
+            "last_modified": r.headers.get("Last-Modified"),
+            "length": r.headers.get("Content-Length"),
+            "seen": None,
+        }
+        r.close()
+    except requests.RequestException:
+        pass
 
 
 # ---------------------------------------------------------------------------
@@ -1356,6 +1493,8 @@ def main():
                     help="ignore --max-age and re-scan every hospital")
     ap.add_argument("--only", default="",
                     help="comma-separated hospital ids or name fragments to scan")
+    ap.add_argument("--workers", type=int, default=4,
+                    help="hospitals to download concurrently (one per host)")
     ap.add_argument("--cooldown-days", type=int, default=1,
                     help="days to leave a host alone after it refuses connections")
     ap.add_argument("--no-type-filter", action="store_true",
@@ -1433,6 +1572,7 @@ def main():
         status = load_json(status_path, {})
         prev_prices = load_json(price_path, {})
         cooldowns = load_json(DATA / "host-cooldowns.json", {})
+        http_cache = load_json(DATA / "file-cache.json", {})
 
         only = [s.strip().lower() for s in args.only.split(",") if s.strip()]
 
@@ -1448,8 +1588,8 @@ def main():
 
         print(f"[prices] shard {args.shard+1}/{args.shards}: {len(shard)} hospitals")
         all_rows: list[dict] = []
-        stats = {"found": 0, "skipped": 0, "no_mrf": 0, "error": 0,
-                 "wrong_file": 0, "exempt": 0, "cooled": 0}
+        stats = {"found": 0, "skipped": 0, "unchanged": 0, "no_mrf": 0,
+                 "error": 0, "wrong_file": 0, "exempt": 0, "cooled": 0}
         url_users: dict[str, list[str]] = {}
         cache: dict[str, list[dict]] = {}
         last_host_time: dict[str, float] = {}
@@ -1503,8 +1643,11 @@ def main():
             return kept
 
         carried: dict[str, dict] = {}
+        import threading
+        from concurrent.futures import ThreadPoolExecutor
+        lock = threading.Lock()
 
-        def checkpoint():
+        def checkpoint():   # callers may be on worker threads
             """
             Write results after every hospital.
 
@@ -1513,8 +1656,11 @@ def main():
             away every hospital already processed. Writing as we go costs
             milliseconds and makes any interrupted run resumable.
             """
-            partial = consolidate(all_rows)
-            partial.update(carried)
+            with lock:
+                snapshot = list(all_rows)
+                carried_snapshot = dict(carried)
+            partial = consolidate(snapshot)
+            partial.update(carried_snapshot)
             touched_now = {h["id"] for h in run_scope}
             for k, rec in prev_prices.items():
                 if rec.get("hospital_id") in touched_now:
@@ -1524,6 +1670,8 @@ def main():
                 price_path.write_text(json.dumps(partial, indent=1))
                 status_path.write_text(json.dumps(status, indent=1))
                 (DATA / "host-cooldowns.json").write_text(json.dumps(cooldowns, indent=1))
+                (DATA / "file-cache.json").write_text(json.dumps(http_cache, indent=1))
+                (DATA / "file-cache.json").write_text(json.dumps(http_cache, indent=1))
                 reg_path.write_text(json.dumps(hospitals, indent=1))
             except Exception as e:
                 print(f"      checkpoint write failed: {e}")
@@ -1531,7 +1679,8 @@ def main():
         if args.shards > 1:
             price_path = DATA / f"{args.region}-prices-{args.shard}.json"
 
-        for h in shard:
+        def handle(h):
+            """Process one hospital. Shared state is mutated under a lock."""
             prior = status.get(h["id"], {})
 
             # Federal facilities: the rule doesn't reach them, so don't keep trying.
@@ -1539,7 +1688,7 @@ def main():
                 record(h, STATUS_EXEMPT, "federal facility; not State-licensed")
                 stats["exempt"] += 1
                 print(f"    – {h['name']}: federal facility, rule does not apply")
-                continue
+                return
 
             # Already have fresh data? Leave the server alone.
             existing = carry_over(h)
@@ -1558,7 +1707,7 @@ def main():
                 age = int(days_since(prior["last_success"]))
                 print(f"    · {h['name']}: skipped, {len(kept)} records "
                       f"already collected {age}d ago")
-                continue
+                return
 
             url = h.get("mrf_url")
             if url and host_cooling(url):
@@ -1566,7 +1715,7 @@ def main():
                 stats["cooled"] += 1
                 print(f"    · {h['name']}: {host_of(url)} is cooling down "
                       f"after refusing connections; skipping today")
-                continue
+                return
 
             if not url:
                 domain = h.get("domain") or resolve_source(h.get("name", ""))[1]
@@ -1574,7 +1723,7 @@ def main():
                     carried.update(carry_over(h))
                     stats["cooled"] += 1
                     print(f"    · {h['name']}: {domain} cooling down; skipping")
-                    continue
+                    return
                 if domain:
                     print(f"    ... discovering price file for {h['name']} via {domain}")
                     url = pick_matching_file(
@@ -1594,7 +1743,7 @@ def main():
                        "/cms-hpt.txt location")
                 checkpoint()
                 print(f"    - {h['name']}: no price file found")
-                continue
+                return
 
             if not h.get("verified_source"):
                 ok, why = verify_file_belongs(h["name"], url)
@@ -1603,9 +1752,10 @@ def main():
                     record(h, STATUS_WRONG_FILE, why, url=url)
                     print(f"    ✗ {h['name']}: REJECTED — {why}")
                     h["mrf_url"] = None
-                    continue
+                    return
 
-            url_users.setdefault(url, []).append(h["name"])
+            with lock:
+                url_users.setdefault(url, []).append(h["name"])
             h["source_url"] = url
             try:
                 if url in cache:
@@ -1613,14 +1763,28 @@ def main():
                         [{**r, "hospital_id": h["id"]} for r in cache[url]], h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} rows "
                           f"(reused, same file as {url_users[url][0]})")
+                elif (existing and not args.refresh_all
+                      and file_unchanged(url, http_cache)):
+                    # Server confirmed the file is byte-identical to last time.
+                    rows = list(existing.values())
+                    stats["unchanged"] = stats.get("unchanged", 0) + 1
+                    print(f"    = {h['name']}: file unchanged since last run, "
+                          f"reusing {len(rows)} records")
+                    carried.update(existing)
+                    record(h, STATUS_OK, "unchanged since last run",
+                           rows=len(rows), url=url)
+                    checkpoint()
+                    return
                 else:
                     be_polite(url)
                     rows = extract_prices(h["id"], url)
+                    remember_file(url, http_cache)
                     cache[url] = rows
                     rows = filter_to_location(rows, h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} matching rows")
-                all_rows.extend(rows)
-                stats["found"] += 1
+                with lock:
+                    all_rows.extend(rows)
+                    stats["found"] += 1
                 record(h, STATUS_OK if rows else STATUS_EMPTY,
                        "" if rows else "file parsed but held none of our procedures",
                        rows=len(rows), url=url)
@@ -1639,6 +1803,35 @@ def main():
                 if refused:
                     print(f"      {host_of(url)} put on a "
                           f"{args.cooldown_days}-day cooldown")
+
+
+        # Group by host, then run groups concurrently. Hospitals sharing a host
+        # stay sequential within their group, so a system like Sharp still sees
+        # one request at a time while unrelated systems download in parallel.
+        groups: dict[str, list] = {}
+        for h in shard:
+            key = (h.get("domain")
+                   or (h.get("mrf_url", "") or "").split("/")[2:3] or ["_none"])
+            key = key if isinstance(key, str) else key[0]
+            groups.setdefault(key, []).append(h)
+
+        def run_group(hs):
+            for h in hs:
+                try:
+                    handle(h)
+                except Exception as e:
+                    with lock:
+                        stats["error"] += 1
+                    print(f"    ! {h['name']}: unexpected {type(e).__name__}: {e}")
+
+        workers = max(1, min(args.workers, len(groups)))
+        print(f"[prices] {len(groups)} host group(s), {workers} concurrent")
+        if workers == 1:
+            for hs in groups.values():
+                run_group(hs)
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                list(pool.map(run_group, groups.values()))
 
         # Shared-file disclosure
         shared = {u: names for u, names in url_users.items() if len(names) > 1}
@@ -1675,6 +1868,7 @@ def main():
         price_path.write_text(json.dumps(merged, indent=1))
         status_path.write_text(json.dumps(status, indent=1))
         (DATA / "host-cooldowns.json").write_text(json.dumps(cooldowns, indent=1))
+        (DATA / "file-cache.json").write_text(json.dumps(http_cache, indent=1))
         reg_path.write_text(json.dumps(hospitals, indent=1))
 
         print(f"\n[prices] {stats}")
