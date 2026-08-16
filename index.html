@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Defence in depth. Even if a string escaped our sanitising, this limits
+     what an injected payload could do: no external scripts beyond the CDN we
+     use, no framing, no form posting, and connections only to the APIs we
+     actually call. 'unsafe-inline' is required because this is a single-file
+     app; splitting the script out would let us drop it. -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'none';
+  script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+  style-src  'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+  font-src   'self' https://fonts.gstatic.com;
+  img-src    'self' data: https://*.basemaps.cartocdn.com;
+  connect-src 'self' https://api.zippopotam.us;
+  form-action 'none';
+  frame-ancestors 'none';
+  base-uri 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>San Diego Care Cost Explorer</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,6 +163,18 @@
   .rank-badge{display:inline-flex;align-items:center;justify-content:center;
     width:19px;height:19px;border-radius:50%;color:#fff;font-family:'IBM Plex Mono',monospace;
     font-size:11px;font-weight:600;margin-right:7px;vertical-align:1px;}
+  .sys-note{margin-top:8px;font-size:12px;line-height:1.5;color:#6A4C88;
+    background:#F2ECF7;border:1px solid #DCCDE8;padding:6px 9px;border-radius:5px;}
+  .sys-note b{font-weight:700;}
+  .cash-win{margin-top:9px;padding:9px 11px;border-radius:6px;background:#EAF4F1;
+    border:1px solid #B7DAD1;color:var(--teal-dark);font-size:12.5px;line-height:1.55;}
+  .cash-win b{font-weight:700;}
+  .badge-spread{background:#F2ECF7;color:#6A4C88;}
+  .badge-markup{background:#F7F1E4;color:#8A6A2E;}
+  .chg{display:inline-block;margin-top:7px;font-size:11.5px;font-weight:600;
+    font-family:'IBM Plex Mono',monospace;padding:2px 7px;border-radius:4px;letter-spacing:.02em;}
+  .chg-up{background:#F7E4DE;color:var(--hightag);}
+  .chg-down{background:#E1F0EC;color:var(--lowtag);}
   .est-link{display:inline-block;margin-top:10px;font-size:12.5px;font-weight:600;
     color:var(--teal-dark);text-decoration:none;border-bottom:1px solid #B7DAD1;}
   .est-link:hover{border-bottom-color:var(--teal);}
@@ -324,6 +352,7 @@
         <div class="region-list" id="regionList"></div>
       </div>
       <button class="general-btn" id="generalBtn">NOT SURE / GENERAL CARE &rarr; SEE ALL PROCEDURES</button>
+      <button class="general-btn" id="drugsBtn" style="margin-top:8px;">COMPARE DRUG &amp; INFUSION PRICES &rarr;</button>
     </div>
 
     <!-- SCREEN 2: procedure + zip -->
@@ -348,6 +377,20 @@
         </div>
         <button class="submit-btn" id="findBtn">Find hospitals</button>
       </div>
+    </div>
+
+    <!-- SCREEN 2b: drug prices -->
+    <div class="screen" id="screen-drugs">
+      <div class="back-link" id="backFromDrugs">&larr; BACK</div>
+      <div class="step-title">Drug &amp; infusion prices</div>
+      <div class="step-sub">Medicines given in a hospital are billed separately
+        from the procedure. The same drug can cost several times more at one
+        hospital than another. Cash prices shown.</div>
+      <div class="field" style="max-width:420px;">
+        <label for="drugSearch">Search by name or code</label>
+        <input type="text" id="drugSearch" placeholder="e.g. infusion, J9035">
+      </div>
+      <div id="drugList"></div>
     </div>
 
     <!-- SCREEN 3: results -->
@@ -787,6 +830,21 @@ anatomyToggle.addEventListener('click', () => {
 
 document.getElementById('generalBtn').addEventListener('click', () => selectRegion('general'));
 
+document.getElementById('drugsBtn').addEventListener('click', async () => {
+  if(!MANIFEST) await loadManifest();
+  // Drug data needs a region loaded; default to the only one if unambiguous.
+  if(!LIVE && MANIFEST){
+    const only = Object.keys(MANIFEST);
+    if(only.length === 1) await loadLiveData(only[0]);
+  }
+  renderDrugs('');
+  showScreen('screen-drugs');
+});
+document.getElementById('backFromDrugs').addEventListener('click',
+  () => showScreen('screen-body'));
+document.getElementById('drugSearch').addEventListener('input',
+  e => renderDrugs(e.target.value));
+
 // Re-measure the map when the window changes shape, or it keeps the old size.
 window.addEventListener('resize', () => {
   if(typeof map !== 'undefined' && map){
@@ -795,8 +853,11 @@ window.addEventListener('resize', () => {
   }
 });
 
-// Try to load real data on startup; falls back to placeholders silently.
-loadLiveData('san-diego');
+// At startup, load only the small manifest. The actual price data is fetched
+// after the user enters a ZIP, so nobody downloads a region they don't need.
+loadManifest().then(m => {
+  if(m) console.log('regions available:', Object.keys(m).join(', '));
+});
 
 function selectRegion(key){
   state.region = key;
@@ -834,7 +895,7 @@ function clearZipMessages(){
 }
 
 findBtn.addEventListener('click', async () => {
-  const zip = zipInput.value.trim();
+  const zip = zipInput.value.trim().replace(/[^0-9]/g, '').slice(0, 5);
   clearZipMessages();
   if(!/^\d{5}$/.test(zip)){
     zipError.textContent = 'Enter a valid 5-digit ZIP code.';
@@ -845,8 +906,10 @@ findBtn.addEventListener('click', async () => {
   if(ZIPS[zip]){
     state.zip = zip;
     [state.zipLat, state.zipLng] = ZIPS[zip];
+    state.zipState = 'CA';
     state.procedureId = document.getElementById('procedureSelect').value;
     state.payerId = document.getElementById('payerSelect').value;
+    await loadRegionForSearch();
     renderResults();
     showScreen('screen-results');
     return;
@@ -862,8 +925,10 @@ findBtn.addEventListener('click', async () => {
     state.zip = zip;
     state.zipLat = parseFloat(data.places[0].latitude);
     state.zipLng = parseFloat(data.places[0].longitude);
+    state.zipState = data.places[0]['state abbreviation'] || '';
     state.procedureId = document.getElementById('procedureSelect').value;
     state.payerId = document.getElementById('payerSelect').value;
+    await loadRegionForSearch();
     renderResults();
     showScreen('screen-results');
   }catch(e){
@@ -885,7 +950,70 @@ findBtn.addEventListener('click', async () => {
 let SCAN_STATUS = {};
 let LIVE = null;   // { prices: { procedureId: { hospitalId: {cash,gross,payers} } } }
 
+// ---------------------------------------------------------------------------
+// OUTPUT ESCAPING
+// Hospital names, payer names, descriptions and status text all come from
+// files hospitals publish. Anyone who can edit one of those files controls
+// text this page renders, so nothing from the data goes into HTML unescaped.
+// ---------------------------------------------------------------------------
+function esc(v){
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// Only ever emit links we'd be willing to click: https, no javascript: or
+// data: URLs, which would execute in the page.
+function safeUrl(u){
+  try{
+    const parsed = new URL(String(u), window.location.href);
+    return (parsed.protocol === 'https:' || parsed.protocol === 'http:')
+      ? parsed.href : null;
+  }catch(e){ return null; }
+}
+
+// Region names index a fetch path, so keep them to a known-safe shape.
+function safeRegion(r){
+  return /^[a-z0-9-]{1,40}$/.test(String(r)) ? String(r) : null;
+}
+
+let MANIFEST = null;
+
+async function loadManifest(){
+  try{
+    const r = await fetch('data/regions.json');
+    if(!r.ok) return null;
+    MANIFEST = await r.json();
+    return MANIFEST;
+  }catch(e){ return null; }
+}
+
+// Choose the smallest dataset that covers this ZIP. Prefers a metro file over
+// a whole-state file, so a San Diego user never downloads all of California.
+function regionForZip(zip, stateAbbr){
+  if(!MANIFEST) return null;
+  const zip3 = String(zip).slice(0,3);
+  const entries = Object.entries(MANIFEST);
+  const byZip = entries.filter(([, m]) => (m.zip3 || []).includes(zip3));
+  if(byZip.length){
+    byZip.sort((a,b) => (a[1].hospitals||0) - (b[1].hospitals||0));
+    return byZip[0][0];
+  }
+  if(stateAbbr){
+    const byState = entries.filter(([, m]) =>
+      (m.states || []).includes(stateAbbr.toUpperCase()));
+    if(byState.length){
+      byState.sort((a,b) => (b[1].hospitals||0) - (a[1].hospitals||0));
+      return byState[0][0];
+    }
+  }
+  return null;
+}
+
 async function loadLiveData(region = 'san-diego'){
+  const safe = safeRegion(region);
+  if(!safe) return false;
+  region = safe;
   try{
     const [hRes, pRes] = await Promise.all([
       fetch(`data/${region}-hospitals.json`),
@@ -932,7 +1060,7 @@ async function loadLiveData(region = 'san-diego'){
     document.querySelector('.banner').innerHTML =
       `<b>Live data.</b> Prices and insurance networks come from each hospital's ` +
       `federally required price file; hospital details from CMS. ` +
-      `Last refreshed ${pRaw.updated || 'recently'}. Prices are what hospitals ` +
+      `Last refreshed ${esc(pRaw.updated || 'recently')}. Prices are what hospitals ` +
       `publish, not a quote — your final bill depends on your plan and the care you receive.`;
     document.querySelector('.banner').classList.add('live');
     return true;
@@ -958,6 +1086,7 @@ function identicalTo(proc, hospitalId){
 }
 
 function livePriceFor(proc, hospitalId, payerId){
+  // Records are stored compactly: absent keys mean "not published", not zero.
   // Emergency care requires an actual emergency department. CMS publishes
   // this flag per hospital; without this check the live path listed ER visits
   // at surgical and specialty hospitals that have no ER.
@@ -969,13 +1098,33 @@ function livePriceFor(proc, hospitalId, payerId){
   if(!byHosp) return null;
   const rec = byHosp[hospitalId];
   if(!rec) return null;
-  if(payerId === 'cash') return rec.cash ? Math.round(rec.cash) : null;
+  const cash = rec.cash != null ? Math.round(rec.cash) : null;
+  if(payerId === 'cash') return cash;
   const negotiated = (rec.payers || {})[payerId];
-  if(negotiated) return Math.round(negotiated);
-  return rec.cash ? Math.round(rec.cash) : null;   // out of network -> cash price
+  if(negotiated != null) return Math.round(negotiated);
+  return cash;                       // out of network -> cash price applies
 }
 
 // ---- Screen 3: results ----
+let loadedRegion = null;
+
+async function loadRegionForSearch(){
+  if(!MANIFEST) await loadManifest();
+  if(!MANIFEST) return;                        // no data published yet
+  const region = regionForZip(state.zip, state.zipState);
+  state.regionName = region;
+  if(!region){
+    // We have data, just not for this area. Say so instead of showing
+    // placeholder prices as though they were real.
+    LIVE = null;
+    loadedRegion = null;
+    return;
+  }
+  if(region === loadedRegion) return;          // already loaded
+  const ok = await loadLiveData(region);
+  loadedRegion = ok ? region : null;
+}
+
 function haversineMiles(lat1, lng1, lat2, lng2){
   const toRad = d => d * Math.PI / 180;
   const R = 3958.8;
@@ -1028,6 +1177,63 @@ function ageText(iso){
   return `${Math.round(d/30)} months ago`;
 }
 
+function priceChange(proc, hospitalId){
+  const byHosp = LIVE && LIVE.prices[proc.id];
+  const rec = byHosp && byHosp[hospitalId];
+  if(!rec || rec.prev == null || rec.cash == null) return null;
+  const pct = ((rec.cash - rec.prev) / rec.prev) * 100;
+  if(Math.abs(pct) < 0.5) return null;
+  return { pct, prev: rec.prev, since: rec.since };
+}
+
+function monthYear(iso){
+  if(!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  if(isNaN(d)) return '';
+  return d.toLocaleDateString(undefined, { month:'short', year:'numeric' });
+}
+
+function renderDrugs(filter){
+  const el = document.getElementById('drugList');
+  const drugs = (LIVE && LIVE.drugs) || {};
+  const keys = Object.keys(drugs);
+  if(!keys.length){
+    el.innerHTML = `<div class="cov-sub">No drug pricing collected yet for this
+      area. It appears after the next data refresh.</div>`;
+    return;
+  }
+  const q = (filter || '').trim().toLowerCase();
+  const rows = keys
+    .filter(k => !q || k.toLowerCase().includes(q) ||
+                 (drugs[k].description || '').toLowerCase().includes(q))
+    .sort((a,b) => (drugs[b].spread || 1) - (drugs[a].spread || 1))
+    .slice(0, 60);
+
+  if(!rows.length){ el.innerHTML = `<div class="cov-sub">No match.</div>`; return; }
+
+  el.innerHTML = rows.map(code => {
+    const d = drugs[code];
+    const prices = Object.entries(d.by_hospital || {})
+      .sort((a,b) => a[1] - b[1]);
+    const lo = prices[0], hi = prices[prices.length-1];
+    return `<div class="card" style="cursor:default">
+      <div class="card-top">
+        <div class="card-name">${esc(d.description || code)}</div>
+        ${d.spread && d.spread >= 1.5
+          ? `<span class="tier-tag badge-spread">${d.spread}× spread</span>` : ''}
+      </div>
+      <div class="card-meta">${esc(code)} &middot; ${prices.length} hospitals</div>
+      <div class="detail-grid">
+        <div class="detail"><span class="dl">Lowest</span><span class="dv">
+          $${Math.round(lo[1]).toLocaleString()} —
+          ${esc((hospitalById[lo[0]]||{}).name || lo[0])}</span></div>
+        <div class="detail"><span class="dl">Highest</span><span class="dv">
+          $${Math.round(hi[1]).toLocaleString()} —
+          ${esc((hospitalById[hi[0]]||{}).name || hi[0])}</span></div>
+      </div></div>`;
+  }).join('');
+}
+
 function estimatorLink(h){
   // Prefer the price-transparency page the hospital itself publishes in its
   // cms-hpt.txt. Fall back to a search rather than inventing a URL.
@@ -1059,20 +1265,33 @@ function renderCoverage(rows){
   missing.forEach(({h, s}) => {
     const lab = STATUS_LABEL[s.status] || {t:s.status, c:"cov-neutral"};
     html += `<div class="cov-row">
-      <div class="cov-name">${h.name}</div>
+      <div class="cov-name">${esc(h.name)}</div>
       <div class="cov-line"><span class="cov-tag ${lab.c}">${lab.t}</span>
         <span class="cov-age">checked ${ageText(s.last_attempt)}</span></div>`;
     if(s.status === "ok" && s.last_success){
       html += `<div class="cov-age">data from ${ageText(s.last_success)}</div>`;
     }
     if(s.detail && s.status !== "exempt"){
-      html += `<div class="cov-detail">${s.detail}</div>`;
+      html += `<div class="cov-detail">${esc(s.detail)}</div>`;
     }
     if(s.consecutive_failures > 1){
       html += `<div class="cov-detail">failed ${s.consecutive_failures} checks in a row</div>`;
     }
     html += `</div>`;
   });
+
+  // How completely each hospital is actually complying, from data we collect
+  // while parsing. CMS requires 300 shoppable services with real dollar
+  // amounts; some publish far fewer, or answer with formulas instead.
+  const meta = (LIVE && LIVE.hospital_meta) || {};
+  const thin = rows.filter(r => meta[r.h.id] && !meta[r.h.id].meets_300);
+  if(thin.length){
+    html += `<div class="cov-row"><div class="cov-name">Limited disclosure</div>
+      <div class="cov-detail">${thin.length} hospital(s) here publish fewer than
+      the 300 shoppable services CMS requires:
+      ${esc(thin.map(r => `${r.h.name} (${meta[r.h.id].codes_with_cash})`)
+             .slice(0,4).join('; '))}</div></div>`;
+  }
 
   if(reportable.length){
     html += `<div class="cov-report">
@@ -1126,10 +1345,21 @@ function renderResults(){
 
   document.getElementById('settingNote').textContent = SETTING_NOTE[setting] || '';
 
+  const noCoverage = MANIFEST && !state.regionName;
+  const covEl = document.getElementById('coveragePanel');
+  if(noCoverage && covEl){
+    const regions = Object.values(MANIFEST)
+      .flatMap(m => m.states || []);
+    covEl.innerHTML = `<div class="cov-head">No data for ZIP ${esc(state.zip)} yet</div>
+      <div class="cov-sub">This tool currently covers
+      ${esc([...new Set(regions)].join(', ')) || 'a limited area'}. The prices below
+      are illustrative placeholders, not real hospital prices for your area.</div>`;
+  }
+
   const payerName = payerById[state.payerId].name;
   document.getElementById('costNote').innerHTML = state.payerId === 'cash'
     ? `<b>What you'd pay:</b> these are the hospital's cash prices — the facility charge for someone without insurance. <b>Doctors usually bill separately</b>, so a surgeon, anesthesiologist or radiologist fee is typically on top of the figure shown. Hospitals often discount cash prices further if you ask, and nonprofit hospitals must offer financial assistance if you qualify. For a full personalised total, ask the hospital for a "good faith estimate" — you're entitled to one.`
-    : `<b>What you'd pay:</b> these are the rates ${payerName} has negotiated for the facility — not your final bill. If you haven't met your deductible you may owe the full amount shown; after that you typically owe a percentage. <b>Doctors usually bill separately</b>, so surgeon and anesthesia fees are generally on top. Check your plan's deductible and coinsurance.`;
+    : `<b>What you'd pay:</b> these are the rates ${esc(payerName)} has negotiated for the facility — not your final bill. If you haven't met your deductible you may owe the full amount shown; after that you typically owe a percentage. <b>Doctors usually bill separately</b>, so surgeon and anesthesia fees are generally on top. Check your plan's deductible and coinsurance.`;
   document.getElementById('resultCount').textContent =
     `${validPrices.length} of ${hospitals.length} hospitals offer this · ${payerName} · near ZIP ${state.zip}`;
 
@@ -1147,11 +1377,52 @@ function renderResults(){
 
     let inner = `<div class="card-top"><div class="card-name">` +
                 `<span class="rank-badge" style="background:${tierColor[tier]}">${rank}</span>` +
-                `${h.name}</div>`;
+                `${esc(h.name)}</div>`;
     inner += price!=null
       ? `<div style="text-align:right;"><div class="card-price">$${price.toLocaleString()}</div><div class="price-label">${priceLabel}</div></div>`
       : `<div class="no-data">not offered here</div>`;
-    inner += `</div><div class="card-meta">${h.system} &middot; ${h.city}</div>`;
+    inner += `</div><div class="card-meta">${esc(h.system)} &middot; ${esc(h.city)}</div>`;
+
+    // The most actionable finding in this dataset: paying cash outright can
+    // cost LESS than using your insurance. Hospitals publish both numbers but
+    // never put them side by side.
+    if(LIVE && state.payerId !== 'cash'){
+      const byHosp = LIVE.prices[proc.id] || {};
+      const rec = byHosp[h.id];
+      if(rec && (rec.cash_wins || []).includes(state.payerId) && rec.cash){
+        const saving = price - rec.cash;
+        if(saving > 0){
+          inner += `<div class="cash-win">Paying cash here costs
+            <b>$${saving.toLocaleString()} less</b> than your plan's negotiated
+            rate ($${rec.cash.toLocaleString()} vs $${price.toLocaleString()}).
+            Ask about the cash price — but check first whether paying cash
+            counts toward your deductible.</div>`;
+        }
+      }
+    }
+
+    // The same system charging more at one of its own campuses is worth
+    // knowing — the care is usually equivalent and the drive often short.
+    if(LIVE){
+      const rec = (LIVE.prices[proc.id] || {})[h.id];
+      const sc = rec && rec.sys_cheaper;
+      if(sc && hospitalById[sc.at]){
+        inner += `<div class="sys-note">${esc(h.system || 'This system')} charges
+          <b>${sc.pct}% more</b> here than at its own
+          ${esc(hospitalById[sc.at].name)}.</div>`;
+      }
+    }
+
+    // Price movement since we last recorded a different figure. Hospitals
+    // don't publish this anywhere — it only exists because we keep history.
+    const chg = LIVE ? priceChange(proc, h.id) : null;
+    if(chg){
+      const up = chg.pct > 0;
+      inner += `<div class="chg ${up ? 'chg-up' : 'chg-down'}">` +
+        `${up ? '▲' : '▼'} ${Math.abs(chg.pct).toFixed(0)}% ` +
+        `${up ? 'higher' : 'lower'} than $${chg.prev.toLocaleString()}` +
+        `${chg.since ? ` in ${esc(monthYear(chg.since))}` : ''}</div>`;
+    }
     if(LIVE && ['hip-replacement','knee-replacement'].includes(proc.id)
        && price != null){
       inner += `<div class="shared-note">Hip and knee replacement share one
@@ -1162,7 +1433,7 @@ function renderResults(){
       const twins = identicalTo(proc, h.id);
       inner += `<div class="shared-note">System-wide price — this figure is ` +
         (twins.length
-          ? `identical to ${twins.join(" and ")}, so this hospital's network `
+          ? `identical to ${esc(twins.join(" and "))}, so this hospital's network `
           : `published for several facilities at once, so this hospital's network `) +
         `appears to set prices system-wide rather than per location.</div>`;
     }
@@ -1170,7 +1441,7 @@ function renderResults(){
     // network status
     if(state.payerId !== 'cash'){
       inner += inNetwork
-        ? `<div class="net-row in-net">✓ In network with ${payerName}</div>`
+        ? `<div class="net-row in-net">✓ In network with ${esc(payerName)}</div>`
         : `<div class="net-row out-net">✕ Out of network — you'd likely pay the full cash price</div>`;
     }
 
@@ -1207,7 +1478,17 @@ function renderResults(){
     inner += `</div>`;
 
     // badges
+    const liveRec = LIVE ? (LIVE.prices[proc.id] || {})[h.id] : null;
     inner += `<div class="badge-row">`;
+    if(liveRec && liveRec.spread >= 1.5){
+      inner += `<span class="tier-tag badge-spread" title="Insurers pay very
+        different amounts here for identical care">Insurers differ
+        ${liveRec.spread}×</span>`;
+    }
+    if(liveRec && liveRec.markup >= 2){
+      inner += `<span class="tier-tag badge-markup" title="The hospital's list
+        charge compared with its cash price">List charge ${liveRec.markup}× cash</span>`;
+    }
     if(price!=null) inner += `<span class="tier-tag tier-${tier}">${tier==='low'?'Lowest third':tier==='mid'?'Middle third':'Highest third'}</span>`;
     if(info.aid) inner += `<span class="tier-tag badge-aid">Financial aid available</span>`;
     inner += `</div>`;
@@ -1215,11 +1496,12 @@ function renderResults(){
     // The hospital's own estimator can price the whole encounter including
     // doctors' fees, which these published files can't. Link to their page
     // when they publish one; otherwise send the user to look it up.
-    const page = estimatorLink(h);
+    const page = safeUrl(estimatorLink(h));
     if(page){
-      inner += `<a class="est-link" href="${page}" target="_blank" rel="noopener"
+      inner += `<a class="est-link" href="${esc(page)}" target="_blank"
+                   rel="noopener noreferrer"
                    onclick="event.stopPropagation()">Get a personalised estimate
-                   from ${h.system || 'this hospital'} →</a>`;
+                   from ${esc(h.system || 'this hospital')} →</a>`;
     }
 
     card.innerHTML = inner;
@@ -1238,7 +1520,7 @@ function renderResults(){
       zIndexOffset: price != null ? 1000 - rank : 0,
     }).addTo(map);
     marker.bindPopup(
-      `<div class="popup-name"><span class="rank-badge" style="background:${tierColor[tier]}">${rank}</span>${h.name}</div>` +
+      `<div class="popup-name"><span class="rank-badge" style="background:${tierColor[tier]}">${rank}</span>${esc(h.name)}</div>` +
       `<div class="popup-price" style="color:${tierColor[tier]}">${price!=null?'$'+price.toLocaleString():'Not offered'}</div>` +
       `<div style="font-size:12px;color:#5C7371;margin-top:4px;">${distance.toFixed(1)} mi &middot; ~${driveMin} min drive</div>` +
       (info.stars!=null?`<div style="font-size:12px;color:#5C7371;">CMS rating ${info.stars}/5${info.erWait?` &middot; ER wait ${formatWait(info.erWait)}`:''}</div>`:'')
@@ -1251,16 +1533,17 @@ function renderResults(){
   zipMarker = L.marker([state.zipLat, state.zipLng], {
     icon: L.divIcon({
       className: '',
-      html: `<svg width="30" height="30" viewBox="0 0 30 30">
-               <circle cx="15" cy="15" r="13" fill="#fff" fill-opacity=".85"
-                       stroke="#C24A32" stroke-width="2"/>
-               <path d="M9 9 L21 21 M21 9 L9 21" stroke="#C24A32"
-                     stroke-width="3.2" stroke-linecap="round"/>
+      html: `<svg width="34" height="34" viewBox="0 0 34 34">
+               <circle cx="17" cy="17" r="15" fill="#fff"
+                       stroke="#C24A32" stroke-width="2.5"/>
+               <circle cx="17" cy="12.5" r="4.2" fill="#C24A32"/>
+               <path d="M8.6 26.2 C8.6 20.6 12.4 18 17 18
+                        C21.6 18 25.4 20.6 25.4 26.2 Z" fill="#C24A32"/>
              </svg>`,
-      iconSize: [30, 30], iconAnchor: [15, 15],
+      iconSize: [34, 34], iconAnchor: [17, 17],
     }),
     zIndexOffset: 2000,
-  }).addTo(map).bindPopup(`Your ZIP code: ${state.zip}`);
+  }).addTo(map).bindPopup(`You are here — ZIP ${esc(state.zip)}`);
 
   // Fit to the ZIP plus the hospitals actually shown, not every hospital.
   const shown = rows.filter(r => r.price != null).slice(0, 12);
