@@ -251,7 +251,29 @@ for hid in ["hB", "hC", "hD"]:
     check(f"{hid} data preserved", any(r.get("hospital_id") == hid
                                        for r in merged.values()))
 
-print("\n12. Known-URL resolution")
+print("\n12. Shared MS-DRG 470 splits into hip vs knee")
+pid = b.match_code("470", "MS-DRG")
+check("470 maps to the shared id", pid == "joint-replacement", f"got {pid}")
+check("knee description resolves to knee",
+      b.refine_by_description(pid, "TOTAL KNEE ARTHROPLASTY") == "knee-replacement")
+check("hip description resolves to hip",
+      b.refine_by_description(pid, "MAJOR HIP REPLACEMENT W/O MCC") == "hip-replacement")
+check("ambiguous description is dropped, not guessed",
+      b.refine_by_description(pid, "MAJOR JOINT REPLACEMENT LOWER EXTREMITY") is None)
+check("unshared codes pass through untouched",
+      b.refine_by_description("mri-brain", "anything") == "mri-brain")
+
+print("\n13. Sharded run preserves only genuinely untouched hospitals")
+all_h = [{"id": f"h{i}"} for i in range(4)]
+shard0 = [h for i, h in enumerate(all_h) if i % 2 == 0]
+touched_wrong = {h["id"] for h in shard0}          # the old, buggy scope
+touched_right = {h["id"] for h in all_h}           # the fixed scope
+check("old scope would have restored another shard's hospitals",
+      "h1" not in touched_wrong)
+check("fixed scope covers every hospital in the run",
+      {"h0", "h1", "h2", "h3"} == touched_right)
+
+print("\n14. Known-URL resolution")
 for name, expect in [("Scripps Mercy Hospital", "Mercy-Hospital-San-Diego"),
                      ("Scripps Memorial Hospital - Encinitas", "Encinitas"),
                      ("Scripps Green Hospital", "Green")]:

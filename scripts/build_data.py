@@ -158,7 +158,10 @@ TARGET_CODES = {
     ("CPT", "47562"): "gallbladder",
     ("CPT", "58571"): "hysterectomy",
     # inpatient stays
-    ("MS-DRG", "470"): "knee-replacement",
+    # MS-DRG 470 covers major hip AND knee joint replacement without
+    # complications — one code, two procedures. The description text is the
+    # only way to tell them apart, handled in match_code below.
+    ("MS-DRG", "470"): "joint-replacement",
     ("MS-DRG", "460"): "spinal-fusion",
     ("MS-DRG", "775"): "vaginal-delivery",
     ("MS-DRG", "786"): "cesarean",
@@ -858,6 +861,9 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
             continue
 
         desc = str(item.get("description", ""))[:120]
+        pid = refine_by_description(pid, desc)
+        if pid is None:
+            continue              # shared code, description didn't disambiguate
         charges = item.get("standard_charges") or []
         if isinstance(charges, dict):
             charges = [charges]
@@ -920,6 +926,26 @@ def norm_type(v: str) -> str:
 _CODE_INDEX: dict[str, list[tuple[str, str]]] = {}
 for (_t, _c), _pid in TARGET_CODES.items():
     _CODE_INDEX.setdefault(norm_code(_c), []).append((norm_type(_t), _pid))
+
+
+# Some codes cover more than one procedure and can only be separated by the
+# item description. Maps a procedure id to (keyword, resulting id) rules.
+DESCRIPTION_SPLITS = {
+    "joint-replacement": [
+        ("hip", "hip-replacement"),
+        ("knee", "knee-replacement"),
+    ],
+}
+
+
+def refine_by_description(pid: str, description: str) -> Optional[str]:
+    """Resolve a shared code using the row's description. None if ambiguous."""
+    rules = DESCRIPTION_SPLITS.get(pid)
+    if not rules:
+        return pid
+    d = (description or "").lower()
+    hits = [target for kw, target in rules if kw in d]
+    return hits[0] if len(hits) == 1 else None
 
 
 def match_code(code: str, ctype: str) -> Optional[str]:
@@ -1064,9 +1090,12 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             if not pid:
                 continue
 
+            resolved = refine_by_description(pid, row.get(desc_c) or "")
+            if resolved is None:
+                continue          # shared code, description didn't disambiguate
             base = {
                 "hospital_id": hospital_id,
-                "procedure": pid,
+                "procedure": resolved,
                 "cash": money(row.get(cash_c)),
                 "gross": money(row.get(gross_c)),
                 "min": money(row.get(min_c)),
@@ -1262,7 +1291,25 @@ def main():
                                    type_filter=not args.no_type_filter)
         if args.limit:
             hospitals = hospitals[: args.limit]
-        print(f"[registry] {len(hospitals)} hospitals")
+
+        # Carry forward work already done. Rebuilding from scratch would throw
+        # away every geocode and every discovered file URL, forcing a full
+        # re-geocode (and a fresh hammering of the Census API) on every run.
+        prior_reg = {h["id"]: h for h in load_json(reg_path, [])}
+        reused = 0
+        for h in hospitals:
+            old = prior_reg.get(h["id"])
+            if not old:
+                continue
+            if old.get("lat") is not None:
+                h["lat"], h["lng"] = old["lat"], old["lng"]
+                reused += 1
+            # Keep a discovered URL, but never override a hand-verified one.
+            if not h.get("mrf_url") and old.get("mrf_url"):
+                h["mrf_url"] = old["mrf_url"]
+                h["verified_source"] = old.get("verified_source", False)
+        print(f"[registry] {len(hospitals)} hospitals "
+              f"({reused} coordinates reused from previous run)")
         reg_path.write_text(json.dumps(hospitals, indent=1))
     else:
         hospitals = json.loads(reg_path.read_text())
@@ -1291,12 +1338,17 @@ def main():
         prev_prices = load_json(price_path, {})
         cooldowns = load_json(DATA / "host-cooldowns.json", {})
 
-        shard = [h for i, h in enumerate(hospitals) if i % args.shards == args.shard]
-
         only = [s.strip().lower() for s in args.only.split(",") if s.strip()]
+
+        # run_scope is every hospital this RUN covers across all shards. Used
+        # for preservation, so shard 0 doesn't restore stale records for a
+        # hospital shard 1 is refreshing right now.
+        run_scope = hospitals
         if only:
-            shard = [h for h in shard
-                     if any(o in h["id"].lower() or o in h["name"].lower() for o in only)]
+            run_scope = [h for h in run_scope
+                         if any(o in h["id"].lower() or o in h["name"].lower()
+                                for o in only)]
+        shard = [h for i, h in enumerate(run_scope) if i % args.shards == args.shard]
 
         print(f"[prices] shard {args.shard+1}/{args.shards}: {len(shard)} hospitals")
         all_rows: list[dict] = []
@@ -1479,7 +1531,7 @@ def main():
         # Anything collected on an earlier run for a hospital we did NOT touch
         # this time must survive. Without this, a targeted run (--only, or a
         # single shard) silently wipes every other hospital's prices.
-        touched = {h["id"] for h in shard}
+        touched = {h["id"] for h in run_scope}
         preserved = 0
         for key, rec in prev_prices.items():
             if rec.get("hospital_id") in touched:
@@ -1488,9 +1540,9 @@ def main():
                 merged[key] = rec
                 preserved += 1
         if preserved:
+            untouched = {r.get("hospital_id") for r in prev_prices.values()} - touched
             print(f"[prices] preserved {preserved} record(s) for "
-                  f"{len(set(r.get('hospital_id') for r in prev_prices.values())) - len(touched)} "
-                  f"hospital(s) not scanned in this run")
+                  f"{len(untouched)} hospital(s) outside this run")
 
         if args.shards > 1:
             price_path = DATA / f"{args.region}-prices-{args.shard}.json"
