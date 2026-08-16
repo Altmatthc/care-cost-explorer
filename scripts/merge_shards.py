@@ -128,10 +128,21 @@ def main():
 
     out = DATA / f"{args.region}.json"
     from datetime import date
+    # Carry each hospital's own price page through for the estimator link
+    reg = DATA / f"{args.region}-hospitals.json"
+    pages = {}
+    try:
+        for h in json.loads(reg.read_text()):
+            if h.get("price_page"):
+                pages[h["id"]] = h["price_page"]
+    except Exception:
+        pass
+
     out.write_text(json.dumps({"region": args.region,
                                "updated": date.today().isoformat(),
                                "prices": site,
-                               "status": status},
+                               "status": status,
+                               "price_pages": pages},
                               separators=(",", ":")))
     size_kb = out.stat().st_size / 1024
     print(f"wrote {out.name} ({size_kb:.0f} KB, {len(site)} procedures)")

@@ -460,6 +460,9 @@ def geocode(h: dict) -> bool:
 # ===========================================================================
 # STAGE 3 — PRICE FILES
 # ===========================================================================
+SOURCE_PAGES: dict[str, str] = {}     # domain -> hospital's price page
+
+
 def discover_mrf_candidates(domain: str) -> list[str]:
     """
     Collect EVERY price-file URL a system publishes in its /cms-hpt.txt.
@@ -476,8 +479,14 @@ def discover_mrf_candidates(domain: str) -> list[str]:
             if not r.ok or not r.text.strip():
                 continue
             for line in r.text.splitlines():
+                low = line.lower()
+                # The spec also carries the human-facing price page.
+                if "source-page-url" in low and ":" in line:
+                    page = line.split(":", 1)[1].strip()
+                    if page.startswith("http"):
+                        SOURCE_PAGES.setdefault(domain, page)
                 # "mrf-url: https://..." form
-                if "mrf-url" in line.lower() and ":" in line:
+                if "mrf-url" in low and ":" in line:
                     cand = line.split(":", 1)[1].strip()
                     if cand.startswith("http"):
                         urls.append(cand)
@@ -1575,6 +1584,8 @@ def main():
                     h["mrf_url"] = url
                     if url:
                         h["verified_source"] = True
+                    if SOURCE_PAGES.get(domain):
+                        h["price_page"] = SOURCE_PAGES[domain]
 
             if not url:
                 stats["no_mrf"] += 1
