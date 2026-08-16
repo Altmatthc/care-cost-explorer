@@ -1,0 +1,57 @@
+COMPLETE CURRENT PROJECT — everything, current as of now.
+
+HOW TO USE THIS
+
+  1. Unzip it.
+  2. Open the unzipped "care-cost-explorer" folder.
+  3. Select ALL its contents (Ctrl+A) and copy (Ctrl+C).
+  4. Open C:\Users\cordl\Documents\care-cost-explorer
+  5. Paste (Ctrl+V). Choose "Replace the files in the destination".
+  6. Delete this COPY-THESE-OVER.txt from your project folder afterwards.
+
+  If .github doesn't appear in the unzipped folder, Explorer is hiding it:
+  View menu -> tick "Hidden items". Same for .gitignore.
+
+  Your .venv folder and data/ files are NOT in here and won't be touched.
+
+THEN PUBLISH IT
+
+  In PowerShell, from C:\Users\cordl\Documents\care-cost-explorer:
+
+    git add .
+    git commit -m "Local tooling, licensing, merge fix, validation"
+    git push
+
+WHAT THIS CATCHES YOU UP ON
+
+  Your repo was missing several rounds. Most important:
+
+  - scripts/merge_shards.py    Fixes the UnboundLocalError that broke your
+                               publish step. This is why San Diego data never
+                               got committed.
+  - scripts/validate_data.py   NEW. Flags implausible prices before publishing.
+  - scripts/setup_local.py     NEW. Already run successfully on your machine.
+  - scripts/run.py             NEW. The command runner.
+  - LICENSING.md               NEW. PolyForm Noncommercial + CC BY-NC-SA.
+  - DATA-LICENSE.md            NEW.
+  - LOCAL-SETUP.md             NEW.
+  - index.html                 Person icon, numbered pins, map sizing fix,
+                               estimator links, price-change badges,
+                               cash-beats-insurance alerts, drug screen,
+                               security escaping, CSP.
+  - build_data.py              Parallel downloads, conditional fetching,
+                               per-state regions, drug capture, coverage
+                               counting, checkpointing.
+  - workflows                  Shell-injection fixes, ijson, incremental mode.
+
+STILL TO DO SEPARATELY — the LICENSE file
+
+  PolyForm isn't in GitHub's licence picker. Copy the official text from
+  https://polyformproject.org/licenses/noncommercial/1.0.0/ into a file named
+  LICENSE at the top level, and add your name where the licensor is named.
+
+AFTER PUSHING, TRY THIS
+
+    python scripts/run.py serve      -> then open http://localhost:8000
+    python scripts/run.py refresh    -> update San Diego locally
+    python scripts/run.py check      -> validate the prices

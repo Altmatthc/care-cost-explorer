@@ -172,8 +172,34 @@ Raise the shard count and re-run.
 
 ---
 
-## License
+## Running locally
 
-Code: MIT. Underlying government data is public domain. CPT codes are
-copyrighted by the American Medical Association; this project stores only
-code numbers as published in hospitals' own public files.
+Running on your own machine removes GitHub's 6-hour job limit, so a whole
+state runs in one go without sharding — and debugging is far faster.
+
+    python3 scripts/setup_local.py     # one-time
+    python3 scripts/run.py refresh     # update San Diego
+    python3 scripts/run.py serve       # preview at localhost:8000
+
+See [LOCAL-SETUP.md](LOCAL-SETUP.md) for full instructions on macOS and
+Windows, pulling a whole state, and publishing what you collect.
+
+## Licence
+
+**Source-available, non-commercial.**
+
+- **Code** — [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0/).
+  Free for personal, research, academic, journalistic, charitable and
+  government use. Commercial use requires a separate licence.
+- **Data** (`data/`) — CC BY-NC-SA 4.0. Attribution, non-commercial,
+  share-alike.
+
+See [LICENSING.md](LICENSING.md) for what this does and doesn't protect, the
+trade-offs of a non-OSI licence, and how to obtain commercial terms.
+
+Worth stating plainly: no licence protects the *idea*, and US copyright
+doesn't cover facts, so the prices themselves can't be locked up — they're
+federally mandated public disclosures. What genuinely can't be copied is the
+price history: no archive of past hospital files exists anywhere, so a
+competitor starting today cannot obtain what this project recorded last
+quarter.

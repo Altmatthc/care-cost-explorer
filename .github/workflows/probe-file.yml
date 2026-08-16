@@ -32,13 +32,19 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install requests ijson
+      # Inputs via env, never interpolated into the shell.
       - name: Inspect file
+        env:
+          URL: ${{ github.event.inputs.url }}
+          CODE: ${{ github.event.inputs.code }}
         run: |
-          if [ -n "${{ github.event.inputs.code }}" ]; then
-            python scripts/build_data.py --stage verify \
-              --url "${{ github.event.inputs.url }}" \
-              --code "${{ github.event.inputs.code }}"
+          set -euo pipefail
+          case "$URL" in
+            https://*) ;;
+            *) echo "URL must start with https://" >&2; exit 1 ;;
+          esac
+          if [ -n "${CODE:-}" ]; then
+            python scripts/build_data.py --stage verify --url "$URL" --code "$CODE"
           else
-            python scripts/build_data.py --stage probe \
-              --url "${{ github.event.inputs.url }}"
+            python scripts/build_data.py --stage probe --url "$URL"
           fi

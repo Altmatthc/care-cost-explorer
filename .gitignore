@@ -1,0 +1,14 @@
+# Local environment — never commit this
+.venv/
+venv/
+env/
+
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.idea/
+.vscode/
+
+# Sharded intermediates; merge_shards consolidates then removes them
+data/*-prices-*.json

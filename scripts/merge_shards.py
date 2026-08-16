@@ -332,7 +332,6 @@ def main():
     site = {p: dict(sorted(site[p].items())) for p in sorted(site)}
 
     out = DATA / f"{args.region}.json"
-    from datetime import date
     # Carry each hospital's own price page through for the estimator link
     reg = DATA / f"{args.region}-hospitals.json"
     pages = {}
@@ -372,15 +371,17 @@ def main():
         except Exception:
             pass
 
-    if old_hash == new_hash:
+    wrote_file = old_hash != new_hash
+    if not wrote_file:
         print(f"{out.name}: prices unchanged since last refresh, leaving file "
               f"untouched (no commit, no history growth)")
     else:
         payload["updated"] = date.today().isoformat()
         payload["content_hash"] = new_hash
         out.write_text(json.dumps(payload, separators=(",", ":"), sort_keys=True))
-    size_kb = out.stat().st_size / 1024
-    print(f"wrote {out.name} ({size_kb:.0f} KB, {len(site)} procedures)")
+    if wrote_file:
+        size_kb = out.stat().st_size / 1024
+        print(f"wrote {out.name} ({size_kb:.0f} KB, {len(site)} procedures)")
 
     # ------------------------------------------------------------------
     # Region manifest. The site reads this first to decide WHICH data file
