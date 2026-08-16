@@ -1,0 +1,34 @@
+name: Probe a price file
+
+# Diagnostic helper. Inspects ONE hospital's price file and prints its column
+# structure and sample rows, without downloading the whole thing.
+#
+# Use this when a hospital reports "0 matching rows" — it finishes in under a
+# minute instead of waiting through a full pipeline run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Direct URL to the hospital's price file"
+        required: true
+        default: "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv"
+      rows:
+        description: "How many sample rows to print"
+        required: false
+        default: "30"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Inspect file
+        run: |
+          python scripts/build_data.py --stage probe \
+            --url "${{ github.event.inputs.url }}"
