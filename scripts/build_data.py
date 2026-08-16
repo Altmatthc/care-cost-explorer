@@ -501,6 +501,59 @@ def pick_matching_file(hospital_name: str, domain: str,
     return None
 
 
+# A real code column is exactly "code", "code|1", "code_1" etc. Matching
+# loosely on the substring "code" previously caused the parser to mistake a
+# hospital's legal attestation paragraph (which contains "encoded") for the
+# column header row.
+CODE_COL_RE = re.compile(r"^code\s*[|_]?\s*\d*$")
+CHARGE_HINTS = ("standard_charge", "gross_charge", "discounted_cash",
+                "cash_price", "negotiated", "payer_name")
+
+
+def looks_like_header(cells: list[str]) -> bool:
+    """
+    CMS v2/v3 files begin with two metadata rows before the real header.
+    Identify the header by requiring a genuine code column, plus either a
+    description column or a recognizable charge column. Long prose cells are
+    ignored so attestation text can't masquerade as a header.
+    """
+    cl = [c.strip().lower() for c in cells if len(c.strip()) < 80]
+    if not cl:
+        return False
+    has_code = any(CODE_COL_RE.match(c) for c in cl)
+    has_desc = any(c == "description" for c in cl)
+    has_charge = any(any(h in c for h in CHARGE_HINTS) for c in cl)
+    return has_code and (has_desc or has_charge)
+
+
+def stream_rows(url: str) -> Iterator[dict]:
+    """
+    Stream a CSV price file without loading it into memory. These run
+    30MB-1GB; loading one whole would kill the job.
+    """
+    with requests.get(url, stream=True, headers=UA, timeout=300) as resp:
+        resp.raise_for_status()
+        lines = (l.decode("utf-8", "replace") for l in resp.iter_lines() if l)
+        header = None
+        preamble = []
+        for row in csv.reader(lines):
+            if header is None:
+                if looks_like_header(row):
+                    header = [c.strip().lower() for c in row]
+                else:
+                    preamble.append(row)
+                    if len(preamble) > 25:
+                        widest = max(preamble, key=len)
+                        if len(widest) > 3:
+                            header = [c.strip().lower() for c in widest]
+                            print(f"      (header not identified; falling back "
+                                  f"to widest row, {len(header)} columns)")
+                        else:
+                            return
+                continue
+            yield dict(zip(header, row))
+
+
 # ---------------------------------------------------------------------------
 # FILE IDENTITY VERIFICATION
 # cms-hpt.txt discovery returns whichever file a system happens to list first.
@@ -535,8 +588,13 @@ def names_match(expected: str, actual: str, threshold: float = 0.6) -> bool:
     a, b = name_tokens(expected), name_tokens(actual)
     if not a or not b:
         return True          # nothing to compare on; don't block
-    overlap = len(a & b) / len(a)
-    return overlap >= threshold
+    shared = a & b
+    # Compare in both directions. A system may name its file more briefly than
+    # CMS names the facility ("San Diego Medical Center" vs "Kaiser Foundation
+    # Hospital - San Diego"), which a one-directional check would reject.
+    # Taking the better of the two still rejects genuinely different
+    # facilities, since those share no distinctive tokens at all.
+    return max(len(shared) / len(a), len(shared) / len(b)) >= threshold
 
 
 def read_identity(url: str) -> dict:
@@ -1064,6 +1122,20 @@ def main():
         all_rows, stats = [], {"found": 0, "no_mrf": 0, "error": 0, "wrong_file": 0}
         url_users: dict[str, list[str]] = {}
         cache: dict[str, list[dict]] = {}
+
+        # Some files legitimately cover several licensed locations (a
+        # children's hospital operating units inside other hospitals, for
+        # example). When a file names multiple locations, keep only the rows
+        # belonging to the hospital we asked about.
+        def filter_to_location(rows: list[dict], hospital_name: str) -> list[dict]:
+            locs = {r.get("location") for r in rows if r.get("location")}
+            if len(locs) <= 1:
+                return rows
+            keep = [r for r in rows if names_match(hospital_name, r.get("location", ""))]
+            print(f"      file covers {len(locs)} locations; "
+                  f"kept {len(keep)}/{len(rows)} rows for this hospital")
+            return keep if keep else rows
+
         for h in shard:
             url = h.get("mrf_url")
             if not url:
@@ -1112,19 +1184,6 @@ def main():
             except Exception as e:
                 stats["error"] += 1
                 print(f"    ! {h['name']}: {e}")
-
-        # Some files legitimately cover several licensed locations (a
-        # children's hospital operating units inside other hospitals, for
-        # example). When a file names multiple locations, keep only the rows
-        # belonging to the hospital we asked about.
-        def filter_to_location(rows: list[dict], hospital_name: str) -> list[dict]:
-            locs = {r.get("location") for r in rows if r.get("location")}
-            if len(locs) <= 1:
-                return rows
-            keep = [r for r in rows if names_match(hospital_name, r.get("location", ""))]
-            print(f"      file covers {len(locs)} locations; "
-                  f"kept {len(keep)}/{len(rows)} rows for this hospital")
-            return keep if keep else rows
 
         # Flag any file serving more than one facility. Those prices are
         # system-wide, not specific to the hospital, and the site must say so
