@@ -7,11 +7,14 @@ on:
   workflow_dispatch:          # a "Run workflow" button appears in the Actions tab
     inputs:
       region:
-        description: "Which region to refresh"
+        description: "Region to refresh (a metro, a state code like ca/tx/ny, or california)"
         required: true
         default: san-diego
-        type: choice
-        options: [san-diego, california, us]
+        type: string
+      workers:
+        description: "Concurrent downloads per shard (one per host). 4-8 is sensible."
+        required: false
+        default: "4"
       shards:
         description: "Split across N parallel jobs (raise for bigger regions)"
         required: false
@@ -48,9 +51,21 @@ jobs:
       - uses: actions/checkout@v4
 
       - id: cfg
+        env:
+          IN_REGION: ${{ github.event.inputs.region }}
+          IN_SHARDS: ${{ github.event.inputs.shards }}
         run: |
-          REGION="${{ github.event.inputs.region || 'san-diego' }}"
-          SHARDS="${{ github.event.inputs.shards || '1' }}"
+          set -euo pipefail
+          REGION="${IN_REGION:-san-diego}"
+          SHARDS="${IN_SHARDS:-1}"
+          # Constrain both to safe shapes before they reach anything else.
+          case "$REGION" in
+            *[!a-z0-9-]*) echo "Invalid region: $REGION" >&2; exit 1 ;;
+          esac
+          case "$SHARDS" in
+            ''|*[!0-9]*) echo "Invalid shards: $SHARDS" >&2; exit 1 ;;
+          esac
+          [ "$SHARDS" -ge 1 ] && [ "$SHARDS" -le 64 ] || { echo "shards out of range" >&2; exit 1; }
           echo "region=$REGION" >> $GITHUB_OUTPUT
           echo "shards=$SHARDS" >> $GITHUB_OUTPUT
           echo "matrix=$(python3 -c "import json;print(json.dumps(list(range($SHARDS))))")" >> $GITHUB_OUTPUT
@@ -106,22 +121,32 @@ jobs:
           git checkout HEAD -- data/ 2>/dev/null || true
           ls -la data/ || true
 
+      # Workflow inputs are passed as ENVIRONMENT VARIABLES, never interpolated
+      # into the shell. GitHub expands ${{ }} as raw text before bash runs, so
+      # inline interpolation lets any input string execute commands on the
+      # runner. `eval` made that worse and is gone.
       - name: Parse price files
+        env:
+          REGION: ${{ needs.registry.outputs.region }}
+          SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ needs.registry.outputs.shards }}
+          MODE: ${{ github.event.inputs.mode }}
+          ONLY: ${{ github.event.inputs.only }}
+          WORKERS: ${{ github.event.inputs.workers }}
         run: |
-          EXTRA=""
-          if [ "${{ github.event.inputs.mode }}" = "full" ]; then
-            EXTRA="--refresh-all"
-          fi
-          if [ -n "${{ github.event.inputs.only }}" ]; then
-            EXTRA="$EXTRA --only '${{ github.event.inputs.only }}'"
-          fi
-          eval python scripts/build_data.py \
-            --region ${{ needs.registry.outputs.region }} \
-            --stage prices \
-            --shard ${{ matrix.shard }} \
-            --shards ${{ needs.registry.outputs.shards }} \
-            --max-age 30 \
-            --cooldown-days 1 $EXTRA
+          set -euo pipefail
+          args=(
+            --region "$REGION"
+            --stage prices
+            --shard "$SHARD"
+            --shards "$SHARDS"
+            --max-age 30
+            --cooldown-days 1
+            --workers "${WORKERS:-4}"
+          )
+          [ "${MODE:-}" = "full" ] && args+=(--refresh-all)
+          [ -n "${ONLY:-}" ] && args+=(--only "$ONLY")
+          python scripts/build_data.py "${args[@]}"
 
       # Upload whatever was collected even on failure or cancellation — the
       # pipeline checkpoints after every hospital, so a partial run still
@@ -161,6 +186,14 @@ jobs:
           find incoming -name '*-status.json'    -exec cp {} data/ \;
           find incoming -name 'host-cooldowns.json' -exec cp {} data/ \;
           python scripts/merge_shards.py --region ${{ needs.registry.outputs.region }}
+
+      # Validate before committing. A wrong number that looks plausible is the
+      # failure mode that matters, and it won't announce itself.
+      - name: Validate published data
+        continue-on-error: true
+        env:
+          REGION: ${{ needs.registry.outputs.region }}
+        run: python scripts/validate_data.py --region "$REGION"
 
       - name: Commit refreshed data
         run: |
