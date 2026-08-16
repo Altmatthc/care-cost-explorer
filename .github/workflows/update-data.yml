@@ -51,6 +51,9 @@ jobs:
 
       - run: pip install requests ijson
 
+      - name: Smoke test the pipeline
+        run: python scripts/smoke_test.py
+
       - name: Build registry from CMS
         run: python scripts/build_data.py --region ${{ steps.cfg.outputs.region }} --stage registry
 
