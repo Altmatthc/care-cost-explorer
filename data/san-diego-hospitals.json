@@ -13,7 +13,7 @@
   "type": "Acute Care Hospitals",
   "stars": 3,
   "hasER": true,
-  "website": "",
+  "domain": "pvhospital.org",
   "lat": 32.68613,
   "lng": -117.08359,
   "mrf_url": null
@@ -32,7 +32,7 @@
   "type": "Acute Care Hospitals",
   "stars": 5,
   "hasER": true,
-  "website": "",
+  "domain": "health.ucsd.edu",
   "lat": 32.75381,
   "lng": -117.16555,
   "mrf_url": null
@@ -51,7 +51,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": null,
   "lat": 32.77915,
   "lng": -117.00847,
   "mrf_url": null
@@ -70,7 +70,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "scripps.org",
   "lat": 32.7513,
   "lng": -117.16107,
   "mrf_url": null
@@ -89,7 +89,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "sharp.com",
   "lat": 32.8002,
   "lng": -117.15528,
   "mrf_url": null
@@ -108,7 +108,7 @@
   "type": "Acute Care Hospitals",
   "stars": 3,
   "hasER": true,
-  "website": "",
+  "domain": "palomarhealth.org",
   "lat": 33.12625,
   "lng": -117.07592,
   "mrf_url": null
@@ -127,7 +127,7 @@
   "type": "Acute Care Hospitals",
   "stars": 1,
   "hasER": true,
-  "website": "",
+  "domain": "tricitymed.org",
   "lat": null,
   "lng": null,
   "mrf_url": null
@@ -146,7 +146,7 @@
   "type": "Acute Care - Department of Defense",
   "stars": null,
   "hasER": true,
-  "website": "",
+  "domain": null,
   "lat": null,
   "lng": null,
   "mrf_url": null
@@ -165,7 +165,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "sharp.com",
   "lat": 32.61748,
   "lng": -117.02221,
   "mrf_url": null
@@ -184,7 +184,7 @@
   "type": "Acute Care - Department of Defense",
   "stars": null,
   "hasER": true,
-  "website": "",
+  "domain": null,
   "lat": 32.7246,
   "lng": -117.14463,
   "mrf_url": null
@@ -203,7 +203,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "sharp.com",
   "lat": 32.69426,
   "lng": -117.16804,
   "mrf_url": null
@@ -222,10 +222,10 @@
   "type": "Acute Care Hospitals",
   "stars": 5,
   "hasER": true,
-  "website": "",
+  "domain": "scripps.org",
   "lat": 32.88506,
   "lng": -117.22268,
-  "mrf_url": null
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv"
  },
  {
   "id": "ccn-050424",
@@ -241,10 +241,10 @@
   "type": "Acute Care Hospitals",
   "stars": 5,
   "hasER": false,
-  "website": "",
+  "domain": "scripps.org",
   "lat": 32.89757,
   "lng": -117.24188,
-  "mrf_url": null
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv"
  },
  {
   "id": "ccn-050503",
@@ -260,7 +260,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "scripps.org",
   "lat": 33.03629,
   "lng": -117.28537,
   "mrf_url": null
@@ -279,7 +279,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "healthy.kaiserpermanente.org",
   "lat": 32.79292,
   "lng": -117.09543,
   "mrf_url": null
@@ -298,7 +298,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "palomarhealth.org",
   "lat": 32.996,
   "lng": -117.05786,
   "mrf_url": null
@@ -317,7 +317,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "website": "",
+  "domain": "healthy.kaiserpermanente.org",
   "lat": 33.12896,
   "lng": -117.16792,
   "mrf_url": null
@@ -336,7 +336,7 @@
   "type": "Acute Care - Veterans Administration",
   "stars": 5,
   "hasER": true,
-  "website": "",
+  "domain": null,
   "lat": null,
   "lng": null,
   "mrf_url": null
@@ -355,7 +355,7 @@
   "type": "Childrens",
   "stars": null,
   "hasER": false,
-  "website": "",
+  "domain": "rchsd.org",
   "lat": 32.79866,
   "lng": -117.15086,
   "mrf_url": null
