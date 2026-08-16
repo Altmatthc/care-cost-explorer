@@ -181,6 +181,7 @@ UA = {"User-Agent": "care-cost-explorer/1.0 (public price transparency tool)"}
 DOMAIN_HINTS = [
     ("scripps",              "scripps.org"),
     ("sharp",                "sharp.com"),
+    ("grossmont",            "sharp.com"),
     ("uc san diego",         "health.ucsd.edu"),
     ("ucsd",                 "health.ucsd.edu"),
     ("jacobs medical",       "health.ucsd.edu"),
@@ -428,91 +429,76 @@ def geocode(h: dict) -> bool:
 # ===========================================================================
 # STAGE 3 — PRICE FILES
 # ===========================================================================
-def discover_mrf(domain: str) -> Optional[str]:
+def discover_mrf_candidates(domain: str) -> list[str]:
     """
-    Locate a hospital's price file via /cms-hpt.txt, which CMS has required
-    in the website root since the CY2024 rule. Format is key: value lines
-    including mrf-url.
+    Collect EVERY price-file URL a system publishes in its /cms-hpt.txt.
+
+    A multi-hospital system lists one file per facility. Previously we took
+    whichever appeared first, which is how San Diego Kaiser ended up reading a
+    Northern California file. Returning all of them lets the caller verify
+    each and choose the one that actually belongs to the hospital.
     """
+    urls: list[str] = []
     for base in (f"https://{domain}", f"https://www.{domain}"):
         try:
-            r = requests.get(f"{base}/cms-hpt.txt", headers=UA, timeout=15)
+            r = requests.get(f"{base}/cms-hpt.txt", headers=UA, timeout=20)
             if not r.ok or not r.text.strip():
                 continue
             for line in r.text.splitlines():
-                if "mrf-url" in line.lower():
-                    url = line.split(":", 1)[1].strip() if ":" in line else ""
-                    if url.startswith("http"):
-                        return url
+                # "mrf-url: https://..." form
+                if "mrf-url" in line.lower() and ":" in line:
+                    cand = line.split(":", 1)[1].strip()
+                    if cand.startswith("http"):
+                        urls.append(cand)
+                # pipe-delimited form
                 for part in line.split("|"):
                     part = part.strip()
                     if part.startswith("http") and re.search(r"\.(csv|json)", part, re.I):
-                        return part
+                        urls.append(part)
+            if urls:
+                break
         except requests.RequestException:
             continue
+    # de-duplicate, preserving order
+    seen, out = set(), []
+    for u in urls:
+        if u not in seen:
+            seen.add(u)
+            out.append(u)
+    return out
+
+
+def discover_mrf(domain: str) -> Optional[str]:
+    """Backwards-compatible single-result helper."""
+    c = discover_mrf_candidates(domain)
+    return c[0] if c else None
+
+
+def pick_matching_file(hospital_name: str, domain: str,
+                       verbose: bool = True) -> Optional[str]:
+    """
+    From everything a system publishes, return the file that identifies itself
+    as this hospital. Returns None rather than guessing.
+    """
+    cands = discover_mrf_candidates(domain)
+    if not cands:
+        return None
+    if verbose:
+        print(f"      {len(cands)} file(s) published by {domain}")
+
+    # Cheap pass first: does the filename itself name the hospital?
+    ranked = sorted(cands, key=lambda u: not names_match(hospital_name, u.split("/")[-1]))
+
+    for i, url in enumerate(ranked[:12]):     # cap the work on huge systems
+        ok, why = verify_file_belongs(hospital_name, url)
+        if ok:
+            if verbose:
+                print(f"      selected {url.split('/')[-1][:70]} ({why})")
+            return url
+    if verbose:
+        print(f"      none of {len(cands)} published files identify as "
+              f"'{hospital_name}'")
     return None
-
-
-# A real code column is exactly "code", "code|1", "code_1" etc. Matching
-# loosely on the substring "code" is what previously caused the parser to
-# mistake a hospital's legal attestation paragraph (which contains the word
-# "encoded") for the column header row.
-CODE_COL_RE = re.compile(r"^code\s*[|_]?\s*\d*$")
-CHARGE_HINTS = ("standard_charge", "gross_charge", "discounted_cash",
-                "cash_price", "negotiated", "payer_name")
-
-
-def looks_like_header(cells: list[str]) -> bool:
-    """
-    CMS v2/v3 files begin with two metadata rows before the real header.
-    Identify the header by requiring a genuine code column, plus either a
-    description column or a recognizable charge column. Long prose cells are
-    ignored so attestation text can't masquerade as a header.
-    """
-    cl = [c.strip().lower() for c in cells if len(c.strip()) < 80]
-    if not cl:
-        return False
-    has_code = any(CODE_COL_RE.match(c) for c in cl)
-    has_desc = any(c == "description" for c in cl)
-    has_charge = any(any(h in c for h in CHARGE_HINTS) for c in cl)
-    return has_code and (has_desc or has_charge)
-
-
-def stream_rows(url: str) -> Iterator[dict]:
-    """
-    Stream a price file without loading it into memory. These run 30MB-1GB;
-    loading one whole would kill the job.
-    """
-    with requests.get(url, stream=True, headers=UA, timeout=180) as resp:
-        resp.raise_for_status()
-        if url.lower().endswith(".json"):
-            for raw in resp.iter_lines(decode_unicode=True):
-                if raw:
-                    yield {"_raw_json_line": raw}
-            return
-
-        lines = (l.decode("utf-8", "replace") for l in resp.iter_lines() if l)
-        header = None
-        preamble = []
-        for row in csv.reader(lines):
-            if header is None:
-                if looks_like_header(row):
-                    header = [c.strip().lower() for c in row]
-                else:
-                    preamble.append(row)
-                    if len(preamble) > 25:
-                        # Fall back: use the widest row seen, which in practice
-                        # is the header, rather than giving up entirely.
-                        widest = max(preamble, key=len)
-                        if len(widest) > 3:
-                            header = [c.strip().lower() for c in widest]
-                            print(f"      (header not identified; falling back "
-                                  f"to widest row, {len(header)} columns)")
-                        else:
-                            return
-                continue
-            # Rows shorter than the header are padded; longer ones truncated.
-            yield dict(zip(header, row))
 
 
 # ---------------------------------------------------------------------------
@@ -852,7 +838,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     found: list[dict] = []
     keys = None
     code_pairs: list[tuple[str, Optional[str]]] = []
-    cash_c = gross_c = payer_c = rate_c = desc_c = None
+    cash_c = gross_c = payer_c = rate_c = desc_c = loc_c = None
     median_c = min_c = max_c = None
     wide_payers: dict[str, dict] = {}
     scanned = 0
@@ -878,6 +864,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             min_c = col(keys, "standard_charge|min", "_min", "minimum")
             max_c = col(keys, "standard_charge|max", "_max", "maximum")
             desc_c = col(keys, "description")
+            loc_c = col(keys, "location_name", "hospital_location", "location")
             wide_payers = find_wide_payers(keys)
             if verbose:
                 print(f"      columns: {len(keys)} | code slots: "
@@ -910,6 +897,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
                 "gross": money(row.get(gross_c)),
                 "min": money(row.get(min_c)),
                 "max": money(row.get(max_c)),
+                "location": (row.get(loc_c) or "").strip() if loc_c else "",
                 "description": (row.get(desc_c) or "")[:120],
             }
 
@@ -1084,8 +1072,10 @@ def main():
                     _, domain = resolve_source(h.get("name", ""))
                 if domain:
                     print(f"    ... discovering price file for {h['name']} via {domain}")
-                    url = discover_mrf(domain)
+                    url = pick_matching_file(h["name"], domain)
                     h["mrf_url"] = url
+                    if url:
+                        h["verified_source"] = True   # picker already verified it
             if not url:
                 stats["no_mrf"] += 1
                 print(f"    - {h['name']}: no price file found")
@@ -1108,18 +1098,33 @@ def main():
             try:
                 if url in cache:
                     # Same file already parsed for another facility in this system.
-                    rows = [{**r, "hospital_id": h["id"]} for r in cache[url]]
+                    rows = filter_to_location(
+                        [{**r, "hospital_id": h["id"]} for r in cache[url]], h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} rows "
                           f"(reused, same file as {url_users[url][0]})")
                 else:
                     rows = extract_prices(h["id"], url)
                     cache[url] = rows
+                    rows = filter_to_location(rows, h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} matching rows")
                 all_rows.extend(rows)
                 stats["found"] += 1
             except Exception as e:
                 stats["error"] += 1
                 print(f"    ! {h['name']}: {e}")
+
+        # Some files legitimately cover several licensed locations (a
+        # children's hospital operating units inside other hospitals, for
+        # example). When a file names multiple locations, keep only the rows
+        # belonging to the hospital we asked about.
+        def filter_to_location(rows: list[dict], hospital_name: str) -> list[dict]:
+            locs = {r.get("location") for r in rows if r.get("location")}
+            if len(locs) <= 1:
+                return rows
+            keep = [r for r in rows if names_match(hospital_name, r.get("location", ""))]
+            print(f"      file covers {len(locs)} locations; "
+                  f"kept {len(keep)}/{len(rows)} rows for this hospital")
+            return keep if keep else rows
 
         # Flag any file serving more than one facility. Those prices are
         # system-wide, not specific to the hospital, and the site must say so
