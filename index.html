@@ -1097,6 +1097,12 @@ function renderResults(){
       ? `<div style="text-align:right;"><div class="card-price">$${price.toLocaleString()}</div><div class="price-label">${priceLabel}</div></div>`
       : `<div class="no-data">not offered here</div>`;
     inner += `</div><div class="card-meta">${h.system} &middot; ${h.city}</div>`;
+    if(LIVE && ['hip-replacement','knee-replacement'].includes(proc.id)
+       && price != null){
+      inner += `<div class="shared-note">Hip and knee replacement share one
+        billing code (MS-DRG 470) unless a hospital lists them separately, so
+        this price may cover either procedure.</div>`;
+    }
     if(LIVE && isSharedSource(proc, h.id)){
       inner += `<div class="shared-note">System-wide price — this hospital's ` +
                `network publishes one price file covering several of its ` +
