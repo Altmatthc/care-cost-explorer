@@ -88,6 +88,15 @@ you see exactly what visitors would see — before anything is committed.
 
 `file://` won't work: the browser blocks the data fetches. Use the server.
 
+**If the browser reports an empty response** (`ERR_EMPTY_RESPONSE` or
+`NS_ERROR_NET_EMPTY_RESPONSE`), Python bound IPv6-only — you'll see
+`Serving HTTP on ::` in the terminal. The runner now forces IPv4, but if
+you're starting the server by hand, add the bind flag:
+
+```
+python -m http.server 8000 --bind 127.0.0.1
+```
+
 ---
 
 ## Pulling a whole state

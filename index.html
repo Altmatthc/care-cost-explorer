@@ -171,6 +171,8 @@
   .cash-win b{font-weight:700;}
   .badge-spread{background:#F2ECF7;color:#6A4C88;}
   .badge-markup{background:#F7F1E4;color:#8A6A2E;}
+  .approx{font-size:9.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;
+    background:#EDF1F1;padding:1px 4px;border-radius:3px;}
   .chg{display:inline-block;margin-top:7px;font-size:11.5px;font-weight:600;
     font-family:'IBM Plex Mono',monospace;padding:2px 7px;border-radius:4px;letter-spacing:.02em;}
   .chg-up{background:#F7E4DE;color:var(--hightag);}
@@ -1049,7 +1051,7 @@ async function loadLiveData(region = 'san-diego'){
     hospitals.length = 0;
     live.forEach(h => hospitals.push({
       id:h.id, name:h.name, system:h.system || h.type || '', city:h.city,
-      lat:h.lat, lng:h.lng,
+      lat:h.lat, lng:h.lng, geo_approx: !!h.geo_approx,
     }));
 
     // Real hospital attributes from CMS
@@ -1473,7 +1475,9 @@ function renderResults(){
     };
 
     inner += `<div class="detail-grid">`;
-    inner += `<div class="detail"><span class="dl">Distance</span><span class="dv">${distance.toFixed(1)} mi &middot; ~${driveMin} min</span></div>`;
+    inner += `<div class="detail"><span class="dl">Distance</span><span class="dv">${distance.toFixed(1)} mi &middot; ~${driveMin} min` +
+      (h.geo_approx ? ` <span class="approx" title="Located to ZIP code only">approx</span>` : '') +
+      `</span></div>`;
     if(show.wait && info.erWait != null)
       inner += `<div class="detail"><span class="dl">Median ER wait</span><span class="dv">${formatWait(info.erWait)}</span></div>`;
     if(show.trauma && info.trauma){

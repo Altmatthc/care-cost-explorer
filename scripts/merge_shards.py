@@ -20,8 +20,18 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
 # Order matters — first match wins, so put specific patterns before general.
+# Hospitals abbreviate heavily in their files. Tri-City alone publishes "BC",
+# "HN" and "UH" — nearly 200 records each — which were being dropped entirely
+# because they didn't match a full plan name.
 PAYER_PATTERNS = [
     ("kaiser",     r"kaiser"),
+    # Abbreviations, anchored so they can't match inside a longer word.
+    ("anthem",     r"^\s*bc\b|\bbcbs\b"),
+    ("healthnet",  r"^\s*hn\b"),
+    ("uhc",        r"^\s*uh\b|^\s*uhc\b"),
+    ("aetna",      r"^\s*aet\b"),
+    ("cigna",      r"^\s*cig\b"),
+    ("blueshield", r"^\s*bs\b|\bbsc\b"),
     ("medicare",   r"\bmedicare\b|\bmcr\b"),
     ("medical",    r"medi-?cal|medicaid|\bmcd\b"),
     ("anthem",     r"anthem|blue\s*cross"),
@@ -31,7 +41,30 @@ PAYER_PATTERNS = [
     ("uhc",        r"united\s*health|\buhc\b|unitedhealthcare"),
     ("healthnet",  r"health\s*net"),
     ("tricare",    r"tricare"),
+    ("alignment",  r"alignment"),
+    ("centivo",    r"centivo"),
+    ("scan",       r"\bscan\b"),
+    ("molina",     r"molina"),
+    ("oscar",      r"oscar"),
+    ("brandnew",   r"brand new day"),
 ]
+
+# Medical groups and IPAs are not insurance plans a patient can choose. They
+# appear in these files because capitated arrangements are negotiated through
+# them, but nobody shops for "Sharp Community Medical Group" the way they
+# shop for Aetna. They are deliberately not mapped, and are counted separately
+# rather than reported as gaps.
+PROVIDER_GROUP_HINTS = (
+    "med grp", "medical group", "med group", "ipa", "physicians",
+    "phys ", "medical foundation", "health system", "healthcare system",
+    "prime healthcare", "palomar health", "ucsd", "scripps", "sharp rees",
+    "prospect", "perlman", "integrated health partners", "veba",
+)
+
+
+def is_provider_group(name: str) -> bool:
+    n = (name or "").lower()
+    return any(h in n for h in PROVIDER_GROUP_HINTS)
 
 
 def normalize_payer(name: str) -> str | None:
@@ -67,7 +100,8 @@ def main():
         for raw_name, rate in (rec.get("payers") or {}).items():
             key = normalize_payer(raw_name)
             if key is None:
-                unmapped[raw_name] = unmapped.get(raw_name, 0) + 1
+                if not is_provider_group(raw_name):
+                    unmapped[raw_name] = unmapped.get(raw_name, 0) + 1
                 continue
             # A plan family can appear many times (HMO, PPO, tiers). Keep the
             # median-ish value by taking the lowest, which is what a patient
@@ -422,9 +456,12 @@ def main():
 
     if unmapped:
         top = sorted(unmapped.items(), key=lambda x: -x[1])[:15]
-        print("\nUnmapped payer names (add patterns to PAYER_PATTERNS if these matter):")
+        print("\nUnmapped payer names — add to PAYER_PATTERNS if a patient "
+              "could plausibly choose one:")
         for name, count in top:
             print(f"  {count:>6}x  {name}")
+        print("  (medical groups and IPAs are excluded on purpose — they are "
+              "not plans a patient selects)")
 
     # Clean up shard files so the repo stays tidy
     for path in shards:

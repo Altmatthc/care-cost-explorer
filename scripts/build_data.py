@@ -454,8 +454,61 @@ def fetch_registry(region: str, debug: bool = False,
 # STAGE 2 — GEOCODE
 # ===========================================================================
 def geocode(h: dict) -> bool:
-    """Resolve one hospital address to coordinates via the free Census geocoder."""
-    addr = f"{h['address']}, {h['city']}, {h['state']} {h['zip']}"
+    """
+    Resolve one hospital address to coordinates.
+
+    The Census geocoder is authoritative but fails on some addresses — a suite
+    number, a campus name, a PO box. A hospital that fails geocoding vanishes
+    from the map entirely even when we have its prices, which is a worse
+    outcome than a slightly imprecise pin. So: exact address first, then the
+    address without its second line, then the ZIP centroid.
+    """
+    attempts = [
+        f"{h['address']}, {h['city']}, {h['state']} {h['zip']}",
+        # Drop anything after a comma or "suite"/"bldg" in the street line.
+        f"{re.split(r',| suite | ste | bldg | building ', h['address'], flags=re.I)[0]}, "
+        f"{h['city']}, {h['state']} {h['zip']}",
+        f"{h['city']}, {h['state']} {h['zip']}",
+    ]
+    for i, addr in enumerate(attempts):
+        if _geocode_once(h, addr):
+            if i:
+                print(f"    (matched {h['name']} on a simplified address)")
+            return True
+    # Last resort: the ZIP centroid. Good to about a mile, which is fine for
+    # ranking by distance and far better than being unmappable.
+    if h.get("zip") and _zip_centroid(h):
+        print(f"    (fell back to ZIP centroid for {h['name']})")
+        return True
+    return False
+
+
+_ZIP_CACHE: dict = {}
+
+
+def _zip_centroid(h: dict) -> bool:
+    z = str(h.get("zip", "")).strip()[:5]
+    if not z:
+        return False
+    if z in _ZIP_CACHE:
+        h["lat"], h["lng"] = _ZIP_CACHE[z]
+        h["geo_approx"] = True
+        return True
+    try:
+        r = SESSION.get(f"https://api.zippopotam.us/us/{z}", timeout=20)
+        if r.ok:
+            p = r.json()["places"][0]
+            h["lat"] = round(float(p["latitude"]), 5)
+            h["lng"] = round(float(p["longitude"]), 5)
+            h["geo_approx"] = True
+            _ZIP_CACHE[z] = (h["lat"], h["lng"])
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def _geocode_once(h: dict, addr: str) -> bool:
     try:
         r = SESSION.get(CENSUS_GEOCODER, params={
             "address": addr, "benchmark": "Public_AR_Current", "format": "json",
@@ -465,9 +518,10 @@ def geocode(h: dict) -> bool:
         if matches:
             c = matches[0]["coordinates"]
             h["lat"], h["lng"] = round(c["y"], 5), round(c["x"], 5)
+            h["geo_approx"] = False
             return True
-    except Exception as e:
-        print(f"    geocode failed for {h['name']}: {e}", file=sys.stderr)
+    except Exception:
+        pass
     return False
 
 
@@ -1552,6 +1606,9 @@ def main():
     # --- geocode ---
     if args.stage in ("all", "geocode"):
         todo = [h for h in hospitals if h.get("lat") is None]
+        if todo:
+            print(f"[geocode] {len(todo)} need coordinates "
+                  f"({len(hospitals) - len(todo)} already located)")
         print(f"[geocode] resolving {len(todo)} addresses...")
         ok = 0
         for i, h in enumerate(todo, 1):
