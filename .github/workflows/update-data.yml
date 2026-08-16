@@ -123,16 +123,25 @@ jobs:
             --max-age 30 \
             --cooldown-days 1 $EXTRA
 
+      # Upload whatever was collected even on failure or cancellation — the
+      # pipeline checkpoints after every hospital, so a partial run still
+      # holds real work worth keeping.
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: prices-${{ matrix.shard }}
-          path: data/*-prices*.json
+          path: |
+            data/*-prices*.json
+            data/*-status.json
+            data/host-cooldowns.json
+          if-no-files-found: warn
 
   # ---------------------------------------------------------------------
   # Merge shards and commit the result so the live site picks it up.
   # ---------------------------------------------------------------------
   publish:
     needs: [registry, prices]
+    if: always() && needs.registry.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -148,6 +157,9 @@ jobs:
         run: |
           mkdir -p data
           find incoming -name '*-hospitals.json' -exec cp {} data/ \;
+          find incoming -name '*-prices*.json'   -exec cp {} data/ \;
+          find incoming -name '*-status.json'    -exec cp {} data/ \;
+          find incoming -name 'host-cooldowns.json' -exec cp {} data/ \;
           python scripts/merge_shards.py --region ${{ needs.registry.outputs.region }}
 
       - name: Commit refreshed data
