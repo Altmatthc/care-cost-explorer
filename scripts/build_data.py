@@ -170,61 +170,151 @@ UA = {"User-Agent": "care-cost-explorer/1.0 (public price transparency tool)"}
 # ===========================================================================
 # STAGE 1 — REGISTRY
 # ===========================================================================
-def fetch_registry(region: str) -> list[dict]:
-    """Pull hospitals for a region from the CMS Provider Data Catalog."""
-    cfg = REGIONS[region]
-    conditions, i = [], 0
-    if cfg["state"]:
-        conditions.append({"property": "state", "value": cfg["state"], "operator": "="})
+def field(row: dict, *names) -> str:
+    """
+    CMS field names vary between dataset versions and casing conventions
+    ("Facility Name", "facility_name", "County/Parish", "county_parish").
+    Normalize punctuation away so a lookup works against any of them.
+    """
+    def norm(s):
+        return re.sub(r"[^a-z0-9]", "", str(s).lower())
 
+    lowered = {norm(k): v for k, v in row.items()}
+    for n in names:
+        v = lowered.get(norm(n))
+        if v not in (None, ""):
+            return str(v)
+    return ""
+
+
+def fetch_all_rows(debug: bool = False) -> list[dict]:
+    """
+    Page through the whole dataset with no server-side filtering.
+
+    Filtering locally is deliberate: CMS's filter syntax has changed between
+    API versions, and a wrong filter fails silently by returning zero rows
+    rather than an error. The dataset is only ~5,400 rows of metadata, so
+    fetching it all and filtering here is both cheap and far more robust.
+    """
     out, offset, limit = [], 0, 500
     while True:
-        params = {"limit": limit, "offset": offset}
-        if conditions:
-            for n, c in enumerate(conditions):
-                params[f"conditions[{n}][property]"] = c["property"]
-                params[f"conditions[{n}][value]"] = c["value"]
-                params[f"conditions[{n}][operator]"] = c["operator"]
-        r = requests.get(CMS_API, params=params, headers=UA, timeout=60)
+        r = requests.get(CMS_API, params={"limit": limit, "offset": offset},
+                         headers=UA, timeout=60)
         r.raise_for_status()
-        rows = r.json().get("results", [])
-        if not rows:
-            break
+        payload = r.json()
+
+        # Response shape has varied across API versions.
+        if isinstance(payload, list):
+            rows = payload
+        elif isinstance(payload, dict):
+            rows = payload.get("results") or payload.get("data") or []
+            if isinstance(rows, dict):
+                rows = list(rows.values())
+        else:
+            rows = []
+
+        if offset == 0:
+            if not rows:
+                print("  !! API returned no rows at all.", file=sys.stderr)
+                print(f"  !! Response keys: {list(payload)[:10] if isinstance(payload, dict) else type(payload)}",
+                      file=sys.stderr)
+                print(f"  !! URL: {r.url}", file=sys.stderr)
+                return []
+            print(f"  API OK. Available fields: {sorted(rows[0].keys())}")
+            if debug:
+                print(f"  Sample row: {json.dumps(rows[0], indent=2)[:1200]}")
+
         out.extend(rows)
         offset += limit
         if len(rows) < limit:
             break
         time.sleep(0.2)
+    return out
 
+
+def fetch_registry(region: str, debug: bool = False,
+                   type_filter: bool = True) -> list[dict]:
+    """Pull hospitals for a region from the CMS Provider Data Catalog."""
+    cfg = REGIONS[region]
+    rows = fetch_all_rows(debug=debug)
+    print(f"  fetched {len(rows)} total rows from CMS")
+    if not rows:
+        return []
+
+    # --- filter by state ---
+    if cfg["state"]:
+        before = len(rows)
+        rows = [r for r in rows
+                if field(r, "state", "state_code", "provider_state").upper() == cfg["state"]]
+        print(f"  state == {cfg['state']}: {before} -> {len(rows)}")
+        if not rows:
+            sample = {field(r, "state", "state_code") for r in fetch_all_rows()[:50]}
+            print(f"  !! No rows matched. Sample state values seen: {sample}", file=sys.stderr)
+            return []
+
+    # --- filter by county ---
+    if cfg["counties"]:
+        wanted = {c.upper().replace(" COUNTY", "").strip() for c in cfg["counties"]}
+        before = len(rows)
+        kept = []
+        seen = set()
+        for r in rows:
+            county = field(r, "county_parish", "county_name", "county",
+                           "countyparish").upper().replace(" COUNTY", "").strip()
+            seen.add(county)
+            if county in wanted:
+                kept.append(r)
+        print(f"  county in {sorted(wanted)}: {before} -> {len(kept)}")
+        if not kept:
+            print(f"  !! No county match. Values seen in {cfg['state']}: "
+                  f"{sorted(c for c in seen if c)[:25]}", file=sys.stderr)
+            return []
+        rows = kept
+
+    # --- filter by hospital type ---
+    if type_filter:
+        before = len(rows)
+        kept, seen = [], set()
+        for r in rows:
+            htype = field(r, "hospital_type", "type", "facility_type")
+            seen.add(htype)
+            # substring match, so "Acute Care Hospitals" and
+            # "Acute Care - Veterans Administration" both pass
+            if any(k.lower() in htype.lower() or htype.lower() in k.lower()
+                   for k in KEEP_TYPES if htype):
+                kept.append(r)
+        print(f"  hospital type filter: {before} -> {len(kept)}")
+        if not kept:
+            print(f"  !! No type match. Values seen: {sorted(t for t in seen if t)}",
+                  file=sys.stderr)
+            print("  !! Re-run with --no-type-filter to keep everything.", file=sys.stderr)
+            return []
+        rows = kept
+
+    # --- shape into our records ---
     hospitals = []
-    counties = cfg["counties"]
-    for row in out:
-        county = (row.get("county_parish") or row.get("county_name") or "").upper()
-        if counties and county not in counties:
-            continue
-        htype = row.get("hospital_type", "")
-        if KEEP_TYPES and htype not in KEEP_TYPES:
-            continue
-        ccn = row.get("facility_id") or row.get("provider_id")
-        name = row.get("facility_name", "").title()
-        stars_raw = row.get("hospital_overall_rating", "")
-        stars = int(stars_raw) if str(stars_raw).isdigit() else None
+    for r in rows:
+        ccn = field(r, "facility_id", "provider_id", "ccn", "federal_provider_number")
+        stars_raw = field(r, "hospital_overall_rating", "overall_rating")
+        website = field(r, "website", "hospital_website", "url")
         hospitals.append({
-            "id": f"ccn-{ccn}",
+            "id": f"ccn-{ccn}" if ccn else f"x-{len(hospitals)}",
             "ccn": ccn,
-            "name": name,
-            "system": (row.get("hospital_ownership") or "").title(),
-            "city": (row.get("citytown") or row.get("city") or "").title(),
-            "state": row.get("state", ""),
-            "county": county.title(),
-            "address": (row.get("address") or "").title(),
-            "zip": row.get("zip_code") or row.get("zip", ""),
-            "phone": row.get("telephone_number", ""),
-            "type": htype,
-            "stars": stars,
-            "hasER": (row.get("emergency_services", "") or "").lower().startswith("y"),
+            "name": field(r, "facility_name", "provider_name", "name").title(),
+            "system": field(r, "hospital_ownership", "ownership").title(),
+            "city": field(r, "citytown", "city", "city_town").title(),
+            "state": field(r, "state", "state_code"),
+            "county": field(r, "county_parish", "county_name", "county").title(),
+            "address": field(r, "address", "address_line_1", "street_address").title(),
+            "zip": field(r, "zip_code", "zip", "postal_code"),
+            "phone": field(r, "telephone_number", "phone_number", "phone"),
+            "type": field(r, "hospital_type", "type"),
+            "stars": int(stars_raw) if stars_raw.isdigit() else None,
+            "hasER": field(r, "emergency_services", "has_emergency_services").lower().startswith("y"),
+            "website": website,
             "lat": None, "lng": None, "mrf_url": None,
         })
+    print(f"  -> {len(hospitals)} hospitals in {cfg['label']}")
     return hospitals
 
 
@@ -395,6 +485,9 @@ def main():
     ap.add_argument("--shard", type=int, default=0, help="which shard (0-indexed)")
     ap.add_argument("--shards", type=int, default=1, help="total shards")
     ap.add_argument("--limit", type=int, default=0, help="cap hospitals, for testing")
+    ap.add_argument("--debug", action="store_true", help="print a sample CMS record")
+    ap.add_argument("--no-type-filter", action="store_true",
+                    help="keep every facility type (use if the type filter finds nothing)")
     args = ap.parse_args()
 
     DATA.mkdir(exist_ok=True)
@@ -404,7 +497,8 @@ def main():
     # --- registry ---
     if args.stage in ("all", "registry"):
         print(f"[registry] fetching {REGIONS[args.region]['label']} from CMS...")
-        hospitals = fetch_registry(args.region)
+        hospitals = fetch_registry(args.region, debug=args.debug,
+                                   type_filter=not args.no_type_filter)
         if args.limit:
             hospitals = hospitals[: args.limit]
         print(f"[registry] {len(hospitals)} hospitals")
