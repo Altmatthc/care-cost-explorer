@@ -82,11 +82,21 @@ def main():
             "shared": bool(rec.get("shared_source")),
         }
 
+    # Fold in scan status so the site can explain missing hospitals
+    status = {}
+    spath = DATA / f"{args.region}-status.json"
+    if spath.exists():
+        try:
+            status = json.loads(spath.read_text())
+        except Exception as e:
+            print(f"  could not read status file: {e}")
+
     out = DATA / f"{args.region}.json"
     from datetime import date
     out.write_text(json.dumps({"region": args.region,
                                "updated": date.today().isoformat(),
-                               "prices": site},
+                               "prices": site,
+                               "status": status},
                               separators=(",", ":")))
     size_kb = out.stat().st_size / 1024
     print(f"wrote {out.name} ({size_kb:.0f} KB, {len(site)} procedures)")

@@ -166,6 +166,30 @@ TARGET_CODES = {
 
 UA = {"User-Agent": "care-cost-explorer/1.0 (public price transparency tool)"}
 
+# Hospitals' file servers throttle or refuse repeated automated requests —
+# Scripps began refusing connections after several runs. Retry with backoff
+# rather than losing a hospital to a transient block.
+def _make_session() -> requests.Session:
+    s = requests.Session()
+    try:
+        from requests.adapters import HTTPAdapter
+        from urllib3.util.retry import Retry
+        retry = Retry(
+            total=4, connect=4, read=3, backoff_factor=3,
+            status_forcelist=[408, 429, 500, 502, 503, 504],
+            allowed_methods=["GET"], raise_on_status=False,
+        )
+        adapter = HTTPAdapter(max_retries=retry, pool_maxsize=4)
+        s.mount("https://", adapter)
+        s.mount("http://", adapter)
+    except Exception:
+        pass
+    s.headers.update(UA)
+    return s
+
+
+SESSION = _make_session()
+
 
 # ---------------------------------------------------------------------------
 # HOSPITAL WEBSITE RESOLUTION
@@ -277,7 +301,7 @@ def fetch_all_rows(debug: bool = False) -> list[dict]:
     """
     out, offset, limit = [], 0, 500
     while True:
-        r = requests.get(CMS_API, params={"limit": limit, "offset": offset},
+        r = SESSION.get(CMS_API, params={"limit": limit, "offset": offset},
                          headers=UA, timeout=60)
         r.raise_for_status()
         payload = r.json()
@@ -412,7 +436,7 @@ def geocode(h: dict) -> bool:
     """Resolve one hospital address to coordinates via the free Census geocoder."""
     addr = f"{h['address']}, {h['city']}, {h['state']} {h['zip']}"
     try:
-        r = requests.get(CENSUS_GEOCODER, params={
+        r = SESSION.get(CENSUS_GEOCODER, params={
             "address": addr, "benchmark": "Public_AR_Current", "format": "json",
         }, headers=UA, timeout=30)
         r.raise_for_status()
@@ -441,7 +465,7 @@ def discover_mrf_candidates(domain: str) -> list[str]:
     urls: list[str] = []
     for base in (f"https://{domain}", f"https://www.{domain}"):
         try:
-            r = requests.get(f"{base}/cms-hpt.txt", headers=UA, timeout=20)
+            r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=20)
             if not r.ok or not r.text.strip():
                 continue
             for line in r.text.splitlines():
@@ -497,7 +521,14 @@ def pick_matching_file(hospital_name: str, domain: str,
             return url
     if verbose:
         print(f"      none of {len(cands)} published files identify as "
-              f"'{hospital_name}'")
+              f"'{hospital_name}'. What was published:")
+        for url in ranked[:8]:
+            ident = read_identity(url)
+            label = ident.get("hospital_name") or ident.get("location_name") or "?"
+            print(f"        {url.split('/')[-1][:66]}")
+            print(f"           identifies as: {label[:70]}")
+        if len(cands) > 8:
+            print(f"        ... and {len(cands)-8} more")
     return None
 
 
@@ -531,7 +562,7 @@ def stream_rows(url: str) -> Iterator[dict]:
     Stream a CSV price file without loading it into memory. These run
     30MB-1GB; loading one whole would kill the job.
     """
-    with requests.get(url, stream=True, headers=UA, timeout=300) as resp:
+    with SESSION.get(url, stream=True, headers=UA, timeout=300) as resp:
         resp.raise_for_status()
         lines = (l.decode("utf-8", "replace") for l in resp.iter_lines() if l)
         header = None
@@ -602,7 +633,7 @@ def read_identity(url: str) -> dict:
     ident = {"hospital_name": "", "location_name": "", "address": "", "raw": ""}
     try:
         if url.lower().split("?")[0].endswith(".json"):
-            with requests.get(url, stream=True, headers=UA, timeout=120) as r:
+            with SESSION.get(url, stream=True, headers=UA, timeout=120) as r:
                 r.raise_for_status()
                 head = next(r.iter_content(60000), b"").decode("utf-8", "replace")
             ident["raw"] = head[:400]
@@ -614,7 +645,7 @@ def read_identity(url: str) -> dict:
                 ident["location_name"] = m.group(1)
             return ident
 
-        with requests.get(url, stream=True, headers=UA, timeout=120) as r:
+        with SESSION.get(url, stream=True, headers=UA, timeout=120) as r:
             r.raise_for_status()
             lines = []
             for raw in r.iter_lines(decode_unicode=False):
@@ -670,7 +701,7 @@ JSON_ARRAY_KEYS = ("standard_charge_information", "standard_charges", "charges")
 def detect_json_array_key(url: str) -> Optional[str]:
     """Read just the head of the file to find which top-level array holds the data."""
     try:
-        with requests.get(url, stream=True, headers=UA, timeout=120) as resp:
+        with SESSION.get(url, stream=True, headers=UA, timeout=120) as resp:
             resp.raise_for_status()
             head = b""
             for chunk in resp.iter_content(65536):
@@ -694,7 +725,7 @@ def stream_json_items(url: str, array_key: str) -> Iterator[dict]:
         print("      ijson not installed - cannot stream JSON. "
               "Add 'ijson' to the workflow's pip install step.")
         return
-    with requests.get(url, stream=True, headers=UA, timeout=600) as resp:
+    with SESSION.get(url, stream=True, headers=UA, timeout=600) as resp:
         resp.raise_for_status()
         resp.raw.decode_content = True
         for item in ijson.items(resp.raw, f"{array_key}.item"):
@@ -1022,7 +1053,7 @@ def probe(url: str, rows: int = 40):
         print(f"  JSON file. standard-charge array: {key or 'NOT FOUND'}")
         if not key:
             print("  Top of file:")
-            with requests.get(url, stream=True, headers=UA, timeout=120) as r:
+            with SESSION.get(url, stream=True, headers=UA, timeout=120) as r:
                 r.raise_for_status()
                 head = next(r.iter_content(4000), b"")
             print("  " + head.decode("utf-8", "replace")[:1500])
@@ -1061,6 +1092,48 @@ def probe(url: str, rows: int = 40):
             break
 
 
+# ---------------------------------------------------------------------------
+# SCAN STATUS TRACKING
+# Records what happened to every hospital on every attempt, so the site can
+# show why a hospital has no prices and how stale the answer is — and so
+# repeat runs don't re-hammer servers we already read successfully.
+# ---------------------------------------------------------------------------
+STATUS_OK = "ok"                  # prices collected
+STATUS_NO_FILE = "no_file"        # nothing published at the standard location
+STATUS_UNREACHABLE = "unreachable"  # published but server refused / timed out
+STATUS_WRONG_FILE = "wrong_file"  # only found a file belonging to another facility
+STATUS_EMPTY = "empty"            # file parsed but contained none of our procedures
+STATUS_EXEMPT = "exempt"          # federal facility, rule doesn't apply
+
+# 45 CFR 180 applies to Medicare-enrolled hospitals and non-Medicare
+# institutions licensed as a hospital by a State. Federal facilities are not
+# State-licensed, so a missing file there is not a compliance question.
+FEDERAL_MARKERS = ("veterans affairs", "va medical", "va san diego",
+                   "naval", "nmc ", "nh ", "army", "air force",
+                   "department of defense", "military")
+
+
+def is_federal(name: str, ownership: str = "") -> bool:
+    blob = f"{name} {ownership}".lower()
+    return any(m in blob for m in FEDERAL_MARKERS)
+
+
+def load_json(path: Path, default):
+    try:
+        return json.loads(path.read_text())
+    except Exception:
+        return default
+
+
+def days_since(iso: str) -> float:
+    from datetime import date
+    try:
+        y, m, d = (int(x) for x in iso.split("T")[0].split("-"))
+        return (date.today() - date(y, m, d)).days
+    except Exception:
+        return 1e6
+
+
 # ===========================================================================
 # MAIN
 # ===========================================================================
@@ -1074,6 +1147,14 @@ def main():
     ap.add_argument("--shards", type=int, default=1, help="total shards")
     ap.add_argument("--limit", type=int, default=0, help="cap hospitals, for testing")
     ap.add_argument("--debug", action="store_true", help="print a sample CMS record")
+    ap.add_argument("--max-age", type=int, default=30,
+                    help="skip hospitals whose data succeeded within this many days")
+    ap.add_argument("--refresh-all", action="store_true",
+                    help="ignore --max-age and re-scan every hospital")
+    ap.add_argument("--only", default="",
+                    help="comma-separated hospital ids or name fragments to scan")
+    ap.add_argument("--cooldown-days", type=int, default=1,
+                    help="days to leave a host alone after it refuses connections")
     ap.add_argument("--no-type-filter", action="store_true",
                     help="keep every facility type (use if the type filter finds nothing)")
     args = ap.parse_args()
@@ -1117,17 +1198,47 @@ def main():
 
     # --- prices ---
     if args.stage in ("all", "prices"):
+        from datetime import date
+        today = date.today().isoformat()
+
+        status_path = DATA / f"{args.region}-status.json"
+        status = load_json(status_path, {})
+        prev_prices = load_json(price_path, {})
+        cooldowns = load_json(DATA / "host-cooldowns.json", {})
+
         shard = [h for i, h in enumerate(hospitals) if i % args.shards == args.shard]
+
+        only = [s.strip().lower() for s in args.only.split(",") if s.strip()]
+        if only:
+            shard = [h for h in shard
+                     if any(o in h["id"].lower() or o in h["name"].lower() for o in only)]
+
         print(f"[prices] shard {args.shard+1}/{args.shards}: {len(shard)} hospitals")
-        all_rows, stats = [], {"found": 0, "no_mrf": 0, "error": 0, "wrong_file": 0}
+        all_rows: list[dict] = []
+        stats = {"found": 0, "skipped": 0, "no_mrf": 0, "error": 0,
+                 "wrong_file": 0, "exempt": 0, "cooled": 0}
         url_users: dict[str, list[str]] = {}
         cache: dict[str, list[dict]] = {}
+        last_host_time: dict[str, float] = {}
 
-        # Some files legitimately cover several licensed locations (a
-        # children's hospital operating units inside other hospitals, for
-        # example). When a file names multiple locations, keep only the rows
-        # belonging to the hospital we asked about.
-        def filter_to_location(rows: list[dict], hospital_name: str) -> list[dict]:
+        def host_of(u: str) -> str:
+            return u.split("/")[2] if "//" in u else u
+
+        def be_polite(u: str):
+            host = host_of(u)
+            wait = 2.0 - (time.time() - last_host_time.get(host, 0))
+            if wait > 0:
+                time.sleep(wait)
+            last_host_time[host] = time.time()
+
+        def host_cooling(u: str) -> bool:
+            c = cooldowns.get(host_of(u))
+            return bool(c and days_since(c) < args.cooldown_days)
+
+        def cool_host(u: str):
+            cooldowns[host_of(u)] = today
+
+        def filter_to_location(rows, hospital_name):
             locs = {r.get("location") for r in rows if r.get("location")}
             if len(locs) <= 1:
                 return rows
@@ -1136,85 +1247,168 @@ def main():
                   f"kept {len(keep)}/{len(rows)} rows for this hospital")
             return keep if keep else rows
 
+        def record(h, st, detail="", rows=0, url=None):
+            prior = status.get(h["id"], {})
+            status[h["id"]] = {
+                "name": h["name"],
+                "status": st,
+                "detail": detail,
+                "rows": rows if st == STATUS_OK else prior.get("rows", 0),
+                "source_url": url or prior.get("source_url"),
+                "last_attempt": today,
+                "last_success": today if st == STATUS_OK else prior.get("last_success"),
+                "attempts": prior.get("attempts", 0) + 1,
+                "consecutive_failures": 0 if st == STATUS_OK
+                                        else prior.get("consecutive_failures", 0) + 1,
+                "rule_applies": not is_federal(h["name"], h.get("system", "")),
+            }
+
+        def carry_over(h):
+            """Reuse prices already collected for a hospital we're skipping."""
+            kept = {k: v for k, v in prev_prices.items()
+                    if v.get("hospital_id") == h["id"]}
+            return kept
+
+        carried: dict[str, dict] = {}
+
         for h in shard:
+            prior = status.get(h["id"], {})
+
+            # Federal facilities: the rule doesn't reach them, so don't keep trying.
+            if is_federal(h["name"], h.get("system", "")):
+                record(h, STATUS_EXEMPT, "federal facility; not State-licensed")
+                stats["exempt"] += 1
+                print(f"    – {h['name']}: federal facility, rule does not apply")
+                continue
+
+            # Already have fresh data? Leave the server alone.
+            fresh = (prior.get("status") == STATUS_OK
+                     and prior.get("last_success")
+                     and days_since(prior["last_success"]) < args.max_age)
+            if fresh and not args.refresh_all and not only:
+                kept = carry_over(h)
+                carried.update(kept)
+                stats["skipped"] += 1
+                age = int(days_since(prior["last_success"]))
+                print(f"    · {h['name']}: skipped, {len(kept)} records "
+                      f"already collected {age}d ago")
+                continue
+
             url = h.get("mrf_url")
+            if url and host_cooling(url):
+                carried.update(carry_over(h))
+                stats["cooled"] += 1
+                print(f"    · {h['name']}: {host_of(url)} is cooling down "
+                      f"after refusing connections; skipping today")
+                continue
+
             if not url:
-                domain = h.get("domain")
-                if not domain:
-                    _, domain = resolve_source(h.get("name", ""))
+                domain = h.get("domain") or resolve_source(h.get("name", ""))[1]
+                if domain and host_cooling(f"https://{domain}/"):
+                    carried.update(carry_over(h))
+                    stats["cooled"] += 1
+                    print(f"    · {h['name']}: {domain} cooling down; skipping")
+                    continue
                 if domain:
                     print(f"    ... discovering price file for {h['name']} via {domain}")
                     url = pick_matching_file(h["name"], domain)
                     h["mrf_url"] = url
                     if url:
-                        h["verified_source"] = True   # picker already verified it
+                        h["verified_source"] = True
+
             if not url:
                 stats["no_mrf"] += 1
+                record(h, STATUS_NO_FILE,
+                       "no machine-readable file found at the standard "
+                       "/cms-hpt.txt location")
                 print(f"    - {h['name']}: no price file found")
                 continue
-            # Discovered files are unverified — a system's cms-hpt.txt often
-            # points at one arbitrary facility. Files we hardcoded were checked
-            # by hand, so only verify the discovered ones.
+
             if not h.get("verified_source"):
                 ok, why = verify_file_belongs(h["name"], url)
                 if not ok:
-                    stats["wrong_file"] = stats.get("wrong_file", 0) + 1
+                    stats["wrong_file"] += 1
+                    record(h, STATUS_WRONG_FILE, why, url=url)
                     print(f"    ✗ {h['name']}: REJECTED — {why}")
                     h["mrf_url"] = None
-                    h["rejected_url"] = url
                     continue
-                print(f"      identity ok ({why})")
 
             url_users.setdefault(url, []).append(h["name"])
             h["source_url"] = url
             try:
                 if url in cache:
-                    # Same file already parsed for another facility in this system.
                     rows = filter_to_location(
                         [{**r, "hospital_id": h["id"]} for r in cache[url]], h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} rows "
                           f"(reused, same file as {url_users[url][0]})")
                 else:
+                    be_polite(url)
                     rows = extract_prices(h["id"], url)
                     cache[url] = rows
                     rows = filter_to_location(rows, h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} matching rows")
                 all_rows.extend(rows)
                 stats["found"] += 1
+                record(h, STATUS_OK if rows else STATUS_EMPTY,
+                       "" if rows else "file parsed but held none of our procedures",
+                       rows=len(rows), url=url)
             except Exception as e:
+                short = str(e).split("(Caused by")[0][:110]
+                refused = ("refused" in short.lower() or "timed out" in short.lower()
+                           or "max retries" in short.lower())
+                if refused:
+                    cool_host(url)
                 stats["error"] += 1
-                print(f"    ! {h['name']}: {e}")
+                record(h, STATUS_UNREACHABLE, short, url=url)
+                carried.update(carry_over(h))
+                print(f"    ! {h['name']}: {short}")
+                if refused:
+                    print(f"      {host_of(url)} put on a "
+                          f"{args.cooldown_days}-day cooldown")
 
-        # Flag any file serving more than one facility. Those prices are
-        # system-wide, not specific to the hospital, and the site must say so
-        # rather than implying a per-hospital price it doesn't actually have.
+        # Shared-file disclosure
         shared = {u: names for u, names in url_users.items() if len(names) > 1}
         if shared:
-            print("\n[prices] SHARED FILES — these facilities publish one "
-                  "system-wide file, so their prices are identical by source:")
+            print("\n[prices] SHARED FILES — one file serves several facilities:")
             for u, names in shared.items():
                 print(f"    {u.split('/')[-1][:60]}")
                 for n in names:
                     print(f"        - {n}")
-        shared_ids = set()
-        for u, names in shared.items():
-            for h in shard:
-                if h.get("source_url") == u:
-                    shared_ids.add(h["id"])
+        shared_ids = {h["id"] for h in shard
+                      for u in shared if h.get("source_url") == u}
 
         merged = consolidate(all_rows)
         for rec in merged.values():
             rec["shared_source"] = rec["hospital_id"] in shared_ids
+        merged.update(carried)          # keep data for hospitals we skipped
+
         if args.shards > 1:
             price_path = DATA / f"{args.region}-prices-{args.shard}.json"
         price_path.write_text(json.dumps(merged, indent=1))
+        status_path.write_text(json.dumps(status, indent=1))
+        (DATA / "host-cooldowns.json").write_text(json.dumps(cooldowns, indent=1))
         reg_path.write_text(json.dumps(hospitals, indent=1))
+
         print(f"\n[prices] {stats}")
-        if stats.get("wrong_file"):
-            print(f"[prices] {stats['wrong_file']} hospital(s) had a file that "
-                  f"belongs to a different facility. Those were rejected rather "
-                  f"than imported. To fix, find the correct URL and add it to "
-                  f"KNOWN_MRF in this script.")
+        print(f"[prices] {len(merged)} total price records "
+              f"({len(carried)} carried over from earlier runs)")
+
+        needs_attention = [s for s in status.values()
+                           if s["status"] not in (STATUS_OK, STATUS_EXEMPT)
+                           and s.get("rule_applies")]
+        if needs_attention:
+            print(f"\n[prices] {len(needs_attention)} hospital(s) subject to the rule "
+                  f"have no usable price file:")
+            for s in sorted(needs_attention, key=lambda x: -x.get("consecutive_failures", 0)):
+                print(f"    {s['name']}")
+                print(f"        status: {s['status']} — {s['detail'][:80]}")
+                print(f"        attempts: {s['attempts']}, "
+                      f"consecutive failures: {s['consecutive_failures']}, "
+                      f"last checked {s['last_attempt']}")
+            print("\n    Hospitals subject to 45 CFR 180 must publish a "
+                  "machine-readable file.\n    Complaints can be submitted to CMS "
+                  "(anonymously if preferred) via\n    "
+                  "https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency")
         print(f"[prices] wrote {price_path}")
 
 
