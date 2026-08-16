@@ -139,12 +139,24 @@
   .cov-detail{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45;}
   .cov-report{margin-top:12px;padding:10px 12px;background:#F4F8F7;border:1px solid var(--line);border-radius:6px;font-size:12.5px;line-height:1.55;}
   .cov-report a{color:var(--teal-dark);font-weight:600;white-space:nowrap;}
+  .pin{width:26px;height:26px;border-radius:50%;border:2.5px solid #fff;color:#fff;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 1px 4px rgba(14,31,36,.35);}
+  .pin-nodata{opacity:.45;}
+  .rank-badge{display:inline-flex;align-items:center;justify-content:center;
+    width:19px;height:19px;border-radius:50%;color:#fff;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;font-weight:600;margin-right:7px;vertical-align:1px;}
+  .est-link{display:inline-block;margin-top:10px;font-size:12.5px;font-weight:600;
+    color:var(--teal-dark);text-decoration:none;border-bottom:1px solid #B7DAD1;}
+  .est-link:hover{border-bottom-color:var(--teal);}
   .shared-note{margin-top:8px;font-size:11.5px;line-height:1.5;color:#8A6A2E;background:#FBF3E7;border:1px solid #E8D3A8;padding:6px 9px;border-radius:5px;}
   .setting-note{background:#fff;border-left:3px solid var(--teal);padding:11px 14px;border-radius:0 6px 6px 0;font-size:13px;line-height:1.55;color:var(--muted);margin-bottom:10px;}
   .cost-note{background:#F4F8F7;border:1px solid var(--line);padding:11px 14px;border-radius:6px;font-size:12.5px;line-height:1.55;color:var(--ink);margin-bottom:16px;}
   .cost-note b{color:var(--teal-dark);}
 
-  .map-col{flex:1 1 380px;min-width:300px;height:520px;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  .map-col{flex:1 1 380px;min-width:280px;height:520px;min-height:380px;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  @media (max-width: 820px){ .map-col{height:420px;order:-1;} }
   #map{height:100%;width:100%;}
   .leaflet-popup-content{font-family:'Inter',sans-serif;font-size:13px;min-width:190px;}
   .popup-name{font-family:'Fraunces',serif;font-size:15px;font-weight:500;margin-bottom:4px;color:var(--teal-dark);}
@@ -721,6 +733,15 @@ function showScreen(id){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
+  // Leaflet measures its container on creation. The map is built while the
+  // results screen is still display:none, so it reads a size of zero and
+  // renders only a corner tile. Re-measure once the screen is actually visible.
+  if(id === 'screen-results' && typeof map !== 'undefined' && map){
+    requestAnimationFrame(() => {
+      map.invalidateSize();
+      if(lastBounds) map.fitBounds(lastBounds, {padding:[40,40]});
+    });
+  }
 }
 
 // ---- Screen 1 ----
@@ -765,6 +786,14 @@ anatomyToggle.addEventListener('click', () => {
 });
 
 document.getElementById('generalBtn').addEventListener('click', () => selectRegion('general'));
+
+// Re-measure the map when the window changes shape, or it keeps the old size.
+window.addEventListener('resize', () => {
+  if(typeof map !== 'undefined' && map){
+    map.invalidateSize();
+    if(lastBounds) map.fitBounds(lastBounds, {padding:[40,40]});
+  }
+});
 
 // Try to load real data on startup; falls back to placeholders silently.
 loadLiveData('san-diego');
@@ -960,7 +989,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO', maxZoom: 19
 }).addTo(map);
 map.setView([32.83,-117.14], 10);
-let markers = {}, zipMarker = null;
+let markers = {}, zipMarker = null, lastBounds = null;
 const tierColor = { low:'#1B6E62', mid:'#B98A1E', high:'#C24A32', none:'#9AA8A7' };
 
 function tierOf(price, sorted){
@@ -997,6 +1026,15 @@ function ageText(iso){
   if(d === 1) return "yesterday";
   if(d < 30) return `${d} days ago`;
   return `${Math.round(d/30)} months ago`;
+}
+
+function estimatorLink(h){
+  // Prefer the price-transparency page the hospital itself publishes in its
+  // cms-hpt.txt. Fall back to a search rather than inventing a URL.
+  const page = (LIVE && LIVE.price_pages && LIVE.price_pages[h.id]) || null;
+  if(page) return page;
+  const q = encodeURIComponent(`${h.name} price estimate cost`);
+  return `https://www.google.com/search?q=${q}`;
 }
 
 function renderCoverage(rows){
@@ -1097,7 +1135,9 @@ function renderResults(){
 
   const listEl = document.getElementById('resultsList');
   listEl.innerHTML = '';
+  let rank = 0;
   rows.forEach(({h, price, info, distance, driveMin, inNetwork}) => {
+    rank++;
     const tier = tierOf(price, validPrices);
     const card = document.createElement('div');
     card.className = 'card';
@@ -1105,7 +1145,9 @@ function renderResults(){
     const priceLabel = state.payerId === 'cash' ? 'cash price'
                      : inNetwork ? 'negotiated rate' : 'cash price (out of network)';
 
-    let inner = `<div class="card-top"><div class="card-name">${h.name}</div>`;
+    let inner = `<div class="card-top"><div class="card-name">` +
+                `<span class="rank-badge" style="background:${tierColor[tier]}">${rank}</span>` +
+                `${h.name}</div>`;
     inner += price!=null
       ? `<div style="text-align:right;"><div class="card-price">$${price.toLocaleString()}</div><div class="price-label">${priceLabel}</div></div>`
       : `<div class="no-data">not offered here</div>`;
@@ -1170,13 +1212,33 @@ function renderResults(){
     if(info.aid) inner += `<span class="tier-tag badge-aid">Financial aid available</span>`;
     inner += `</div>`;
 
+    // The hospital's own estimator can price the whole encounter including
+    // doctors' fees, which these published files can't. Link to their page
+    // when they publish one; otherwise send the user to look it up.
+    const page = estimatorLink(h);
+    if(page){
+      inner += `<a class="est-link" href="${page}" target="_blank" rel="noopener"
+                   onclick="event.stopPropagation()">Get a personalised estimate
+                   from ${h.system || 'this hospital'} →</a>`;
+    }
+
     card.innerHTML = inner;
     card.addEventListener('click', () => { map.flyTo([h.lat,h.lng], 13, {duration:0.6}); markers[h.id].openPopup(); });
     listEl.appendChild(card);
 
-    const marker = L.circleMarker([h.lat, h.lng], { radius: price!=null?8:6, fillColor: tierColor[tier], color:'#fff', weight:2, fillOpacity:0.9 }).addTo(map);
+    // Numbered pin matching this card's position in the list.
+    const marker = L.marker([h.lat, h.lng], {
+      icon: L.divIcon({
+        className: '',
+        html: `<div class="pin ${price!=null?'':'pin-nodata'}"
+                    style="background:${tierColor[tier]}">${rank}</div>`,
+        iconSize: [26, 26],
+        iconAnchor: [13, 13],
+      }),
+      zIndexOffset: price != null ? 1000 - rank : 0,
+    }).addTo(map);
     marker.bindPopup(
-      `<div class="popup-name">${h.name}</div>` +
+      `<div class="popup-name"><span class="rank-badge" style="background:${tierColor[tier]}">${rank}</span>${h.name}</div>` +
       `<div class="popup-price" style="color:${tierColor[tier]}">${price!=null?'$'+price.toLocaleString():'Not offered'}</div>` +
       `<div style="font-size:12px;color:#5C7371;margin-top:4px;">${distance.toFixed(1)} mi &middot; ~${driveMin} min drive</div>` +
       (info.stars!=null?`<div style="font-size:12px;color:#5C7371;">CMS rating ${info.stars}/5${info.erWait?` &middot; ER wait ${formatWait(info.erWait)}`:''}</div>`:'')
@@ -1187,11 +1249,26 @@ function renderResults(){
   renderCoverage(rows);
 
   zipMarker = L.marker([state.zipLat, state.zipLng], {
-    icon: L.divIcon({ className:'', html:`<div style="width:16px;height:16px;background:#C24A32;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #C24A32;"></div>` })
-  }).addTo(map).bindPopup(`Your ZIP: ${state.zip}`);
+    icon: L.divIcon({
+      className: '',
+      html: `<svg width="30" height="30" viewBox="0 0 30 30">
+               <circle cx="15" cy="15" r="13" fill="#fff" fill-opacity=".85"
+                       stroke="#C24A32" stroke-width="2"/>
+               <path d="M9 9 L21 21 M21 9 L9 21" stroke="#C24A32"
+                     stroke-width="3.2" stroke-linecap="round"/>
+             </svg>`,
+      iconSize: [30, 30], iconAnchor: [15, 15],
+    }),
+    zIndexOffset: 2000,
+  }).addTo(map).bindPopup(`Your ZIP code: ${state.zip}`);
 
-  const bounds = L.latLngBounds([[state.zipLat, state.zipLng], ...hospitals.map(h=>[h.lat,h.lng])]);
-  map.fitBounds(bounds, { padding:[30,30] });
+  // Fit to the ZIP plus the hospitals actually shown, not every hospital.
+  const shown = rows.filter(r => r.price != null).slice(0, 12);
+  const pts = [[state.zipLat, state.zipLng],
+               ...(shown.length ? shown : rows).map(r => [r.h.lat, r.h.lng])];
+  lastBounds = L.latLngBounds(pts);
+  map.invalidateSize();
+  map.fitBounds(lastBounds, { padding:[40,40], maxZoom: 13 });
 }
 </script>
 </body>
