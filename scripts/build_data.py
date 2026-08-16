@@ -163,6 +163,10 @@ TARGET_CODES = {
     # only way to tell them apart, handled in match_code below.
     ("MS-DRG", "470"): "joint-replacement",
     ("MS-DRG", "460"): "spinal-fusion",
+    # Procedure-specific codes, preferred when a hospital publishes them since
+    # they distinguish hip from knee where MS-DRG 470 cannot.
+    ("CPT", "27447"): "knee-replacement",
+    ("CPT", "27130"): "hip-replacement",
     ("MS-DRG", "775"): "vaginal-delivery",
     ("MS-DRG", "786"): "cesarean",
 }
@@ -861,14 +865,12 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
             continue
 
         desc = str(item.get("description", ""))[:120]
-        pid = refine_by_description(pid, desc)
-        if pid is None:
-            continue              # shared code, description didn't disambiguate
+        resolved_ids = refine_by_description(pid, desc)
         charges = item.get("standard_charges") or []
         if isinstance(charges, dict):
             charges = [charges]
 
-        for ch in charges:
+        for ch, pid in ((c, p) for c in charges for p in resolved_ids):
             base = {
                 "hospital_id": hospital_id,
                 "procedure": pid,
@@ -938,14 +940,25 @@ DESCRIPTION_SPLITS = {
 }
 
 
-def refine_by_description(pid: str, description: str) -> Optional[str]:
-    """Resolve a shared code using the row's description. None if ambiguous."""
+def refine_by_description(pid: str, description: str) -> list[str]:
+    """
+    Resolve a shared code using the row's description, returning every
+    procedure the row legitimately covers.
+
+    MS-DRG 470's official title is "MAJOR HIP AND KNEE JOINT REPLACEMENT OR
+    REATTACHMENT OF LOWER EXTREMITY WITHOUT MCC" — it names both, because the
+    code genuinely covers both and the hospital's rate is the same either way.
+    So an ambiguous row populates BOTH procedures rather than neither. Only a
+    description naming one specifically narrows it to that one.
+    """
     rules = DESCRIPTION_SPLITS.get(pid)
     if not rules:
-        return pid
+        return [pid]
     d = (description or "").lower()
     hits = [target for kw, target in rules if kw in d]
-    return hits[0] if len(hits) == 1 else None
+    if len(hits) == 1:
+        return hits
+    return [target for _, target in rules]      # covers both
 
 
 def match_code(code: str, ctype: str) -> Optional[str]:
@@ -1090,12 +1103,9 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             if not pid:
                 continue
 
-            resolved = refine_by_description(pid, row.get(desc_c) or "")
-            if resolved is None:
-                continue          # shared code, description didn't disambiguate
             base = {
                 "hospital_id": hospital_id,
-                "procedure": resolved,
+                "procedure": pid,
                 "cash": money(row.get(cash_c)),
                 "gross": money(row.get(gross_c)),
                 "min": money(row.get(min_c)),
@@ -1104,24 +1114,27 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
                 "description": (row.get(desc_c) or "")[:120],
             }
 
-            if wide_payers:
-                # One row carries every payer's rate in its own column.
-                any_rate = False
-                for pname, cols in wide_payers.items():
-                    rate = money(row.get(cols.get("rate"))) or money(row.get(cols.get("alt")))
-                    if rate is None:
-                        continue
-                    any_rate = True
-                    found.append({**base, "payer": pname, "rate": rate})
-                if not any_rate:
-                    found.append({**base, "payer": None, "rate": None})
-            else:
-                found.append({
-                    **base,
-                    "payer": (row.get(payer_c) or "").strip() or None,
-                    "rate": money(row.get(rate_c)) or money(row.get(median_c)),
-                })
-            break  # one procedure per row is enough
+            # A shared code (MS-DRG 470) can cover more than one procedure.
+            for resolved in refine_by_description(pid, row.get(desc_c) or ""):
+                rec = {**base, "procedure": resolved}
+                if wide_payers:
+                    any_rate = False
+                    for pname, cols in wide_payers.items():
+                        rate = (money(row.get(cols.get("rate")))
+                                or money(row.get(cols.get("alt"))))
+                        if rate is None:
+                            continue
+                        any_rate = True
+                        found.append({**rec, "payer": pname, "rate": rate})
+                    if not any_rate:
+                        found.append({**rec, "payer": None, "rate": None})
+                else:
+                    found.append({
+                        **rec,
+                        "payer": (row.get(payer_c) or "").strip() or None,
+                        "rate": money(row.get(rate_c)) or money(row.get(median_c)),
+                    })
+            break  # one code slot per row is enough
 
     if verbose:
         print(f"      scanned {scanned:,} rows | code types seen: "
@@ -1408,6 +1421,33 @@ def main():
 
         carried: dict[str, dict] = {}
 
+        def checkpoint():
+            """
+            Write results after every hospital.
+
+            Runs take 30-60 minutes and download gigabytes. Writing only at the
+            end means a timeout, a cancelled job, or one unhandled error throws
+            away every hospital already processed. Writing as we go costs
+            milliseconds and makes any interrupted run resumable.
+            """
+            partial = consolidate(all_rows)
+            partial.update(carried)
+            touched_now = {h["id"] for h in run_scope}
+            for k, rec in prev_prices.items():
+                if rec.get("hospital_id") in touched_now:
+                    continue
+                partial.setdefault(k, rec)
+            try:
+                price_path.write_text(json.dumps(partial, indent=1))
+                status_path.write_text(json.dumps(status, indent=1))
+                (DATA / "host-cooldowns.json").write_text(json.dumps(cooldowns, indent=1))
+                reg_path.write_text(json.dumps(hospitals, indent=1))
+            except Exception as e:
+                print(f"      checkpoint write failed: {e}")
+
+        if args.shards > 1:
+            price_path = DATA / f"{args.region}-prices-{args.shard}.json"
+
         for h in shard:
             prior = status.get(h["id"], {})
 
@@ -1467,6 +1507,7 @@ def main():
                 record(h, STATUS_NO_FILE,
                        "no machine-readable file found at the standard "
                        "/cms-hpt.txt location")
+                checkpoint()
                 print(f"    - {h['name']}: no price file found")
                 continue
 
@@ -1498,6 +1539,7 @@ def main():
                 record(h, STATUS_OK if rows else STATUS_EMPTY,
                        "" if rows else "file parsed but held none of our procedures",
                        rows=len(rows), url=url)
+                checkpoint()
             except Exception as e:
                 short = str(e).split("(Caused by")[0][:110]
                 refused = ("refused" in short.lower() or "timed out" in short.lower()
@@ -1507,6 +1549,7 @@ def main():
                 stats["error"] += 1
                 record(h, STATUS_UNREACHABLE, short, url=url)
                 carried.update(carry_over(h))
+                checkpoint()
                 print(f"    ! {h['name']}: {short}")
                 if refused:
                     print(f"      {host_of(url)} put on a "
@@ -1544,8 +1587,6 @@ def main():
             print(f"[prices] preserved {preserved} record(s) for "
                   f"{len(untouched)} hospital(s) outside this run")
 
-        if args.shards > 1:
-            price_path = DATA / f"{args.region}-prices-{args.shard}.json"
         price_path.write_text(json.dumps(merged, indent=1))
         status_path.write_text(json.dumps(status, indent=1))
         (DATA / "host-cooldowns.json").write_text(json.dumps(cooldowns, indent=1))
