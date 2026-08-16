@@ -7,8 +7,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 5,
-  "consecutive_failures": 5,
+  "attempts": 6,
+  "consecutive_failures": 6,
   "rule_applies": true
  },
  "ccn-050025": {
@@ -67,8 +67,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 5,
-  "consecutive_failures": 5,
+  "attempts": 6,
+  "consecutive_failures": 6,
   "rule_applies": true
  },
  "ccn-050128": {
@@ -91,8 +91,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 5,
-  "consecutive_failures": 5,
+  "attempts": 6,
+  "consecutive_failures": 6,
   "rule_applies": false
  },
  "ccn-050222": {
@@ -115,8 +115,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 5,
-  "consecutive_failures": 5,
+  "attempts": 6,
+  "consecutive_failures": 6,
   "rule_applies": false
  },
  "ccn-050234": {
@@ -187,8 +187,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 5,
-  "consecutive_failures": 5,
+  "attempts": 6,
+  "consecutive_failures": 6,
   "rule_applies": true
  },
  "ccn-050855": {
@@ -211,8 +211,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 5,
-  "consecutive_failures": 5,
+  "attempts": 6,
+  "consecutive_failures": 6,
   "rule_applies": false
  },
  "ccn-053303": {
