@@ -135,9 +135,10 @@
   "hasER": true,
   "domain": "tricitymed.org",
   "verified_source": false,
-  "lat": null,
-  "lng": null,
-  "mrf_url": null
+  "lat": 33.1968,
+  "lng": -117.2831,
+  "mrf_url": null,
+  "geo_approx": true
  },
  {
   "id": "ccn-05020F",
@@ -155,9 +156,10 @@
   "hasER": true,
   "domain": null,
   "verified_source": false,
-  "lat": null,
-  "lng": null,
-  "mrf_url": null
+  "lat": 33.0169,
+  "lng": -116.846,
+  "mrf_url": null,
+  "geo_approx": true
  },
  {
   "id": "ccn-050222",
@@ -355,9 +357,10 @@
   "hasER": true,
   "domain": null,
   "verified_source": false,
-  "lat": null,
-  "lng": null,
-  "mrf_url": null
+  "lat": 32.8718,
+  "lng": -117.2291,
+  "mrf_url": null,
+  "geo_approx": true
  },
  {
   "id": "ccn-053303",

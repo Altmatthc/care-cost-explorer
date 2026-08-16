@@ -1,0 +1,16 @@
+{
+ "san-diego": {
+  "file": "san-diego.json",
+  "updated": "2026-08-16",
+  "hospitals": 13,
+  "procedures": 58,
+  "states": [
+   "CA"
+  ],
+  "zip3": [
+   "919",
+   "920",
+   "921"
+  ]
+ }
+}
