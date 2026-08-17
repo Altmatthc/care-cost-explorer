@@ -201,6 +201,47 @@ def main():
         print(f"  ok    median {statistics.median(per_hosp.values()):.0f} "
               f"procedures priced per hospital")
 
+    # --- file sizes ---
+    # GitHub rejects any file over 100 MB outright. A push failing after a
+    # 14-minute run is a bad way to discover that.
+    print("\nFile sizes")
+    import subprocess as _sp
+    # Ask git which of these it ignores. Passing paths on the command line
+    # breaks on Windows once there are many (there's a length limit), so feed
+    # them on stdin instead. Exit code 1 just means "none ignored".
+    ignored = set()
+    candidates = [p for p in DATA.rglob("*") if p.is_file()]
+    try:
+        out = _sp.run(["git", "check-ignore", "--stdin"],
+                      input="\n".join(str(p) for p in candidates),
+                      capture_output=True, text=True, cwd=DATA.parent)
+        ignored = {Path(l.strip()).name for l in out.stdout.splitlines() if l.strip()}
+    except Exception as e:
+        print(f"  (couldn't ask git which files are ignored: {e})")
+    biggest = []
+    for f in list(DATA.glob("*.json")) + list(DATA.glob("*/*.json")):
+        biggest.append((f.stat().st_size, f))
+    biggest.sort(reverse=True)
+    shown = 0
+    for size, f in biggest:
+        mb = size / 1e6
+        if f.name in ignored:
+            if mb > 50:
+                print(f"  ok    {f.name} is {mb:.0f} MB, but is gitignored "
+                      f"(local only, never pushed)")
+            continue
+        shown += 1
+        if shown > 3:
+            break
+        if mb > 100:
+            fail(f"{f.name} is {mb:.0f} MB — GitHub REJECTS files over 100 MB. "
+                 f"Add it to .gitignore or shard it before pushing.")
+        elif mb > 50:
+            warn(f"{f.name} is {mb:.0f} MB — GitHub warns above 50 MB")
+        else:
+            print(f"  ok    largest committed file: {f.name} ({mb:.1f} MB)")
+            break
+
     # --- summary ---
     print("\n" + "=" * 62)
     print(f"{len(problems)} failure(s), {len(warnings)} warning(s)")

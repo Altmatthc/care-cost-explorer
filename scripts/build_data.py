@@ -1136,7 +1136,16 @@ def money(v) -> Optional[float]:
         return None
 
 
-def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dict]:
+# Bound per-hospital capture. A malformed file claiming a million codes
+# shouldn't be able to exhaust memory mid-run.
+MAX_CODES_PER_HOSPITAL = 60_000
+
+# Set per region in main(); each hospital's catalogue is written here.
+CATALOGUE_DIR = None
+
+
+def extract_prices(hospital_id: str, url: str, verbose: bool = True,
+                   capture_all: bool = True) -> list[dict]:
     """
     Pull only rows matching TARGET_CODES, capturing cash price and payer rates.
     Prints what it detected so a zero-row result is diagnosable without
@@ -1149,6 +1158,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     keys = None
     code_pairs: list[tuple[str, Optional[str]]] = []
     cash_c = gross_c = payer_c = rate_c = desc_c = loc_c = None
+    dunit_c = dtype_c = None
     median_c = min_c = max_c = None
     wide_payers: dict[str, dict] = {}
     scanned = 0
@@ -1163,6 +1173,11 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
     # price for. CMS requires 300 shoppable services; nobody aggregates how
     # many hospitals actually meet it.
     coded_with_cash: set = set()
+    # Full-catalogue capture. The curated 58 procedures keep their payer-level
+    # detail; everything else is stored as cash + gross only. That's the
+    # difference between 26 MB and 860 MB nationally, and someone searching an
+    # obscure code overwhelmingly wants the cash price.
+    all_codes: dict[str, dict] = {}
     # Drugs are billed under HCPCS "J" codes. Rather than guess which J-code
     # maps to which drug — a good way to publish wrong data — capture them all
     # with their descriptions and let the merge step keep the ones that appear
@@ -1189,6 +1204,8 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
             max_c = col(keys, "standard_charge|max", "_max", "maximum")
             desc_c = col(keys, "description")
             loc_c = col(keys, "location_name", "hospital_location", "location")
+            dunit_c = col(keys, "drug_unit_of_measurement", "drug_unit")
+            dtype_c = col(keys, "drug_type_of_measurement", "drug_type")
             wide_payers = find_wide_payers(keys)
             if verbose:
                 print(f"      columns: {len(keys)} | code slots: "
@@ -1209,13 +1226,33 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
 
             nt = norm_type(ctype)
             if row_cash and nt in ("CPT", "HCPCS", "MSDRG", "DRG", "APC"):
+                key = f"{nt}:{code.strip().upper()}"
                 coded_with_cash.add(f"{nt}:{norm_code(code)}")
+                if capture_all and len(all_codes) < MAX_CODES_PER_HOSPITAL:
+                    prev = all_codes.get(key)
+                    # Keep the lowest cash price seen for a code: files repeat
+                    # a code across settings, and the lower is the one a
+                    # patient could actually be offered.
+                    if not prev or row_cash < prev["cash"]:
+                        all_codes[key] = {
+                            "d": clean_text(row.get(desc_c), 70),
+                            "cash": round(row_cash),
+                            "gross": round(money(row.get(gross_c)) or 0) or None,
+                        }
 
             # HCPCS J-codes are drugs administered in a facility.
             if nt == "HCPCS" and code.upper().startswith("J") and row_cash:
                 key = code.upper()
-                d = drugs.setdefault(key, {
+                # Unit matters enormously: the same J-code priced per-mg at
+                # one hospital and per-vial at another differs by thousands of
+                # times, which is a measurement artefact, not a price finding.
+                unit = clean_text(row.get(dunit_c), 20) if dunit_c else ""
+                utype = clean_text(row.get(dtype_c), 20) if dtype_c else ""
+                ukey = f"{key}|{unit.lower()}|{utype.lower()}"
+                d = drugs.setdefault(ukey, {
                     "code": key,
+                    "unit": unit,
+                    "unit_type": utype,
                     "description": clean_text(row.get(desc_c), 90),
                     "cash": row_cash,
                     "gross": money(row.get(gross_c)),
@@ -1283,12 +1320,25 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True) -> list[dic
                   f"{quality['algorithm']*100//tot}% algorithm-only")
     if verbose:
         print(f"      coverage: {len(coded_with_cash):,} distinct codes with a "
-              f"cash price | {len(drugs)} drug (J) codes captured")
+              f"cash price | {len(drugs)} drug (J) codes | "
+              f"{len(all_codes):,} codes catalogued for search")
+    # The catalogue is written to its own file, once per hospital, and never
+    # enters the prices file. The prices file is rewritten after every
+    # hospital for checkpointing — carrying a 160 MB catalogue through that
+    # would mean tens of gigabytes of pointless writes on a statewide run.
     meta = {"quality": quality,
             "codes_with_cash": len(coded_with_cash),
             "drugs": drugs}
-    for r in found:
-        r["_meta"] = meta
+    if found:
+        found[0]["_meta"] = meta
+    if all_codes and CATALOGUE_DIR is not None:
+        try:
+            CATALOGUE_DIR.mkdir(parents=True, exist_ok=True)
+            safe = re.sub(r"[^A-Za-z0-9_.-]", "_", hospital_id)
+            (CATALOGUE_DIR / f"{safe}.json").write_text(
+                json.dumps(all_codes, separators=(",", ":")))
+        except Exception as e:
+            print(f"      could not save catalogue: {e}")
         if not found:
             print(f"      NO MATCHES. Sample codes in file: {sample_codes}")
     return found
@@ -1625,6 +1675,9 @@ def main():
     if args.stage in ("all", "prices"):
         from datetime import date
         today = date.today().isoformat()
+
+        global CATALOGUE_DIR
+        CATALOGUE_DIR = DATA / f"{args.region}-catalogue"
 
         status_path = DATA / f"{args.region}-status.json"
         status = load_json(status_path, {})

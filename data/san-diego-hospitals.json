@@ -36,10 +36,12 @@
   "stars": 5,
   "hasER": true,
   "domain": "health.ucsd.edu",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.75381,
   "lng": -117.16555,
-  "mrf_url": null
+  "mrf_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json",
+  "price_page": "https://health.ucsd.edu/insurance-billing/standard-charges/",
+  "source_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json"
  },
  {
   "id": "ccn-050026",
@@ -57,10 +59,12 @@
   "stars": 4,
   "hasER": true,
   "domain": "sharp.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.77915,
   "lng": -117.00847,
-  "mrf_url": null
+  "mrf_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/pDe4LFVvP8fh5nOJd8Zji/71b0885eb86902c17aee42e048ea796b/33-0449527_grossmont-hospital-corporation_standardcharges.csv",
+  "price_page": "https://www.sharp.com/billing/estimate",
+  "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/pDe4LFVvP8fh5nOJd8Zji/71b0885eb86902c17aee42e048ea796b/33-0449527_grossmont-hospital-corporation_standardcharges.csv"
  },
  {
   "id": "ccn-050077",
@@ -81,7 +85,8 @@
   "verified_source": true,
   "lat": 32.7513,
   "lng": -117.16107,
-  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv"
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv",
+  "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv"
  },
  {
   "id": "ccn-050100",
@@ -99,10 +104,12 @@
   "stars": 4,
   "hasER": true,
   "domain": "sharp.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.8002,
   "lng": -117.15528,
-  "mrf_url": null
+  "mrf_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/7kOO19WgXRFqOFfWyPsSCE/1dd67ee60fbf2a34d729812c39abb1fe/95-3782169_sharp-memorial-hospital_standardcharges.csv",
+  "price_page": "https://www.sharp.com/billing/estimate",
+  "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/7kOO19WgXRFqOFfWyPsSCE/1dd67ee60fbf2a34d729812c39abb1fe/95-3782169_sharp-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-050115",
@@ -141,10 +148,12 @@
   "stars": 1,
   "hasER": true,
   "domain": "tricitymed.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.1968,
   "lng": -117.2831,
-  "mrf_url": null
+  "mrf_url": "https://tricitymed.org/wp-content/uploads/2026/03/952126937_Tri-City-Medical-Center_standardcharges.csv",
+  "price_page": "https://www.tricitymed.org/",
+  "source_url": "https://tricitymed.org/wp-content/uploads/2026/03/952126937_Tri-City-Medical-Center_standardcharges.csv"
  },
  {
   "id": "ccn-05020F",
@@ -183,10 +192,12 @@
   "stars": 4,
   "hasER": true,
   "domain": "sharp.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.61748,
   "lng": -117.02221,
-  "mrf_url": null
+  "mrf_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/D4fRN51N03oyjM0c54C1U/cbd502f0357445b1fc46bdeaac647efc/95-2367304_sharp-chula-vista-medical-center_standardcharges.csv",
+  "price_page": "https://www.sharp.com/billing/estimate",
+  "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/D4fRN51N03oyjM0c54C1U/cbd502f0357445b1fc46bdeaac647efc/95-2367304_sharp-chula-vista-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-05022F",
@@ -225,10 +236,12 @@
   "stars": 4,
   "hasER": true,
   "domain": "sharp.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.69426,
   "lng": -117.16804,
-  "mrf_url": null
+  "mrf_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/2KzeL4pvhLOzji2tpd02tN/cd1b75dce36fb1ed1dacc742c5889862/95-0651579_sharp-coronado-hospital-and-hlthcr-ctr_standardcharges.csv",
+  "price_page": "https://www.sharp.com/billing/estimate",
+  "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/2KzeL4pvhLOzji2tpd02tN/cd1b75dce36fb1ed1dacc742c5889862/95-0651579_sharp-coronado-hospital-and-hlthcr-ctr_standardcharges.csv"
  },
  {
   "id": "ccn-050324",
@@ -249,7 +262,8 @@
   "verified_source": true,
   "lat": 32.88506,
   "lng": -117.22268,
-  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv"
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv",
+  "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv"
  },
  {
   "id": "ccn-050424",
@@ -270,7 +284,8 @@
   "verified_source": true,
   "lat": 32.89757,
   "lng": -117.24188,
-  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv"
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv",
+  "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv"
  },
  {
   "id": "ccn-050503",
@@ -291,7 +306,8 @@
   "verified_source": true,
   "lat": 33.03629,
   "lng": -117.28537,
-  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv"
+  "mrf_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv",
+  "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv"
  },
  {
   "id": "ccn-050515",
@@ -309,10 +325,12 @@
   "stars": 4,
   "hasER": true,
   "domain": "healthy.kaiserpermanente.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.79292,
   "lng": -117.09543,
-  "mrf_url": null
+  "mrf_url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-diego-zion-medical-center-standard-charges-scal-en.csv",
+  "price_page": "https://healthy.kaiserpermanente.org/northern-california/doctors-locations/price-transparency",
+  "source_url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-diego-zion-medical-center-standard-charges-scal-en.csv"
  },
  {
   "id": "ccn-050636",
@@ -351,10 +369,12 @@
   "stars": 4,
   "hasER": true,
   "domain": "healthy.kaiserpermanente.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.12896,
   "lng": -117.16792,
-  "mrf_url": null
+  "mrf_url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-marcos-medical-center-standard-charges-scal-en.csv",
+  "price_page": "https://healthy.kaiserpermanente.org/northern-california/doctors-locations/price-transparency",
+  "source_url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-marcos-medical-center-standard-charges-scal-en.csv"
  },
  {
   "id": "ccn-05114F",
@@ -393,9 +413,11 @@
   "stars": null,
   "hasER": false,
   "domain": "rchsd.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.79866,
   "lng": -117.15086,
-  "mrf_url": null
+  "mrf_url": "https://www.rchsd.org/wp-content/uploads/2026/03/95-1691313_rady-childrens-hospital-san-diego_standardcharges.csv",
+  "price_page": "https://www.rchsd.org/patients-visitors/price-transparency/",
+  "source_url": "https://www.rchsd.org/wp-content/uploads/2026/03/95-1691313_rady-childrens-hospital-san-diego_standardcharges.csv"
  }
 ]

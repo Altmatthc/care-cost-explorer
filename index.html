@@ -14,7 +14,7 @@
   style-src  'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
   font-src   'self' https://fonts.gstatic.com;
   img-src    'self' data: https://*.basemaps.cartocdn.com;
-  connect-src 'self' https://api.zippopotam.us;
+  connect-src 'self' https://api.zippopotam.us https://github.com https://objects.githubusercontent.com https://*.githubusercontent.com;
   form-action 'none';
   frame-ancestors 'none';
   base-uri 'none';">
@@ -163,6 +163,8 @@
   .rank-badge{display:inline-flex;align-items:center;justify-content:center;
     width:19px;height:19px;border-radius:50%;color:#fff;font-family:'IBM Plex Mono',monospace;
     font-size:11px;font-weight:600;margin-right:7px;vertical-align:1px;}
+  .outlier-note{margin-top:8px;font-size:12px;line-height:1.5;color:#8A5A2E;
+    background:#FBF0E7;border:1px solid #E8C8A8;padding:7px 10px;border-radius:5px;}
   .sys-note{margin-top:8px;font-size:12px;line-height:1.5;color:#6A4C88;
     background:#F2ECF7;border:1px solid #DCCDE8;padding:6px 9px;border-radius:5px;}
   .sys-note b{font-weight:700;}
@@ -171,6 +173,33 @@
   .cash-win b{font-weight:700;}
   .badge-spread{background:#F2ECF7;color:#6A4C88;}
   .badge-markup{background:#F7F1E4;color:#8A6A2E;}
+  .proc-search{max-width:520px;margin:0 auto 6px;}
+  .proc-search input{width:100%;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;font-size:15px;font-family:'Inter',sans-serif;}
+  .proc-search input:focus{outline:2px solid var(--teal);outline-offset:1px;}
+  #procSearchResults{margin-top:6px;}
+  .ps-hit{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    width:100%;text-align:left;padding:10px 13px;border:1px solid var(--line);
+    border-radius:7px;background:#fff;cursor:pointer;margin-bottom:5px;}
+  .ps-hit:hover{background:var(--teal-soft);border-color:var(--teal);}
+  .ps-name{font-size:14px;font-weight:500;}
+  .ps-code{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);
+    white-space:nowrap;}
+  .ps-section{font-family:'IBM Plex Mono',monospace;font-size:10px;
+    letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+    margin:12px 0 6px;}
+  .ps-raw .ps-name{font-weight:400;}
+  .ps-empty{font-size:13px;color:var(--muted);padding:8px 2px;}
+  .or-divider{display:flex;align-items:center;gap:12px;max-width:520px;
+    margin:18px auto 22px;color:var(--muted);font-size:12px;}
+  .or-divider::before,.or-divider::after{content:"";flex:1;height:1px;
+    background:var(--line);}
+  .no-results{background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:18px;font-size:14px;line-height:1.6;color:var(--muted);}
+  .widen-btn{background:var(--teal);color:#fff;border:none;border-radius:5px;
+    padding:7px 12px;font-size:13px;font-weight:600;cursor:pointer;margin-left:4px;}
+  .bd-warn{margin-top:8px;font-size:11.5px;color:var(--muted);line-height:1.5;}
+  .badge-source{background:#EDF1F1;color:var(--muted);}
   .badge-btn{border:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;
     font-size:10px;letter-spacing:.05em;text-transform:uppercase;
     display:inline-flex;align-items:center;gap:4px;transition:filter .12s;}
@@ -233,6 +262,14 @@
   <main>
     <!-- SCREEN 1: body picker -->
     <div class="screen active" id="screen-body">
+      <div class="proc-search">
+        <label for="procSearch">Know what you need? Search for it</label>
+        <input type="text" id="procSearch" autocomplete="off"
+               placeholder="e.g. MRI, colonoscopy, blood test, 70551">
+        <div id="procSearchResults"></div>
+      </div>
+      <div class="or-divider"><span>or choose an area of the body</span></div>
+
       <div class="step-title">Where do you need care?</div>
       <div class="step-sub">Tap the part of the body you need care for — organs and bones are labeled to help you find it.</div>
       <div class="body-layout">
@@ -397,6 +434,16 @@
           <select id="payerSelect"></select>
         </div>
         <div class="field">
+          <label for="radiusSelect">How far will you travel?</label>
+          <select id="radiusSelect">
+            <option value="25">Within 25 miles</option>
+            <option value="10">Within 10 miles</option>
+            <option value="50">Within 50 miles</option>
+            <option value="100">Within 100 miles</option>
+            <option value="0">Any distance</option>
+          </select>
+        </div>
+        <div class="field">
           <label for="zipInput">Your ZIP code</label>
           <input type="text" id="zipInput" placeholder="e.g. 92101" maxlength="5" inputmode="numeric">
           <div class="zip-error" id="zipError">Couldn't find that ZIP code — double check and try again.</div>
@@ -411,13 +458,23 @@
       <div class="back-link" id="backFromDrugs">&larr; BACK</div>
       <div class="step-title">Drug &amp; infusion prices</div>
       <div class="step-sub">Medicines given in a hospital are billed separately
-        from the procedure. The same drug can cost several times more at one
-        hospital than another. Cash prices shown.</div>
+        from the procedure, and the same drug can cost several times more at one
+        hospital than another. Cash prices, compared only between hospitals
+        publishing the same unit of measurement.</div>
       <div class="field" style="max-width:420px;">
         <label for="drugSearch">Search by name or code</label>
         <input type="text" id="drugSearch" placeholder="e.g. infusion, J9035">
       </div>
       <div id="drugList"></div>
+    </div>
+
+    <!-- SCREEN 2c: a raw billing code -->
+    <div class="screen" id="screen-code">
+      <div class="back-link" id="backFromCode">&larr; BACK</div>
+      <div class="step-title" id="codeTitle">Code</div>
+      <div class="step-sub" id="codeSub"></div>
+      <div class="cost-note" id="codeNote"></div>
+      <div id="codeResults"></div>
     </div>
 
     <!-- SCREEN 3: results -->
@@ -810,7 +867,7 @@ const ZIPS = {
 // ---------------------------------------------------------------------------
 // STATE + SCREEN NAV
 // ---------------------------------------------------------------------------
-let state = { region:null, procedureId:null, payerId:'cash', zip:null, zipLat:null, zipLng:null, sort:'price' };
+let state = { region:null, procedureId:null, payerId:'cash', zip:null, zipLat:null, zipLng:null, sort:'price', radius:25 };
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -870,6 +927,155 @@ anatomyToggle.addEventListener('click', () => {
 
 document.getElementById('generalBtn').addEventListener('click', () => selectRegion('general'));
 
+// --- full code catalogue ---
+// Loaded only when someone actually searches, and only the bucket their code
+// falls in. The full national catalogue is ~860 MB; this fetches kilobytes.
+let SEARCH_INDEX = null;
+const CODE_BUCKETS = {};
+
+// The catalogue may live in the repo (small regions) or on a GitHub Release
+// (large ones — release assets stay out of git history). regions.json says
+// which. Local is tried first so `run.py serve` always works offline.
+function catalogueUrl(region, filename){
+  const entry = (MANIFEST && MANIFEST[region]) || {};
+  const base = entry.catalogue_base;
+  if(base && /^https:\/\//.test(base)){
+    return `${base}/${region}--${filename}`;
+  }
+  return null;
+}
+
+async function fetchCatalogueFile(region, filename){
+  // Repo copy first.
+  try{
+    const local = await fetch(`data/${region}-${filename}`);
+    if(local.ok) return await local.json();
+  }catch(e){ /* fall through */ }
+  const remote = catalogueUrl(region, filename);
+  if(!remote) return null;
+  try{
+    const r = await fetch(remote);
+    if(r.ok) return await r.json();
+  }catch(e){ /* released asset unreachable */ }
+  return null;
+}
+
+async function loadSearchIndex(){
+  if(SEARCH_INDEX) return SEARCH_INDEX;
+  if(!MANIFEST) await loadManifest();
+  const region = safeRegion(loadedRegion || state.regionName || 'san-diego');
+  if(!region) return null;
+  SEARCH_INDEX = await fetchCatalogueFile(region, 'search.json');
+  return SEARCH_INDEX;
+}
+
+async function loadCodeBucket(codeKey){
+  const code = codeKey.split(':')[1] || '';
+  const prefix = code.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0,3) || 'OTHER';
+  if(CODE_BUCKETS[prefix]) return CODE_BUCKETS[prefix];
+  const region = safeRegion(loadedRegion || state.regionName || 'san-diego');
+  if(!region) return null;
+  let data = null;
+  try{
+    const r = await fetch(`data/${region}-codes/${encodeURIComponent(prefix)}.json`);
+    if(r.ok) data = await r.json();
+  }catch(e){ /* fall through to the release */ }
+  if(!data){
+    const remote = catalogueUrl(region, `codes-${prefix}.json`);
+    if(remote){
+      try{
+        const r = await fetch(remote);
+        if(r.ok) data = await r.json();
+      }catch(e){ /* unreachable */ }
+    }
+  }
+  if(data) CODE_BUCKETS[prefix] = data;
+  return data;
+}
+
+function searchCatalogue(q, limit = 10){
+  if(!SEARCH_INDEX) return [];
+  const s = q.trim().toLowerCase();
+  if(s.length < 2) return [];
+  const out = [];
+  for(const key in SEARCH_INDEX){
+    const [desc, nHosp, low] = SEARCH_INDEX[key];
+    const code = key.split(':')[1] || '';
+    if(code.toLowerCase().startsWith(s) ||
+       (desc || '').toLowerCase().includes(s)){
+      out.push({ key, code, type: key.split(':')[0], desc, nHosp, low });
+      if(out.length >= limit * 4) break;
+    }
+  }
+  // Prefer codes available at more hospitals — those are comparable.
+  out.sort((a,b) => b.nHosp - a.nHosp);
+  return out.slice(0, limit);
+}
+
+// --- procedure search ---
+const procSearch = document.getElementById('procSearch');
+const procSearchResults = document.getElementById('procSearchResults');
+
+function regionOfProcedure(pid){
+  for(const [key, r] of Object.entries(regions)){
+    if(key !== 'general' && (r.procedures || []).includes(pid)) return key;
+  }
+  return 'general';
+}
+
+procSearch.addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  if(q.length < 2){ procSearchResults.innerHTML = ''; return; }
+  const hits = procedures.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.code.toLowerCase().includes(q) ||
+    p.id.includes(q)).slice(0, 8);
+  let html = hits.map(p =>
+    `<button type="button" class="ps-hit" data-pid="${esc(p.id)}">
+       <span class="ps-name">${esc(p.name)}</span>
+       <span class="ps-code">${esc(p.code)}</span>
+     </button>`).join('');
+
+  // Beyond the curated procedures, search every code the hospitals publish.
+  loadSearchIndex().then(idx => {
+    if(!idx || e.target.value.trim().toLowerCase() !== q) return;
+    const extra = searchCatalogue(q).filter(c =>
+      !hits.some(p => p.code.replace(/\D/g,'') === c.code.replace(/\D/g,'')));
+    if(!extra.length && !hits.length){
+      procSearchResults.innerHTML =
+        `<div class="ps-empty">Nothing matching "${esc(q)}". Try a body area below.</div>`;
+      return;
+    }
+    procSearchResults.innerHTML = html + (extra.length
+      ? `<div class="ps-section">Other codes published by hospitals here</div>` +
+        extra.map(c =>
+          `<button type="button" class="ps-hit ps-raw" data-code="${esc(c.key)}">
+             <span class="ps-name">${esc(c.desc || c.code)}</span>
+             <span class="ps-code">${esc(c.type)} ${esc(c.code)} &middot;
+               ${c.nHosp} hosp${c.low ? ' &middot; from $' + Number(c.low).toLocaleString() : ''}</span>
+           </button>`).join('')
+      : '');
+  });
+
+  procSearchResults.innerHTML = html;
+});
+
+procSearchResults.addEventListener('click', e => {
+  const btn = e.target.closest('.ps-hit');
+  if(!btn) return;
+  if(btn.dataset.code){                       // a raw catalogue code
+    showCode(btn.dataset.code);
+    return;
+  }
+  const pid = btn.dataset.pid;
+  selectRegion(regionOfProcedure(pid));
+  const sel = document.getElementById('procedureSelect');
+  if(![...sel.options].some(o => o.value === pid)){
+    selectRegion('general');
+  }
+  document.getElementById('procedureSelect').value = pid;
+});
+
 document.getElementById('drugsBtn').addEventListener('click', async () => {
   if(!MANIFEST) await loadManifest();
   // Drug data needs a region loaded; default to the only one if unambiguous.
@@ -881,6 +1087,8 @@ document.getElementById('drugsBtn').addEventListener('click', async () => {
   showScreen('screen-drugs');
 });
 document.getElementById('backFromDrugs').addEventListener('click',
+  () => showScreen('screen-body'));
+document.getElementById('backFromCode').addEventListener('click',
   () => showScreen('screen-body'));
 document.getElementById('drugSearch').addEventListener('input',
   e => renderDrugs(e.target.value));
@@ -896,6 +1104,14 @@ window.addEventListener('resize', () => {
 // At startup, load only the small manifest — the price data itself waits
 // until a ZIP tells us which region to fetch. But say so honestly in the
 // banner, rather than claiming "placeholder" when real data is available.
+// If the code catalogue isn't published, don't promise code search.
+loadSearchIndex().then(idx => {
+  const box = document.getElementById('procSearch');
+  if(box && !idx){
+    box.placeholder = 'e.g. MRI, colonoscopy, knee replacement';
+  }
+});
+
 loadManifest().then(m => {
   const banner = document.querySelector('.banner');
   if(!m || !Object.keys(m).length || !banner) return;
@@ -966,6 +1182,7 @@ findBtn.addEventListener('click', async () => {
     state.zipState = 'CA';
     state.procedureId = document.getElementById('procedureSelect').value;
     state.payerId = document.getElementById('payerSelect').value;
+    state.radius = parseInt(document.getElementById('radiusSelect').value, 10) || 0;
     await loadRegionForSearch();
     renderResults();
     showScreen('screen-results');
@@ -985,6 +1202,7 @@ findBtn.addEventListener('click', async () => {
     state.zipState = data.places[0]['state abbreviation'] || '';
     state.procedureId = document.getElementById('procedureSelect').value;
     state.payerId = document.getElementById('payerSelect').value;
+    state.radius = parseInt(document.getElementById('radiusSelect').value, 10) || 0;
     await loadRegionForSearch();
     renderResults();
     showScreen('screen-results');
@@ -1217,6 +1435,14 @@ function tierOf(price, sorted){
 // Delegated: result cards are rebuilt on every render, so binding to each
 // badge individually would leak handlers and break after a re-sort.
 document.getElementById('resultsList').addEventListener('click', e => {
+  const widen = e.target.closest('.widen-btn');
+  if(widen){
+    state.radius = parseInt(widen.dataset.r, 10);
+    const sel = document.getElementById('radiusSelect');
+    if(sel) sel.value = String(state.radius);
+    renderResults();
+    return;
+  }
   const btn = e.target.closest('.badge-btn');
   if(!btn) return;
   e.stopPropagation();                       // don't also fly the map to the pin
@@ -1339,6 +1565,33 @@ function badgeDetail(key, hid, pid){
       </div>`;
   }
 
+  if(key === 'source'){
+    const st = SCAN_STATUS[hid] || {};
+    const code = proc.code || '';
+    const url = safeUrl(st.source_url);
+    const updated = (LIVE && LIVE.updated) || '';
+    return `<div class="bd-title">Where this figure comes from</div>
+      <div class="bd-body">
+        Hospitals must publish a machine-readable file of their standard
+        charges under 45 CFR Part 180. This price was read from
+        ${esc(hosp.name)}'s own file — nothing here is estimated or modelled.
+        <table class="bd-table">
+          <tr><td>Billing code</td><td class="num">${esc(code)}</td></tr>
+          <tr><td>Field used</td><td class="num">${
+            state.payerId === 'cash' ? 'discounted cash price'
+                                     : 'negotiated rate for your plan'}</td></tr>
+          <tr><td>Collected</td><td class="num">${esc(st.last_success || updated || 'unknown')}</td></tr>
+          ${rec && rec.gross ? `<tr><td>Hospital's list charge</td>
+            <td class="num">${money(rec.gross)}</td></tr>` : ''}
+        </table>
+        ${url ? `<br><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">
+          Open the hospital's price file →</a>
+          <div class="bd-warn">That file is very large — often hundreds of
+          megabytes — and may take a long time to open, or fail to open in a
+          browser at all.</div>` : `<br>Source file location not recorded.`}
+      </div>`;
+  }
+
   if(key === 'aid'){
     const own = (info.ownership || '').toLowerCase();
     const nonprofit = /non-?profit|church|voluntary/.test(own);
@@ -1415,7 +1668,9 @@ function renderDrugs(filter){
         ${d.spread && d.spread >= 1.5
           ? `<span class="tier-tag badge-spread">${d.spread}× spread</span>` : ''}
       </div>
-      <div class="card-meta">${esc(code)} &middot; ${prices.length} hospitals</div>
+      <div class="card-meta">${esc(d.code || code)}${
+        d.unit ? ` &middot; per ${esc(d.unit)} ${esc(d.unit_type || '')}` : ''
+      } &middot; ${prices.length} hospitals</div>
       <div class="detail-grid">
         <div class="detail"><span class="dl">Lowest</span><span class="dv">
           $${Math.round(lo[1]).toLocaleString()} —
@@ -1425,6 +1680,61 @@ function renderDrugs(filter){
           ${esc((hospitalById[hi[0]]||{}).name || hi[0])}</span></div>
       </div></div>`;
   }).join('');
+}
+
+async function showCode(codeKey){
+  const bucket = await loadCodeBucket(codeKey);
+  const entry = bucket && bucket[codeKey];
+  const [ctype, code] = codeKey.split(':');
+  const el = document.getElementById('codeResults');
+
+  document.getElementById('codeTitle').textContent =
+    (entry && entry.d) || `${ctype} ${code}`;
+  document.getElementById('codeSub').textContent = `${ctype} ${code}`;
+  document.getElementById('codeNote').innerHTML =
+    `<b>Cash prices only.</b> This is a billing code taken straight from the
+     hospitals' published files, so the description is theirs. Negotiated
+     insurance rates aren't shown for codes outside our main list, and a single
+     code is usually one line on a bill rather than the whole cost of care.`;
+  showScreen('screen-code');
+
+  if(!entry){
+    el.innerHTML = `<div class="no-results">No prices found for this code.</div>`;
+    return;
+  }
+
+  const rows = Object.entries(entry.h || {})
+    .map(([hid, v]) => ({ hid, cash: v[0], gross: v[1],
+                          h: hospitalById[hid] }))
+    .filter(r => r.h && r.cash)
+    .map(r => ({ ...r,
+      distance: (state.zipLat != null)
+        ? haversineMiles(state.zipLat, state.zipLng, r.h.lat, r.h.lng) : null }))
+    .filter(r => !(state.radius && r.distance != null && r.distance > state.radius))
+    .sort((a,b) => a.cash - b.cash);
+
+  if(!rows.length){
+    el.innerHTML = `<div class="no-results">No hospitals within your search
+      area publish a price for this code.</div>`;
+    return;
+  }
+
+  const low = rows[0].cash, high = rows[rows.length-1].cash;
+  el.innerHTML =
+    `<div class="result-count">${rows.length} hospital${rows.length===1?'':'s'}
+      publish a cash price · $${Math.round(low).toLocaleString()} to
+      $${Math.round(high).toLocaleString()}</div>` +
+    rows.map((r,i) => `<div class="card" style="cursor:default">
+      <div class="card-top">
+        <div class="card-name"><span class="rank-badge"
+          style="background:${i===0?'#1B6E62':'#5C7371'}">${i+1}</span>
+          ${esc(r.h.name)}</div>
+        <div class="card-price">$${Math.round(r.cash).toLocaleString()}</div>
+      </div>
+      <div class="card-meta">${esc(r.h.city || '')}${
+        r.distance != null ? ` &middot; ${r.distance.toFixed(1)} mi` : ''}${
+        r.gross ? ` &middot; list charge $${Math.round(r.gross).toLocaleString()}` : ''}
+      </div></div>`).join('');
 }
 
 function estimatorLink(h){
@@ -1442,6 +1752,8 @@ function renderCoverage(rows){
   if(!LIVE || !Object.keys(SCAN_STATUS).length){ el.innerHTML = ""; return; }
 
   // Hospitals in this result set that returned no price for this procedure
+  // rows is already radius-filtered, so this only ever explains hospitals the
+  // user could actually reach — not every gap in the region.
   const missing = rows.filter(r => r.price == null)
     .map(r => ({ h: r.h, s: SCAN_STATUS[r.h.id] }))
     .filter(x => x.s);
@@ -1513,6 +1825,12 @@ function renderResults(){
     const driveMin = Math.round(distance / 25 * 60); // ~25mph avg, estimated
     return { h, price, info, distance, driveMin, inNetwork: isInNetwork(h.id, state.payerId) };
   });
+  // Radius filter. Without one, a national dataset returns hospitals hundreds
+  // of miles away ranked above the one down the road.
+  const beyond = state.radius
+    ? rows.filter(r => r.distance > state.radius).length : 0;
+  if(state.radius) rows = rows.filter(r => r.distance <= state.radius);
+
   const validPrices = rows.filter(r=>r.price!=null).map(r=>r.price).sort((a,b)=>a-b);
 
   if(state.sort === 'price')         rows.sort((a,b) => (a.price ?? Infinity) - (b.price ?? Infinity));
@@ -1526,6 +1844,14 @@ function renderResults(){
   // Delegated: result cards are rebuilt on every render, so binding to each
 // badge individually would leak handlers and break after a re-sort.
 document.getElementById('resultsList').addEventListener('click', e => {
+  const widen = e.target.closest('.widen-btn');
+  if(widen){
+    state.radius = parseInt(widen.dataset.r, 10);
+    const sel = document.getElementById('radiusSelect');
+    if(sel) sel.value = String(state.radius);
+    renderResults();
+    return;
+  }
   const btn = e.target.closest('.badge-btn');
   if(!btn) return;
   e.stopPropagation();                       // don't also fly the map to the pin
@@ -1578,7 +1904,17 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     ? `<b>What you'd pay:</b> these are the hospital's cash prices — the facility charge for someone without insurance. <b>Doctors usually bill separately</b>, so a surgeon, anesthesiologist or radiologist fee is typically on top of the figure shown. Hospitals often discount cash prices further if you ask, and nonprofit hospitals must offer financial assistance if you qualify. For a full personalised total, ask the hospital for a "good faith estimate" — you're entitled to one.`
     : `<b>What you'd pay:</b> these are the rates ${esc(payerName)} has negotiated for the facility — not your final bill. If you haven't met your deductible you may owe the full amount shown; after that you typically owe a percentage. <b>Doctors usually bill separately</b>, so surgeon and anesthesia fees are generally on top. Check your plan's deductible and coinsurance.`;
   document.getElementById('resultCount').textContent =
-    `${validPrices.length} of ${hospitals.length} hospitals offer this · ${payerName} · near ZIP ${state.zip}`;
+    `${validPrices.length} hospital${validPrices.length===1?'':'s'} with a price` +
+    (state.radius ? ` within ${state.radius} miles of ${state.zip}` : ` near ${state.zip}`) +
+    ` · ${payerName}` +
+    (beyond ? ` · ${beyond} more further out` : '');
+
+  if(!rows.length){
+    document.getElementById('resultsList').innerHTML =
+      `<div class="no-results">No hospitals within ${state.radius} miles of
+       ${esc(state.zip)}. <button type="button" class="widen-btn"
+       data-r="0">Search any distance</button></div>`;
+  }
 
   const listEl = document.getElementById('resultsList');
   listEl.innerHTML = '';
@@ -1599,6 +1935,20 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
       ? `<div style="text-align:right;"><div class="card-price">$${price.toLocaleString()}</div><div class="price-label">${priceLabel}</div></div>`
       : `<div class="no-data">not offered here</div>`;
     inner += `</div><div class="card-meta">${esc(h.system)} &middot; ${esc(h.city)}</div>`;
+
+    // A published price far from every peer is worth a caution. We don't know
+    // whether it's the hospital's oddity or a parsing artefact, so we say so
+    // rather than quietly hiding it or presenting it as reliable.
+    if(LIVE){
+      const r = (LIVE.prices[proc.id] || {})[h.id];
+      if(r && r.outlier && price != null){
+        inner += `<div class="outlier-note">This price is unusually
+          ${r.outlier === 'high' ? 'high' : 'low'} — most hospitals here publish
+          around $${Number(r.peer_median).toLocaleString()} for this. It may be
+          an error in the hospital's own file, or cover something different.
+          Worth confirming with them before relying on it.</div>`;
+      }
+    }
 
     // The most actionable finding in this dataset: paying cash outright can
     // cost LESS than using your insurance. Hospitals publish both numbers but
@@ -1714,6 +2064,8 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     }
     if(info.aid) inner += badge('aid', 'badge-aid',
                                 'Financial aid available', h.id, proc.id);
+    if(LIVE && SCAN_STATUS[h.id]) inner += badge('source', 'badge-source',
+                                                 'Source', h.id, proc.id);
     inner += `</div><div class="badge-detail" data-for="${esc(h.id)}"></div>`;
 
     // The hospital's own estimator can price the whole encounter including

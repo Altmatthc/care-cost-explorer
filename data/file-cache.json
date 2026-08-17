@@ -1,1 +1,98 @@
-{}
+{
+ "https://downloads.ctfassets.net/pxcfulgsd9e2/pDe4LFVvP8fh5nOJd8Zji/71b0885eb86902c17aee42e048ea796b/33-0449527_grossmont-hospital-corporation_standardcharges.csv": {
+  "etag": "\"3de92e2666af22d8a029b4e0c5059aa2-119\"",
+  "last_modified": "Fri, 27 Mar 2026 23:34:19 GMT",
+  "length": "620378092",
+  "seen": null
+ },
+ "https://downloads.ctfassets.net/pxcfulgsd9e2/7kOO19WgXRFqOFfWyPsSCE/1dd67ee60fbf2a34d729812c39abb1fe/95-3782169_sharp-memorial-hospital_standardcharges.csv": {
+  "etag": "\"1376dc62d15dd14b4d04c7282046ec33-39\"",
+  "last_modified": "Fri, 27 Mar 2026 23:29:06 GMT",
+  "length": "204250299",
+  "seen": null
+ },
+ "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv": {
+  "etag": "\"8628e78b5bedc1:0\"",
+  "last_modified": "Fri, 27 Mar 2026 16:19:54 GMT",
+  "length": "578732995",
+  "seen": null
+ },
+ "https://tricitymed.org/wp-content/uploads/2026/03/952126937_Tri-City-Medical-Center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 19 Mar 2026 05:11:58 GMT",
+  "length": "23448092",
+  "seen": null
+ },
+ "https://downloads.ctfassets.net/pxcfulgsd9e2/D4fRN51N03oyjM0c54C1U/cbd502f0357445b1fc46bdeaac647efc/95-2367304_sharp-chula-vista-medical-center_standardcharges.csv": {
+  "etag": "\"0504f04dff2402438accb435df89d478-127\"",
+  "last_modified": "Fri, 27 Mar 2026 23:42:07 GMT",
+  "length": "662916895",
+  "seen": null
+ },
+ "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv": {
+  "etag": "\"203f91e5bedc1:0\"",
+  "last_modified": "Fri, 27 Mar 2026 16:16:51 GMT",
+  "length": "632184790",
+  "seen": null
+ },
+ "https://downloads.ctfassets.net/pxcfulgsd9e2/2KzeL4pvhLOzji2tpd02tN/cd1b75dce36fb1ed1dacc742c5889862/95-0651579_sharp-coronado-hospital-and-hlthcr-ctr_standardcharges.csv": {
+  "etag": "\"4375dfbc310cccdcf42245515f3b517a-126\"",
+  "last_modified": "Fri, 27 Mar 2026 23:46:22 GMT",
+  "length": "657049368",
+  "seen": null
+ },
+ "https://www.rchsd.org/wp-content/uploads/2026/03/95-1691313_rady-childrens-hospital-san-diego_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 21:29:11 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv": {
+  "etag": "\"c63be2385bedc1:0\"",
+  "last_modified": "Fri, 27 Mar 2026 16:17:35 GMT",
+  "length": "537741430",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-diego-zion-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 11:18:50 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv": {
+  "etag": "\"daec63515bedc1:0\"",
+  "last_modified": "Fri, 27 Mar 2026 16:18:16 GMT",
+  "length": "554192264",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-marcos-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 09:10:24 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json": {
+  "etag": "\"07d7871a9c0dc1:0\"",
+  "last_modified": "Tue, 31 Mar 2026 00:58:10 GMT",
+  "length": "3227761341",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-south-san-francisco-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 17:26:57 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-santa-clara-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 16:35:35 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-walnut-creek-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 16:57:58 GMT",
+  "length": null,
+  "seen": null
+ }
+}
