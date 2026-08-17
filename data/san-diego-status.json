@@ -7,8 +7,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 6,
-  "consecutive_failures": 6,
+  "attempts": 9,
+  "consecutive_failures": 9,
   "rule_applies": true
  },
  "ccn-050025": {
@@ -19,7 +19,7 @@
   "source_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -31,7 +31,7 @@
   "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/pDe4LFVvP8fh5nOJd8Zji/71b0885eb86902c17aee42e048ea796b/33-0449527_grossmont-hospital-corporation_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -43,7 +43,7 @@
   "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -55,7 +55,7 @@
   "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/7kOO19WgXRFqOFfWyPsSCE/1dd67ee60fbf2a34d729812c39abb1fe/95-3782169_sharp-memorial-hospital_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -67,8 +67,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 6,
-  "consecutive_failures": 6,
+  "attempts": 9,
+  "consecutive_failures": 9,
   "rule_applies": true
  },
  "ccn-050128": {
@@ -79,7 +79,7 @@
   "source_url": "https://tricitymed.org/wp-content/uploads/2026/03/952126937_Tri-City-Medical-Center_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -91,8 +91,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 6,
-  "consecutive_failures": 6,
+  "attempts": 9,
+  "consecutive_failures": 9,
   "rule_applies": false
  },
  "ccn-050222": {
@@ -103,7 +103,7 @@
   "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/D4fRN51N03oyjM0c54C1U/cbd502f0357445b1fc46bdeaac647efc/95-2367304_sharp-chula-vista-medical-center_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -115,8 +115,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 6,
-  "consecutive_failures": 6,
+  "attempts": 9,
+  "consecutive_failures": 9,
   "rule_applies": false
  },
  "ccn-050234": {
@@ -127,7 +127,7 @@
   "source_url": "https://downloads.ctfassets.net/pxcfulgsd9e2/2KzeL4pvhLOzji2tpd02tN/cd1b75dce36fb1ed1dacc742c5889862/95-0651579_sharp-coronado-hospital-and-hlthcr-ctr_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -139,7 +139,7 @@
   "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -151,7 +151,7 @@
   "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -163,7 +163,7 @@
   "source_url": "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -175,7 +175,7 @@
   "source_url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-diego-zion-medical-center-standard-charges-scal-en.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -187,8 +187,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 6,
-  "consecutive_failures": 6,
+  "attempts": 9,
+  "consecutive_failures": 9,
   "rule_applies": true
  },
  "ccn-050855": {
@@ -199,7 +199,7 @@
   "source_url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-marcos-medical-center-standard-charges-scal-en.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  },
@@ -211,8 +211,8 @@
   "source_url": null,
   "last_attempt": "2026-08-16",
   "last_success": null,
-  "attempts": 6,
-  "consecutive_failures": 6,
+  "attempts": 9,
+  "consecutive_failures": 9,
   "rule_applies": false
  },
  "ccn-053303": {
@@ -223,7 +223,7 @@
   "source_url": "https://www.rchsd.org/wp-content/uploads/2026/03/95-1691313_rady-childrens-hospital-san-diego_standardcharges.csv",
   "last_attempt": "2026-08-16",
   "last_success": "2026-08-16",
-  "attempts": 1,
+  "attempts": 4,
   "consecutive_failures": 0,
   "rule_applies": true
  }
