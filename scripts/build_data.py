@@ -224,6 +224,7 @@ SESSION = _make_session()
 # Add entries here as you expand to new regions.
 # ---------------------------------------------------------------------------
 DOMAIN_HINTS = [
+    # --- San Diego (verified) ---
     ("scripps",              "scripps.org"),
     ("sharp",                "sharp.com"),
     ("grossmont",            "sharp.com"),
@@ -231,7 +232,6 @@ DOMAIN_HINTS = [
     ("ucsd",                 "health.ucsd.edu"),
     ("jacobs medical",       "health.ucsd.edu"),
     ("east campus",          "health.ucsd.edu"),
-    ("kaiser",               "healthy.kaiserpermanente.org"),
     ("rady",                 "rchsd.org"),
     ("palomar",              "palomarhealth.org"),
     ("pomerado",             "palomarhealth.org"),
@@ -239,10 +239,113 @@ DOMAIN_HINTS = [
     ("tri city",             "tricitymed.org"),
     ("alvarado",             "alvaradohospital.com"),
     ("paradise valley",      "pvhospital.org"),
-    ("naval medical",        None),          # federal, exempt from the rule
-    ("veterans affairs",     None),          # federal, exempt
+
+    # --- large systems, which account for most hospitals ---
+    # A wrong guess here costs one failed lookup; it cannot produce wrong
+    # data, because every discovered file is verified to name the hospital
+    # before it's used.
+    ("kaiser",               "healthy.kaiserpermanente.org"),
+    ("sutter",               "sutterhealth.org"),
+    ("dignity",              "dignityhealth.org"),
+    ("commonspirit",         "commonspirit.org"),
+    ("providence",           "providence.org"),
+    ("adventist",            "adventisthealth.org"),
+    ("prime healthcare",     "primehealthcare.com"),
+    ("tenet",                "tenethealth.com"),
+    ("hca ",                 "hcahealthcare.com"),
+    ("memorialcare",         "memorialcare.org"),
+    ("memorial care",        "memorialcare.org"),
+    ("cedars",               "cedars-sinai.org"),
+    ("stanford",             "stanfordhealthcare.org"),
+    ("ucla",                 "uclahealth.org"),
+    ("ronald reagan",        "uclahealth.org"),
+    ("santa monica ucla",    "uclahealth.org"),
+    ("ucsf",                 "ucsfhealth.org"),
+    ("uc irvine",            "ucihealth.org"),
+    ("uci medical",          "ucihealth.org"),
+    ("uc davis",             "health.ucdavis.edu"),
+    ("keck",                 "keckmedicine.org"),
+    ("usc ",                 "keckmedicine.org"),
+    ("loma linda",           "lluh.org"),
+    ("hoag",                 "hoag.org"),
+    ("cottage",              "cottagehealth.org"),
+    ("john muir",            "johnmuirhealth.com"),
+    ("el camino",            "elcaminohealth.org"),
+    ("valley children",      "valleychildrens.org"),
+    ("children's hospital los angeles", "chla.org"),
+    ("city of hope",         "cityofhope.org"),
+    ("scripps mercy",        "scripps.org"),
+    ("salinas valley",       "salinasvalleyhealth.com"),
+    ("torrance memorial",    "torrancememorial.org"),
+    ("huntington",           "huntingtonhealth.org"),
+    ("pomona valley",        "pvhmc.org"),
+    ("eisenhower",           "eisenhowerhealth.org"),
+    ("desert regional",      "desertcarenetwork.com"),
+    ("enloe",                "enloe.org"),
+    ("marshall",             "marshallmedical.org"),
+    ("washington hospital",  "whhs.com"),
+    ("stanford children",    "stanfordchildrens.org"),
+    ("lucile packard",       "stanfordchildrens.org"),
+
+    # --- federal facilities: exempt, don't waste lookups ---
+    ("naval medical",        None),
+    ("veterans affairs",     None),
     ("va medical",           None),
+    ("nh ",                  None),
+    ("nmc ",                 None),
 ]
+
+
+def guess_domains(name: str, city: str = "") -> list[str]:
+    """
+    Guess plausible domains from a hospital's name.
+
+    Most hospitals aren't in the map above and never will be — there are 5,400
+    of them. But hospital domains are highly predictable ("Enloe Medical
+    Center" -> enloe.org), and guessing is safe here: a wrong guess produces a
+    failed lookup, never wrong data, because every file found is verified to
+    name the hospital before it's used.
+    """
+    n = _flatten(name)
+    stop = {"the", "of", "at", "and", "inc", "llc", "hospital", "hospitals",
+            "medical", "center", "centre", "health", "healthcare", "regional",
+            "community", "memorial", "campus", "district", "care", "system",
+            "general", "county", "city", "saint", "st"}
+    words = [w for w in n.split() if w not in stop and len(w) > 2]
+    if not words:
+        words = [w for w in n.split() if len(w) > 2]
+    if not words:
+        return []
+
+    # Ordered by likelihood, because each miss costs a lookup. Chain
+    # hospitals usually use their full name (riversidecommunityhospital.com);
+    # independents usually use a short distinctive stem (enloe.org). Try the
+    # more specific forms first — a short stem like "good" or "riverside" is
+    # rarely the hospital and often somebody else entirely.
+    stems: list[str] = []
+    full = "".join(w for w in _flatten(name).split() if w.isalnum())
+    if 8 <= len(full) <= 34:
+        stems.append(full)
+    if len(words) >= 3:
+        stems.append("".join(words[:3]))
+    if len(words) >= 2:
+        stems.append("".join(words[:2]))
+    if city:
+        c = "".join(_flatten(city).split())
+        if words and 4 <= len(c) <= 18:
+            stems.append(f"{words[0]}{c}")
+    stems.append(words[0])
+
+    out = []
+    for s in dict.fromkeys(stems):
+        if len(s) < 4:
+            continue
+        for suffix in (".com", ".org", "health.org", "healthcare.org"):
+            cand = f"{s}{suffix}"
+            if cand not in out:
+                out.append(cand)
+    return out[:10]
+
 
 # Verified by hand from each system's own price transparency page.
 # Keys are matched against a punctuation-stripped facility name, so
@@ -532,7 +635,7 @@ def _geocode_once(h: dict, addr: str) -> bool:
 SOURCE_PAGES: dict[str, str] = {}     # domain -> hospital's price page
 
 
-def discover_mrf_candidates(domain: str) -> list[str]:
+def discover_mrf_candidates(domain: str, timeout: int = 20) -> list[str]:
     """
     Collect EVERY price-file URL a system publishes in its /cms-hpt.txt.
 
@@ -544,7 +647,7 @@ def discover_mrf_candidates(domain: str) -> list[str]:
     urls: list[str] = []
     for base in (f"https://{domain}", f"https://www.{domain}"):
         try:
-            r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=20)
+            r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=timeout)
             if not r.ok or not r.text.strip():
                 continue
             for line in r.text.splitlines():
@@ -893,6 +996,38 @@ def detect_json_array_key(url: str) -> Optional[str]:
     return None
 
 
+class _BomStrippedReader:
+    """
+    Wrap a binary reader and drop a leading UTF-8 BOM if present.
+
+    Some hospitals (Stanford Health Care, MemorialCare) serve their JSON with
+    a BOM prefix. ijson's parser rejects it as a lexical error; json.loads
+    tolerates it. The BOM can only appear at byte 0 of the stream, so we read
+    the first chunk once and pass the rest through untouched.
+    """
+
+    def __init__(self, reader):
+        head = reader.read(65536)
+        self._rest = reader
+        self._buf = io.BytesIO(head[3:] if head.startswith(b"\xef\xbb\xbf") else head)
+
+    def read(self, n=-1):
+        out = self._buf.read(n)
+        while True:
+            if n == -1:
+                chunk = self._rest.read(65536)
+                if not chunk:
+                    return out or b""
+                out += chunk
+                continue
+            if len(out) >= n:
+                return out
+            chunk = self._rest.read(n - len(out))
+            if not chunk:
+                return out
+            out += chunk
+
+
 def stream_json_items(url: str, array_key: str) -> Iterator[dict]:
     """Stream items out of a large JSON file without loading it into memory."""
     try:
@@ -904,7 +1039,7 @@ def stream_json_items(url: str, array_key: str) -> Iterator[dict]:
     with SESSION.get(url, stream=True, headers=UA, timeout=600) as resp:
         resp.raise_for_status()
         resp.raw.decode_content = True
-        for item in ijson.items(resp.raw, f"{array_key}.item"):
+        for item in ijson.items(_BomStrippedReader(resp.raw), f"{array_key}.item"):
             yield item
 
 
@@ -1830,6 +1965,32 @@ def main():
 
             if not url:
                 domain = h.get("domain") or resolve_source(h.get("name", ""))[1]
+
+                # A mapped system domain that publishes nothing is common:
+                # HCA, Adventist and Sutter hospitals largely publish on their
+                # OWN sites rather than the parent's. So a mapped domain that
+                # comes up empty falls through to name-based guessing instead
+                # of giving up.
+                if domain and not discover_mrf_candidates(domain, timeout=10):
+                    print(f"    ... {h['name']}: nothing at {domain}, "
+                          f"trying the hospital's own site")
+                    domain = None
+
+                if not domain and not is_federal(h["name"], h.get("system", "")):
+                    # No mapped system. Try domains derived from the name —
+                    # cheap, and verification rejects anything that doesn't
+                    # identify as this hospital.
+                    # Short timeout: these are speculative. A domain that
+                    # doesn't exist should cost a second, not forty. Confirmed
+                    # domains are re-queried normally below.
+                    for cand in guess_domains(h["name"], h.get("city", "")):
+                        if host_cooling(f"https://{cand}/"):
+                            continue
+                        if discover_mrf_candidates(cand, timeout=6):
+                            domain = cand
+                            h["domain"] = cand
+                            print(f"    ... {h['name']}: found {cand} by name")
+                            break
                 if domain and host_cooling(f"https://{domain}/"):
                     carried.update(carry_over(h))
                     stats["cooled"] += 1
@@ -1849,9 +2010,10 @@ def main():
 
             if not url:
                 stats["no_mrf"] += 1
-                record(h, STATUS_NO_FILE,
-                       "no machine-readable file found at the standard "
-                       "/cms-hpt.txt location")
+                why = ("no website could be determined for this hospital"
+                       if not domain else
+                       f"nothing published at {domain}/cms-hpt.txt")
+                record(h, STATUS_NO_FILE, why)
                 checkpoint()
                 print(f"    - {h['name']}: no price file found")
                 return
