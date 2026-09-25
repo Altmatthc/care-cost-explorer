@@ -55,7 +55,7 @@
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-diego-zion-medical-center-standard-charges-scal-en.csv": {
   "etag": null,
-  "last_modified": "Wed, 12 Aug 2026 11:18:50 GMT",
+  "last_modified": "Fri, 25 Sep 2026 06:27:12 GMT",
   "length": null,
   "seen": null
  },
@@ -67,7 +67,7 @@
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-marcos-medical-center-standard-charges-scal-en.csv": {
   "etag": null,
-  "last_modified": "Wed, 12 Aug 2026 09:10:24 GMT",
+  "last_modified": "Fri, 25 Sep 2026 06:46:38 GMT",
   "length": null,
   "seen": null
  },
@@ -79,19 +79,421 @@
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-south-san-francisco-medical-center-standard-charges-ncal-en.csv": {
   "etag": null,
-  "last_modified": "Wed, 12 Aug 2026 17:26:57 GMT",
+  "last_modified": "Fri, 18 Sep 2026 02:55:55 GMT",
   "length": null,
   "seen": null
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-santa-clara-medical-center-standard-charges-ncal-en.csv": {
   "etag": null,
-  "last_modified": "Wed, 12 Aug 2026 16:35:35 GMT",
+  "last_modified": "Fri, 18 Sep 2026 09:14:17 GMT",
   "length": null,
   "seen": null
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-walnut-creek-medical-center-standard-charges-ncal-en.csv": {
   "etag": null,
-  "last_modified": "Wed, 12 Aug 2026 16:57:58 GMT",
+  "last_modified": "Fri, 18 Sep 2026 10:22:26 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.enloe.org/app/files/public/1eced6f9-2505-4f81-b1cf-2432f2e5af1e/941603784_Enloe%20Medical%20Center_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 15 Jun 2026 18:30:50 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.uclahealth.org/sites/default/files/cms-hpt/954541687_santa-monica-ucla-medical-center-and-orthopaedic-hospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 19:55:31 GMT",
+  "length": "20088562",
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/norcal/live/814791043_providence-st-joseph-hospital-eureka_standardcharges.json": {
+  "etag": "W/\"87899e3abc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 20:53:13 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.johnmuirhealth.com/content/dam/jmh/Documents/payments-and-insurance/machine-readable-files/94-1461843-1740215219_John-Muir-Health-Walnut-Creek-Medical-Center_standardcharges.zip": {
+  "etag": "\"0x8DEB29CA0CB12CE\"",
+  "last_modified": "Fri, 15 May 2026 16:11:31 GMT",
+  "length": "45544907",
+  "seen": null
+ },
+ "https://www.johnmuirhealth.com/content/dam/jmh/Documents/payments-and-insurance/machine-readable-files/68-0396600-1801821376_John-Muir-Health-Concord-Medical-Center_standardcharges.zip": {
+  "etag": "\"0x8DEB1EDC135B2E8\"",
+  "last_modified": "Thu, 14 May 2026 19:19:44 GMT",
+  "length": "41692025",
+  "seen": null
+ },
+ "https://www.uclahealth.org/sites/default/files/cms-hpt/956006143_ronald-reagan-ucla-medical-center_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 14:31:13 GMT",
+  "length": "22222463",
+  "seen": null
+ },
+ "https://hospitalpricedisclosure.com/download.aspx?pi=h0rmgXMGiSXmDqPqnFmWhA*-*": {
+  "etag": "0x8DE9019FAB77374",
+  "last_modified": "Wed, 01 Apr 2026 18:10:38 GMT",
+  "length": "57733071",
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/norcal/live/814791043_providence-queen-of-the-valley-medical-center_standardcharges.json": {
+  "etag": "W/\"98351d6babc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 20:49:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.uclahealth.org/sites/default/files/cms-hpt/95-6006143_UCLA-West-Valley-Medical-Center_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 19:47:53 GMT",
+  "length": "3182182",
+  "seen": null
+ },
+ "https://www.keckmedicine.org/wp-content/uploads/2026/08/951643336_usc-arcadia-hospital-_standardcharges.csv": {
+  "etag": "\"6a727605-4b55463\"",
+  "last_modified": "Tue, 04 Aug 2026 23:30:13 GMT",
+  "length": "78992483",
+  "seen": null
+ },
+ "https://downloads.ctfassets.net/8u2cuf59smsh/52tazi7symInZOZZ2g2eJU/a5edeceac81a9d8369ea9548032e2d42/951643327_hoag-memorial-hospital-presbyterian_standardcharges.csv": {
+  "etag": "\"a13c62960e46cf316aa32a5db46b25e4-7\"",
+  "last_modified": "Tue, 31 Mar 2026 22:41:17 GMT",
+  "length": "31496277",
+  "seen": null
+ },
+ "https://custom.pvhmc.org/CostEstimator/downloadable/Machine-Readable-File.csv": {
+  "etag": "\"1dd4205b6ef5cc7\"",
+  "last_modified": "Fri, 11 Sep 2026 15:53:42 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx?dbName=dbWashingtonHospitalCA&type=CDMWithoutLabel&fileType=CSV": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/socal/live/421672806_providence-little-co-of-mary-med-center-san-pedro_standardcharges.json": {
+  "etag": "W/\"f95e1eccaec3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:14:03 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.marshallmedical.org/documents/standard_charges/941450151_marshall-medical-center_standardcharges.csv": {
+  "etag": "\"4bcb38778addc1:0\"",
+  "last_modified": "Fri, 06 Mar 2026 14:46:34 GMT",
+  "length": "71064372",
+  "seen": null
+ },
+ "https://www.elcaminohealth.org/sites/default/files/2026-05/943167314_el-camino-hospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 13 May 2026 16:48:10 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://hospitalpricedisclosure.com/download.aspx?pi=5fSixiuBb0ZpZwZgOthF7A*-*": {
+  "etag": "0x8DE9019FC4949E8",
+  "last_modified": "Wed, 01 Apr 2026 18:10:41 GMT",
+  "length": "114762422",
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/socal/live/951643325_providence-st-jude-medical-center_standardcharges.json": {
+  "etag": "W/\"9e6ba85aafc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:18:02 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.salinasvalleyhealth.com/documents/946004020_SalinasValleyMemorialHealthcareSystem_standardcharges.csv": {
+  "etag": "\"59a2873d18dd1:0\"",
+  "last_modified": "Tue, 30 Jun 2026 20:45:56 GMT",
+  "length": "102374724",
+  "seen": null
+ },
+ "https://www.torrancememorial.org/app/files/public/72290ad6-2a3d-4b7e-acf0-1daa4ba8ba5e/951644042_TORRANCE-MEMORIAL-MEDICAL-CENTER_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 09 Dec 2025 22:04:38 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/norcal/live/814791043_providence-santa-rosa-memorial-hospital_standardcharges.json": {
+  "etag": "W/\"52c14db9abc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 20:52:02 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/socal/live/951675600_providence-st-joseph-medical-center_standardcharges.json": {
+  "etag": "W/\"d9b82eaec3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:08:44 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.healthcare/llu-mc/charges/export": {
+  "etag": "\"d188ca0f066d11de71721043e92942de-17\"",
+  "last_modified": "Fri, 04 Sep 2026 16:55:57 GMT",
+  "length": "290969884",
+  "seen": null
+ },
+ "https://www.tidalhealth.org/sites/default/files/2026-03/520591628_tidalhealth-peninsula-regional-inc_standardcharges.csv": {
+  "etag": "\"69cc055e-316d99\"",
+  "last_modified": "Tue, 31 Mar 2026 17:33:18 GMT",
+  "length": "3239321",
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/socal/live/954582647_providence-holy-cross-medical-center_standardcharges.json": {
+  "etag": "W/\"87da7d9baec3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:12:41 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-oakland-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 01:34:35 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.healthcare/llu-murrieta/charges/export": {
+  "etag": "\"adde92fdda08797591f5d8c304e113d7-9\"",
+  "last_modified": "Wed, 09 Sep 2026 16:12:53 GMT",
+  "length": "148288721",
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/socal/live/421672810_providence-little-company-of-mary-med-center-torrance_standardcharges.json": {
+  "etag": "W/\"119cb1feaec3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:15:27 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.cedars-sinai.org/content/dam/cedars-sinai/billing-insurance/documents/951644600_CEDARS-SINAI-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"34b05d83-6461418d27580-gzip\"",
+  "last_modified": "Tue, 16 Dec 2025 16:19:50 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/socal/live/951643360_providence-mission-hospital_standardcharges.json": {
+  "etag": "W/\"21bbd8b6afc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:20:36 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-francisco-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 01:20:08 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/socal/live/833972614_providence-cedars-sinai-tarzana-medical-center_standardcharges.json": {
+  "etag": "W/\"76b162eafc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:16:47 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/norcal/live/814791043_providence-redwood-memorial-hospital_standardcharges.json": {
+  "etag": "W/\"3a38d58eabc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 20:50:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://strosehospital.org/wp-content/uploads/2026/02/941668344_hayward-sisters-hospital-_standardcharges.csv": {
+  "etag": "\"69dd32a7-39255aa\"",
+  "last_modified": "Mon, 13 Apr 2026 18:15:03 GMT",
+  "length": "59921834",
+  "seen": null
+ },
+ "https://paradisevalleyhospital.com/wp-content/uploads/2026/04/205837239_ParadiseValleyHospital_standardcharges.JSON": {
+  "etag": "\"4c63177-64e3ff96f6fc0-gzip\"",
+  "last_modified": "Mon, 30 Mar 2026 16:02:15 GMT",
+  "length": "2246517",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-panorama-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 09:55:54 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-los-angeles-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 15:13:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-downey-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 01:29:55 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json?si=pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=o5IofreS%2F7ETlsnhPakPWCwHVVUZRobywQ5wUKGjVuQ%3D": {
+  "etag": null,
+  "last_modified": null,
+  "length": "529",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-fontana-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 22:16:16 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-south-bay-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 08:27:08 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-sacramento-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 02:10:09 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/ZZKG-1724785095238/machine-readable/94-1634554_oroville-hospital_standardcharges.json": {
+  "etag": "W/\"23064c9-bFNFf2yNU2tww1PHXQ0kizdgBSA\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-fremont-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 05:20:02 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-redwood-city-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:28:02 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-jose-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 02:20:10 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-anaheim-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:29:34 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-woodland-hills-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:32:03 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-riverside-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:33:59 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-santa-rosa-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:35:05 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://eisenhowerhealth.org/sites/emcorg/assets/downloads/956130458_eisenhower-medical-center_standardcharges.csv": {
+  "etag": "\"bbec76d1cfc2dc1:0\"",
+  "last_modified": "Thu, 02 Apr 2026 18:37:54 GMT",
+  "length": "1680974079",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-antioch-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:39:02 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-vacaville-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 02:09:56 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.hollywoodpresbyterian.com/300284087_HOLLYWOOD-PRESBYTERIAN-MEDICAL-CENTER_STANDARDCHARGES.json": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 19:09:39 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx?dbName=dbSonomaValley&type=CDMWithoutLabel&fileType=CSV": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.smchealth.org/sites/main/files/file-attachments/946000532_san-mateo-medical-center_standardcharges.csv?1761847070": {
+  "etag": "\"69d55964-16ff47\"",
+  "last_modified": "Tue, 07 Apr 2026 19:22:12 GMT",
+  "length": "1507143",
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/310537085_mercy-health-anderson-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:36:26 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.memorialcare.org/sites/default/files/_images/content/Patient-Financial-Services/953527031-1962442012_memorialcare-miller-children-_s-%26-women-_s-hospital-long-beach_standardcharges.json": {
+  "etag": "W/\"6a96e532-5256c0a\"",
+  "last_modified": "Tue, 01 Sep 2026 14:46:10 GMT",
+  "length": "5217948",
+  "seen": null
+ },
+ "https://www.memorialcare.org/sites/default/files/_images/content/Patient-Financial-Services/952585792_memorialcare-saddleback-medical-center_standardcharges.json": {
+  "etag": "W/\"6a96e52d-553e46f\"",
+  "last_modified": "Tue, 01 Sep 2026 14:46:05 GMT",
+  "length": "5704252",
+  "seen": null
+ },
+ "https://www.memorialcare.org/sites/default/files/_images/content/Patient-Financial-Services/330687414_memorialcare-orange-coast-medical-center_standardcharges.json": {
+  "etag": "W/\"6a96e52a-5caa813\"",
+  "last_modified": "Tue, 01 Sep 2026 14:46:02 GMT",
+  "length": "6152190",
+  "seen": null
+ },
+ "https://stanfordhealthcare.org/content/dam/SHC/patientsandvisitors/pricingtransparency/946174066_stanford-health-care_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Tue, 31 Mar 2026 23:59:12 GMT",
+  "length": "154579203",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-fresno-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 03:50:07 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-baldwin-park-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:37:32 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-manteca-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 01:54:18 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-moreno-valley-medical-center-standard-charges-scal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 06:41:24 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-roseville-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 02:11:24 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-leandro-medical-center-standard-charges-ncal-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 25 Sep 2026 02:10:33 GMT",
   "length": null,
   "seen": null
  }

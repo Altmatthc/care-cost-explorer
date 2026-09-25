@@ -28,3 +28,6 @@ data/file-cache.json
 data/*-catalogue/
 data/.release-manifest-*.json
 data/.release-staging/
+# Catalogue is published via GitHub Releases instead
+data/*-search.json
+data/*-codes/
