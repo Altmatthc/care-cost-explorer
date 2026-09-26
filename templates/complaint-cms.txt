@@ -1,0 +1,22 @@
+RE: Hospital Price Transparency Rule — Non-Compliance Report
+Facility: {hospital_name}
+CMS Certification Number (CCN): {ccn}
+Address: {address}, {city}, {state} {zip}
+
+To the CMS Office of State Operations / Regional Office:
+
+I am writing to report that {hospital_name} (CCN {ccn}) does not appear to be in compliance with the Hospital Price Transparency Rule, 42 CFR §181.1600 et seq., which requires hospitals to post a machine-readable file of standard charges on their public website by January 1, 2021.
+
+Specifically:
+- The hospital's website is {website}.
+- No machine-readable price transparency file (e.g., /cms-hpt.txt) was found at the expected location(s) as of {check_date}.
+- This requirement applies to all hospitals that bill Medicare Part A, regardless of size or ownership type.
+
+I request that CMS verify this facility's compliance status and take appropriate enforcement action if a violation is confirmed.
+
+Thank you for your attention to this matter.
+
+Respectfully,
+{your_name}
+{your_email}
+{date_sent}

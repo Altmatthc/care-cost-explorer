@@ -1,0 +1,19 @@
+RE: Hospital Price Transparency Non-Compliance — {hospital_name} (CCN {ccn})
+
+To the Florida Agency for Health Care Administration:
+
+I am reporting that {hospital_name}, located at {address}, {city}, FL {zip} (CMS CCN: {ccn}), does not appear to be publishing a machine-readable file of standard charges as required by federal law under 42 CFR §181.1600 et seq.
+
+Details:
+- Hospital website: {website}
+- No price transparency file was found at the hospital's website or at common CMS-required paths (e.g., /cms-hpt.txt) as of {check_date}.
+- This obligation applies to all hospitals billing Medicare Part A, including those in Florida.
+
+I would appreciate AHCA's assistance in confirming whether this facility is compliant and, if not, escalating the matter to CMS for enforcement.
+
+Thank you for your time.
+
+Respectfully,
+{your_name}
+{your_email}
+{date_sent}
