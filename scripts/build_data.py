@@ -458,6 +458,64 @@ KNOWN_MRF = {
         "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1257509_HCA-FLORIDA-OSCEOLA-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
     "hca florida pasadena hospital a part of":
         "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/80-0935610_HCA-FLORIDA-PASADENA-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    # Remaining HCA Florida hospitals, sourced from the network's own
+    # cms-hpt.txt manifest at hcafloridahealthcare.com/cms-hpt.txt
+    "hca florida aventura hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2379007_HCA-FLORIDA-AVENTURA-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida lake city hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/95-4176924_HCA-FLORIDA-LAKE-CITY-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida sarasota doctors hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1258724_HCA-FLORIDA-SARASOTA-DOCTORS-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida mercy hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1372389_HCA-FLORIDA-MERCY-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida memorial hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-3283127_HCA-FLORIDA-MEMORIAL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida st petersburg hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1174716_HCA-FLORIDA-ST.-PETERSBURG-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida northwest hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259843_HCA-FLORIDA-NORTHWEST-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida trinity hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2047041_HCA-FLORIDA-TRINITY-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida north florida hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269294_HCA-FLORIDA-NORTH-FLORIDA-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida south tampa hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/36-4764806_HCA-FLORIDA-SOUTH-TAMPA-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida kendall hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0260078_HCA-FLORIDA-KENDALL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida blake hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BLAKE-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida fort walton destin hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259833_HCA-FLORIDA-FORT-WALTON-DESTIN-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida orange park hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269295_HCA-FLORIDA-ORANGE-PARK-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida west hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1525468_HCA-FLORIDA-WEST-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida putnam hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-2762362_HCA-FLORIDA-PUTNAM-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida fawcett hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0252846_HCA-FLORIDA-FAWCETT-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida northside hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-NORTHSIDE-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida gulf coast hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0976863_HCA-FLORIDA-GULF-COAST-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida brandon hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-BRANDON-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida lawnwood hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1764486_HCA-FLORIDA-LAWNWOOD-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida largo hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1026428_HCA-FLORIDA-LARGO-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida raulerson hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1833934_HCA-FLORIDA-RAULERSON-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida capital hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1091430_HCA-FLORIDA-CAPITAL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida bayonet point hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BAYONET-POINT-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida south shore hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2822337_HCA-FLORIDA-SOUTH-SHORE-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida oak hill hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-OAK-HILL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida englewood hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/35-1611050_HCA-FLORIDA-ENGLEWOOD-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
 }
 
 
