@@ -186,8 +186,8 @@
   "verified_source": true,
   "lat": 33.97623,
   "lng": -117.37839,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json?si=pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=REDACTED",
-  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json?si=pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=REDACTED"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-050024",

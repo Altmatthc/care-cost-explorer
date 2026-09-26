@@ -323,12 +323,6 @@
   "length": null,
   "seen": null
  },
- "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json?si=pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=REDACTED": {
-  "etag": null,
-  "last_modified": null,
-  "length": "529",
-  "seen": null
- },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-fontana-medical-center-standard-charges-scal-en.csv": {
   "etag": null,
   "last_modified": "Wed, 23 Sep 2026 22:16:16 GMT",
@@ -495,6 +489,204 @@
   "etag": null,
   "last_modified": "Fri, 25 Sep 2026 02:10:33 GMT",
   "length": null,
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/592447554_bethesda-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:24 GMT",
+  "length": "21900778",
+  "seen": null
+ },
+ "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistnassau": {
+  "etag": null,
+  "last_modified": null,
+  "length": "302324974",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590910342_baptist-hospital-of-miami_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:30 GMT",
+  "length": "25902897",
+  "seen": null
+ },
+ "https://HospitalPriceDisclosure.com/download.aspx?pi=Bq2z8FAZBWl*_*OEKSmuVm3w*-*": {
+  "etag": "0x8DEFC6D1F630ED0",
+  "last_modified": "Mon, 17 Aug 2026 14:37:54 GMT",
+  "length": "35062934",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:33 GMT",
+  "length": "24143862",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591006663_boca-raton-regional-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:28 GMT",
+  "length": "7983207",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:56:47 GMT",
+  "length": "22742687",
+  "seen": null
+ },
+ "https://www.northokaloosa.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650460321_north-okaloosa-medical-center_standardcharges.csv": {
+  "etag": "\"2895aeabe3d7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 14:22:55 GMT",
+  "length": "112261463",
+  "seen": null
+ },
+ "https://www.mountsinai.org/files/mrf/131624096_mount-sinai-hospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": null,
+  "length": "457",
+  "seen": null
+ },
+ "https://memorialregionalhealth.com/wp-content/uploads/840399209_The-Memorial-Hospital_StandardCharges_04.26.csv": {
+  "etag": "\"69cd6a38-1ee55fa\"",
+  "last_modified": "Wed, 01 Apr 2026 18:55:52 GMT",
+  "length": "32396794",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseDunedinHospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "5542696",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseCountrysideHospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "6088349",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/832099849_baycarehospitalwesleychapel_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "6640729",
+  "seen": null
+ },
+ "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv?rev=66ede8b1358246378c9569f8a1851232&hash=A12A7C1D9A8FCB8BA58899EF7B45B73D": {
+  "etag": "f5bb89d7c9024e31a0be68ec5b13148f",
+  "last_modified": "Fri, 03 Apr 2026 20:27:15 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv?rev=7c310c7c008b4517a240a5892e37ed20": {
+  "etag": "73c7cee7622d4775bac9ad521a1d1863",
+  "last_modified": "Fri, 03 Apr 2026 20:57:25 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv?rev=ed34afd9191341488fe45684872bfa7d&hash=7C088E15BFAD8BB158C086F6AD4645C2": {
+  "etag": "09aef2d4b6dc4e99b7b58375d169a4c4",
+  "last_modified": "Fri, 03 Apr 2026 20:25:35 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-lee": {
+  "etag": null,
+  "last_modified": null,
+  "length": "5828554",
+  "seen": null
+ },
+ "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-shands": {
+  "etag": null,
+  "last_modified": null,
+  "length": "12786460",
+  "seen": null
+ },
+ "https://www.smh.com/Portals/0/Documents/Financial/596012500_sarasota-memorial-hospital_standardcharges.csv": {
+  "etag": "\"a98dbebe589dd1:0\"",
+  "last_modified": "Wed, 01 Jul 2026 12:54:25 GMT",
+  "length": "346058738",
+  "seen": null
+ },
+ "https://www.smh.com/Portals/0/Documents/Financial/596012500_Sarasota-Memorial-Hospital-Venice_standardcharges.csv": {
+  "etag": "\"1131adbe589dd1:0\"",
+  "last_modified": "Wed, 01 Jul 2026 12:54:25 GMT",
+  "length": "149299051",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/590714831_mayo-clinic-florida_standardcharges.csv": {
+  "etag": "0x8DEFA25EC840BA8",
+  "last_modified": "Fri, 14 Aug 2026 17:03:12 GMT",
+  "length": "14771333430",
+  "seen": null
+ },
+ "https://www.nemours.org/content/dam/nemours/nemours-org/en/documents/590634433-1245520386_Nemours-Childrens-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DEA6D4DBC1A041\"",
+  "last_modified": "Thu, 30 Apr 2026 16:23:48 GMT",
+  "length": "46724664",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/731666433_lakewood-ranch-medical-center_standardcharges.csv": {
+  "etag": "\"212c7390aeb62aa4cd753766647b1696-24\"",
+  "last_modified": "Thu, 10 Sep 2026 21:01:31 GMT",
+  "length": "122176288",
+  "seen": null
+ },
+ "https://www.calhounlibertyhospital.com/wp-content/uploads/2026/08/593051173_calhoun-liberty-hospital-association_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 19:17:54 GMT",
+  "length": "40883691",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/650232993_homestead-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:22 GMT",
+  "length": "22238421",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json": {
+  "etag": null,
+  "last_modified": null,
+  "length": "529",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-1455535_HCA-FLORIDA-CITRUS-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16638A0336F5\"",
+  "last_modified": "Sat, 19 Sep 2026 15:34:48 GMT",
+  "length": "318083588",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2084329_HCA-FLORIDA-HIGHLANDS-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1692038F21A4\"",
+  "last_modified": "Sat, 19 Sep 2026 21:07:29 GMT",
+  "length": "242377905",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1836808_HCA-FLORIDA-TWIN-CITIES-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF182708F3ACBA\"",
+  "last_modified": "Mon, 21 Sep 2026 21:26:44 GMT",
+  "length": "233798467",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1694180_HCA-FLORIDA-JFK-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16AB1B1F1F76\"",
+  "last_modified": "Sun, 20 Sep 2026 00:07:06 GMT",
+  "length": "434970445",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/87-1999484_HCA-FLORIDA-LEHIGH-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF18390CC48AEC\"",
+  "last_modified": "Mon, 21 Sep 2026 23:35:41 GMT",
+  "length": "141414291",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1257509_HCA-FLORIDA-OSCEOLA-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1824C887CAA7\"",
+  "last_modified": "Mon, 21 Sep 2026 21:10:37 GMT",
+  "length": "439622976",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/80-0935610_HCA-FLORIDA-PASADENA-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF180EEFD49AD4\"",
+  "last_modified": "Mon, 21 Sep 2026 18:34:14 GMT",
+  "length": "305468699",
   "seen": null
  }
 }

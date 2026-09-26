@@ -100,7 +100,7 @@
   "status": "empty",
   "detail": "file parsed but held none of our procedures",
   "rows": 9030,
-  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json?si=pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=REDACTED",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/33-0751869_RIVERSIDE-COMMUNITY-HOSPITAL_standardcharges.json",
   "last_attempt": "2026-09-24",
   "last_success": "2026-08-17",
   "attempts": 6,
