@@ -443,6 +443,21 @@ KNOWN_MRF = {
     # CMS lists the Hillcrest campus simply as "Scripps Mercy Hospital"
     "scripps mercy hospital":
         "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv",
+    # HCA Florida: publishes on Azure blob, not via /cms-hpt.txt
+    "hca florida citrus hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-1455535_HCA-FLORIDA-CITRUS-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida highlands hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2084329_HCA-FLORIDA-HIGHLANDS-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida twin cities hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1836808_HCA-FLORIDA-TWIN-CITIES-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida jfk hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1694180_HCA-FLORIDA-JFK-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida lehigh hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/87-1999484_HCA-FLORIDA-LEHIGH-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida osceola hospital":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1257509_HCA-FLORIDA-OSCEOLA-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    "hca florida pasadena hospital a part of":
+        "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/80-0935610_HCA-FLORIDA-PASADENA-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2F9NpMuCoRStjTb2bhIy9Y6LM%3D",
 }
 
 
@@ -858,6 +873,28 @@ def looks_like_header(cells: list[str]) -> bool:
     return has_code and (has_desc or has_charge)
 
 
+def rows_from_lines(lines: Iterator[str]) -> Iterator[dict]:
+    """Turn decoded CSV text lines into row dicts, detecting the header row."""
+    header = None
+    preamble = []
+    for row in csv.reader(lines):
+        if header is None:
+            if looks_like_header(row):
+                header = [c.strip().lower() for c in row]
+            else:
+                preamble.append(row)
+                if len(preamble) > 25:
+                    widest = max(preamble, key=len)
+                    if len(widest) > 3:
+                        header = [c.strip().lower() for c in widest]
+                        print(f"      (header not identified; falling back "
+                              f"to widest row, {len(header)} columns)")
+                    else:
+                        return
+            continue
+        yield dict(zip(header, row))
+
+
 def stream_rows(url: str) -> Iterator[dict]:
     """
     Stream a CSV price file without loading it into memory. These run
@@ -866,24 +903,44 @@ def stream_rows(url: str) -> Iterator[dict]:
     with SESSION.get(url, stream=True, headers=UA, timeout=300) as resp:
         resp.raise_for_status()
         lines = (l.decode("utf-8", "replace") for l in resp.iter_lines() if l)
-        header = None
-        preamble = []
-        for row in csv.reader(lines):
-            if header is None:
-                if looks_like_header(row):
-                    header = [c.strip().lower() for c in row]
-                else:
-                    preamble.append(row)
-                    if len(preamble) > 25:
-                        widest = max(preamble, key=len)
-                        if len(widest) > 3:
-                            header = [c.strip().lower() for c in widest]
-                            print(f"      (header not identified; falling back "
-                                  f"to widest row, {len(header)} columns)")
-                        else:
-                            return
-                continue
-            yield dict(zip(header, row))
+        yield from rows_from_lines(lines)
+
+
+def stream_zip_rows(url: str) -> Iterator[dict]:
+    """
+    Download a zipped CSV price file and stream its rows. Baptist Health,
+    BayCare and UF Health all publish their MRF as a single CSV inside a zip
+    archive — sometimes from a URL with no ".zip" extension at all. Unlike
+    stream_rows, this can't avoid loading the archive into memory: zipfile
+    needs the whole byte stream to read the central directory at the end.
+    """
+    with SESSION.get(url, headers=UA, timeout=300) as resp:
+        resp.raise_for_status()
+        zf = zipfile.ZipFile(io.BytesIO(resp.content))
+        name = next((n for n in zf.namelist()
+                     if n.lower().endswith((".csv", ".txt"))), None)
+        if not name:
+            return
+        lines = zf.read(name).decode("utf-8", "replace").splitlines()
+    yield from rows_from_lines(iter(lines))
+
+
+def sniff_content_kind(url: str) -> str:
+    """
+    Determine a price file's real format from its bytes rather than trusting
+    its URL. UF Health serves a zip from a URL with no extension, and
+    AdventHealth serves JSON from a "download.aspx" URL — both would
+    otherwise be fed to the CSV parser as garbage text.
+    """
+    with SESSION.get(url, stream=True, headers=UA, timeout=60) as resp:
+        resp.raise_for_status()
+        head = next(resp.iter_content(16), b"")
+    if head[:4] == b"PK\x03\x04":
+        return "zip"
+    stripped = head.lstrip(b"\xef\xbb\xbf \t\r\n")
+    if stripped[:1] in (b"{", b"["):
+        return "json"
+    return "csv"
 
 
 # ---------------------------------------------------------------------------
@@ -1093,21 +1150,24 @@ JSON_ARRAY_KEYS = ("standard_charge_information", "standard_charges", "charges")
 
 
 def detect_json_array_key(url: str) -> Optional[str]:
-    """Read just the head of the file to find which top-level array holds the data."""
-    try:
-        with SESSION.get(url, stream=True, headers=UA, timeout=120) as resp:
-            resp.raise_for_status()
-            head = b""
-            for chunk in resp.iter_content(65536):
-                head += chunk
-                if len(head) > 400_000:
-                    break
-            text = head.decode("utf-8", "replace")
-            for key in JSON_ARRAY_KEYS:
-                if re.search(rf'"{key}"\s*:\s*\[', text):
-                    return key
-    except Exception as e:
-        print(f"      could not inspect JSON head: {e}")
+    """
+    Read just the head of the file to find which top-level array holds the
+    data. Deliberately does NOT catch requests exceptions (a 403/5xx/timeout
+    here must propagate to the caller so the hospital is recorded as
+    unreachable, not as "empty" — swallowing it here previously made a
+    server-side access block indistinguishable from a genuinely empty file.
+    """
+    with SESSION.get(url, stream=True, headers=UA, timeout=120) as resp:
+        resp.raise_for_status()
+        head = b""
+        for chunk in resp.iter_content(65536):
+            head += chunk
+            if len(head) > 400_000:
+                break
+        text = head.decode("utf-8", "replace")
+        for key in JSON_ARRAY_KEYS:
+            if re.search(rf'"{key}"\s*:\s*\[', text):
+                return key
     return None
 
 
@@ -1144,13 +1204,13 @@ class _BomStrippedReader:
 
 
 def stream_json_items(url: str, array_key: str) -> Iterator[dict]:
-    """Stream items out of a large JSON file without loading it into memory."""
-    try:
-        import ijson
-    except ImportError:
-        print("      ijson not installed - cannot stream JSON. "
-              "Add 'ijson' to the workflow's pip install step.")
-        return
+    """
+    Stream items out of a large JSON file without loading it into memory.
+    Raises if ijson is missing rather than yielding nothing — a missing
+    dependency is an environment problem, not evidence the file is empty,
+    and silently returning [] previously made the two indistinguishable.
+    """
+    import ijson
     with SESSION.get(url, stream=True, headers=UA, timeout=600) as resp:
         resp.raise_for_status()
         resp.raw.decode_content = True
@@ -1401,8 +1461,21 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
     Prints what it detected so a zero-row result is diagnosable without
     re-downloading a very large file.
     """
-    if url.lower().split("?")[0].endswith(".json"):
+    ends_json = url.lower().split("?")[0].endswith(".json")
+    ends_zip = url.lower().split("?")[0].endswith(".zip")
+    # The URL extension is only a hint: UF Health serves a zip with no
+    # extension at all, and AdventHealth serves JSON from a download.aspx
+    # URL. Sniff the actual bytes rather than trusting the URL, but keep the
+    # extension as a fallback in case a HEAD-like sniff request fails.
+    try:
+        kind = sniff_content_kind(url)
+    except requests.RequestException:
+        kind = "json" if ends_json else ("zip" if ends_zip else "csv")
+
+    if kind == "json" or (kind == "csv" and ends_json):
         return extract_prices_json(hospital_id, url, verbose=verbose)
+
+    row_source = stream_zip_rows if (kind == "zip" or (kind == "csv" and ends_zip)) else stream_rows
 
     found: list[dict] = []
     keys = None
@@ -1434,7 +1507,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
     # at enough hospitals to compare.
     drugs: dict[str, dict] = {}
 
-    for row in stream_rows(url):
+    for row in row_source(url):
         if "_raw_json_line" in row:
             continue
         scanned += 1
@@ -1628,7 +1701,11 @@ def probe(url: str, rows: int = 40):
     print(f"probing {url}")
 
     if url.lower().split("?")[0].endswith(".json"):
-        key = detect_json_array_key(url)
+        try:
+            key = detect_json_array_key(url)
+        except requests.RequestException as e:
+            print(f"  could not inspect JSON head: {e}")
+            return
         print(f"  JSON file. standard-charge array: {key or 'NOT FOUND'}")
         if not key:
             print("  Top of file:")
