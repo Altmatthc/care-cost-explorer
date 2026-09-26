@@ -50,6 +50,7 @@ import json
 import re
 import sys
 import time
+import zipfile
 from pathlib import Path
 from typing import Iterator, Optional
 
@@ -285,7 +286,85 @@ DOMAIN_HINTS = [
     ("marshall",             "marshallmedical.org"),
     ("washington hospital",  "whhs.com"),
     ("stanford children",    "stanfordchildrens.org"),
-    ("lucile packard",       "stanfordchildrens.org"),
+    ("lucile packard",         "stanfordchildrens.org"),
+
+    # --- Florida systems ---
+    ("adventhealth",           "adventhealth.com"),        # AdventHealth (21 FL hospitals incl. Orlando, Winter Haven, Parrish, Flagler, Lakeland)
+    ("baptist health",         "baptisthealth.net"),       # Baptist Health South Florida (Broward/Miami-Dade/Palm Beach)
+    ("baptist hospital of miami", "baptisthealth.net"),
+    ("west kendale baptist",     "baptisthealth.net"),
+    ("south florida baptist",    "baptisthealth.net"),
+    ("doctors memorial hospital", "baptisthealth.net"),
+    ("homestead hospital",       "baptisthealth.net"),
+    ("larkin community hospital","larkinhospital.com"),    # independent hospital, not Baptist Health
+    ("coral gables hospital",    "baptisthealth.net"),
+    ("wellington regional medical center", "baptisthealth.net"),
+    ("palm beach gardens medical center", "baptisthealth.net"),
+    ("boca raton regional hospital","baptisthealth.net"),
+    ("bethesda hospital east",   "baptisthealth.net"),
+    ("viera hospital",           "hcahealthcare.com"),     # HCA Florida (was Baptist, now HCA)
+    ("baptist medical center - nassau", "baptistjax.com"),  # Baptist Health North Florida — domain dead? verify
+    ("baptist health medical center - jacksonville", "baptistjax.com"),  # Baptist Health North Florida
+    ("shands jacksonville",      "baptistjax.com"),# Baptist Health North Florida (owns Shands Jax)
+    ("hca florida",            "hcahealthcare.com"),       # HCA Florida hospitals (Palms West, West, Holy Cross, Hialeah, etc.)
+    ("orlando health",         "orlandohealth.com"),
+    ("tampa general hospital", "tgh.org"),                 # Tampa General Hospital — corrected; both earlier guesses (tgch.com/tgmu.edu) were wrong
+    ("mayo clinic",            "mayoclinic.org"),          # Mayo Clinic Florida (Jacksonville)
+    ("johns hopkins all children", "allchildrenshospital.com"),  # ambiguous — unconfirmed vs. jhch.org
+    ("nicklaus",               "nicklauschildrens.org"),   # Nicklaus Children's (Miami)
+    ("nemours",                "nemours.org"),             # Nemours (Aventura)
+    ("cleveland clinic",       "clevelandclinic.org"),     # Cleveland Clinic FL hospitals (mychart subdomain is patient portal, not price files)
+    ("halifax health",         "halifaxhealth.com"),       # Halifax Health (Titusville/DeLand) — TLS cert mismatch? verify
+
+    ("broward health",         "browardhealth.org"),       # Broward Health (Miramar, Coral Springs, Plantation, etc.)
+    ("lakeside medical center","bayfronthealth.com"),          # Lakeside Medical Center (St. Pete) — domain dead? verify
+    ("ascension st vincent",   "ascension.org"),           # Ascension St. Vincent (Tampa) — consolidated under ascension.org
+    ("ascension sacred heart", "ascension.org"),           # Ascension Sacred Heart (Tampa/Daytona) — consolidated under ascension.org
+    ("sarasota memorial hospital", "smh.com"),             # Sarasota Memorial Health Care System
+    ("jupiter medical center", "baptisthealth.net"),       # Jupiter Medical Center = Baptist Health South Florida
+    ("westside regional medical center", "hcahealthcare.com"),  # Westside Regional (Plantation) = HCA Florida — corrected; both earlier guesses were wrong
+    ("memorial healthcare system", "memorialhcs.org"),   # Memorial Healthcare System (Miramar, Broward) — confirmed alive
+    ("north shore medical center", "northshoremc.com"),   # North Shore Medical Center (Pompano) — confirmed alive, correct title
+    ("memorial hospital miramar", "memorialhcs.org"),      # Memorial Healthcare System
+    ("memorial regional hospital", "memorialhcs.org"),     # Memorial Healthcare System
+    ("memorial hospital west",   "memorialhcs.org"),       # Memorial Healthcare System (West)
+    ("morton plant hospital",  "baptisthealth.net"),       # Morton Plant (Clearwater) = Baptist Health SF? verify — may be independent
+    ("morton plant",           "baptisthealth.net"),
+    ("south miami hospital",   "baptisthealth.net"),       # South Miami Hospital = Baptist Health SF? verify
+    ("jackson health system",  "jacksonhealthsystem.org"), # Jackson Health System (Miami-Dade County) — domain dead? verify
+    ("st lucie medical center","stluciehealth.com"),       # St. Lucie Medical Center (Port St. Lucie) — confirmed alive
+    ("good samaritan medical center", "palmbeachhealthnetwork.com"),  # Good Samaritan (West Palm Beach) = Palm Beach Health Network (Tenet)
+    ("west boca medical center", "palmbeachhealthnetwork.com"),       # West Boca (Boca Raton) = PBHN (Tenet)
+    ("st mary's medical center", "palmbeachhealthnetwork.com"),       # St. Mary's (West Palm Beach) = PBHN (Tenet)
+    ("delray medical center",  "palmbeachhealthnetwork.com"),         # Delray Medical Center = PBHN (Tenet)
+    ("florida coast medical center", "palmbeachhealthnetwork.com"),   # Florida Coast MC (Port St. Lucie) = PBHN (Tenet)
+    ("lakeland regional medical center", "adventhealth.com"),  # Lakeland Regional = AdventHealth
+    ("winter haven hospital",  "adventhealth.com"),         # AdventHealth Winter Haven
+    ("parrish medical center", "adventhealth.com"),         # AdventHealth Parrish (Wesley Chapel)
+    ("flagler hospital",       "adventhealth.com"),         # AdventHealth Flagler (Palm Coast)
+    ("baycare hospital wesley chapel", "baycare.org"),      # BayCare (independent, Wesley Chapel/Tampa) — verify domain
+    ("st anthony's hospital",  "baycare.org"),   # St. Anthony's (St. Pete/Palm Beach County) — verify
+
+    ("manatee memorial hospital", "adventhealth.com"),      # Manatee Memorial (Bradenton) = AdventHealth? verify
+    ("holy cross hospital",   "hcahealthcare.com"),         # HCA Florida Holy Cross (Pompano)
+    ("gulf breeze hospital",  "gulfbreeze.org"),            # Gulf Breeze Hospital (Pensacola) — verify
+
+    ("desoto memorial hospital", "adventhealth.com"),       # DeSoto Memorial (Bartow) = AdventHealth? verify
+    ("ed fraser memorial hospital", "baptisthealth.net"),   # Ed Fraser Memorial (Crestview) = Baptist Health North FL? verify
+    ("north okaloosa medical center", "hcahealthcare.com"), # HCA Florida North Okaloosa (Fort Walton Beach) — verify
+    ("north walton doctors hospital", "baptisthealth.net"), # North Walton Doctors (DeFuniak Springs) = Baptist Health North FL? verify
+    ("broward health coral springs", "browardhealth.org"),
+    ("broward health imperial point", "browardhealth.org"),
+    ("broward health medical center", "browardhealth.org"),
+    ("broward health north",   "browardhealth.org"),
+    ("mease countryside hospital", "baycare.org"),            # Mease (Clearwater) — verify domain
+    ("mease dunedin hospital", "baycare.org"),                # Mease (Dunedin)
+    ("mease ",                 "baycarehealth.org"),
+    ("uf health shands hospital", "ufhealth.org"),          # UF Health Shands (Gainesville) — corrected; shands.org is legacy
+    ("uf health leesburg hospital", "ufhealth.org"),        # UF Health Leesburg
+    ("ucf lake nona hospital", "orlandohealth.com"),        # UCF Lake Nona = Orlando Health? verify
+    ("lee health",             "leehospital.org"),
+    ("palm beach west",        "baptisthealth.net"),
 
     # --- federal facilities: exempt, don't waste lookups ---
     ("naval medical",        None),
@@ -874,46 +953,82 @@ def names_match(expected: str, actual: str, threshold: float = 0.6) -> bool:
     return match_score(expected, actual) >= threshold
 
 
+def _fill_csv_identity(ident: dict, rows: list) -> None:
+    """Populate ident fields from parsed CSV rows (header row + first data row)."""
+    if len(rows) >= 2:
+        hdr = [c.strip().lower() for c in rows[0]]
+        vals = rows[1]
+        rec = dict(zip(hdr, vals))
+        ident["hospital_name"] = rec.get("hospital_name", "")
+        ident["location_name"] = rec.get("location_name", "") or rec.get("hospital_location", "")
+        ident["address"] = rec.get("hospital_address", "")
+        # Freshness and schema version are published in every file's header
+        # and nobody aggregates them. A file last updated two years ago is
+        # a compliance signal in itself.
+        ident["last_updated"] = rec.get("last_updated_on", "")
+        ident["version"] = rec.get("version", "")
+        ident["raw"] = " | ".join(vals[:5])
+
+
 def read_identity(url: str) -> dict:
     """Read a price file's metadata header without downloading the whole file."""
     ident = {"hospital_name": "", "location_name": "", "address": "",
              "last_updated": "", "version": "", "raw": ""}
     try:
-        if url.lower().split("?")[0].endswith(".json"):
-            with SESSION.get(url, stream=True, headers=UA, timeout=120) as r:
-                r.raise_for_status()
-                head = next(r.iter_content(60000), b"").decode("utf-8", "replace")
-            ident["raw"] = head[:400]
-            m = re.search(r'"hospital_name"\s*:\s*"([^"]{2,120})"', head)
-            if m:
-                ident["hospital_name"] = m.group(1)
-            m = re.search(r'"(?:location_name|hospital_location)"\s*:\s*\[?\s*"([^"]{2,120})"', head)
-            if m:
-                ident["location_name"] = m.group(1)
-            return ident
-
         with SESSION.get(url, stream=True, headers=UA, timeout=120) as r:
             r.raise_for_status()
-            lines = []
-            for raw in r.iter_lines(decode_unicode=False):
-                if raw:
-                    lines.append(raw.decode("utf-8", "replace"))
-                if len(lines) >= 4:
-                    break
-        rows = list(csv.reader(lines))
-        if len(rows) >= 2:
-            hdr = [c.strip().lower() for c in rows[0]]
-            vals = rows[1]
-            rec = dict(zip(hdr, vals))
-            ident["hospital_name"] = rec.get("hospital_name", "")
-            ident["location_name"] = rec.get("location_name", "") or rec.get("hospital_location", "")
-            ident["address"] = rec.get("hospital_address", "")
-            # Freshness and schema version are published in every file's header
-            # and nobody aggregates them. A file last updated two years ago is
-            # a compliance signal in itself.
-            ident["last_updated"] = rec.get("last_updated_on", "")
-            ident["version"] = rec.get("version", "")
-            ident["raw"] = " | ".join(vals[:5])
+            chunk_iter = r.iter_content(65536)
+            head = next(chunk_iter, b"")
+
+            if head[:4] == b"PK\x03\x04":
+                # FL systems (e.g. Baptist Health) publish price files as
+                # zips. zipfile needs the whole byte stream to read the
+                # central directory at the end, so finish this download.
+                content = head + b"".join(chunk_iter)
+                try:
+                    zf = zipfile.ZipFile(io.BytesIO(content))
+                    csv_name = next((n for n in zf.namelist() if n.lower().endswith(".csv")), None)
+                except zipfile.BadZipFile:
+                    csv_name = None
+                if csv_name:
+                    lines = zf.read(csv_name).decode("utf-8", "replace").splitlines()[:4]
+                    _fill_csv_identity(ident, list(csv.reader(lines)))
+                return ident
+
+            is_json = url.lower().split("?")[0].endswith(".json") or head.lstrip()[:1] == b"{"
+            if is_json:
+                data = head
+                while len(data) < 60000:
+                    chunk = next(chunk_iter, b"")
+                    if not chunk:
+                        break
+                    data += chunk
+                text = data.decode("utf-8", "replace")
+                ident["raw"] = text[:400]
+                m = re.search(r'"hospital_name"\s*:\s*"([^"]{2,120})"', text)
+                if m:
+                    ident["hospital_name"] = m.group(1)
+                m = re.search(r'"(?:location_name|hospital_location)"\s*:\s*\[?\s*"([^"]{2,120})"', text)
+                if m:
+                    ident["location_name"] = m.group(1)
+                if not ident["hospital_name"] and not ident["location_name"]:
+                    # FL/CMS files nest everything under a top-level "data"
+                    # envelope ({"data": {...}}); look inside it before
+                    # giving up.
+                    dm = re.search(r'"data"\s*:\s*\{', text)
+                    if dm:
+                        tail = text[dm.end():]
+                        m = re.search(r'"hospital_name"\s*:\s*"([^"]{2,120})"', tail)
+                        if m:
+                            ident["hospital_name"] = m.group(1)
+                        m = re.search(r'"(?:location_name|hospital_location)"\s*:\s*\[?\s*"([^"]{2,120})"', tail)
+                        if m:
+                            ident["location_name"] = m.group(1)
+                return ident
+
+            # Plain CSV: only need the header row and first data row.
+            lines = head.decode("utf-8", "replace").splitlines()[:4]
+            _fill_csv_identity(ident, list(csv.reader(lines)))
     except Exception as e:
         print(f"      identity check failed: {e}")
     return ident
