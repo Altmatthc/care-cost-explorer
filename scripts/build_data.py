@@ -516,6 +516,98 @@ KNOWN_MRF = {
         "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-OAK-HILL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
     "hca florida englewood hospital":
         "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/35-1611050_HCA-FLORIDA-ENGLEWOOD-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+    # AdventHealth Florida: adventhealth.com/cms-hpt.txt lists each facility's
+    # HospitalPriceDisclosure.com redirector (download.aspx?pi=...); resolved
+    # each one here to the direct blob it 302s to, so no extra hop at fetch time.
+    "adventhealth orlando":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/590724459_adventhealth-orlando_standardcharges.json",
+    "adventhealth new smyrna beach":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/473793197_adventhealth-new-smyrna-beach_standardcharges.json",
+    "adventhealth deland":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/593256803_adventhealth-deland_standardcharges.json",
+    "adventhealth zephyrhills":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/592108057_adventhealth-zephyrhills_standardcharges.json",
+    "adventhealth north pinellas":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/590898901_adventhealth-north-pinellas_standardcharges.json",
+    "adventhealth waterman":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/593140669_adventhealth-waterman_standardcharges.json",
+    "adventhealth ocala":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/824372339_adventhealth-ocala_standardcharges.json",
+    "adventhealth daytona beach":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/590973502_adventhealth-daytona-beach_standardcharges.json",
+    "adventhealth carrollwood":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-carrollwood_standardcharges.json",
+    "adventhealth fish memorial":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/593149293_adventhealth-fish-memorial_standardcharges.json",
+    "adventhealth port charlotte":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/332257010_adventhealth-port-charlotte_standardcharges.json",
+    "adventhealth lake wales":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/834672945_adventhealth-lake-wales_standardcharges.json",
+    "adventhealth sebring":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-sebring_standardcharges.json",
+    "adventhealth heart of florida":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/841793121_adventhealth-heart-of-florida_standardcharges.json",
+    "adventhealth tampa":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-tampa_standardcharges.json",
+    "adventhealth dade city":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/822567308_adventhealth-dade-city_standardcharges.json",
+    "adventhealth wesley chapel":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/208488713_adventhealth-wesley-chapel_standardcharges.json",
+    "adventhealth riverview":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/870901094_adventhealth-riverview_standardcharges.json",
+    "adventhealth wauchula":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-wauchula_standardcharges.json",
+    # Ascension St. Vincent's (Florida): hrefs harvested from
+    # healthcare.ascension.org/price-transparency/price-transparency-files
+    # (Florida section); domain must be healthcare.ascension.org, not ascension.org.
+    # The site 308-redirects the .csv link to a .zip of the same name, so the
+    # zip URL is used directly here (stream_zip_rows handles the extension).
+    "ascension st vincent's riverside":
+        "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590624449_st-vincents-medical-center-inc_standardcharges.zip",
+    "ascension st vincent's southside":
+        "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/260479484_st-lukes-st-vincents-healthcare-inc_standardcharges.zip",
+    "ascension st vincent's clay county":
+        "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip",
+    "ascension st vincent's st johns county":
+        "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/593650609_st-vincents-health-system-inc_standardcharges.zip",
+    # Broward Health: browardhealth.org/cms-hpt.txt lists these blob URLs; the
+    # live domain sits behind a Cloudflare JS challenge that blocks automated
+    # fetches of the manifest itself, so it was read via a Wayback Machine
+    # snapshot, but the blob URLs below were verified live and directly.
+    "broward health medical center":
+        "https://sthpiprd.blob.core.windows.net/machine-readable-files/10969/596012065_broward-health-medical-center_standardcharges.csv",
+    "broward health north":
+        "https://sthpiprd.blob.core.windows.net/machine-readable-files/10970/596012065_broward-health-north_standardcharges.csv",
+    "broward health imperial point":
+        "https://sthpiprd.blob.core.windows.net/machine-readable-files/10968/596012065_broward-health-imperial-point_standardcharges.csv",
+    "broward health coral springs":
+        "https://sthpiprd.blob.core.windows.net/machine-readable-files/10967/596012065_broward-health-coral-springs_standardcharges.csv",
+    # Cleveland Clinic Florida: MRF download redirectors linked from
+    # my.clevelandclinic.org/patients/billing-finance/comprehensive-hospital-charges
+    "cleveland clinic martin north hospital":
+        "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/martin-north-south-tradition",
+    "cleveland clinic indian river hospital":
+        "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/indianriver",
+    "cleveland clinic hospital":
+        "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/weston",
+    # Orlando Health: hospitalpricedisclosure.com redirectors linked from each
+    # facility's location-name entry in orlandohealth.com/cms-hpt.txt; resolved
+    # to the direct blob each one 302s to. CMS lists the flagship campus simply
+    # as "Orlando Health", which the fallback pattern below covers.
+    "orlando health health central hospital":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/800764192_orlando-health-central,-inc._standardcharges.json",
+    "orlando health bayfront hospital":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/845074208_ohi-west,-inc._standardcharges.json",
+    "orlando health south lake hospital":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/593322533_south-lake-hospital,-inc._standardcharges.json",
+    "orlando health sebastian river hospital":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4762475_orlando-health-sebastian-river-hospital_standardcharges.json",
+    "orlando health melbourne hospital":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4761958_orlando-health-melbourne-hospital_standardcharges.json",
+    "orlando health st cloud hospital":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/203728235_1164478442_orlando-health,-inc._standardcharges.json",
+    "orlando health":
+        "https://cleverleypteusstatic.blob.core.windows.net/readable/591726273_orlando-health,-inc._standardcharges.json",
 }
 
 
