@@ -1,9 +1,9 @@
 #!/bin/bash
+# Waits for the GitHub API budget to FULLY reset, then finishes FL catalogue.
 cd /c/Users/cordl/Documents/care-cost-explorer || exit 1
 TOKEN=$(gh auth token)
-# Wait for the core API budget to actually reset (remaining near limit).
 while true; do
-  R=$(curl -s -H "Authorization: Bearer $TOKEN" https://api.github.com/rate_limit | python -c "import json,sys;d=json.load(sys.stdin)['resources']['core'];print(d['remaining'])" 2>/dev/null)
+  R=$(curl -s -H "Authorization: Bearer $TOKEN" https://api.github.com/rate_limit | python -c "import json,sys;print(json.load(sys.stdin)['resources']['core']['remaining'])" 2>/dev/null)
   if [ "$R" = "5000" ]; then echo "budget fully reset"; break; fi
   sleep 120
 done
