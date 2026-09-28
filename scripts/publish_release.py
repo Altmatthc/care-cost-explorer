@@ -214,9 +214,22 @@ def main():
         for t, assets in groups.items():
             r = gh("release", "upload", t, *[str(staged / a) for a in assets], "--clobber")
             if r.returncode != 0:
-                print(f"  batch failed at {i} on release {t}; stopping so the manifest stays honest")
-                failed = True
-                break
+                msg = (r.stderr or r.stdout).strip()[:200]
+                print(f"  batch failed at {i} on release {t}: {msg}")
+                # Rate limits and transient network errors clear themselves —
+                # wait a few minutes and retry the same batch before giving up.
+                for attempt in range(1, 4):
+                    if "rate limit" not in msg.lower() and "timeout" not in msg.lower():
+                        break
+                    wait = 180 * attempt
+                    print(f"  waiting {wait//60} min (attempt {attempt}) ...")
+                    import time as _t; _t.sleep(wait)
+                    r = gh("release", "upload", t, *[str(staged / a) for a in assets], "--clobber")
+                    msg = (r.stderr or r.stdout).strip()[:200] if r.returncode != 0 else ""
+                if r.returncode != 0:
+                    print(f"  still failing after retries; stopping so the manifest stays honest")
+                    failed = True
+                    break
         for p in paths:
             Path(p).unlink(missing_ok=True)
         shutil.rmtree(staged, ignore_errors=True)
