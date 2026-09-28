@@ -688,5 +688,473 @@
   "last_modified": "Mon, 21 Sep 2026 18:34:14 GMT",
   "length": "305468699",
   "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantNorthBayHospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "6984520",
+  "seen": null
+ },
+ "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-jax": {
+  "etag": null,
+  "last_modified": null,
+  "length": "22995138",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/590724459_adventhealth-orlando_standardcharges.json": {
+  "etag": "0x8DE8EBB6FFFB771",
+  "last_modified": "Tue, 31 Mar 2026 00:21:22 GMT",
+  "length": "36565578",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantHospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "8011853",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/baker-county-medical-services-inc/593202547_Baker-County-Medical-Services-Inc_standardcharges.csv": {
+  "etag": "\"212db6989f756b69d246e45d112d87e4\"",
+  "last_modified": "Tue, 28 Jul 2026 18:21:14 GMT",
+  "length": "1117553",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/473793197_adventhealth-new-smyrna-beach_standardcharges.json": {
+  "etag": "0x8DE8EBB704C6CAA",
+  "last_modified": "Tue, 31 Mar 2026 00:21:22 GMT",
+  "length": "19961819",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/591726273_orlando-health,-inc._standardcharges.json": {
+  "etag": "0x8DE8EC835AEB6F3",
+  "last_modified": "Tue, 31 Mar 2026 01:52:47 GMT",
+  "length": "90570353",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/232306491_wellington-regional-medical-center_standardcharges.csv": {
+  "etag": "\"a368e5a5a91ece28c7b270f38e30425b-17\"",
+  "last_modified": "Thu, 10 Sep 2026 21:31:52 GMT",
+  "length": "84421971",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/232798290_manatee-memorial-hospital_standardcharges.csv": {
+  "etag": "\"10373ab74d29d4b8c0ed578d6c201513-24\"",
+  "last_modified": "Thu, 10 Sep 2026 21:38:59 GMT",
+  "length": "121716971",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/800764192_orlando-health-central,-inc._standardcharges.json": {
+  "etag": "0x8DE8EC8370080F1",
+  "last_modified": "Tue, 31 Mar 2026 01:52:50 GMT",
+  "length": "69500918",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/593256803_adventhealth-deland_standardcharges.json": {
+  "etag": "0x8DE8EBB70A5CA36",
+  "last_modified": "Tue, 31 Mar 2026 00:21:23 GMT",
+  "length": "24314833",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/592108057_adventhealth-zephyrhills_standardcharges.json": {
+  "etag": "0x8DE8EBB70F90E24",
+  "last_modified": "Tue, 31 Mar 2026 00:21:23 GMT",
+  "length": "22901255",
+  "seen": null
+ },
+ "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistjacksonville": {
+  "etag": null,
+  "last_modified": null,
+  "length": "300192199",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/845074208_ohi-west,-inc._standardcharges.json": {
+  "etag": "0x8DE8EC8383DDB8B",
+  "last_modified": "Tue, 31 Mar 2026 01:52:52 GMT",
+  "length": "68469192",
+  "seen": null
+ },
+ "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_LEE-MEMORIAL-HOSPITAL_standardcharges_20260401.zip": {
+  "etag": "\"8e80923a346dd1:0\"",
+  "last_modified": "Thu, 17 Sep 2026 12:49:44 GMT",
+  "length": "31220326",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590724462_WinterHavenHospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "7767997",
+  "seen": null
+ },
+ "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_CAPE-CORAL-HOSPITAL_standardcharges_20260401.zip": {
+  "etag": "\"4c3bfffa246dd1:0\"",
+  "last_modified": "Thu, 17 Sep 2026 12:49:38 GMT",
+  "length": "31354831",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/590898901_adventhealth-north-pinellas_standardcharges.json": {
+  "etag": "0x8DE8EBB715355F2",
+  "last_modified": "Tue, 31 Mar 2026 00:21:24 GMT",
+  "length": "25506771",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/593322533_south-lake-hospital,-inc._standardcharges.json": {
+  "etag": "0x8DEC7DC74C3E118",
+  "last_modified": "Thu, 11 Jun 2026 17:11:19 GMT",
+  "length": "70579849",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/593140669_adventhealth-waterman_standardcharges.json": {
+  "etag": "0x8DE8EBB71A9589E",
+  "last_modified": "Tue, 31 Mar 2026 00:21:25 GMT",
+  "length": "23556363",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/824372339_adventhealth-ocala_standardcharges.json": {
+  "etag": "0x8DE8EBB72024108",
+  "last_modified": "Tue, 31 Mar 2026 00:21:25 GMT",
+  "length": "24593331",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4762475_orlando-health-sebastian-river-hospital_standardcharges.json": {
+  "etag": "0x8DE8F28EB33EBD6",
+  "last_modified": "Tue, 31 Mar 2026 13:25:04 GMT",
+  "length": "48322626",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/522438452_west-kendall-baptist-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:37 GMT",
+  "length": "22815681",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/590973502_adventhealth-daytona-beach_standardcharges.json": {
+  "etag": "0x8DE8EBB72690A20",
+  "last_modified": "Tue, 31 Mar 2026 00:21:26 GMT",
+  "length": "29368955",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4761958_orlando-health-melbourne-hospital_standardcharges.json": {
+  "etag": "0x8DE8F28EBD54451",
+  "last_modified": "Tue, 31 Mar 2026 13:25:05 GMT",
+  "length": "48279722",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-carrollwood_standardcharges.json": {
+  "etag": "0x8DE8EBB72D09668",
+  "last_modified": "Tue, 31 Mar 2026 00:21:26 GMT",
+  "length": "29787621",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/821682066_fishermens-health-inc_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:19 GMT",
+  "length": "24665869",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/593149293_adventhealth-fish-memorial_standardcharges.json": {
+  "etag": "0x8DE8EBB7328BBA4",
+  "last_modified": "Tue, 31 Mar 2026 00:21:27 GMT",
+  "length": "24641901",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/203728235_1164478442_orlando-health,-inc._standardcharges.json": {
+  "etag": "0x8DE8EC83B6D6E67",
+  "last_modified": "Tue, 31 Mar 2026 01:52:57 GMT",
+  "length": "61789373",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/332257010_adventhealth-port-charlotte_standardcharges.json": {
+  "etag": "0x8DF0440B24ADBAA",
+  "last_modified": "Thu, 27 Aug 2026 13:40:02 GMT",
+  "length": "36164791",
+  "seen": null
+ },
+ "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591987355_mariners-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 07 Apr 2026 15:54:26 GMT",
+  "length": "23578426",
+  "seen": null
+ },
+ "https://nchmd.org/wp-content/uploads/590694358_naples-community-hospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Mon, 14 Sep 2026 19:29:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.hf.org/sites/default/files/2026-03/590624371_Holmes-Regional-Medical-Center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 09 Mar 2026 18:21:39 GMT",
+  "length": "35195020",
+  "seen": null
+ },
+ "https://www.hf.org/sites/default/files/2026-03/592477479_Cape-Canaveral-Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 09 Mar 2026 18:20:40 GMT",
+  "length": "31929367",
+  "seen": null
+ },
+ "https://www.hf.org/sites/default/files/2026-03/590624371_Palm-Bay-Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 09 Mar 2026 18:22:15 GMT",
+  "length": "30581478",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/834672945_adventhealth-lake-wales_standardcharges.json": {
+  "etag": "0x8DE8EBB73712BBB",
+  "last_modified": "Tue, 31 Mar 2026 00:21:28 GMT",
+  "length": "18960377",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-sebring_standardcharges.json": {
+  "etag": "0x8DE8EBB73C22612",
+  "last_modified": "Tue, 31 Mar 2026 00:21:28 GMT",
+  "length": "20319455",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/841793121_adventhealth-heart-of-florida_standardcharges.json": {
+  "etag": "0x8DE8EBB7473A8D5",
+  "last_modified": "Tue, 31 Mar 2026 00:21:29 GMT",
+  "length": "24061509",
+  "seen": null
+ },
+ "https://www.mylrh.org/wp-content/uploads/2025/04/59-2650456_LakelandRegionalMedicalCenter_standardcharges.csv": {
+  "etag": "\"6984a7ab-4204e0c\"",
+  "last_modified": "Thu, 05 Feb 2026 14:22:35 GMT",
+  "length": "69225996",
+  "seen": null
+ },
+ "https://halifax.pt.panaceainc.com/MRFDownload/halifax/halifax-medical-center": {
+  "etag": null,
+  "last_modified": null,
+  "length": "973825233",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-tampa_standardcharges.json": {
+  "etag": "0x8DE8EBB74DC947F",
+  "last_modified": "Tue, 31 Mar 2026 00:21:30 GMT",
+  "length": "30357029",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/822567308_adventhealth-dade-city_standardcharges.json": {
+  "etag": "0x8DE8EBB7529E5DB",
+  "last_modified": "Tue, 31 Mar 2026 00:21:30 GMT",
+  "length": "20330161",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/208488713_adventhealth-wesley-chapel_standardcharges.json": {
+  "etag": "0x8DE8EBB7586292E",
+  "last_modified": "Tue, 31 Mar 2026 00:21:31 GMT",
+  "length": "25428266",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/870901094_adventhealth-riverview_standardcharges.json": {
+  "etag": "0x8DE8EBB75FA5DCD",
+  "last_modified": "Tue, 31 Mar 2026 00:21:32 GMT",
+  "length": "10692979",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-wauchula_standardcharges.json": {
+  "etag": "0x8DE8EBB761ED066",
+  "last_modified": "Tue, 31 Mar 2026 00:21:32 GMT",
+  "length": "4318949",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590634434_sacred-heart-health-system-inc_standardcharges.csv": {
+  "etag": "ee99984bf6c54ce290cb350cf3ef1f72:dtagent10345260810170330mf0Z",
+  "last_modified": "Mon, 30 Mar 2026 18:43:44 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/900799724_bay-county-health-system-llc_standardcharges.csv": {
+  "etag": "3ade75ab99b1436bbd7b5c3cf3ad4173:dtagent10345260810170330mf0Z",
+  "last_modified": "Mon, 30 Mar 2026 18:49:56 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://hpt.trinity-health.org/590791028_holy-cross-hospital-ft-lauderdale_standardcharges.zip": {
+  "etag": "\"0812eec38d4dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 22:23:06 GMT",
+  "length": "277041836",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590624449_st-vincents-medical-center-inc_standardcharges.zip": {
+  "etag": "f6a16c255b3d4ef8a37b58813ba0bfe4",
+  "last_modified": "Tue, 07 Apr 2026 16:37:27 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.tmh.org/sites/default/files/price-transparency/591917016_tallahassee-memorial-hospital_standardcharges.csv": {
+  "etag": "\"6aa9468d-17b49c7\"",
+  "last_modified": "Tue, 15 Sep 2026 13:22:21 GMT",
+  "length": "24857031",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/260479484_st-lukes-st-vincents-healthcare-inc_standardcharges.zip": {
+  "etag": "2d2b8c88be7241cead9227a4bff5ba73",
+  "last_modified": "Tue, 07 Apr 2026 16:37:18 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://northshoremc.org/pricetransparency/995020733_hsa-nsmc-llc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 18 Sep 2026 13:33:50 GMT",
+  "length": "257028712",
+  "seen": null
+ },
+ "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalweststandardchargescsv.zip": {
+  "etag": null,
+  "last_modified": "Fri, 05 Jun 2026 17:53:59 GMT",
+  "length": "106799044",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/300577249_sacred-heart-health-system-inc_standardcharges.csv": {
+  "etag": "0a3a367d81ff4cad995015eaa8050f7d:dtagent10345260810170330mf0Z",
+  "last_modified": "Mon, 30 Mar 2026 18:47:19 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://halifax.pt.panaceainc.com/MRFDownload/halifax/deltona": {
+  "etag": null,
+  "last_modified": null,
+  "length": "932978918",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip": {
+  "etag": "1ec3a5aa2edd45e197452aae6c084ce1",
+  "last_modified": "Tue, 07 Apr 2026 16:37:23 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalmiramarstandardchargescsv.zip": {
+  "etag": null,
+  "last_modified": "Tue, 28 Jul 2026 22:20:14 GMT",
+  "length": "99337287",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/592043026stanthonyshospitalstandardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "7259344",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/martin-north-south-tradition": {
+  "etag": null,
+  "last_modified": null,
+  "length": "14683743",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590774199_StJosephsHospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "9489980",
+  "seen": null
+ },
+ "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/475387418_bartowregionalmedicalcenter_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "5627077",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/indianriver": {
+  "etag": null,
+  "last_modified": null,
+  "length": "12571722",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/weston": {
+  "etag": null,
+  "last_modified": null,
+  "length": "20139183",
+  "seen": null
+ },
+ "https://hialeahhosp.org/pricetransparency/995053647_hsa-hh-llc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 21 Sep 2026 09:32:43 GMT",
+  "length": "203801345",
+  "seen": null
+ },
+ "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv": {
+  "etag": "f5bb89d7c9024e31a0be68ec5b13148f",
+  "last_modified": "Fri, 03 Apr 2026 20:27:15 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv": {
+  "etag": "73c7cee7622d4775bac9ad521a1d1863",
+  "last_modified": "Fri, 03 Apr 2026 20:57:25 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv": {
+  "etag": "09aef2d4b6dc4e99b7b58375d169a4c4",
+  "last_modified": "Fri, 03 Apr 2026 20:25:35 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/baptist": {
+  "etag": null,
+  "last_modified": null,
+  "length": "536955012",
+  "seen": null
+ },
+ "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/jay": {
+  "etag": null,
+  "last_modified": null,
+  "length": "252744884",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10969/596012065_broward-health-medical-center_standardcharges.csv": {
+  "etag": "0x8DF1340E6126C9E",
+  "last_modified": "Tue, 15 Sep 2026 15:49:16 GMT",
+  "length": "5230656201",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10970/596012065_broward-health-north_standardcharges.csv": {
+  "etag": "0x8DF133DC87D7AF5",
+  "last_modified": "Tue, 15 Sep 2026 15:26:58 GMT",
+  "length": "250457308",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10968/596012065_broward-health-imperial-point_standardcharges.csv": {
+  "etag": "0x8DF133D4A8B0E29",
+  "last_modified": "Tue, 15 Sep 2026 15:23:27 GMT",
+  "length": "222081877",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10967/596012065_broward-health-coral-springs_standardcharges.csv": {
+  "etag": "0x8DF133C2283C114",
+  "last_modified": "Tue, 15 Sep 2026 15:15:10 GMT",
+  "length": "256887061",
+  "seen": null
+ },
+ "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistbeaches": {
+  "etag": null,
+  "last_modified": null,
+  "length": "290915958",
+  "seen": null
+ },
+ "https://www.srmcfl.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/680045270_santa-rosa-medical-center_standardcharges.csv": {
+  "etag": "\"bbf4a0afe3d7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 14:23:01 GMT",
+  "length": "774129646",
+  "seen": null
+ },
+ "https://hcdpbc.pt.panaceainc.com/MRFDownload/hcdpbc/hcdpbc": {
+  "etag": null,
+  "last_modified": null,
+  "length": "260443247",
+  "seen": null
+ },
+ "https://www.jackson-hospital.com/wp-content/uploads/2026/08/596001321_jackson-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 20 Aug 2026 17:59:48 GMT",
+  "length": "44071603",
+  "seen": null
+ },
+ "https://www.lkmc.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650905661_lower-keys-medical-center_standardcharges.csv": {
+  "etag": "\"efe11bace3d7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 14:22:55 GMT",
+  "length": "88028162",
+  "seen": null
  }
 }
