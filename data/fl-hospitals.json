@@ -18,7 +18,8 @@
   "verified_source": true,
   "lat": 30.34676,
   "lng": -81.66433,
-  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-jax"
+  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-jax",
+  "source_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-jax"
  },
  {
   "id": "ccn-100002",
@@ -60,7 +61,8 @@
   "verified_source": true,
   "lat": 28.52683,
   "lng": -81.37801,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591726273_orlando-health,-inc._standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591726273_orlando-health,-inc._standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591726273_orlando-health,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100007",
@@ -81,7 +83,8 @@
   "verified_source": true,
   "lat": 28.57416,
   "lng": -81.37117,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590724459_adventhealth-orlando_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590724459_adventhealth-orlando_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590724459_adventhealth-orlando_standardcharges.json"
  },
  {
   "id": "ccn-100008",
@@ -123,7 +126,8 @@
   "verified_source": true,
   "lat": 26.62666,
   "lng": -81.87242,
-  "mrf_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_LEE-MEMORIAL-HOSPITAL_standardcharges_20260401.zip"
+  "mrf_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_LEE-MEMORIAL-HOSPITAL_standardcharges_20260401.zip",
+  "source_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_LEE-MEMORIAL-HOSPITAL_standardcharges_20260401.zip"
  },
  {
   "id": "ccn-100014",
@@ -144,7 +148,8 @@
   "verified_source": true,
   "lat": 29.02162,
   "lng": -80.92305,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/473793197_adventhealth-new-smyrna-beach_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/473793197_adventhealth-new-smyrna-beach_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/473793197_adventhealth-new-smyrna-beach_standardcharges.json"
  },
  {
   "id": "ccn-100017",
@@ -165,7 +170,8 @@
   "verified_source": true,
   "lat": 29.1995,
   "lng": -81.05469,
-  "mrf_url": "https://halifax.pt.panaceainc.com/MRFDownload/halifax/halifax-medical-center"
+  "mrf_url": "https://halifax.pt.panaceainc.com/MRFDownload/halifax/halifax-medical-center",
+  "source_url": "https://halifax.pt.panaceainc.com/MRFDownload/halifax/halifax-medical-center"
  },
  {
   "id": "ccn-100018",
@@ -186,7 +192,8 @@
   "verified_source": true,
   "lat": 26.15031,
   "lng": -81.79935,
-  "mrf_url": "https://nchmd.org/wp-content/uploads/590694358_naples-community-hospital_standardcharges.json"
+  "mrf_url": "https://nchmd.org/wp-content/uploads/590694358_naples-community-hospital_standardcharges.json",
+  "source_url": "https://nchmd.org/wp-content/uploads/590694358_naples-community-hospital_standardcharges.json"
  },
  {
   "id": "ccn-100019",
@@ -207,7 +214,8 @@
   "verified_source": true,
   "lat": 28.08776,
   "lng": -80.6136,
-  "mrf_url": "https://www.hf.org/sites/default/files/2026-03/590624371_Holmes-Regional-Medical-Center_standardcharges.csv"
+  "mrf_url": "https://www.hf.org/sites/default/files/2026-03/590624371_Holmes-Regional-Medical-Center_standardcharges.csv",
+  "source_url": "https://www.hf.org/sites/default/files/2026-03/590624371_Holmes-Regional-Medical-Center_standardcharges.csv"
  },
  {
   "id": "ccn-100022",
@@ -228,7 +236,8 @@
   "verified_source": true,
   "lat": 25.7906,
   "lng": -80.21498,
-  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
+  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx",
+  "source_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
  },
  {
   "id": "ccn-100023",
@@ -270,7 +279,8 @@
   "verified_source": true,
   "lat": 30.47422,
   "lng": -87.21181,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590634434_sacred-heart-health-system-inc_standardcharges.csv"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590634434_sacred-heart-health-system-inc_standardcharges.csv",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590634434_sacred-heart-health-system-inc_standardcharges.csv"
  },
  {
   "id": "ccn-100026",
@@ -291,7 +301,8 @@
   "verified_source": true,
   "lat": 30.159,
   "lng": -85.64714,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/900799724_bay-county-health-system-llc_standardcharges.csv"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/900799724_bay-county-health-system-llc_standardcharges.csv",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/900799724_bay-county-health-system-llc_standardcharges.csv"
  },
  {
   "id": "ccn-100028",
@@ -312,7 +323,8 @@
   "verified_source": true,
   "lat": 28.62817,
   "lng": -80.82431,
-  "mrf_url": "https://www.parrishhealthcare.com/documents/596020427_north-brevard-county-hospital-dist-parrish-medical-center_standardcharges.csv"
+  "mrf_url": "https://www.parrishhealthcare.com/documents/596020427_north-brevard-county-hospital-dist-parrish-medical-center_standardcharges.csv",
+  "source_url": "https://www.parrishhealthcare.com/documents/596020427_north-brevard-county-hospital-dist-parrish-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100029",
@@ -333,7 +345,8 @@
   "verified_source": true,
   "lat": 25.86159,
   "lng": -80.21477,
-  "mrf_url": "https://northshoremc.org/pricetransparency/995020733_hsa-nsmc-llc_standardcharges.csv"
+  "mrf_url": "https://northshoremc.org/pricetransparency/995020733_hsa-nsmc-llc_standardcharges.csv",
+  "source_url": "https://northshoremc.org/pricetransparency/995020733_hsa-nsmc-llc_standardcharges.csv"
  },
  {
   "id": "ccn-100030",
@@ -354,7 +367,8 @@
   "verified_source": true,
   "lat": 28.55157,
   "lng": -81.52633,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/800764192_orlando-health-central,-inc._standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/800764192_orlando-health-central,-inc._standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/800764192_orlando-health-central,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100032",
@@ -375,7 +389,8 @@
   "verified_source": true,
   "lat": 27.76348,
   "lng": -82.64177,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/845074208_ohi-west,-inc._standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/845074208_ohi-west,-inc._standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/845074208_ohi-west,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100034",
@@ -396,7 +411,8 @@
   "verified_source": true,
   "lat": 25.81501,
   "lng": -80.13795,
-  "mrf_url": "https://www.mountsinai.org/files/mrf/131624096_mount-sinai-hospital_standardcharges.json"
+  "mrf_url": "https://www.mountsinai.org/files/mrf/131624096_mount-sinai-hospital_standardcharges.json",
+  "source_url": "https://www.mountsinai.org/files/mrf/131624096_mount-sinai-hospital_standardcharges.json"
  },
  {
   "id": "ccn-100035",
@@ -417,7 +433,8 @@
   "verified_source": true,
   "lat": 27.49772,
   "lng": -82.5613,
-  "mrf_url": "https://uhsfilecdn.eskycity.net/ac/232798290_manatee-memorial-hospital_standardcharges.csv"
+  "mrf_url": "https://uhsfilecdn.eskycity.net/ac/232798290_manatee-memorial-hospital_standardcharges.csv",
+  "source_url": "https://uhsfilecdn.eskycity.net/ac/232798290_manatee-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100038",
@@ -438,7 +455,8 @@
   "verified_source": true,
   "lat": 26.01831,
   "lng": -80.17993,
-  "mrf_url": "https://memorialregionalhealth.com/wp-content/uploads/840399209_The-Memorial-Hospital_StandardCharges_04.26.csv"
+  "mrf_url": "https://memorialregionalhealth.com/wp-content/uploads/840399209_The-Memorial-Hospital_StandardCharges_04.26.csv",
+  "source_url": "https://memorialregionalhealth.com/wp-content/uploads/840399209_The-Memorial-Hospital_StandardCharges_04.26.csv"
  },
  {
   "id": "ccn-100039",
@@ -459,7 +477,8 @@
   "verified_source": true,
   "lat": 26.10189,
   "lng": -80.1423,
-  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10969/596012065_broward-health-medical-center_standardcharges.csv"
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10969/596012065_broward-health-medical-center_standardcharges.csv",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10969/596012065_broward-health-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100040",
@@ -480,7 +499,8 @@
   "verified_source": true,
   "lat": 30.3189,
   "lng": -81.6854,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590624449_st-vincents-medical-center-inc_standardcharges.zip"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590624449_st-vincents-medical-center-inc_standardcharges.zip",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/590624449_st-vincents-medical-center-inc_standardcharges.zip"
  },
  {
   "id": "ccn-100043",
@@ -501,7 +521,8 @@
   "verified_source": true,
   "lat": 28.01405,
   "lng": -82.78369,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseDunedinHospital_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseDunedinHospital_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseDunedinHospital_standardcharges.zip"
  },
  {
   "id": "ccn-100044",
@@ -522,7 +543,8 @@
   "verified_source": true,
   "lat": 27.19901,
   "lng": -80.24309,
-  "mrf_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/martin-north-south-tradition"
+  "mrf_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/martin-north-south-tradition",
+  "source_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/martin-north-south-tradition"
  },
  {
   "id": "ccn-100045",
@@ -543,7 +565,8 @@
   "verified_source": true,
   "lat": 29.04267,
   "lng": -81.31641,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593256803_adventhealth-deland_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593256803_adventhealth-deland_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593256803_adventhealth-deland_standardcharges.json"
  },
  {
   "id": "ccn-100046",
@@ -564,7 +587,8 @@
   "verified_source": true,
   "lat": 28.2311,
   "lng": -82.2057,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/592108057_adventhealth-zephyrhills_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/592108057_adventhealth-zephyrhills_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/592108057_adventhealth-zephyrhills_standardcharges.json"
  },
  {
   "id": "ccn-100049",
@@ -606,7 +630,8 @@
   "verified_source": true,
   "lat": 25.86665,
   "lng": -80.31234,
-  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
+  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx",
+  "source_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
  },
  {
   "id": "ccn-100051",
@@ -627,7 +652,8 @@
   "verified_source": true,
   "lat": 28.552,
   "lng": -81.71851,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593322533_south-lake-hospital,-inc._standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593322533_south-lake-hospital,-inc._standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593322533_south-lake-hospital,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100052",
@@ -648,7 +674,8 @@
   "verified_source": true,
   "lat": 28.02763,
   "lng": -81.72679,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590724462_WinterHavenHospital_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590724462_WinterHavenHospital_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590724462_WinterHavenHospital_standardcharges.zip"
  },
  {
   "id": "ccn-100053",
@@ -669,7 +696,8 @@
   "verified_source": true,
   "lat": 25.8594,
   "lng": -80.2725,
-  "mrf_url": "https://hialeahhosp.org/pricetransparency/995053647_hsa-hh-llc_standardcharges.csv"
+  "mrf_url": "https://hialeahhosp.org/pricetransparency/995053647_hsa-hh-llc_standardcharges.csv",
+  "source_url": "https://hialeahhosp.org/pricetransparency/995053647_hsa-hh-llc_standardcharges.csv"
  },
  {
   "id": "ccn-100054",
@@ -711,7 +739,8 @@
   "verified_source": true,
   "lat": 28.13222,
   "lng": -82.7586,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590898901_adventhealth-north-pinellas_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590898901_adventhealth-north-pinellas_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590898901_adventhealth-north-pinellas_standardcharges.json"
  },
  {
   "id": "ccn-100057",
@@ -732,7 +761,8 @@
   "verified_source": true,
   "lat": 28.801,
   "lng": -81.734,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593140669_adventhealth-waterman_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593140669_adventhealth-waterman_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593140669_adventhealth-waterman_standardcharges.json"
  },
  {
   "id": "ccn-100062",
@@ -753,7 +783,8 @@
   "verified_source": true,
   "lat": 29.174,
   "lng": -82.13794,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/824372339_adventhealth-ocala_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/824372339_adventhealth-ocala_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/824372339_adventhealth-ocala_standardcharges.json"
  },
  {
   "id": "ccn-100063",
@@ -774,7 +805,8 @@
   "verified_source": true,
   "lat": 28.25345,
   "lng": -82.71535,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantNorthBayHospital_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantNorthBayHospital_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantNorthBayHospital_standardcharges.zip"
  },
  {
   "id": "ccn-100067",
@@ -795,7 +827,8 @@
   "verified_source": true,
   "lat": 27.76293,
   "lng": -82.65103,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/592043026stanthonyshospitalstandardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/592043026stanthonyshospitalstandardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/592043026stanthonyshospitalstandardcharges.zip"
  },
  {
   "id": "ccn-100068",
@@ -816,7 +849,8 @@
   "verified_source": true,
   "lat": 29.24623,
   "lng": -81.10645,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590973502_adventhealth-daytona-beach_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590973502_adventhealth-daytona-beach_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590973502_adventhealth-daytona-beach_standardcharges.json"
  },
  {
   "id": "ccn-100069",
@@ -837,7 +871,8 @@
   "verified_source": true,
   "lat": 28.01405,
   "lng": -82.50504,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-carrollwood_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-carrollwood_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-carrollwood_standardcharges.json"
  },
  {
   "id": "ccn-100071",
@@ -858,7 +893,8 @@
   "verified_source": true,
   "lat": 28.5658,
   "lng": -82.3737,
-  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv?rev=66ede8b1358246378c9569f8a1851232&hash=A12A7C1D9A8FCB8BA58899EF7B45B73D"
+  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv?rev=66ede8b1358246378c9569f8a1851232&hash=A12A7C1D9A8FCB8BA58899EF7B45B73D",
+  "source_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv"
  },
  {
   "id": "ccn-100072",
@@ -879,7 +915,8 @@
   "verified_source": true,
   "lat": 28.91135,
   "lng": -81.28364,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593149293_adventhealth-fish-memorial_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593149293_adventhealth-fish-memorial_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/593149293_adventhealth-fish-memorial_standardcharges.json"
  },
  {
   "id": "ccn-100073",
@@ -900,7 +937,8 @@
   "verified_source": true,
   "lat": 26.18556,
   "lng": -80.11762,
-  "mrf_url": "https://hpt.trinity-health.org/590791028_holy-cross-hospital-ft-lauderdale_standardcharges.zip"
+  "mrf_url": "https://hpt.trinity-health.org/590791028_holy-cross-hospital-ft-lauderdale_standardcharges.zip",
+  "source_url": "https://hpt.trinity-health.org/590791028_holy-cross-hospital-ft-lauderdale_standardcharges.zip"
  },
  {
   "id": "ccn-100075",
@@ -921,7 +959,8 @@
   "verified_source": true,
   "lat": 27.9814,
   "lng": -82.49101,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590774199_StJosephsHospital_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590774199_StJosephsHospital_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590774199_StJosephsHospital_standardcharges.zip"
  },
  {
   "id": "ccn-100077",
@@ -942,7 +981,8 @@
   "verified_source": true,
   "lat": 26.98975,
   "lng": -82.0967,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/332257010_adventhealth-port-charlotte_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/332257010_adventhealth-port-charlotte_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/332257010_adventhealth-port-charlotte_standardcharges.json"
  },
  {
   "id": "ccn-100080",
@@ -984,7 +1024,8 @@
   "verified_source": true,
   "lat": 28.80664,
   "lng": -81.86956,
-  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-lee"
+  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-lee",
+  "source_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-lee"
  },
  {
   "id": "ccn-100086",
@@ -1005,7 +1046,8 @@
   "verified_source": true,
   "lat": 26.27521,
   "lng": -80.12065,
-  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10970/596012065_broward-health-north_standardcharges.csv"
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10970/596012065_broward-health-north_standardcharges.csv",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10970/596012065_broward-health-north_standardcharges.csv"
  },
  {
   "id": "ccn-100087",
@@ -1026,7 +1068,8 @@
   "verified_source": true,
   "lat": 27.3182,
   "lng": -82.52974,
-  "mrf_url": "https://www.smh.com/Portals/0/Documents/Financial/596012500_sarasota-memorial-hospital_standardcharges.csv"
+  "mrf_url": "https://www.smh.com/Portals/0/Documents/Financial/596012500_sarasota-memorial-hospital_standardcharges.csv",
+  "source_url": "https://www.smh.com/Portals/0/Documents/Financial/596012500_sarasota-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100088",
@@ -1047,7 +1090,8 @@
   "verified_source": true,
   "lat": 30.31623,
   "lng": -81.66435,
-  "mrf_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistjacksonville"
+  "mrf_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistjacksonville",
+  "source_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistjacksonville"
  },
  {
   "id": "ccn-100090",
@@ -1068,7 +1112,8 @@
   "verified_source": false,
   "lat": 29.8625,
   "lng": -81.31805,
-  "mrf_url": null
+  "mrf_url": null,
+  "price_page": "https://HospitalPriceDisclosure.com/Default.aspx?ci=RsbcVwMa5jfnDZuYpIqAxQ*-*"
  },
  {
   "id": "ccn-100093",
@@ -1089,7 +1134,8 @@
   "verified_source": true,
   "lat": 30.4564,
   "lng": -87.2104,
-  "mrf_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/baptist"
+  "mrf_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/baptist",
+  "source_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/baptist"
  },
  {
   "id": "ccn-100099",
@@ -1110,7 +1156,8 @@
   "verified_source": true,
   "lat": 27.89617,
   "lng": -81.56473,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/834672945_adventhealth-lake-wales_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/834672945_adventhealth-lake-wales_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/834672945_adventhealth-lake-wales_standardcharges.json"
  },
  {
   "id": "ccn-10009F",
@@ -1152,7 +1199,8 @@
   "verified_source": true,
   "lat": 27.65686,
   "lng": -80.39416,
-  "mrf_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/indianriver"
+  "mrf_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/indianriver",
+  "source_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/indianriver"
  },
  {
   "id": "ccn-100107",
@@ -1194,7 +1242,8 @@
   "verified_source": true,
   "lat": 27.536,
   "lng": -81.5102,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-sebring_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-sebring_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-sebring_standardcharges.json"
  },
  {
   "id": "ccn-100110",
@@ -1236,7 +1285,8 @@
   "verified_source": true,
   "lat": 29.63954,
   "lng": -82.34264,
-  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-shands"
+  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-shands",
+  "source_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-shands"
  },
  {
   "id": "ccn-100117",
@@ -1257,7 +1307,8 @@
   "verified_source": true,
   "lat": 30.2744,
   "lng": -81.40007,
-  "mrf_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistbeaches"
+  "mrf_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistbeaches",
+  "source_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistbeaches"
  },
  {
   "id": "ccn-100118",
@@ -1299,7 +1350,8 @@
   "verified_source": true,
   "lat": 27.8957,
   "lng": -81.8127,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/475387418_bartowregionalmedicalcenter_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/475387418_bartowregionalmedicalcenter_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/475387418_bartowregionalmedicalcenter_standardcharges.zip"
  },
  {
   "id": "ccn-100122",
@@ -1341,7 +1393,8 @@
   "verified_source": true,
   "lat": 30.63233,
   "lng": -87.06757,
-  "mrf_url": "https://www.srmcfl.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/680045270_santa-rosa-medical-center_standardcharges.csv"
+  "mrf_url": "https://www.srmcfl.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/680045270_santa-rosa-medical-center_standardcharges.csv",
+  "source_url": "https://www.srmcfl.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/680045270_santa-rosa-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100125",
@@ -1404,7 +1457,8 @@
   "verified_source": true,
   "lat": 27.95187,
   "lng": -82.80393,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantHospital_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantHospital_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590624462_MortonPlantHospital_standardcharges.zip"
  },
  {
   "id": "ccn-100128",
@@ -1425,7 +1479,8 @@
   "verified_source": true,
   "lat": 27.9306,
   "lng": -82.4653,
-  "mrf_url": "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv?rev=7c310c7c008b4517a240a5892e37ed20"
+  "mrf_url": "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv?rev=7c310c7c008b4517a240a5892e37ed20",
+  "source_url": "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100130",
@@ -1446,7 +1501,8 @@
   "verified_source": true,
   "lat": 26.72567,
   "lng": -80.66753,
-  "mrf_url": "https://hcdpbc.pt.panaceainc.com/MRFDownload/hcdpbc/hcdpbc"
+  "mrf_url": "https://hcdpbc.pt.panaceainc.com/MRFDownload/hcdpbc/hcdpbc",
+  "source_url": "https://hcdpbc.pt.panaceainc.com/MRFDownload/hcdpbc/hcdpbc"
  },
  {
   "id": "ccn-100131",
@@ -1509,7 +1565,8 @@
   "verified_source": true,
   "lat": 30.28573,
   "lng": -82.11951,
-  "mrf_url": "https://hospitalpricetransparencyfiles.com/baker-county-medical-services-inc/593202547_Baker-County-Medical-Services-Inc_standardcharges.csv"
+  "mrf_url": "https://hospitalpricetransparencyfiles.com/baker-county-medical-services-inc/593202547_Baker-County-Medical-Services-Inc_standardcharges.csv",
+  "source_url": "https://hospitalpricetransparencyfiles.com/baker-county-medical-services-inc/593202547_Baker-County-Medical-Services-Inc_standardcharges.csv"
  },
  {
   "id": "ccn-100135",
@@ -1530,7 +1587,8 @@
   "verified_source": true,
   "lat": 30.45559,
   "lng": -84.26239,
-  "mrf_url": "https://www.tmh.org/sites/default/files/price-transparency/591917016_tallahassee-memorial-hospital_standardcharges.csv"
+  "mrf_url": "https://www.tmh.org/sites/default/files/price-transparency/591917016_tallahassee-memorial-hospital_standardcharges.csv",
+  "source_url": "https://www.tmh.org/sites/default/files/price-transparency/591917016_tallahassee-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100137",
@@ -1551,7 +1609,8 @@
   "verified_source": true,
   "lat": 28.17959,
   "lng": -81.64,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/841793121_adventhealth-heart-of-florida_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/841793121_adventhealth-heart-of-florida_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/841793121_adventhealth-heart-of-florida_standardcharges.json"
  },
  {
   "id": "ccn-10013F",
@@ -1614,7 +1673,8 @@
   "verified_source": true,
   "lat": 30.7996,
   "lng": -85.2293,
-  "mrf_url": "https://www.jackson-hospital.com/wp-content/uploads/2026/08/596001321_jackson-hospital_standardcharges.csv"
+  "mrf_url": "https://www.jackson-hospital.com/wp-content/uploads/2026/08/596001321_jackson-hospital_standardcharges.csv",
+  "source_url": "https://www.jackson-hospital.com/wp-content/uploads/2026/08/596001321_jackson-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100150",
@@ -1635,7 +1695,8 @@
   "verified_source": true,
   "lat": 24.58184,
   "lng": -81.74308,
-  "mrf_url": "https://www.lkmc.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650905661_lower-keys-medical-center_standardcharges.csv"
+  "mrf_url": "https://www.lkmc.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650905661_lower-keys-medical-center_standardcharges.csv",
+  "source_url": "https://www.lkmc.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650905661_lower-keys-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100151",
@@ -1656,7 +1717,8 @@
   "verified_source": true,
   "lat": 30.26498,
   "lng": -81.43757,
-  "mrf_url": "https://mcorgstatic.blob.core.windows.net/cms-price/590714831_mayo-clinic-florida_standardcharges.csv"
+  "mrf_url": "https://mcorgstatic.blob.core.windows.net/cms-price/590714831_mayo-clinic-florida_standardcharges.csv",
+  "source_url": "https://mcorgstatic.blob.core.windows.net/cms-price/590714831_mayo-clinic-florida_standardcharges.csv"
  },
  {
   "id": "ccn-100154",
@@ -1719,7 +1781,8 @@
   "verified_source": true,
   "lat": 28.06122,
   "lng": -81.95331,
-  "mrf_url": "https://www.mylrh.org/wp-content/uploads/2025/04/59-2650456_LakelandRegionalMedicalCenter_standardcharges.csv"
+  "mrf_url": "https://www.mylrh.org/wp-content/uploads/2025/04/59-2650456_LakelandRegionalMedicalCenter_standardcharges.csv",
+  "source_url": "https://www.mylrh.org/wp-content/uploads/2025/04/59-2650456_LakelandRegionalMedicalCenter_standardcharges.csv"
  },
  {
   "id": "ccn-10015F",
@@ -1845,7 +1908,8 @@
   "verified_source": true,
   "lat": 28.06923,
   "lng": -82.42445,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-tampa_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-tampa_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591113901_adventhealth-tampa_standardcharges.json"
  },
  {
   "id": "ccn-100175",
@@ -1866,7 +1930,8 @@
   "verified_source": true,
   "lat": 27.2268,
   "lng": -81.85162,
-  "mrf_url": "https://www.dmh.org/_files/ugd/753cbe_612bfadd8b314ba78d4741a244d074e2.csv_desoto-memorial-hospital_standardcharges.csv"
+  "mrf_url": "https://www.dmh.org/_files/ugd/753cbe_612bfadd8b314ba78d4741a244d074e2.csv_desoto-memorial-hospital_standardcharges.csv",
+  "source_url": "https://www.dmh.org/_files/ugd/753cbe_612bfadd8b314ba78d4741a244d074e2.csv_desoto-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100176",
@@ -1908,7 +1973,8 @@
   "verified_source": true,
   "lat": 28.35781,
   "lng": -80.63533,
-  "mrf_url": "https://www.hf.org/sites/default/files/2026-03/592477479_Cape-Canaveral-Hospital_standardcharges.csv"
+  "mrf_url": "https://www.hf.org/sites/default/files/2026-03/592477479_Cape-Canaveral-Hospital_standardcharges.csv",
+  "source_url": "https://www.hf.org/sites/default/files/2026-03/592477479_Cape-Canaveral-Hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100179",
@@ -1971,7 +2037,8 @@
   "verified_source": true,
   "lat": 25.70562,
   "lng": -80.29342,
-  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
+  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx",
+  "source_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
  },
  {
   "id": "ccn-100183",
@@ -2076,7 +2143,8 @@
   "verified_source": true,
   "lat": 26.20673,
   "lng": -80.10816,
-  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10968/596012065_broward-health-imperial-point_standardcharges.csv"
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10968/596012065_broward-health-imperial-point_standardcharges.csv",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10968/596012065_broward-health-imperial-point_standardcharges.csv"
  },
  {
   "id": "ccn-100204",
@@ -2160,7 +2228,8 @@
   "verified_source": true,
   "lat": 28.34898,
   "lng": -82.20164,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/822567308_adventhealth-dade-city_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/822567308_adventhealth-dade-city_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/822567308_adventhealth-dade-city_standardcharges.json"
  },
  {
   "id": "ccn-100212",
@@ -2223,7 +2292,8 @@
   "verified_source": true,
   "lat": 27.84608,
   "lng": -80.48871,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4762475_orlando-health-sebastian-river-hospital_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4762475_orlando-health-sebastian-river-hospital_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4762475_orlando-health-sebastian-river-hospital_standardcharges.json"
  },
  {
   "id": "ccn-10021F",
@@ -2517,7 +2587,8 @@
   "verified_source": true,
   "lat": 26.64086,
   "lng": -81.94104,
-  "mrf_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_CAPE-CORAL-HOSPITAL_standardcharges_20260401.zip"
+  "mrf_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_CAPE-CORAL-HOSPITAL_standardcharges_20260401.zip",
+  "source_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_CAPE-CORAL-HOSPITAL_standardcharges_20260401.zip"
  },
  {
   "id": "ccn-100246",
@@ -2580,7 +2651,8 @@
   "verified_source": true,
   "lat": 28.9584,
   "lng": -82.5993,
-  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv?rev=ed34afd9191341488fe45684872bfa7d&hash=7C088E15BFAD8BB158C086F6AD4645C2"
+  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv?rev=ed34afd9191341488fe45684872bfa7d&hash=7C088E15BFAD8BB158C086F6AD4645C2",
+  "source_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv"
  },
  {
   "id": "ccn-100252",
@@ -2622,7 +2694,8 @@
   "verified_source": true,
   "lat": 26.92406,
   "lng": -80.09455,
-  "mrf_url": "https://www.jupitermed.com/documents/content/59-1460239_jupiter-medical-center_standardcharges.csv"
+  "mrf_url": "https://www.jupitermed.com/documents/content/59-1460239_jupiter-medical-center_standardcharges.csv",
+  "source_url": "https://www.jupitermed.com/documents/content/59-1460239_jupiter-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100254",
@@ -2769,7 +2842,8 @@
   "verified_source": true,
   "lat": 28.0096,
   "lng": -82.6967,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseCountrysideHospital_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseCountrysideHospital_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590855412_MeaseCountrysideHospital_standardcharges.zip"
  },
  {
   "id": "ccn-100266",
@@ -2874,7 +2948,8 @@
   "verified_source": true,
   "lat": 26.65167,
   "lng": -80.21943,
-  "mrf_url": "https://uhsfilecdn.eskycity.net/ac/232306491_wellington-regional-medical-center_standardcharges.csv"
+  "mrf_url": "https://uhsfilecdn.eskycity.net/ac/232306491_wellington-regional-medical-center_standardcharges.csv",
+  "source_url": "https://uhsfilecdn.eskycity.net/ac/232306491_wellington-regional-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100276",
@@ -2895,7 +2970,8 @@
   "verified_source": true,
   "lat": 26.26823,
   "lng": -80.25421,
-  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10967/596012065_broward-health-coral-springs_standardcharges.csv"
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10967/596012065_broward-health-coral-springs_standardcharges.csv",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/10967/596012065_broward-health-coral-springs_standardcharges.csv"
  },
  {
   "id": "ccn-100277",
@@ -2937,7 +3013,8 @@
   "verified_source": true,
   "lat": 26.0185,
   "lng": -80.3449,
-  "mrf_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalweststandardchargescsv.zip"
+  "mrf_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalweststandardchargescsv.zip",
+  "source_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalweststandardchargescsv.zip"
  },
  {
   "id": "ccn-100284",
@@ -2979,7 +3056,8 @@
   "verified_source": true,
   "lat": 25.9924,
   "lng": -80.4089,
-  "mrf_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalmiramarstandardchargescsv.zip"
+  "mrf_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalmiramarstandardchargescsv.zip",
+  "source_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalmiramarstandardchargescsv.zip"
  },
  {
   "id": "ccn-100286",
@@ -3063,7 +3141,8 @@
   "verified_source": true,
   "lat": 26.08141,
   "lng": -80.36731,
-  "mrf_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/weston"
+  "mrf_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/weston",
+  "source_url": "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/weston"
  },
  {
   "id": "ccn-100290",
@@ -3105,7 +3184,8 @@
   "verified_source": true,
   "lat": 28.10939,
   "lng": -80.67269,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4761958_orlando-health-melbourne-hospital_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4761958_orlando-health-melbourne-hospital_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/99-4761958_orlando-health-melbourne-hospital_standardcharges.json"
  },
  {
   "id": "ccn-100292",
@@ -3126,7 +3206,8 @@
   "verified_source": true,
   "lat": 30.385,
   "lng": -86.3473,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/721529708_sacred-heart-health-system-inc_standardcharges.zip"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/721529708_sacred-heart-health-system-inc_standardcharges.zip",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/721529708_sacred-heart-health-system-inc_standardcharges.zip"
  },
  {
   "id": "ccn-100296",
@@ -3147,7 +3228,8 @@
   "verified_source": true,
   "lat": 25.72464,
   "lng": -80.27323,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100298",
@@ -3210,7 +3292,8 @@
   "verified_source": true,
   "lat": 28.24248,
   "lng": -81.30214,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/203728235_1164478442_orlando-health,-inc._standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/203728235_1164478442_orlando-health,-inc._standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/203728235_1164478442_orlando-health,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100307",
@@ -3231,7 +3314,8 @@
   "verified_source": true,
   "lat": 30.25609,
   "lng": -81.58241,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/260479484_st-lukes-st-vincents-healthcare-inc_standardcharges.zip"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/260479484_st-lukes-st-vincents-healthcare-inc_standardcharges.zip",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/260479484_st-lukes-st-vincents-healthcare-inc_standardcharges.zip"
  },
  {
   "id": "ccn-100313",
@@ -3252,7 +3336,8 @@
   "verified_source": true,
   "lat": 29.7766,
   "lng": -85.29066,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/300577249_sacred-heart-health-system-inc_standardcharges.csv"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/300577249_sacred-heart-health-system-inc_standardcharges.csv",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/300577249_sacred-heart-health-system-inc_standardcharges.csv"
  },
  {
   "id": "ccn-100314",
@@ -3273,7 +3358,8 @@
   "verified_source": true,
   "lat": 25.67761,
   "lng": -80.45733,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/522438452_west-kendall-baptist-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/522438452_west-kendall-baptist-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/522438452_west-kendall-baptist-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100315",
@@ -3315,7 +3401,8 @@
   "verified_source": true,
   "lat": 27.99844,
   "lng": -80.61165,
-  "mrf_url": "https://www.hf.org/sites/default/files/2026-03/590624371_Palm-Bay-Hospital_standardcharges.csv"
+  "mrf_url": "https://www.hf.org/sites/default/files/2026-03/590624371_Palm-Bay-Hospital_standardcharges.csv",
+  "source_url": "https://www.hf.org/sites/default/files/2026-03/590624371_Palm-Bay-Hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100319",
@@ -3336,7 +3423,8 @@
   "verified_source": true,
   "lat": 28.19375,
   "lng": -82.35338,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/208488713_adventhealth-wesley-chapel_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/208488713_adventhealth-wesley-chapel_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/208488713_adventhealth-wesley-chapel_standardcharges.json"
  },
  {
   "id": "ccn-100320",
@@ -3378,7 +3466,8 @@
   "verified_source": true,
   "lat": 30.084,
   "lng": -81.8645,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip"
  },
  {
   "id": "ccn-100329",
@@ -3420,7 +3509,8 @@
   "verified_source": true,
   "lat": 28.8989,
   "lng": -81.2473,
-  "mrf_url": "https://halifax.pt.panaceainc.com/MRFDownload/halifax/deltona"
+  "mrf_url": "https://halifax.pt.panaceainc.com/MRFDownload/halifax/deltona",
+  "source_url": "https://halifax.pt.panaceainc.com/MRFDownload/halifax/deltona"
  },
  {
   "id": "ccn-100350",
@@ -3504,7 +3594,8 @@
   "verified_source": true,
   "lat": 30.0956,
   "lng": -81.6217,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/593650609_st-vincents-health-system-inc_standardcharges.zip"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/593650609_st-vincents-health-system-inc_standardcharges.zip",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/593650609_st-vincents-health-system-inc_standardcharges.zip"
  },
  {
   "id": "ccn-100362",
@@ -3525,7 +3616,8 @@
   "verified_source": true,
   "lat": 28.22147,
   "lng": -82.35329,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/832099849_baycarehospitalwesleychapel_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/832099849_baycarehospitalwesleychapel_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/832099849_baycarehospitalwesleychapel_standardcharges.zip"
  },
  {
   "id": "ccn-100363",
@@ -3567,7 +3659,8 @@
   "verified_source": true,
   "lat": 27.86169,
   "lng": -82.3266,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/870901094_adventhealth-riverview_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/870901094_adventhealth-riverview_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/870901094_adventhealth-riverview_standardcharges.json"
  },
  {
   "id": "ccn-100365",
@@ -3714,7 +3807,8 @@
   "verified_source": true,
   "lat": 27.54071,
   "lng": -81.8084,
-  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-wauchula_standardcharges.json"
+  "mrf_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-wauchula_standardcharges.json",
+  "source_url": "https://cleverleypteusstatic.blob.core.windows.net/readable/590725553_adventhealth-wauchula_standardcharges.json"
  },
  {
   "id": "ccn-101303",
@@ -3882,7 +3976,8 @@
   "verified_source": true,
   "lat": 24.71108,
   "lng": -81.09479,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/821682066_fishermens-health-inc_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/821682066_fishermens-health-inc_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/821682066_fishermens-health-inc_standardcharges.zip"
  },
  {
   "id": "ccn-101313",
@@ -3903,7 +3998,8 @@
   "verified_source": true,
   "lat": 25.00555,
   "lng": -80.52124,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591987355_mariners-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591987355_mariners-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591987355_mariners-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-101314",
@@ -3945,7 +4041,8 @@
   "verified_source": true,
   "lat": 30.9504,
   "lng": -87.15144,
-  "mrf_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/jay"
+  "mrf_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/jay",
+  "source_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/jay"
  },
  {
   "id": "ccn-103300",
