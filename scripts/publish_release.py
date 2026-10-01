@@ -251,7 +251,13 @@ def main():
         base = f"https://github.com/{slug}/releases/download/{tag_for(1)}"
         print(f"\nPublished. Catalogue base URL:\n  {base}")
         if len(set(bucket_map.values())) > 1:
-            print("Buckets split across releases (see data/.release-map-{}.json).".format(args.region))
+            # Multi-release split: the site needs the bucket->release map to
+            # know which release each codes-<prefix>.json lives on. Commit it
+            # alongside regions.json (both are small, gitignored nowhere).
+            map_dest = DATA / f"release-map-{args.region}.json"
+            shutil.copy(map_path, map_dest)
+            print(f"Buckets split across releases — copied map to {map_dest.name} "
+                  "(commit it with regions.json so the site can resolve buckets).")
         print("\nRecording it in regions.json so the site knows where to look...")
         rp = DATA / "regions.json"
         try:

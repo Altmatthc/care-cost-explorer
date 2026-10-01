@@ -936,13 +936,40 @@ const CODE_BUCKETS = {};
 // The catalogue may live in the repo (small regions) or on a GitHub Release
 // (large ones — release assets stay out of git history). regions.json says
 // which. Local is tried first so `run.py serve` always works offline.
+// When buckets are split across multiple releases, data/release-map-<region>.json
+// maps each code prefix to its release tag.
+let RELEASE_MAP = null;
+
 function catalogueUrl(region, filename){
   const entry = (MANIFEST && MANIFEST[region]) || {};
   const base = entry.catalogue_base;
-  if(base && /^https:\/\//.test(base)){
+  if(base && /^https:\.\./.test(base)){
     return `${base}/${region}--${filename}`;
   }
   return null;
+}
+
+async function resolveCatalogueUrl(region, filename){
+  // Single-release case (or no map): the base URL is enough.
+  const direct = catalogueUrl(region, filename);
+  if(!direct) return null;
+  if(filename.startsWith('codes-')){
+    const prefix = filename.replace(/^codes-/, '').replace(/\.json$/, '');
+    let map = RELEASE_MAP && RELEASE_MAP[region];
+    if(!map){
+      // Lazy-load the bucket map once per region.
+      try{
+        const r = await fetch(`data/release-map-${region}.json`);
+        if(r.ok) RELEASE_MAP = (RELEASE_MAP || Object.assign({}, RELEASE_MAP));
+      }catch(e){ /* no multi-release split for this region */ }
+      map = RELEASE_MAP && RELEASE_MAP[region];
+    }
+    const tag = map && map[prefix];
+    if(tag){
+      return direct.replace(/\/releases\/download\/[^/]+$/, `/releases/download/${tag}`);
+    }
+  }
+  return direct;
 }
 
 async function fetchCatalogueFile(region, filename){
@@ -951,7 +978,7 @@ async function fetchCatalogueFile(region, filename){
     const local = await fetch(`data/${region}-${filename}`);
     if(local.ok) return await local.json();
   }catch(e){ /* fall through */ }
-  const remote = catalogueUrl(region, filename);
+  const remote = await resolveCatalogueUrl(region, filename);
   if(!remote) return null;
   try{
     const r = await fetch(remote);
