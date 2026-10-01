@@ -31,3 +31,8 @@ data/.release-staging/
 # Catalogue is published via GitHub Releases instead
 data/*-search.json
 data/*-codes/
+
+# Run logs and scratch scripts — local only (publish_release.py copies the
+# release map to data/release-map-<region>.json, which IS committed)
+logs/
+drafts/
