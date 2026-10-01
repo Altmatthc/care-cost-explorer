@@ -1,8 +1,8 @@
 {
  "san-diego": {
   "file": "san-diego.json",
-  "updated": "2026-09-01",
-  "hospitals": 13,
+  "updated": "2026-10-01",
+  "hospitals": 14,
   "procedures": 58,
   "states": [
    "CA"

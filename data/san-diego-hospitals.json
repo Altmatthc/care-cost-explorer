@@ -371,7 +371,7 @@
   "type": "Acute Care - Veterans Administration",
   "stars": 5,
   "hasER": true,
-  "domain": null,
+  "domain": "hcahealthcare.com",
   "verified_source": false,
   "lat": 32.8718,
   "lng": -117.2291,
