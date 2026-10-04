@@ -65,8 +65,8 @@
  },
  "fl": {
   "file": "fl.json",
-  "updated": "2026-09-27",
-  "hospitals": 107,
+  "updated": "2026-10-04",
+  "hospitals": 109,
   "procedures": 58,
   "states": [
    "FL"

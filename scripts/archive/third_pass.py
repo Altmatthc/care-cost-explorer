@@ -52,7 +52,7 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-DATA = Path(__file__).resolve().parent.parent / "data"
+DATA = Path(__file__).resolve().parents[2] / "data"  # works from scripts/ or scripts/archive/
 
 # CMS Care Compare — Hospital General Information dataset (Care Compare API).
 CMS_API = ("https://data.cms.gov/provider-data/api/1/datastore/query/xubh-q36u/0")
@@ -347,16 +347,18 @@ def match_url(ccn: str, hospital_name: str, city: str,
 # ---------------------------------------------------------------------------
 
 def main():
-    ap = argparse.ArgumentParser(description="Third-pass CA price-file discovery (CMS Care Compare)")
+    ap = argparse.ArgumentParser(description="Third-pass price-file discovery (CMS Care Compare), region-generic")
+    ap.add_argument("--region", default="ca",
+                    help="Region code: ca, fl, san-diego, ... (default ca). Reads <region>-status.json / writes <region>-hospitals.json + <region>-third-pass.json.")
     ap.add_argument("--dry-run", action="store_true", help="Report only; do not write files")
     ap.add_argument("--only", default="", help="Comma-separated name/city fragments to filter")
     ap.add_argument("--max", type=int, default=0, help="Process at most N hospitals (0 = all)")
     ap.add_argument("--timeout", type=int, default=12, help="Per-request timeout seconds")
     args = ap.parse_args()
 
-    status_path = DATA / "ca-status.json"
-    reg_path = DATA / "ca-hospitals.json"
-    out_path = DATA / "ca-third-pass.json"
+    status_path = DATA / f"{args.region}-status.json"
+    reg_path = DATA / f"{args.region}-hospitals.json"
+    out_path = DATA / f"{args.region}-third-pass.json"
 
     for p in (status_path, reg_path):
         if not p.exists():
@@ -491,7 +493,7 @@ def main():
     print(f"  Domain found, no confident file pick:   {found_domain_only}")
     print(f"  No manifest found:                      {not_found}")
     if args.dry_run:
-        print("\n[DRY RUN] ca-hospitals.json not modified.")
+        print(f"\n[DRY RUN] {args.region}-hospitals.json not modified.")
 
 
 if __name__ == "__main__":

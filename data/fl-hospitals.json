@@ -2080,7 +2080,8 @@
   "verified_source": true,
   "lat": 25.8803,
   "lng": -80.3368,
-  "mrf_url": "https://palmettogeneral.org/pricetransparency/995002378_hsa-pgh-llc_standardcharges.csv"
+  "mrf_url": "https://palmettogeneral.org/pricetransparency/995002378_hsa-pgh-llc_standardcharges.csv",
+  "source_url": "https://palmettogeneral.org/pricetransparency/995002378_hsa-pgh-llc_standardcharges.csv"
  },
  {
   "id": "ccn-100189",
@@ -3078,7 +3079,8 @@
   "verified_source": true,
   "lat": 26.2665,
   "lng": -81.7146,
-  "mrf_url": "https://www.physiciansregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/204401957_physicians-regional-healthcare-system-pine-ridge_standardcharges.csv"
+  "mrf_url": "https://www.physiciansregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/204401957_physicians-regional-healthcare-system-pine-ridge_standardcharges.csv",
+  "source_url": "https://www.physiciansregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/204401957_physicians-regional-healthcare-system-pine-ridge_standardcharges.csv"
  },
  {
   "id": "ccn-100287",

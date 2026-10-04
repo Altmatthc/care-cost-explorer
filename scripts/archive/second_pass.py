@@ -37,7 +37,7 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-DATA = Path(__file__).resolve().parent.parent / "data"
+DATA = Path(__file__).resolve().parents[2] / "data"  # works from scripts/ or scripts/archive/
 
 # ---------------------------------------------------------------------------
 # CA-specific domain hints that the main script's DOMAIN_HINTS is missing.
@@ -414,7 +414,9 @@ def find_matching_url(hospital_name: str, domain: str) -> tuple[str | None, list
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Second-pass CA price-file discovery")
+    ap = argparse.ArgumentParser(description="Second-pass price-file discovery (region-generic)")
+    ap.add_argument("--region", default="ca",
+                    help="Region code: ca, fl, san-diego, ... (default ca). Reads <region>-status.json / writes <region>-hospitals.json.")
     ap.add_argument("--dry-run", action="store_true",
                     help="Show what would be fixed without writing files")
     ap.add_argument("--only", default="",
@@ -425,9 +427,9 @@ def main():
                     help="Only process first N domains (0 = all). Useful for testing.")
     args = ap.parse_args()
 
-    # Load current state
-    status_path = DATA / "ca-status.json"
-    reg_path = DATA / "ca-hospitals.json"
+    # Load current state (region-parameterized)
+    status_path = DATA / f"{args.region}-status.json"
+    reg_path = DATA / f"{args.region}-hospitals.json"
 
     if not status_path.exists():
         print(f"ERROR: {status_path} not found")
@@ -550,7 +552,7 @@ def main():
     with open(reg_path, "w") as f:
         json.dump(hospitals, f, indent=1)
     print(f"\nUpdated {reg_path.name} with {fixed} new MRF URLs.")
-    print("Next step: run build_data.py --region california --stage prices")
+    print(f"Next step: run build_data.py --region {args.region} --stage prices")
 
 
 if __name__ == "__main__":
