@@ -15,8 +15,8 @@
  },
  "ca": {
   "file": "ca.json",
-  "updated": "2026-09-25",
-  "hospitals": 83,
+  "updated": "2026-10-03",
+  "hospitals": 106,
   "procedures": 58,
   "states": [
    "CA"
@@ -34,6 +34,7 @@
    "914",
    "915",
    "917",
+   "918",
    "919",
    "920",
    "921",
@@ -43,6 +44,7 @@
    "926",
    "927",
    "928",
+   "932",
    "933",
    "937",
    "940",
@@ -58,7 +60,8 @@
    "956",
    "958",
    "959"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-ca"
  },
  "fl": {
   "file": "fl.json",
