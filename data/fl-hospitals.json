@@ -2355,7 +2355,8 @@
   "verified_source": true,
   "lat": 26.54322,
   "lng": -81.85157,
-  "mrf_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_GULF-COAST-MEDICAL-CENTER_standardcharges_20260401.zip"
+  "mrf_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_GULF-COAST-MEDICAL-CENTER_standardcharges_20260401.zip",
+  "source_url": "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_GULF-COAST-MEDICAL-CENTER_standardcharges_20260401.zip"
  },
  {
   "id": "ccn-100223",
@@ -3950,7 +3951,8 @@
   "verified_source": true,
   "lat": 30.76462,
   "lng": -85.54286,
-  "mrf_url": "https://northwestfloridacommunityhospital.pg.quadax.revenuemasters.com/cdm-files/596002711_northwest-florida-community-hospital_standardcharges.csv"
+  "mrf_url": "https://northwestfloridacommunityhospital.pg.quadax.revenuemasters.com/cdm-files/596002711_northwest-florida-community-hospital_standardcharges.csv",
+  "source_url": "https://northwestfloridacommunityhospital.pg.quadax.revenuemasters.com/cdm-files/596002711_northwest-florida-community-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-101309",
