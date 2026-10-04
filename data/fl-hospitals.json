@@ -258,7 +258,8 @@
   "verified_source": true,
   "lat": 28.83221,
   "lng": -82.33528,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-1455535_HCA-FLORIDA-CITRUS-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-1455535_HCA-FLORIDA-CITRUS-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-1455535_HCA-FLORIDA-CITRUS-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100025",
@@ -609,7 +610,8 @@
   "verified_source": true,
   "lat": 27.46705,
   "lng": -81.43367,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2084329_HCA-FLORIDA-HIGHLANDS-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2084329_HCA-FLORIDA-HIGHLANDS-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2084329_HCA-FLORIDA-HIGHLANDS-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100050",
@@ -718,7 +720,8 @@
   "verified_source": true,
   "lat": 30.4958,
   "lng": -86.4145,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1836808_HCA-FLORIDA-TWIN-CITIES-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1836808_HCA-FLORIDA-TWIN-CITIES-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1836808_HCA-FLORIDA-TWIN-CITIES-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100055",
@@ -1003,7 +1006,8 @@
   "verified_source": true,
   "lat": 26.60059,
   "lng": -80.08981,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1694180_HCA-FLORIDA-JFK-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1694180_HCA-FLORIDA-JFK-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1694180_HCA-FLORIDA-JFK-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100084",
@@ -1221,7 +1225,8 @@
   "verified_source": true,
   "lat": 26.61436,
   "lng": -81.65849,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/87-1999484_HCA-FLORIDA-LEHIGH-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/87-1999484_HCA-FLORIDA-LEHIGH-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/87-1999484_HCA-FLORIDA-LEHIGH-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100109",
@@ -1264,7 +1269,8 @@
   "verified_source": true,
   "lat": 28.30084,
   "lng": -81.41096,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1257509_HCA-FLORIDA-OSCEOLA-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1257509_HCA-FLORIDA-OSCEOLA-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1257509_HCA-FLORIDA-OSCEOLA-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100113",
@@ -1436,7 +1442,8 @@
   "verified_source": true,
   "lat": 27.75217,
   "lng": -82.73943,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/80-0935610_HCA-FLORIDA-PASADENA-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/80-0935610_HCA-FLORIDA-PASADENA-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/80-0935610_HCA-FLORIDA-PASADENA-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100127",
@@ -1523,7 +1530,8 @@
   "verified_source": true,
   "lat": 25.96911,
   "lng": -80.14455,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2379007_HCA-FLORIDA-AVENTURA-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2379007_HCA-FLORIDA-AVENTURA-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2379007_HCA-FLORIDA-AVENTURA-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100132",
@@ -1760,7 +1768,8 @@
   "verified_source": true,
   "lat": 30.17622,
   "lng": -82.68517,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/95-4176924_HCA-FLORIDA-LAKE-CITY-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/95-4176924_HCA-FLORIDA-LAKE-CITY-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/95-4176924_HCA-FLORIDA-LAKE-CITY-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100157",
@@ -1845,7 +1854,8 @@
   "verified_source": true,
   "lat": 27.29891,
   "lng": -82.45532,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1258724_HCA-FLORIDA-SARASOTA-DOCTORS-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1258724_HCA-FLORIDA-SARASOTA-DOCTORS-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1258724_HCA-FLORIDA-SARASOTA-DOCTORS-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100167",
@@ -1866,7 +1876,8 @@
   "verified_source": true,
   "lat": 26.12638,
   "lng": -80.20424,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1372389_HCA-FLORIDA-MERCY-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1372389_HCA-FLORIDA-MERCY-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1372389_HCA-FLORIDA-MERCY-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100168",
@@ -1995,7 +2006,8 @@
   "verified_source": true,
   "lat": 30.2874,
   "lng": -81.60236,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-3283127_HCA-FLORIDA-MEMORIAL-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-3283127_HCA-FLORIDA-MEMORIAL-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-3283127_HCA-FLORIDA-MEMORIAL-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100180",
@@ -2016,7 +2028,8 @@
   "verified_source": true,
   "lat": 27.8063,
   "lng": -82.72661,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1174716_HCA-FLORIDA-ST.-PETERSBURG-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1174716_HCA-FLORIDA-ST.-PETERSBURG-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1174716_HCA-FLORIDA-ST.-PETERSBURG-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100181",
@@ -2102,7 +2115,8 @@
   "verified_source": true,
   "lat": 26.26172,
   "lng": -80.20178,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259843_HCA-FLORIDA-NORTHWEST-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259843_HCA-FLORIDA-NORTHWEST-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259843_HCA-FLORIDA-NORTHWEST-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100191",
@@ -2123,7 +2137,8 @@
   "verified_source": true,
   "lat": 28.20596,
   "lng": -82.6603,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2047041_HCA-FLORIDA-TRINITY-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2047041_HCA-FLORIDA-TRINITY-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2047041_HCA-FLORIDA-TRINITY-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100200",
@@ -2166,7 +2181,8 @@
   "verified_source": true,
   "lat": 29.65977,
   "lng": -82.41066,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269294_HCA-FLORIDA-NORTH-FLORIDA-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269294_HCA-FLORIDA-NORTH-FLORIDA-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269294_HCA-FLORIDA-NORTH-FLORIDA-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100206",
@@ -2187,7 +2203,8 @@
   "verified_source": true,
   "lat": 27.93749,
   "lng": -82.48928,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/36-4764806_HCA-FLORIDA-SOUTH-TAMPA-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/36-4764806_HCA-FLORIDA-SOUTH-TAMPA-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/36-4764806_HCA-FLORIDA-SOUTH-TAMPA-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100209",
@@ -2208,7 +2225,8 @@
   "verified_source": true,
   "lat": 25.7341,
   "lng": -80.4068,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0260078_HCA-FLORIDA-KENDALL-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0260078_HCA-FLORIDA-KENDALL-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0260078_HCA-FLORIDA-KENDALL-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100211",
@@ -2272,7 +2290,8 @@
   "verified_source": true,
   "lat": 27.48194,
   "lng": -82.62053,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BLAKE-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BLAKE-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BLAKE-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100217",
@@ -2357,7 +2376,8 @@
   "verified_source": true,
   "lat": 30.4532,
   "lng": -86.63217,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259833_HCA-FLORIDA-FORT-WALTON-DESTIN-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259833_HCA-FLORIDA-FORT-WALTON-DESTIN-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259833_HCA-FLORIDA-FORT-WALTON-DESTIN-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100224",
@@ -2399,7 +2419,8 @@
   "verified_source": true,
   "lat": 30.16497,
   "lng": -81.73597,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269295_HCA-FLORIDA-ORANGE-PARK-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269295_HCA-FLORIDA-ORANGE-PARK-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269295_HCA-FLORIDA-ORANGE-PARK-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100228",
@@ -2462,7 +2483,8 @@
   "verified_source": true,
   "lat": 30.51639,
   "lng": -87.21609,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1525468_HCA-FLORIDA-WEST-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1525468_HCA-FLORIDA-WEST-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1525468_HCA-FLORIDA-WEST-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100232",
@@ -2483,7 +2505,8 @@
   "verified_source": true,
   "lat": 29.64226,
   "lng": -81.69343,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-2762362_HCA-FLORIDA-PUTNAM-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-2762362_HCA-FLORIDA-PUTNAM-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-2762362_HCA-FLORIDA-PUTNAM-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100236",
@@ -2504,7 +2527,8 @@
   "verified_source": true,
   "lat": 26.98794,
   "lng": -82.09685,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0252846_HCA-FLORIDA-FAWCETT-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0252846_HCA-FLORIDA-FAWCETT-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0252846_HCA-FLORIDA-FAWCETT-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100238",
@@ -2525,7 +2549,8 @@
   "verified_source": true,
   "lat": 27.82623,
   "lng": -82.69999,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-NORTHSIDE-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-NORTHSIDE-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-NORTHSIDE-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100242",
@@ -2546,7 +2571,8 @@
   "verified_source": true,
   "lat": 30.18965,
   "lng": -85.66735,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0976863_HCA-FLORIDA-GULF-COAST-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0976863_HCA-FLORIDA-GULF-COAST-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0976863_HCA-FLORIDA-GULF-COAST-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100243",
@@ -2567,7 +2593,8 @@
   "verified_source": true,
   "lat": 27.93385,
   "lng": -82.28834,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-BRANDON-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-BRANDON-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-BRANDON-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100244",
@@ -2610,7 +2637,8 @@
   "verified_source": true,
   "lat": 27.43009,
   "lng": -80.34734,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1764486_HCA-FLORIDA-LAWNWOOD-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1764486_HCA-FLORIDA-LAWNWOOD-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1764486_HCA-FLORIDA-LAWNWOOD-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100248",
@@ -2631,7 +2659,8 @@
   "verified_source": true,
   "lat": 27.91485,
   "lng": -82.80271,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1026428_HCA-FLORIDA-LARGO-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1026428_HCA-FLORIDA-LARGO-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1026428_HCA-FLORIDA-LARGO-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100249",
@@ -2674,7 +2703,8 @@
   "verified_source": true,
   "lat": 27.25894,
   "lng": -80.82987,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1833934_HCA-FLORIDA-RAULERSON-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1833934_HCA-FLORIDA-RAULERSON-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1833934_HCA-FLORIDA-RAULERSON-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100253",
@@ -2717,7 +2747,8 @@
   "verified_source": true,
   "lat": 30.47473,
   "lng": -84.23164,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1091430_HCA-FLORIDA-CAPITAL-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1091430_HCA-FLORIDA-CAPITAL-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1091430_HCA-FLORIDA-CAPITAL-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100256",
@@ -2738,7 +2769,8 @@
   "verified_source": true,
   "lat": 28.35961,
   "lng": -82.68853,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BAYONET-POINT-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BAYONET-POINT-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BAYONET-POINT-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100258",
@@ -2780,7 +2812,8 @@
   "verified_source": true,
   "lat": 27.71234,
   "lng": -82.36526,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2822337_HCA-FLORIDA-SOUTH-SHORE-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2822337_HCA-FLORIDA-SOUTH-SHORE-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2822337_HCA-FLORIDA-SOUTH-SHORE-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100260",
@@ -2822,7 +2855,8 @@
   "verified_source": true,
   "lat": 28.53337,
   "lng": -82.53447,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-OAK-HILL-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-OAK-HILL-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-OAK-HILL-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100265",
@@ -2886,7 +2920,8 @@
   "verified_source": true,
   "lat": 26.94903,
   "lng": -82.32785,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/35-1611050_HCA-FLORIDA-ENGLEWOOD-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/35-1611050_HCA-FLORIDA-ENGLEWOOD-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/35-1611050_HCA-FLORIDA-ENGLEWOOD-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100268",
