@@ -238,26 +238,61 @@ def _manifest_urls(domain: str, timeout: int = 20) -> list[str]:
     return urls
 
 
+# Some hospital systems publish their cms-hpt.txt on a *state subdomain* rather
+# than the corporate domain our registry carries (DOMAIN_HINTS maps "hca florida"
+# -> hcahealthcare.com, whose /cms-hpt.txt is an EMPTY 200). The live signed
+# manifest for HCA Florida lives at hcafloridahealthcare.com. When a hospital's
+# stored mrf_url is a SAS/blob path, refresh_sas_url() must be pointed at the
+# subdomain that actually publishes it — this map routes those lookups. Extend
+# per state as other HCA (or similar) subdomains are discovered; the harvest
+# loop falls back to the corporate domain if the override yields nothing.
+MANIFEST_DOMAIN_OVERRIDES = {
+    "hca florida": "hcafloridahealthcare.com",   # 27 FL hospitals, Azure blob
+}
+
+
+def manifest_domain_for(h: dict) -> Optional[str]:
+    """
+    Domain to fetch cms-hpt.txt from when refreshing a stored SAS/blob link.
+
+    Prefers an explicit per-system override (state subdomain), then the registry
+    domain, then the URL's own host as a last resort. Returns None if nothing is
+    known; callers treat that as "no manifest" and re-discover.
+    """
+    name = _flatten(h.get("name", ""))
+    for pattern, dom in sorted(MANIFEST_DOMAIN_OVERRIDES.items(),
+                               key=lambda x: len(x[0]), reverse=True):
+        if _flatten(pattern) in name:
+            return dom
+    return h.get("domain")
+
+
 def refresh_sas_url(url: str, domain: Optional[str] = None,
-                    timeout: int = 20) -> Optional[str]:
+                    timeout: int = 20) -> tuple[Optional[str], bool]:
     """Replace a stale SAS URL with the current signed link for the same blob.
 
     The blob path (container/filename) is stable across re-signings; only the
-    query string rotates. Resolves from the hospital's cms-hpt.txt, which
-    always carries the current token. Returns None if no live equivalent can
-    be found — callers treat that as 'file not currently published'.
+    query string rotates — and HCA also rotates storage accounts, so the host can
+    change between runs. Resolves from the hospital's cms-hpt.txt, which always
+    carries the current token + host.
+
+    Returns (live_url_or_None, host_changed). host_changed is True when the live
+    link lives on a different blob host than the stored one (account rotation);
+    callers should persist the new URL so future runs start from the right host.
     """
     base = url.split("?")[0]
+    old_host = urllib.parse.urlparse(base).netloc
     blob = base.rsplit("/", 1)[-1]
     if domain is None:
         try:
-            domain = urllib.parse.urlparse(base).netloc
+            domain = old_host or urllib.parse.urlparse(base).netloc
         except Exception:
-            return None
+            return (None, False)
     for cand in _manifest_urls(domain, timeout=timeout):
         if cand.split("?")[0].rsplit("/", 1)[-1] == blob:
-            return cand
-    return None
+            new_host = urllib.parse.urlparse(cand.split("?")[0]).netloc
+            return (cand, new_host != old_host)
+    return (None, False)
 
 
 def _make_session() -> requests.Session:
@@ -2614,24 +2649,26 @@ def main():
             # SAS tokens in hospital URLs expire; re-resolve the current signed
             # link from the hospital's cms-hpt.txt before using a stored one.
             if url and is_sas(url):
-                manifest_domain = (h.get("domain") or resolve_source(h.get("name", ""))[1]) \
-                    or urllib.parse.urlparse(url).netloc
-                live = refresh_sas_url(url, domain=manifest_domain)
+                manifest_domain = (manifest_domain_for(h)
+                                   or resolve_source(h.get("name", ""))[1]
+                                   or urllib.parse.urlparse(url).netloc)
+                live, host_changed = refresh_sas_url(url, domain=manifest_domain)
                 if live:
                     print(f"    ↻ {h['name']}: SAS token refreshed from "
                           f"{manifest_domain}/cms-hpt.txt")
                 else:
                     print(f"    ! {h['name']}: stored SAS link no longer published; "
                           f"re-discovering current file")
-                url = live
+                url = live or base_url(url)
             elif url and not is_sas(url) and ".blob.core.windows.net/" in url \
                     and "/pt-final-posting-files/" in url:
                 # Stored blob path without a (now-expired) token. The manifest
                 # may have rotated to a different account, so look the file up
                 # by its basename on the hospital's current cms-hpt.txt first;
                 # fall back to trying the unsigned path as-is.
-                manifest_domain = h.get("domain") or resolve_source(h.get("name", ""))[1] \
-                    or urllib.parse.urlparse(url).netloc
+                manifest_domain = (manifest_domain_for(h)
+                                   or resolve_source(h.get("name", ""))[1]
+                                   or urllib.parse.urlparse(url).netloc)
                 live, host_changed = refresh_sas_url(url, domain=manifest_domain)
                 if live:
                     print(f"    ↻ {h['name']}: current link resolved from "
