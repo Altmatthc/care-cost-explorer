@@ -1727,6 +1727,7 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
         print(f"      JSON format, reading '{array_key}'")
 
     found, scanned, types_seen, samples = [], 0, {}, []
+    all_codes: dict[str, dict] = {}
     for item in stream_json_items(url, array_key):
         scanned += 1
         codes = item.get("code_information") or item.get("codes") or []
@@ -1734,6 +1735,7 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
             codes = [codes]
 
         pid = None
+        primary_code = None
         for c in codes:
             code = str(c.get("code", "")).strip()
             ctype = str(c.get("type", "")).strip()
@@ -1744,6 +1746,7 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
             hit = match_code(code, ctype)
             if hit:
                 pid = hit
+                primary_code = (norm_type(ctype), code)
                 break
         if not pid:
             continue
@@ -1753,6 +1756,12 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
         charges = item.get("standard_charges") or []
         if isinstance(charges, dict):
             charges = [charges]
+
+        # Build the search catalogue from the primary code (same key format as
+        # the CSV path: TYPE:CODE). Keep the lowest cash price seen for a code.
+        cat_key = None
+        if primary_code and norm_type(primary_code[0]) in ("CPT", "HCPCS", "MSDRG", "DRG", "APC"):
+            cat_key = f"{norm_type(primary_code[0])}:{primary_code[1].strip().upper()}"
 
         for ch, pid in ((c, p) for c in charges for p in resolved_ids):
             base = {
@@ -1764,6 +1773,16 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
                 "max": _num(ch.get("maximum")),
                 "description": desc,
             }
+            # Catalogue: lowest cash price for this code (files repeat a code
+            # across settings; the lower is what a patient could be offered).
+            if cat_key and base["cash"] and len(all_codes) < MAX_CODES_PER_HOSPITAL:
+                prev = all_codes.get(cat_key)
+                if not prev or base["cash"] < prev["cash"]:
+                    all_codes[cat_key] = {
+                        "d": clean_text(desc, 70),
+                        "cash": round(base["cash"]),
+                        "gross": round(base["gross"]) if base["gross"] else None,
+                    }
             payers = ch.get("payers_information") or []
             if isinstance(payers, dict):
                 payers = [payers]
@@ -1783,8 +1802,24 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
     if verbose:
         print(f"      scanned {scanned:,} items | code types seen: "
               f"{dict(sorted(types_seen.items(), key=lambda x: -x[1])[:6])}")
+        if all_codes:
+            print(f"      coverage: {len(all_codes):,} codes catalogued for search")
         if not found:
             print(f"      NO MATCHES. Sample codes in file: {samples}")
+
+    # Write the per-hospital catalogue (same as the CSV path) so JSON-file
+    # hospitals — e.g. HCA's CMS-schema files — also power code search.
+    if all_codes and CATALOGUE_DIR is not None:
+        try:
+            CATALOGUE_DIR.mkdir(parents=True, exist_ok=True)
+            safe = re.sub(r"[^A-Za-z0-9_.-]", "_", hospital_id)
+            (CATALOGUE_DIR / f"{safe}.json").write_text(
+                json.dumps(all_codes, separators=(",", ":")))
+            if verbose:
+                print(f"      [DEBUG] wrote catalogue {safe}.json ({len(all_codes)} codes)")
+        except OSError as e:
+            print(f"      could not save catalogue: {e}")
+
     return found
 
 
@@ -2150,10 +2185,13 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
             safe = re.sub(r"[^A-Za-z0-9_.-]", "_", hospital_id)
             (CATALOGUE_DIR / f"{safe}.json").write_text(
                 json.dumps(all_codes, separators=(",", ":")))
+            print(f"      [DEBUG] wrote catalogue {safe}.json ({len(all_codes)} codes)")
         except Exception as e:
             print(f"      could not save catalogue: {e}")
-        if not found:
-            print(f"      NO MATCHES. Sample codes in file: {sample_codes}")
+    else:
+        print(f"      [DEBUG] NO CATALOGUE WRITE — all_codes={len(all_codes) if all_codes else 0}, CATALOGUE_DIR={CATALOGUE_DIR}")
+    if not found:
+        print(f"      NO MATCHES. Sample codes in file: {sample_codes}")
     return found
 
 
