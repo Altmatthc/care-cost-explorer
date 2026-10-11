@@ -583,6 +583,7 @@ def main():
     except Exception:
         pass
 
+    prev_entry = manifest.get(args.region) or {}
     manifest[args.region] = {
         "file": out.name,
         "updated": date.today().isoformat(),
@@ -591,6 +592,10 @@ def main():
         "states": sorted(states),
         "zip3": sorted(zip3s),
     }
+    # catalogue_base is set by publish_release.py, not by the merge — carry it
+    # over or a merge silently unlinks the site from its Release catalogue.
+    if prev_entry.get("catalogue_base"):
+        manifest[args.region]["catalogue_base"] = prev_entry["catalogue_base"]
     manifest_path.write_text(json.dumps(manifest, indent=1))
     print(f"wrote regions.json ({len(manifest)} region(s): "
           f"{', '.join(sorted(manifest))})")
