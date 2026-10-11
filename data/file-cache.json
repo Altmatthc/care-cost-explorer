@@ -1156,5 +1156,317 @@
   "last_modified": "Wed, 29 Apr 2026 14:22:55 GMT",
   "length": "88028162",
   "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/941156621-1447494323_sutter-amador-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455B3031D6\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:11 GMT",
+  "length": "7330878",
+  "seen": null
+ },
+ "https://emanuelmedical.slicedhealth.io/pricer/58-6002922_EmanuelMedicalCenter_standardcharges.CSV": {
+  "etag": "\"316c4f76f0b095f76c4f10bf7ecc2b58-4\"",
+  "last_modified": "Fri, 27 Feb 2026 15:41:23 GMT",
+  "length": "20362948",
+  "seen": null
+ },
+ "https://www.kaweahhealth.org/sites/default/files/images/941534475-1588663769_kaweah-health-medical-center_standardcharges.csv": {
+  "etag": "\"6a5788a4-1c2fccf\"",
+  "last_modified": "Wed, 15 Jul 2026 13:18:28 GMT",
+  "length": "29555919",
+  "seen": null
+ },
+ "https://gardengrovehospital.com/wp-content/uploads/2026/09/060000152_GardenGroveHospitalMedicalCenter_standardcharges.json": {
+  "etag": "\"1cf2fdf-65a862057b3c0-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 20:46:15 GMT",
+  "length": "914366",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/941156621-1366686248_sutter-solano-medical-center_standardcharges.csv": {
+  "etag": "\"0x8DF13455B695121\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:11 GMT",
+  "length": "11201093",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/941156621-1811946734_sutter-medical-center-sacramento_standardcharges.csv": {
+  "etag": "\"0x8DF13455B5605E3\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:11 GMT",
+  "length": "16401921",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1740413798_sutter-santa-rosa-regional-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455BD617B6\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:12 GMT",
+  "length": "14631528",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/941156621-1356390264_sutter-roseville-medical-center_standardcharges.csv": {
+  "etag": "\"0x8DF13455BCCAC62\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:12 GMT",
+  "length": "18994216",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/941156621-1821442864_sutter-tracy-community-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455B5480F9\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:11 GMT",
+  "length": "16504140",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/942988520-1457367062_sutter-coast-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455B168514\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:11 GMT",
+  "length": "5545841",
+  "seen": null
+ },
+ "https://www.alhambrahospital.com/docs/PricingTransparency-Alhambra_Hosptial_Medical_Center_-_MediTech-3323-20260326202955.csv": {
+  "etag": "\"7cb2997-64e02c2996d80\"",
+  "last_modified": "Fri, 27 Mar 2026 15:00:22 GMT",
+  "length": "130754967",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/941156621-1194774299_sutter-auburn-faith-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455BE93C0A\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:12 GMT",
+  "length": "15282368",
+  "seen": null
+ },
+ "https://www.ucihealth.org/pricetransparency/952226406_uci-health-los-alamitos_standardcharges.json": {
+  "etag": "\"f3c7de53cc1dc1:0\"",
+  "last_modified": "Tue, 31 Mar 2026 18:33:40 GMT",
+  "length": "67073070",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1467808659_sutter-delta-medical-center_standardcharges.csv": {
+  "etag": "\"0x8DF13455C6BBC25\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:13 GMT",
+  "length": "16153966",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/941156621-1770532608_sutter-davis-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455D49B104\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:14 GMT",
+  "length": "15029555",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1689035628_sutter-maternity-surgery-center-of-santa-cruz_standardcharges.csv": {
+  "etag": "\"0x8DF13455CB0196E\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:13 GMT",
+  "length": "12434371",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/352182617-1336333954_sutter-north-valley-surgical-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455CE9D45F\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:14 GMT",
+  "length": "7067341",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1952634008_sutter-lakeside-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455B900E8E\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:11 GMT",
+  "length": "4894524",
+  "seen": null
+ },
+ "https://www.ucihealth.org/pricetransparency/952226406_uci-health-fountain-valley_standardcharges.json": {
+  "etag": "\"607fa2e43cc1dc1:0\"",
+  "last_modified": "Tue, 31 Mar 2026 18:33:39 GMT",
+  "length": "67267538",
+  "seen": null
+ },
+ "https://www.ucihealth.org/pricetransparency/952226406_uci-health-lakewood_standardcharges.json": {
+  "etag": "\"11aefe53cc1dc1:0\"",
+  "last_modified": "Tue, 31 Mar 2026 18:33:39 GMT",
+  "length": "67053227",
+  "seen": null
+ },
+ "https://palmettogeneral.org/pricetransparency/995002378_hsa-pgh-llc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 21 Sep 2026 09:19:39 GMT",
+  "length": "218482658",
+  "seen": null
+ },
+ "https://www.physiciansregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/204401957_physicians-regional-healthcare-system-pine-ridge_standardcharges.csv": {
+  "etag": "\"078ea516dd7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 00:15:44 GMT",
+  "length": "153645305",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2379007_HCA-FLORIDA-AVENTURA-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16985A883ACF\"",
+  "last_modified": "Sat, 19 Sep 2026 21:52:51 GMT",
+  "length": "403223456",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/95-4176924_HCA-FLORIDA-LAKE-CITY-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF182CE5DA164C\"",
+  "last_modified": "Mon, 21 Sep 2026 22:08:42 GMT",
+  "length": "236948843",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1258724_HCA-FLORIDA-SARASOTA-DOCTORS-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1856E92994B1\"",
+  "last_modified": "Tue, 22 Sep 2026 03:09:26 GMT",
+  "length": "411186776",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1372389_HCA-FLORIDA-MERCY-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF168FABC3E134\"",
+  "last_modified": "Sat, 19 Sep 2026 20:50:42 GMT",
+  "length": "412952913",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-3283127_HCA-FLORIDA-MEMORIAL-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1651F0F9A8DD\"",
+  "last_modified": "Sat, 19 Sep 2026 13:28:50 GMT",
+  "length": "474865950",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1174716_HCA-FLORIDA-ST.-PETERSBURG-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1842E336C5CE\"",
+  "last_modified": "Tue, 22 Sep 2026 00:46:06 GMT",
+  "length": "359641904",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259843_HCA-FLORIDA-NORTHWEST-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16A1D76EA4F8\"",
+  "last_modified": "Sat, 19 Sep 2026 23:00:46 GMT",
+  "length": "379208000",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2047041_HCA-FLORIDA-TRINITY-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF18445F018D88\"",
+  "last_modified": "Tue, 22 Sep 2026 00:56:44 GMT",
+  "length": "356372818",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269294_HCA-FLORIDA-NORTH-FLORIDA-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1823081778BC\"",
+  "last_modified": "Mon, 21 Sep 2026 20:58:04 GMT",
+  "length": "386830343",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/36-4764806_HCA-FLORIDA-SOUTH-TAMPA-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF183D8CA1C6E2\"",
+  "last_modified": "Tue, 22 Sep 2026 00:07:54 GMT",
+  "length": "318255687",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0260078_HCA-FLORIDA-KENDALL-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16A9255F5AB3\"",
+  "last_modified": "Sat, 19 Sep 2026 23:53:04 GMT",
+  "length": "447494703",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BLAKE-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF166E9312BCBC\"",
+  "last_modified": "Sat, 19 Sep 2026 16:53:47 GMT",
+  "length": "420607207",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1259833_HCA-FLORIDA-FORT-WALTON-DESTIN-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF182072516DA8\"",
+  "last_modified": "Mon, 21 Sep 2026 20:39:34 GMT",
+  "length": "329136948",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-1269295_HCA-FLORIDA-ORANGE-PARK-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF164B2A00CFAB\"",
+  "last_modified": "Sat, 19 Sep 2026 12:40:19 GMT",
+  "length": "445032969",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1525468_HCA-FLORIDA-WEST-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1821CD9B3DDE\"",
+  "last_modified": "Mon, 21 Sep 2026 20:49:17 GMT",
+  "length": "386646430",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/47-2762362_HCA-FLORIDA-PUTNAM-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1815C5A7ACD5\"",
+  "last_modified": "Mon, 21 Sep 2026 19:23:09 GMT",
+  "length": "227461745",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0252846_HCA-FLORIDA-FAWCETT-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF18551DEA9346\"",
+  "last_modified": "Tue, 22 Sep 2026 02:56:36 GMT",
+  "length": "355086448",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-NORTHSIDE-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF185101573DC1\"",
+  "last_modified": "Tue, 22 Sep 2026 02:27:10 GMT",
+  "length": "337791668",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0976863_HCA-FLORIDA-GULF-COAST-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1829B329156E\"",
+  "last_modified": "Mon, 21 Sep 2026 21:45:48 GMT",
+  "length": "301817792",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/61-0947837_HCA-FLORIDA-BRANDON-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF184639F8A292\"",
+  "last_modified": "Tue, 22 Sep 2026 01:10:00 GMT",
+  "length": "409225580",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1764486_HCA-FLORIDA-LAWNWOOD-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF169D187518F1\"",
+  "last_modified": "Sat, 19 Sep 2026 22:26:48 GMT",
+  "length": "355676456",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1026428_HCA-FLORIDA-LARGO-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF18481C795E09\"",
+  "last_modified": "Tue, 22 Sep 2026 01:23:30 GMT",
+  "length": "449616169",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1833934_HCA-FLORIDA-RAULERSON-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF169F8F5F6EB5\"",
+  "last_modified": "Sat, 19 Sep 2026 22:44:27 GMT",
+  "length": "286834129",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1091430_HCA-FLORIDA-CAPITAL-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF18288CBB99A0\"",
+  "last_modified": "Mon, 21 Sep 2026 21:37:34 GMT",
+  "length": "382139579",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BAYONET-POINT-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF184DD90FC0CC\"",
+  "last_modified": "Tue, 22 Sep 2026 02:04:34 GMT",
+  "length": "384219050",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-2822337_HCA-FLORIDA-SOUTH-SHORE-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1866857F8EA0\"",
+  "last_modified": "Tue, 22 Sep 2026 05:01:11 GMT",
+  "length": "441090868",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-OAK-HILL-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF188E196C8C86\"",
+  "last_modified": "Tue, 22 Sep 2026 09:44:30 GMT",
+  "length": "334202358",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/35-1611050_HCA-FLORIDA-ENGLEWOOD-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF184C3A40DB32\"",
+  "last_modified": "Tue, 22 Sep 2026 01:52:58 GMT",
+  "length": "281816599",
+  "seen": null
+ },
+ "https://northwestfloridacommunityhospital.pg.quadax.revenuemasters.com/cdm-files/596002711_northwest-florida-community-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 19 May 2026 20:36:27 GMT",
+  "length": "20803691",
+  "seen": null
+ },
+ "https://www.leehealth.org/machine-readable-files-lh-2026/99-2646504_GULF-COAST-MEDICAL-CENTER_standardcharges_20260401.zip": {
+  "etag": "\"fe45fc0a346dd1:0\"",
+  "last_modified": "Thu, 17 Sep 2026 12:49:40 GMT",
+  "length": "31556325",
+  "seen": null
  }
 }

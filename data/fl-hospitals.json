@@ -3309,7 +3309,8 @@
   "verified_source": true,
   "lat": 27.39084,
   "lng": -82.43338,
-  "mrf_url": "https://uhsfilecdn.eskycity.net/ac/731666433_lakewood-ranch-medical-center_standardcharges.csv"
+  "mrf_url": "https://uhsfilecdn.eskycity.net/ac/731666433_lakewood-ranch-medical-center_standardcharges.csv",
+  "source_url": "https://uhsfilecdn.eskycity.net/ac/731666433_lakewood-ranch-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100302",
@@ -3590,7 +3591,8 @@
   "verified_source": true,
   "lat": 27.13741,
   "lng": -82.4201,
-  "mrf_url": "https://www.smh.com/Portals/0/Documents/Financial/596012500_Sarasota-Memorial-Hospital-Venice_standardcharges.csv"
+  "mrf_url": "https://www.smh.com/Portals/0/Documents/Financial/596012500_Sarasota-Memorial-Hospital-Venice_standardcharges.csv",
+  "source_url": "https://www.smh.com/Portals/0/Documents/Financial/596012500_Sarasota-Memorial-Hospital-Venice_standardcharges.csv"
  },
  {
   "id": "ccn-100360",
@@ -3888,7 +3890,8 @@
   "verified_source": true,
   "lat": 30.4394,
   "lng": -85.062,
-  "mrf_url": "https://www.calhounlibertyhospital.com/wp-content/uploads/2026/08/593051173_calhoun-liberty-hospital-association_standardcharges.csv"
+  "mrf_url": "https://www.calhounlibertyhospital.com/wp-content/uploads/2026/08/593051173_calhoun-liberty-hospital-association_standardcharges.csv",
+  "source_url": "https://www.calhounlibertyhospital.com/wp-content/uploads/2026/08/593051173_calhoun-liberty-hospital-association_standardcharges.csv"
  },
  {
   "id": "ccn-101305",
@@ -4144,6 +4147,7 @@
   "verified_source": true,
   "lat": 28.37507,
   "lng": -81.27447,
-  "mrf_url": "https://www.nemours.org/content/dam/nemours/nemours-org/en/documents/590634433-1245520386_Nemours-Childrens-Hospital_standardcharges.csv"
+  "mrf_url": "https://www.nemours.org/content/dam/nemours/nemours-org/en/documents/590634433-1245520386_Nemours-Childrens-Hospital_standardcharges.csv",
+  "source_url": "https://www.nemours.org/content/dam/nemours/nemours-org/en/documents/590634433-1245520386_Nemours-Childrens-Hospital_standardcharges.csv"
  }
 ]

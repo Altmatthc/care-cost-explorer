@@ -65,8 +65,8 @@
  },
  "fl": {
   "file": "fl.json",
-  "updated": "2026-10-04",
-  "hospitals": 138,
+  "updated": "2026-10-10",
+  "hospitals": 145,
   "procedures": 58,
   "states": [
    "FL"
@@ -97,6 +97,7 @@
    "346",
    "347",
    "349"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-fl"
  }
 }
