@@ -1552,5 +1552,11 @@
   "last_modified": null,
   "length": null,
   "seen": null
+ },
+ "https://hospitalpricedisclosure.com/Download.aspx": {
+  "etag": "0x8DF01E57B2548AB",
+  "last_modified": "Mon, 24 Aug 2026 13:42:03 GMT",
+  "length": "6769234",
+  "seen": null
  }
 }

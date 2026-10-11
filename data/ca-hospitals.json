@@ -6961,11 +6961,13 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": false,
-  "domain": null,
-  "verified_source": false,
+  "domain": "paloverdehospital.org",
+  "verified_source": true,
   "lat": 33.61316,
   "lng": -114.59543,
-  "mrf_url": null
+  "mrf_url": "https://hospitalpricedisclosure.com/Download.aspx?pxi=mFf*_*YSFqd65wsOm0aEz6fg*-*",
+  "price_page": "https://www.paloverdehospital.org/124/PaymentBilling",
+  "source_url": "https://hospitalpricedisclosure.com/Download.aspx"
  },
  {
   "id": "ccn-053300",
