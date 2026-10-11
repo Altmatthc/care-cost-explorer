@@ -78,12 +78,10 @@
   "stars": 3,
   "hasER": false,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 37.76912,
   "lng": -122.43364,
-  "mrf_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1659439834_california-pacific-medical-center-davies-campus_standardcharges.csv",
-  "price_page": "https://www.sutterhealth.org/billing-insurance/costs-and-charges/cost-transparency/",
-  "source_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1659439834_california-pacific-medical-center-davies-campus_standardcharges.csv"
+  "mrf_url": null
  },
  {
   "id": "ccn-050009",
@@ -420,12 +418,10 @@
   "stars": 5,
   "hasER": true,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 37.8361,
   "lng": -122.2637,
-  "mrf_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1295181477_alta-bates-summit-medical-center-summit-campus_standardcharges.csv",
-  "price_page": "https://www.sutterhealth.org/billing-insurance/costs-and-charges/cost-transparency/",
-  "source_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1295181477_alta-bates-summit-medical-center-summit-campus_standardcharges.csv"
+  "mrf_url": null
  },
  {
   "id": "ccn-050045",
@@ -464,12 +460,10 @@
   "stars": 3,
   "hasER": true,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 37.78572,
   "lng": -122.42155,
-  "mrf_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1740348929_california-pacific-medical-center-van-ness-campus_standardcharges.csv",
-  "price_page": "https://www.sutterhealth.org/billing-insurance/costs-and-charges/cost-transparency/",
-  "source_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1740348929_california-pacific-medical-center-van-ness-campus_standardcharges.csv"
+  "mrf_url": null
  },
  {
   "id": "ccn-050054",
@@ -508,12 +502,10 @@
   "stars": 4,
   "hasER": true,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 37.74799,
   "lng": -122.42087,
-  "mrf_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1730238007_california-pacific-medical-center-mission-bernal-campus_standardcharges.csv",
-  "price_page": "https://www.sutterhealth.org/billing-insurance/costs-and-charges/cost-transparency/",
-  "source_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1730238007_california-pacific-medical-center-mission-bernal-campus_standardcharges.csv"
+  "mrf_url": null
  },
  {
   "id": "ccn-050056",
@@ -1421,12 +1413,10 @@
   "stars": 5,
   "hasER": true,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 38.09787,
   "lng": -122.55931,
-  "mrf_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1104059153_novato-community-hospital_standardcharges.csv",
-  "price_page": "https://www.sutterhealth.org/billing-insurance/costs-and-charges/cost-transparency/",
-  "source_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1104059153_novato-community-hospital_standardcharges.csv"
+  "mrf_url": null
  },
  {
   "id": "ccn-050132",
@@ -1507,12 +1497,10 @@
   "stars": 4,
   "hasER": false,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 38.25317,
   "lng": -122.63277,
-  "mrf_url": "https://pricetransparency.providence.org/norcal/live/852390012_petaluma-valley-hospital_standardcharges.json",
-  "price_page": "https://www.providence.org/billing-support/pricing-transparency",
-  "source_url": "https://pricetransparency.providence.org/norcal/live/852390012_petaluma-valley-hospital_standardcharges.json"
+  "mrf_url": null
  },
  {
   "id": "ccn-050137",
@@ -2863,12 +2851,10 @@
   "stars": 4,
   "hasER": true,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 37.85516,
   "lng": -122.2671,
-  "mrf_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1639523004_alta-bates-summit-medical-center-alta-bates-campus_standardcharges.csv",
-  "price_page": "https://www.sutterhealth.org/billing-insurance/costs-and-charges/cost-transparency/",
-  "source_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1639523004_alta-bates-summit-medical-center-alta-bates-campus_standardcharges.csv"
+  "mrf_url": null
  },
  {
   "id": "ccn-050308",
@@ -3974,12 +3960,10 @@
   "stars": 4,
   "hasER": true,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 37.69791,
   "lng": -122.08731,
-  "mrf_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1063812907_eden-medical-center_standardcharges.csv",
-  "price_page": "https://www.sutterhealth.org/billing-insurance/costs-and-charges/cost-transparency/",
-  "source_url": "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1063812907_eden-medical-center_standardcharges.csv"
+  "mrf_url": null
  },
  {
   "id": "ccn-050492",
@@ -6619,12 +6603,10 @@
   "stars": null,
   "hasER": true,
   "domain": null,
-  "verified_source": true,
+  "verified_source": false,
   "lat": 38.62751,
   "lng": -122.8638,
-  "mrf_url": "https://pricetransparency.providence.org/norcal/live/852390012_healdsburg-hospital_standardcharges.json",
-  "price_page": "https://www.providence.org/billing-support/pricing-transparency",
-  "source_url": "https://pricetransparency.providence.org/norcal/live/852390012_healdsburg-hospital_standardcharges.json"
+  "mrf_url": null
  },
  {
   "id": "ccn-051323",
@@ -6979,13 +6961,11 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": false,
-  "domain": "paloverdehospital.org",
-  "verified_source": true,
+  "domain": null,
+  "verified_source": false,
   "lat": 33.61316,
   "lng": -114.59543,
-  "mrf_url": "https://hospitalpricedisclosure.com/Download.aspx?pxi=mFf*_*YSFqd65wsOm0aEz6fg*-*",
-  "price_page": "https://www.paloverdehospital.org/124/PaymentBilling",
-  "source_url": "https://hospitalpricedisclosure.com/Download.aspx"
+  "mrf_url": null
  },
  {
   "id": "ccn-053300",
