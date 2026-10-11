@@ -1468,5 +1468,149 @@
   "last_modified": "Thu, 17 Sep 2026 12:49:40 GMT",
   "length": "31556325",
   "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1659439834_california-pacific-medical-center-davies-campus_standardcharges.csv": {
+  "etag": "\"0x8DF13455C911B7B\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:13 GMT",
+  "length": "18701332",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1295181477_alta-bates-summit-medical-center-summit-campus_standardcharges.csv": {
+  "etag": "\"0x8DF13455C4EDEAD\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:13 GMT",
+  "length": "17061637",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1740348929_california-pacific-medical-center-van-ness-campus_standardcharges.csv": {
+  "etag": "\"0x8DF13455BF086D4\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:12 GMT",
+  "length": "16860354",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1730238007_california-pacific-medical-center-mission-bernal-campus_standardcharges.csv": {
+  "etag": "\"0x8DF13455CD6622C\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:14 GMT",
+  "length": "16311846",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1104059153_novato-community-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF13455CB1C53C\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:13 GMT",
+  "length": "9845278",
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/norcal/live/852390012_petaluma-valley-hospital_standardcharges.json": {
+  "etag": "W/\"5ee5be40abc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 20:48:40 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1639523004_alta-bates-summit-medical-center-alta-bates-campus_standardcharges.csv": {
+  "etag": "\"0x8DF13455C823818\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:13 GMT",
+  "length": "20347333",
+  "seen": null
+ },
+ "https://www.northbay.org/upload/941458282_northbay-medical-center_standardcharges.csv": {
+  "etag": "\"3220d11-14fda76-64e46d3c76000\"",
+  "last_modified": "Tue, 31 Mar 2026 00:12:48 GMT",
+  "length": "22010486",
+  "seen": null
+ },
+ "https://www.hemetglobalmedicalcenter.com/csv/v2/270636387_hemet-global-medical-center_standardcharges.csv": {
+  "etag": "\"dc83a58-6548a9e53414f\"",
+  "last_modified": "Thu, 18 Jun 2026 17:36:38 GMT",
+  "length": "231225944",
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/311091597_mercy-health-west-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:36:06 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/sutterhealt962c-sutterhealt8fce-production57cc-4860/media/Project/SutterHealth/SutterHealth/Files/billing-insurance/costs-and-charges/940562680-1063812907_eden-medical-center_standardcharges.csv": {
+  "etag": "\"0x8DF13455D1BCFBE\"",
+  "last_modified": "Tue, 15 Sep 2026 16:21:14 GMT",
+  "length": "18037867",
+  "seen": null
+ },
+ "https://victorvalleyglobalmedicalcenter.com/csv/v2/273777887_victor-valley-global-medical-center_standardcharges.csv": {
+  "etag": "\"c06d791-6548b33a30e2a\"",
+  "last_modified": "Thu, 18 Jun 2026 18:18:23 GMT",
+  "length": "201774993",
+  "seen": null
+ },
+ "https://lapalmaintercommunityhospital.com/wp-content/uploads/2026/09/060000136_LaPalmaIntercommunityHospital_standardcharges.json": {
+  "etag": "\"21748c2-65a86238fad40-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 20:47:09 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/fc339dd35c58584a4313b267cb170a7d/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.menifeeglobalmedicalcenter.com/csv/v2/270636387_menifee-global-medical-center_standardcharges.csv": {
+  "etag": "\"d273ab7-654f07881544e\"",
+  "last_modified": "Tue, 23 Jun 2026 19:07:30 GMT",
+  "length": "220674743",
+  "seen": null
+ },
+ "https://www.anaheimglobalmedicalcenter.com/csv/v3/550883859_anaheim-global-medical-center_standardcharges.csv": {
+  "etag": "\"c4c3000-65afb65f35180\"",
+  "last_modified": "Tue, 08 Sep 2026 16:40:54 GMT",
+  "length": "206319616",
+  "seen": null
+ },
+ "https://www.chapmanglobalmedicalcenter.com/csv/v4/550883864_chapman-global-medical-center_standardcharges.csv": {
+  "etag": "\"1a4b9410-65a80d724cd91\"",
+  "last_modified": "Wed, 02 Sep 2026 14:27:52 GMT",
+  "length": "441160720",
+  "seen": null
+ },
+ "https://orangecountyglobalmedicalcenter.com/csv/v3/550883862_orange-county-global-medical-center_standardcharges.csv": {
+  "etag": "\"196a5359-65681e69bbd00\"",
+  "last_modified": "Mon, 13 Jul 2026 18:03:00 GMT",
+  "length": "426398553",
+  "seen": null
+ },
+ "https://shermanoakshospital.org/wp-content/uploads/2026/09/930000149_ShermanOaksHospital_standardcharges.json": {
+  "etag": "\"3790fe0-65a87333d3cc0-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 22:03:07 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8428/760594558-1063412005_pipeline-health-system-holdings,-llc_standardcharges.csv": {
+  "etag": "0x8DE64219F26CFFE",
+  "last_modified": "Wed, 04 Feb 2026 19:14:30 GMT",
+  "length": "318795446",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/7918/300804393_alta-newport-hospital,-llc_standardcharges.csv": {
+  "etag": "0x8DE850F4E797FB3",
+  "last_modified": "Wed, 18 Mar 2026 16:56:32 GMT",
+  "length": "245465029",
+  "seen": null
+ },
+ "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/norcal/live/852390012_healdsburg-hospital_standardcharges.json": {
+  "etag": "W/\"7a6f23aacc3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 20:54:18 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://hospitalpricedisclosure.com/Download.aspx": {
+  "etag": "0x8DF01E57B2548AB",
+  "last_modified": "Mon, 24 Aug 2026 13:42:03 GMT",
+  "length": "6769234",
+  "seen": null
  }
 }

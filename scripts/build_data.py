@@ -211,15 +211,34 @@ def base_url(url: str) -> str:
     return (url or "").split("?")[0]
 
 
+def _manifest_text(r) -> str:
+    """Decode a cms-hpt.txt response with its real encoding.
+
+    requests' r.text falls back to ISO-8859-1 when the server sends no charset,
+    which mangles UTF-16 manifests (Sutter publishes UTF-16LE BOM) into NUL-byte
+    garbage — the parser then silently finds zero locations. Detect the BOM
+    first, then apparent_encoding, then latin-1.
+    """
+    raw = r.content
+    if raw[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        return raw.decode("utf-16", "replace")
+    if raw[:3] == b"\xef\xbb\xbf":
+        return raw.decode("utf-8-sig", "replace")
+    return raw.decode(r.apparent_encoding or "utf-8", "replace")
+
+
 def _manifest_urls(domain: str, timeout: int = 20) -> list[str]:
     """All mrf-url lines from a domain's cms-hpt.txt, signed URLs as published."""
     urls: list[str] = []
     for base in (f"https://{domain}", f"https://www.{domain}"):
         try:
             r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=timeout)
-            if not r.ok or not r.text.strip():
+            if not r.ok:
                 continue
-            for line in r.text.splitlines():
+            text = _manifest_text(r)
+            if not text.strip():
+                continue
+            for line in text.splitlines():
                 low = line.lower()
                 # "mrf-url: https://..." form
                 if "mrf-url" in low and ":" in line:
@@ -351,10 +370,24 @@ DOMAIN_HINTS = [
     # before it's used.
     ("kaiser",               "healthy.kaiserpermanente.org"),
     ("sutter",               "sutterhealth.org"),
+    # Sutter sub-brands publish nothing on their own domains; the parent's
+    # UTF-16 manifest carries all of them (CalPac, Alta Bates, Novato, Eden,
+    # Los Banos, Memorial Medical Center...).
+    ("california pacific",   "sutterhealth.org"),
+    ("alta bates",           "sutterhealth.org"),
+    ("novato community",     "sutterhealth.org"),
+    ("eden medical",         "sutterhealth.org"),
     ("dignity",              "dignityhealth.org"),
     ("commonspirit",         "commonspirit.org"),
     ("providence",           "providence.org"),
+    # Providence (RWJ) CA members under other names — all in the 61-location
+    # providence.org manifest.
+    ("petaluma valley",      "providence.org"),
+    ("healdsburg hospital",  "providence.org"),
+    ("queen of the valley",  "providence.org"),
+    ("saint mary medical",   "providence.org"),
     ("adventist",            "adventisthealth.org"),
+    ("emanate health",       "emanatehealth.org"),
     ("prime healthcare",     "primehealthcare.com"),
     ("tenet",                "tenethealth.com"),
     ("hca ",                 "hcahealthcare.com"),
@@ -1232,9 +1265,12 @@ def discover_mrf_candidates(domain: str, timeout: int = 20) -> list[str]:
     for base in (f"https://{domain}", f"https://www.{domain}"):
         try:
             r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=timeout)
-            if not r.ok or not r.text.strip():
+            if not r.ok:
                 continue
-            for line in r.text.splitlines():
+            text = _manifest_text(r)
+            if not text.strip():
+                continue
+            for line in text.splitlines():
                 low = line.lower()
                 # The spec also carries the human-facing price page.
                 if "source-page-url" in low and ":" in line:
