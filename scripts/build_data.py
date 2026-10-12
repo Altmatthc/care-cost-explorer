@@ -1764,14 +1764,28 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
 
     found, scanned, types_seen, samples = [], 0, {}, []
     all_codes: dict[str, dict] = {}
+    loc_c = None
     for item in stream_json_items(url, array_key):
         scanned += 1
         codes = item.get("code_information") or item.get("codes") or []
         if isinstance(codes, dict):
             codes = [codes]
 
-        pid = None
-        primary_code = None
+        # Catalogue capture is INDEPENDENT of the curated 58-procedure match:
+        # every code in the file with a cash price belongs in the search
+        # catalogue, same as the CSV path. Gating this on match_code() meant
+        # shared multi-facility JSON files (Providence, Stanford, UCLA,
+        # MemorialCare) only catalogued codes for whichever hospital happened
+        # to be harvested first — every "reused, same file as ..." hospital
+        # got prices but no searchable codes.
+        desc = clean_text(item.get("description"))
+        charges = item.get("standard_charges") or []
+        if isinstance(charges, dict):
+            charges = [charges]
+        if loc_c is None:
+            loc_c = (item.get("location_name") or item.get("hospital_location")
+                     or item.get("location") or "")
+
         for c in codes:
             code = str(c.get("code", "")).strip()
             ctype = str(c.get("type", "")).strip()
@@ -1779,25 +1793,50 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
                 types_seen[norm_type(ctype)] = types_seen.get(norm_type(ctype), 0) + 1
             if len(samples) < 12 and code and code not in samples:
                 samples.append(f"{code}[{ctype or '?'}]")
-            hit = match_code(code, ctype)
+            nt = norm_type(ctype)
+            if code and nt in ("CPT", "HCPCS", "MSDRG", "DRG", "APC") \
+                    and len(all_codes) < MAX_CODES_PER_HOSPITAL:
+                cat_key = f"{nt}:{code.strip().upper()}"
+                for ch in charges:
+                    cash = _num(ch.get("discounted_cash"))
+                    if not cash:
+                        # Some files (UCLA Health, Hollywood Presbyterian)
+                        # publish no discounted_cash at all — fall back to the
+                        # minimum listed charge, then the lowest negotiated
+                        # payer rate, so the code is still searchable.
+                        cash = _num(ch.get("minimum"))
+                    if not cash:
+                        for p in (ch.get("payers_information") or []):
+                            v = (_num(p.get("standard_charge_dollar"))
+                                 or _num(p.get("estimated_amount")))
+                            if v and (not cash or v < cash):
+                                cash = v
+                    if not cash:
+                        continue
+                    # A zero-dollar "cash price" on an implant or supply line
+                    # means "billed through the device biller", not free care —
+                    # _num() turns "0.00" into falsy 0.0, so this guard is the
+                    # whole defence.
+                    prev = all_codes.get(cat_key)
+                    if not prev or cash < prev["cash"]:
+                        all_codes[cat_key] = {
+                            "d": clean_text(desc, 70),
+                            "cash": round(cash),
+                            "gross": (_num(ch.get("gross_charge"))
+                                      and round(_num(ch.get("gross_charge")))) or None,
+                        }
+
+        pid = None
+        for c in codes:
+            hit = match_code(str(c.get("code", "")).strip(),
+                             str(c.get("type", "")).strip())
             if hit:
                 pid = hit
-                primary_code = (norm_type(ctype), code)
                 break
         if not pid:
             continue
 
-        desc = clean_text(item.get("description"))
         resolved_ids = refine_by_description(pid, desc)
-        charges = item.get("standard_charges") or []
-        if isinstance(charges, dict):
-            charges = [charges]
-
-        # Build the search catalogue from the primary code (same key format as
-        # the CSV path: TYPE:CODE). Keep the lowest cash price seen for a code.
-        cat_key = None
-        if primary_code and norm_type(primary_code[0]) in ("CPT", "HCPCS", "MSDRG", "DRG", "APC"):
-            cat_key = f"{norm_type(primary_code[0])}:{primary_code[1].strip().upper()}"
 
         for ch, pid in ((c, p) for c in charges for p in resolved_ids):
             base = {
@@ -1807,18 +1846,9 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
                 "gross": _num(ch.get("gross_charge")),
                 "min": _num(ch.get("minimum")),
                 "max": _num(ch.get("maximum")),
+                "location": str(loc_c).strip(),
                 "description": desc,
             }
-            # Catalogue: lowest cash price for this code (files repeat a code
-            # across settings; the lower is what a patient could be offered).
-            if cat_key and base["cash"] and len(all_codes) < MAX_CODES_PER_HOSPITAL:
-                prev = all_codes.get(cat_key)
-                if not prev or base["cash"] < prev["cash"]:
-                    all_codes[cat_key] = {
-                        "d": clean_text(desc, 70),
-                        "cash": round(base["cash"]),
-                        "gross": round(base["gross"]) if base["gross"] else None,
-                    }
             payers = ch.get("payers_information") or []
             if isinstance(payers, dict):
                 payers = [payers]
@@ -2653,6 +2683,7 @@ def main():
             return kept
 
         carried: dict[str, dict] = {}
+        cat_run_urls: dict[str, list] = {}   # base_url -> hospital ids catalogued this run
         import threading
         from concurrent.futures import ThreadPoolExecutor
         lock = threading.Lock()
@@ -2833,6 +2864,26 @@ def main():
                         [{**r, "hospital_id": h["id"]} for r in cache[cb]], h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} rows "
                           f"(reused, same file as {url_users[cb][0]})")
+                    # The first hospital through this URL wrote its catalogue
+                    # under its own id; a shared multi-facility file must also
+                    # give every other facility its own searchable catalogue.
+                    if CATALOGUE_DIR is not None:
+                        try:
+                            src_cat = None
+                            for cid in cat_run_urls.get(cb, []):
+                                cand = CATALOGUE_DIR / f"{cid}.json"
+                                if cand.exists():
+                                    src_cat = cand
+                                    break
+                            if src_cat:
+                                dst = CATALOGUE_DIR / (re.sub(
+                                    r"[^A-Za-z0-9_.-]", "_", h["id"]) + ".json")
+                                if dst != src_cat:
+                                    dst.write_bytes(src_cat.read_bytes())
+                                    print(f"      catalogue copied to {dst.name} "
+                                          f"(shared file)")
+                        except OSError as e:
+                            print(f"      catalogue copy failed: {e}")
                 elif (existing and not args.refresh_all
                       and file_unchanged(url, http_cache)):
                     # Server confirmed the file is byte-identical to last time.
@@ -2852,6 +2903,9 @@ def main():
                     cache[cb] = rows
                     rows = filter_to_location(rows, h["name"])
                     print(f"    ✓ {h['name']}: {len(rows)} matching rows")
+                    with lock:
+                        cat_run_urls.setdefault(cb, []).append(
+                            re.sub(r"[^A-Za-z0-9_.-]", "_", h["id"]))
                 with lock:
                     all_rows.extend(rows)
                     stats["found"] += 1
