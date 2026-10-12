@@ -2660,8 +2660,14 @@ def main():
                   f"kept {len(keep)}/{len(rows)} rows for this hospital")
             return keep if keep else rows
 
-        def record(h, st, detail="", rows=0, url=None):
+        def record(h, st, detail="", rows=0, url=None, reparsed=True):
+            # last_success means "we actually downloaded and parsed this file".
+            # last_verified means "we confirmed the data is current" -- either by
+            # parsing it or by the server saying the file is byte-identical.
+            # Keeping them apart stops a 304 from making old data look freshly
+            # harvested, while still letting the cheap path skip the download.
             prior = status.get(h["id"], {})
+            ok = st == STATUS_OK
             status[h["id"]] = {
                 "name": h["name"],
                 "status": st,
@@ -2669,7 +2675,9 @@ def main():
                 "rows": rows if st == STATUS_OK else prior.get("rows", 0),
                 "source_url": url or prior.get("source_url"),
                 "last_attempt": today,
-                "last_success": today if st == STATUS_OK else prior.get("last_success"),
+                "last_success": today if ok and reparsed else prior.get("last_success"),
+                "last_verified": today if ok else (prior.get("last_verified")
+                                                   or prior.get("last_success")),
                 "attempts": prior.get("attempts", 0) + 1,
                 "consecutive_failures": 0 if st == STATUS_OK
                                         else prior.get("consecutive_failures", 0) + 1,
@@ -2733,9 +2741,12 @@ def main():
 
             # Already have fresh data? Leave the server alone.
             existing = carry_over(h)
+            # Status files written before last_verified existed only have
+            # last_success; fall back to it so they don't all force a rescan.
+            verified = prior.get("last_verified") or prior.get("last_success")
             fresh = (prior.get("status") == STATUS_OK
-                     and prior.get("last_success")
-                     and days_since(prior["last_success"]) < args.max_age
+                     and verified
+                     and days_since(verified) < args.max_age
                      and bool(existing))     # status says OK but data is gone -> rescan
             if (prior.get("status") == STATUS_OK and not existing
                     and not args.refresh_all):
@@ -2745,7 +2756,7 @@ def main():
                 kept = existing
                 carried.update(kept)
                 stats["skipped"] += 1
-                age = int(days_since(prior["last_success"]))
+                age = int(days_since(verified))
                 print(f"    · {h['name']}: skipped, {len(kept)} records "
                       f"already collected {age}d ago")
                 return
@@ -2893,7 +2904,7 @@ def main():
                           f"reusing {len(rows)} records")
                     carried.update(existing)
                     record(h, STATUS_OK, "unchanged since last run",
-                           rows=len(rows), url=cb)
+                           rows=len(rows), url=cb, reparsed=False)
                     checkpoint()
                     return
                 else:

@@ -435,14 +435,24 @@ def main():
     #                         deltas, unlike rewriting a JSON blob.
     #   prev / since fields   folded into the price records so the site can
     #                         show "up 8% since March" without a second fetch.
-    # Only changes are recorded, so a month where nothing moves adds nothing.
+    # A (hospital, procedure) pair gets a history row when:
+    #   1. it is observed for the first time,
+    #   2. its cash price changed (pct_change filled in), or
+    #   3. the price is unchanged but the last row is RECONFIRM_DAYS+ old
+    #      (pct_change empty). Without this, a stable price never gets a
+    #      second dated observation, so nothing can say "steady since X";
+    #      the gap keeps monthly refreshes from adding a row every run.
     # ------------------------------------------------------------------
     import csv as _csv
 
     hist_path = DATA / f"{args.region}-history.csv"
     today = date.today().isoformat()
+    RECONFIRM_DAYS = 45
 
     last_seen: dict[tuple, tuple] = {}       # (hid, proc) -> (date, cash)
+    # (hid, proc) -> date the current price was first seen, so an unchanged
+    # pair can report the start of its run rather than the latest reconfirm.
+    run_start: dict[tuple, str] = {}
     if hist_path.exists():
         try:
             with hist_path.open() as fh:
@@ -452,8 +462,11 @@ def main():
                     except ValueError:
                         cash = None
                     if cash:
-                        last_seen[(row["hospital_id"], row["procedure"])] = (
-                            row["date"], cash)
+                        key = (row["hospital_id"], row["procedure"])
+                        before = last_seen.get(key)
+                        if before is None or round(before[1]) != round(cash):
+                            run_start[key] = row["date"]
+                        last_seen[key] = (row["date"], cash)
         except Exception as e:
             print(f"  could not read price history: {e}")
 
@@ -478,6 +491,21 @@ def main():
                 # Expose the move to the site.
                 rec["prev"] = round(prior[1])
                 rec["since"] = prior[0]
+            else:
+                # Unchanged. "since" without "prev" is ignored by the site's
+                # priceChange() (it needs prev to render a move), so this adds
+                # the run's start date without making the UI claim a change.
+                rec["since"] = run_start.get((hid, proc), prior[0])
+                try:
+                    stale = (date.fromisoformat(today)
+                             - date.fromisoformat(prior[0])).days >= RECONFIRM_DAYS
+                except ValueError:
+                    stale = False
+                if stale:
+                    new_rows.append({"date": today, "hospital_id": hid,
+                                     "procedure": proc, "cash": cash,
+                                     "gross": rec.get("gross") or "",
+                                     "pct_change": ""})
 
     if new_rows:
         fresh = not hist_path.exists()
@@ -489,9 +517,12 @@ def main():
             for r in sorted(new_rows, key=lambda x: (x["hospital_id"], x["procedure"])):
                 w.writerow(r)
         changes = [r for r in new_rows if r["pct_change"]]
+        firsts = [r for r in new_rows
+                  if (r["hospital_id"], r["procedure"]) not in last_seen]
         print(f"\nprice history: appended {len(new_rows)} row(s) "
-              f"({len(changes)} were changes, {len(new_rows)-len(changes)} first "
-              f"observations)")
+              f"({len(changes)} were changes, {len(firsts)} first "
+              f"observations, {len(new_rows)-len(changes)-len(firsts)} "
+              f"unchanged reconfirmations)")
         if changes:
             biggest = sorted(changes, key=lambda r: -abs(float(r["pct_change"])))[:5]
             print("  largest moves since last refresh:")
