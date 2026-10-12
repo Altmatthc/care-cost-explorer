@@ -39,7 +39,8 @@
   "verified_source": true,
   "lat": 40.78451,
   "lng": -124.14155,
-  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-st-joseph-hospital-eureka_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-st-joseph-hospital-eureka_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-st-joseph-hospital-eureka_standardcharges.json"
  },
  {
   "id": "ccn-050007",
@@ -102,7 +103,8 @@
   "verified_source": true,
   "lat": 38.32357,
   "lng": -122.29601,
-  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-queen-of-the-valley-medical-center_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-queen-of-the-valley-medical-center_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-queen-of-the-valley-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-050013",
@@ -209,7 +211,8 @@
   "verified_source": true,
   "lat": 32.68613,
   "lng": -117.08359,
-  "mrf_url": "https://paradisevalleyhospital.com/wp-content/uploads/2026/04/205837239_ParadiseValleyHospital_standardcharges.JSON"
+  "mrf_url": "https://paradisevalleyhospital.com/wp-content/uploads/2026/04/205837239_ParadiseValleyHospital_standardcharges.JSON",
+  "source_url": "https://paradisevalleyhospital.com/wp-content/uploads/2026/04/205837239_ParadiseValleyHospital_standardcharges.JSON"
  },
  {
   "id": "ccn-050025",
@@ -230,7 +233,8 @@
   "verified_source": true,
   "lat": 32.75381,
   "lng": -117.16555,
-  "mrf_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json"
+  "mrf_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json",
+  "source_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json"
  },
  {
   "id": "ccn-050026",
@@ -293,7 +297,8 @@
   "verified_source": true,
   "lat": 39.50455,
   "lng": -121.54203,
-  "mrf_url": "https://secure.claraprice.net/price-transparency/ZZKG-1724785095238/machine-readable/94-1634554_oroville-hospital_standardcharges.json"
+  "mrf_url": "https://secure.claraprice.net/price-transparency/ZZKG-1724785095238/machine-readable/94-1634554_oroville-hospital_standardcharges.json",
+  "source_url": "https://secure.claraprice.net/price-transparency/ZZKG-1724785095238/machine-readable/94-1634554_oroville-hospital_standardcharges.json"
  },
  {
   "id": "ccn-050036",
@@ -611,7 +616,8 @@
   "verified_source": true,
   "lat": 34.09561,
   "lng": -118.29168,
-  "mrf_url": "https://www.hollywoodpresbyterian.com/300284087_HOLLYWOOD-PRESBYTERIAN-MEDICAL-CENTER_STANDARDCHARGES.json"
+  "mrf_url": "https://www.hollywoodpresbyterian.com/300284087_HOLLYWOOD-PRESBYTERIAN-MEDICAL-CENTER_STANDARDCHARGES.json",
+  "source_url": "https://www.hollywoodpresbyterian.com/300284087_HOLLYWOOD-PRESBYTERIAN-MEDICAL-CENTER_STANDARDCHARGES.json"
  },
  {
   "id": "ccn-050067",
@@ -653,7 +659,8 @@
   "verified_source": true,
   "lat": 33.78232,
   "lng": -117.86515,
-  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-st-joseph-hospital-eureka_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-st-joseph-hospital-eureka_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-st-joseph-hospital-eureka_standardcharges.json"
  },
  {
   "id": "ccn-050070",
@@ -823,7 +830,8 @@
   "verified_source": true,
   "lat": 33.73796,
   "lng": -118.30484,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/421672806_providence-little-co-of-mary-med-center-san-pedro_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/421672806_providence-little-co-of-mary-med-center-san-pedro_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/421672806_providence-little-co-of-mary-med-center-san-pedro_standardcharges.json"
  },
  {
   "id": "ccn-050082",
@@ -1162,7 +1170,8 @@
   "verified_source": true,
   "lat": 34.02758,
   "lng": -118.48618,
-  "mrf_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/954541687_santa-monica-ucla-medical-center-and-orthopaedic-hospital_standardcharges.json"
+  "mrf_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/954541687_santa-monica-ucla-medical-center-and-orthopaedic-hospital_standardcharges.json",
+  "source_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/954541687_santa-monica-ucla-medical-center-and-orthopaedic-hospital_standardcharges.json"
  },
  {
   "id": "ccn-050113",
@@ -1204,7 +1213,8 @@
   "verified_source": false,
   "lat": 33.12625,
   "lng": -117.07592,
-  "mrf_url": "https://hospitalpricedisclosure.com/select (Palomar Escondido/Downtown)"
+  "mrf_url": "https://hospitalpricedisclosure.com/select (Palomar Escondido/Downtown)",
+  "source_url": "https://hospitalpricedisclosure.com/select (Palomar Escondido/Downtown)"
  },
  {
   "id": "ccn-050116",
@@ -1773,7 +1783,8 @@
   "verified_source": true,
   "lat": 33.8935,
   "lng": -117.92834,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/951643325_providence-st-jude-medical-center_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/951643325_providence-st-jude-medical-center_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/951643325_providence-st-jude-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-050169",
@@ -1815,7 +1826,8 @@
   "verified_source": true,
   "lat": 38.44288,
   "lng": -122.70211,
-  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-santa-rosa-memorial-hospital_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-santa-rosa-memorial-hospital_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-santa-rosa-memorial-hospital_standardcharges.json"
  },
  {
   "id": "ccn-050179",
@@ -2240,7 +2252,8 @@
   "verified_source": true,
   "lat": 34.15594,
   "lng": -118.32708,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/951675600_providence-st-joseph-medical-center_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/951675600_providence-st-joseph-medical-center_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/951675600_providence-st-joseph-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-050236",
@@ -2493,7 +2506,8 @@
   "verified_source": true,
   "lat": 34.06591,
   "lng": -118.44527,
-  "mrf_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/956006143_ronald-reagan-ucla-medical-center_standardcharges.json"
+  "mrf_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/956006143_ronald-reagan-ucla-medical-center_standardcharges.json",
+  "source_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/956006143_ronald-reagan-ucla-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-050272",
@@ -2556,7 +2570,8 @@
   "verified_source": true,
   "lat": 34.27906,
   "lng": -118.45967,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/954582647_providence-holy-cross-medical-center_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/954582647_providence-holy-cross-medical-center_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/954582647_providence-holy-cross-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-050279",
@@ -2812,7 +2827,8 @@
   "verified_source": true,
   "lat": 34.5291,
   "lng": -117.2132,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/421672806_providence-little-co-of-mary-med-center-san-pedro_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/421672806_providence-little-co-of-mary-med-center-san-pedro_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/421672806_providence-little-co-of-mary-med-center-san-pedro_standardcharges.json"
  },
  {
   "id": "ccn-050301",
@@ -3258,7 +3274,8 @@
   "verified_source": true,
   "lat": 33.83762,
   "lng": -118.3558,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/421672810_providence-little-company-of-mary-med-center-torrance_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/421672810_providence-little-company-of-mary-med-center-torrance_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/421672810_providence-little-company-of-mary-med-center-torrance_standardcharges.json"
  },
  {
   "id": "ccn-050357",
@@ -3794,7 +3811,7 @@
   "verified_source": false,
   "lat": 37.76292,
   "lng": -122.45958,
-  "mrf_url": "https://www.ucsfhealth.org/about/price-transparency"
+  "mrf_url": null
  },
  {
   "id": "ccn-050455",
@@ -3920,7 +3937,8 @@
   "verified_source": true,
   "lat": 34.2024,
   "lng": -118.62939,
-  "mrf_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/95-6006143_UCLA-West-Valley-Medical-Center_standardcharges.json"
+  "mrf_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/95-6006143_UCLA-West-Valley-Medical-Center_standardcharges.json",
+  "source_url": "https://www.uclahealth.org/sites/default/files/cms-hpt/95-6006143_UCLA-West-Valley-Medical-Center_standardcharges.json"
  },
  {
   "id": "ccn-050485",
@@ -4457,7 +4475,8 @@
   "verified_source": true,
   "lat": 33.56276,
   "lng": -117.66768,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/951643360_providence-mission-hospital_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/951643360_providence-mission-hospital_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/951643360_providence-mission-hospital_standardcharges.json"
  },
  {
   "id": "ccn-050570",
@@ -4825,7 +4844,8 @@
   "verified_source": false,
   "lat": 32.996,
   "lng": -117.05786,
-  "mrf_url": "https://hospitalpricedisclosure.com/select (Palomar Poway)"
+  "mrf_url": "https://hospitalpricedisclosure.com/select (Palomar Poway)",
+  "source_url": "https://hospitalpricedisclosure.com/select (Palomar Poway)"
  },
  {
   "id": "ccn-050641",
@@ -5602,7 +5622,8 @@
   "verified_source": true,
   "lat": 34.16982,
   "lng": -118.53121,
-  "mrf_url": "https://pricetransparency.providence.org/socal/live/833972614_providence-cedars-sinai-tarzana-medical-center_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/socal/live/833972614_providence-cedars-sinai-tarzana-medical-center_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/socal/live/833972614_providence-cedars-sinai-tarzana-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-050763",
@@ -6543,7 +6564,8 @@
   "verified_source": true,
   "lat": 40.58264,
   "lng": -124.13545,
-  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-redwood-memorial-hospital_standardcharges.json"
+  "mrf_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-redwood-memorial-hospital_standardcharges.json",
+  "source_url": "https://pricetransparency.providence.org/norcal/live/814791043_providence-redwood-memorial-hospital_standardcharges.json"
  },
  {
   "id": "ccn-051319",

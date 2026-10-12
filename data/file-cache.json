@@ -342,7 +342,7 @@
   "seen": null
  },
  "https://secure.claraprice.net/price-transparency/ZZKG-1724785095238/machine-readable/94-1634554_oroville-hospital_standardcharges.json": {
-  "etag": "W/\"23064c9-bFNFf2yNU2tww1PHXQ0kizdgBSA\"",
+  "etag": "W/\"3e75e00-cx5HgtwXWJNpQ/IqKJlf9sBYu70\"",
   "last_modified": null,
   "length": null,
   "seen": null
@@ -1557,6 +1557,18 @@
   "etag": "0x8DF01E57B2548AB",
   "last_modified": "Mon, 24 Aug 2026 13:42:03 GMT",
   "length": "6769234",
+  "seen": null
+ },
+ "https://hospitalpricedisclosure.com/select (Palomar Escondido/Downtown)": {
+  "etag": "\"ced6922ba0d1dc1:0\"",
+  "last_modified": "Tue, 21 Apr 2026 15:04:37 GMT",
+  "length": "457",
+  "seen": null
+ },
+ "https://hospitalpricedisclosure.com/select (Palomar Poway)": {
+  "etag": "\"ced6922ba0d1dc1:0\"",
+  "last_modified": "Tue, 21 Apr 2026 15:04:37 GMT",
+  "length": "457",
   "seen": null
  }
 }
