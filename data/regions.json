@@ -11,7 +11,8 @@
    "919",
    "920",
    "921"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-san-diego"
  },
  "ca": {
   "file": "ca.json",
