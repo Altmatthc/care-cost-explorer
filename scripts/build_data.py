@@ -1434,6 +1434,18 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
                 print(f"      cash={cash_c} gross={gross_c}")
 
         row_cash = money(row.get(cash_c))
+        if not row_cash:
+            # Some files (Manatee Memorial, Lakewood Ranch) publish no
+            # discounted_cash column at all — CMS still requires a dollar
+            # amount somewhere. Fall back to minimum, then the lowest
+            # negotiated dollar rate, mirroring the JSON path's chain, so
+            # their codes stay searchable in the catalogue.
+            row_cash = money(row.get(min_c)) or money(row.get(median_c))
+            if not row_cash and wide_payers:
+                vals = [money(row.get(w.get("rate") or w.get("alt")))
+                        for w in wide_payers.values()]
+                vals = [v for v in vals if v]
+                row_cash = min(vals) if vals else None
         for code_c, type_c in code_pairs:
             code = (row.get(code_c) or "").strip()
             if not code:

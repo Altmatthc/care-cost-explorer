@@ -1335,7 +1335,8 @@
   "verified_source": true,
   "lat": 29.47765,
   "lng": -81.19019,
-  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx?pi=Bq2z8FAZBWl*_*OEKSmuVm3w*-*"
+  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx?pi=Bq2z8FAZBWl*_*OEKSmuVm3w*-*",
+  "source_url": "https://HospitalPriceDisclosure.com/download.aspx"
  },
  {
   "id": "ccn-100121",
@@ -1747,7 +1748,8 @@
   "verified_source": true,
   "lat": 25.70296,
   "lng": -80.29343,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100156",
@@ -2072,7 +2074,8 @@
   "verified_source": true,
   "lat": 25.7334,
   "lng": -80.25399,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100187",
@@ -3678,7 +3681,8 @@
   "verified_source": true,
   "lat": 29.55156,
   "lng": -81.24362,
-  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx?pi=Bq2z8FAZBWl*_*OEKSmuVm3w*-*"
+  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx?pi=Bq2z8FAZBWl*_*OEKSmuVm3w*-*",
+  "source_url": "https://HospitalPriceDisclosure.com/download.aspx"
  },
  {
   "id": "ccn-100364",
@@ -3721,7 +3725,8 @@
   "verified_source": true,
   "lat": 30.65882,
   "lng": -86.11915,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-10057F",
@@ -3933,7 +3938,8 @@
   "verified_source": true,
   "lat": 30.76075,
   "lng": -85.68277,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-101308",
@@ -4062,7 +4068,8 @@
   "verified_source": true,
   "lat": 30.11889,
   "lng": -83.59032,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-101315",
