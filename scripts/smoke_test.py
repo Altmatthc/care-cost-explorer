@@ -52,6 +52,10 @@ def make_tall_csv() -> list[str]:
                 "4200", "1450", "Aetna", "980", "870", "1310"])
     w.writerow(["MRI BRAIN", "PX-2", "CDM", "70551", "CPT", "Test General Hospital",
                 "4200", "1450", "Anthem Blue Cross", "1020", "870", "1310"])
+    # Generic "All Payors" label (TidalHealth Peninsula style): the rate is
+    # real but names no plan, so it must not enter the per-payer table.
+    w.writerow(["MRI BRAIN", "PX-2", "CDM", "70551", "CPT", "Test General Hospital",
+                "4200", "1450", "All Payors", "1000", "870", "1310"])
     w.writerow(["KNEE REPLACEMENT", "", "", "470", "DRG", "Test General Hospital",
                 "88000", "38500", "Medicare", "19800", "18000", "31000"])
     w.writerow(["MRI BRAIN", "PX-2", "CDM", "70551", "CPT", "Other Campus Hospital",
@@ -101,18 +105,24 @@ check("header is the third row", hdr_idx == [2], f"got {hdr_idx}")
 print("\n3. Tall-format extraction")
 with mock.patch.object(b, "stream_rows", lambda u: rows_from(make_tall_csv())):
     tall = b.extract_prices("h1", "http://x/f.csv", verbose=False)
-check("supply row ignored, targets found", len(tall) == 4, f"got {len(tall)}")
+check("supply row ignored, targets found", len(tall) == 5, f"got {len(tall)}")
 check("MS-DRG matched despite 'DRG' label",
       any(r["procedure"] == "knee-replacement" for r in tall))
 check("CPT in second code slot matched",
       any(r["procedure"] == "mri-brain" for r in tall))
 check("location captured", all("location" in r for r in tall))
+check("generic 'All Payors' label suppressed",
+      not any(r.get("payer") and "all payor" in r["payer"].lower() for r in tall))
+cons_tall = b.consolidate(tall)
+check("generic label absent from consolidated payers dict",
+      not any("all payor" in k.lower()
+              for rec in cons_tall.values() for k in (rec.get("payers") or {})))
 
 print("\n4. Multi-location filtering")
 locs = {r["location"] for r in tall}
 check("two locations present in file", len(locs) == 2, f"got {locs}")
 kept = [r for r in tall if b.names_match("Test General Hospital", r["location"])]
-check("rows filtered to requested hospital", len(kept) == 3, f"got {len(kept)}")
+check("rows filtered to requested hospital", len(kept) == 4, f"got {len(kept)}")
 
 print("\n5. Wide-format extraction")
 with mock.patch.object(b, "stream_rows", lambda u: rows_from(make_wide_csv())):

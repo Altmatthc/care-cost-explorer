@@ -1859,10 +1859,12 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
                 rate = (_num(p.get("standard_charge_dollar"))
                         or _num(p.get("estimated_amount"))
                         or _num(p.get("standard_charge_negotiated_dollar")))
-                name = clean_text(p.get("payer_name"), 80) or None
+                name = payer_label(p.get("payer_name"), 80) or None
                 plan = str(p.get("plan_name") or "").strip()
                 if name and plan:
                     name = f"{name} {plan}"
+                    # "All Payors Aetna PPO" style: re-check after joining
+                    name = payer_label(name, 80)
                 found.append({**base, "payer": name, "rate": rate})
 
     if verbose:
@@ -2009,6 +2011,23 @@ def find_wide_payers(keys: list[str]) -> dict[str, dict]:
         if m:
             payers.setdefault(m.group("payer").strip(), {})["alt"] = k
     return payers
+
+
+# Payer labels that name no actual plan. Some hospitals (e.g. TidalHealth
+# Peninsula) publish one generic "All Payors" rate for every contract. It is
+# a real negotiated rate, but it is not attributable to any plan a patient
+# selects, so it must not enter the per-payer table — it stays as the cash
+# price instead.
+GENERIC_PAYER_LABELS = {
+    "all payors", "all payers", "all payor", "all payer",
+    "all plans", "all insurers", "any payor", "any payer",
+}
+
+
+def payer_label(v, limit: int = 80) -> str | None:
+    """clean_text for payer names, with generic labels collapsed to None."""
+    s = clean_text(v, limit)
+    return None if s.lower() in GENERIC_PAYER_LABELS else s
 
 
 def clean_text(v, limit: int = 120) -> str:
@@ -2213,13 +2232,13 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
                         if rate is None:
                             continue
                         any_rate = True
-                        found.append({**rec, "payer": clean_text(pname, 80), "rate": rate})
+                        found.append({**rec, "payer": payer_label(pname, 80), "rate": rate})
                     if not any_rate:
                         found.append({**rec, "payer": None, "rate": None})
                 else:
                     found.append({
                         **rec,
-                        "payer": clean_text(row.get(payer_c), 80) or None,
+                        "payer": payer_label(row.get(payer_c), 80) or None,
                         "rate": money(row.get(rate_c)) or money(row.get(median_c)),
                     })
             break  # one code slot per row is enough
