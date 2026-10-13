@@ -155,6 +155,12 @@
   .cov-detail{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45;}
   .cov-report{margin-top:12px;padding:10px 12px;background:#F4F8F7;border:1px solid var(--line);border-radius:6px;font-size:12.5px;line-height:1.55;}
   .cov-report a{color:var(--teal-dark);font-weight:600;white-space:nowrap;}
+  .cov-summary{background:#F4F8F7;border:1px solid var(--line);border-radius:8px;
+    padding:12px 16px;margin-bottom:16px;font-size:12.5px;line-height:1.6;color:var(--ink);}
+  .cov-summary:empty{display:none;}
+  .cov-summary b{color:var(--teal-dark);}
+  .cov-summary .cov-pct{font-family:'Fraunces',serif;font-size:15px;color:var(--teal-dark);}
+  .cov-summary .cov-break{color:var(--muted);margin-top:4px;}
   .pin{width:26px;height:26px;border-radius:50%;border:2.5px solid #fff;color:#fff;
     font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;
     display:flex;align-items:center;justify-content:center;
@@ -500,6 +506,7 @@
       <div class="setting-note" id="settingNote"></div>
       <div class="cost-note" id="costNote"></div>
       <div class="plan-guide" id="planGuide" hidden></div>
+      <div class="cov-summary" id="coverageSummary"></div>
       <div class="coverage" id="coveragePanel"></div>
       <div class="results-body">
         <div class="results-list" id="resultsList"></div>
@@ -1443,6 +1450,7 @@ async function loadLiveData(region = 'san-diego'){
     hospitals.forEach(x => { hospitalById[x.id] = x; });
 
     LIVE = pRaw;
+    LIVE._region = region;   // the region this data is for, for labels that need it
     SCAN_STATUS = pRaw.status || {};
     // Now that real data is loaded, rebuild the insurance dropdown from the
     // payer families this region actually publishes (adds Molina, SCAN,
@@ -1853,6 +1861,54 @@ function estimatorLink(h){
   if(page) return page;
   const q = encodeURIComponent(`${h.name} price estimate cost`);
   return `https://www.google.com/search?q=${q}`;
+}
+
+function renderCoverageSummary(){
+  const el = document.getElementById("coverageSummary");
+  if(!el) return;
+  // Region-level honesty statement: what fraction of the region's hospitals we
+  // actually have prices for, and why the rest are absent. Independent of the
+  // current procedure/radius — it describes the dataset, not this result set.
+  // Placeholder mode has no real status block, so show nothing there.
+  if(!LIVE || !Object.keys(SCAN_STATUS).length){ el.innerHTML = ""; return; }
+
+  const REGION_LABEL = { ca:"California", fl:"Florida", "san-diego":"the San Diego area" };
+  const regionKey = (LIVE && LIVE._region) || loadedRegion || state.regionName || "";
+  const label = REGION_LABEL[regionKey] || "this region";
+
+  let ok=0, noFile=0, unreachable=0, empty=0, wrongFile=0, exempt=0, other=0;
+  for(const hid in SCAN_STATUS){
+    switch(SCAN_STATUS[hid].status){
+      case "ok": ok++; break;
+      case "no_file": noFile++; break;
+      case "unreachable": unreachable++; break;
+      case "empty": empty++; break;
+      case "wrong_file": wrongFile++; break;
+      case "exempt": exempt++; break;
+      default: other++;
+    }
+  }
+  const total = ok+noFile+unreachable+empty+wrongFile+exempt+other;
+  if(!total){ el.innerHTML = ""; return; }
+
+  // Build the breakdown of why the rest are absent, only listing non-zero
+  // classes so the sentence stays readable region to region.
+  const parts = [];
+  if(noFile)               parts.push(`<b>${noFile}</b> publish no price file`);
+  if(empty)                parts.push(`<b>${empty}</b> published a file with no usable prices`);
+  if(unreachable+wrongFile) parts.push(`<b>${unreachable+wrongFile}</b> we couldn't reach or read`);
+  if(exempt)               parts.push(`<b>${exempt}</b> are federal facilities the rule doesn't cover`);
+
+  let html = `<div><span class="cov-pct">${ok} of ${total}</span> hospitals in ` +
+    `${esc(label)} have published prices we could read.</div>`;
+  if(parts.length){
+    html += `<div class="cov-break">Of the rest: ${parts.join(', ')}.</div>`;
+  }
+  html += `<div class="cov-break">Coverage reflects what hospitals actually ` +
+    `disclose under the federal price-transparency rule — not every hospital ` +
+    `in the area. A missing hospital usually means it published nothing usable, ` +
+    `not that we skipped it.</div>`;
+  el.innerHTML = html;
 }
 
 function renderCoverage(rows){
@@ -2270,6 +2326,7 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     markers[h.id] = marker;
   });
 
+  renderCoverageSummary();
   renderCoverage(rows);
 
   zipMarker = L.marker([state.zipLat, state.zipLng], {
