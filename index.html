@@ -234,6 +234,11 @@
   .setting-note{background:#fff;border-left:3px solid var(--teal);padding:11px 14px;border-radius:0 6px 6px 0;font-size:13px;line-height:1.55;color:var(--muted);margin-bottom:10px;}
   .cost-note{background:#F4F8F7;border:1px solid var(--line);padding:11px 14px;border-radius:6px;font-size:12.5px;line-height:1.55;color:var(--ink);margin-bottom:16px;}
   .cost-note b{color:var(--teal-dark);}
+  .plan-guide{background:#E1F0EC;border:1px solid #BFE0D6;border-left:3px solid var(--teal);
+    padding:11px 14px;border-radius:0 6px 6px 0;font-size:13px;line-height:1.55;
+    color:var(--ink);margin-bottom:16px;}
+  .plan-guide b{color:var(--teal-dark);}
+  .plan-guide .pg-save{color:var(--lowtag);font-weight:700;}
 
   .map-col{flex:1 1 380px;min-width:280px;height:520px;min-height:380px;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
   @media (max-width: 820px){ .map-col{height:420px;order:-1;} }
@@ -494,6 +499,7 @@
       </div>
       <div class="setting-note" id="settingNote"></div>
       <div class="cost-note" id="costNote"></div>
+      <div class="plan-guide" id="planGuide" hidden></div>
       <div class="coverage" id="coveragePanel"></div>
       <div class="results-body">
         <div class="results-list" id="resultsList"></div>
@@ -590,6 +596,82 @@ const payers = [
   { id:"medical",    name:"Medi-Cal",                       factor:0.36 },
 ];
 const payerById = Object.fromEntries(payers.map(p => [p.id, p]));
+
+// Live dataset handle (null until a region's real data loads, then it fully
+// replaces the placeholder model). Declared here — above the first
+// rebuildPayerSelect() call — because that function reads LIVE; a `let` left
+// further down would be in the temporal dead zone and throw at startup.
+let SCAN_STATUS = {};
+let LIVE = null;   // { prices: { procedureId: { hospitalId: {cash,gross,payers} } } }
+
+// Friendly names for payer families that appear in live MRF data but aren't in
+// the placeholder list above. Hospitals publish negotiated rates for these, so
+// a patient on one of them must be able to pick it — otherwise they silently
+// fall through to the cash price despite a real in-network rate existing.
+// Keys match the normalized family keys produced by merge_shards.normalize_payer.
+const PAYER_LABELS = {
+  aetna:"Aetna", anthem:"Anthem Blue Cross", blueshield:"Blue Shield of California",
+  cigna:"Cigna", healthnet:"Health Net", uhc:"UnitedHealthcare",
+  kaiser:"Kaiser Permanente", medicare:"Medicare", medical:"Medi-Cal",
+  molina:"Molina Healthcare", scan:"SCAN Health Plan", tricare:"TRICARE",
+  centivo:"Centivo", alignment:"Alignment Health", oscar:"Oscar Health",
+  brandnew:"Brand New Day",
+};
+
+// Register a live payer family into payerById so every downstream .name lookup
+// (results header, cost note, detail tables) resolves instead of throwing on a
+// family that only exists in live data. factor is unused on the live path
+// (livePriceFor reads the real negotiated dollar amount, not a factor).
+function ensurePayer(id){
+  if(payerById[id]) return;
+  const name = PAYER_LABELS[id]
+    || id.charAt(0).toUpperCase() + id.slice(1);   // fallback: capitalised key
+  payerById[id] = { id, name, factor:1.00 };
+}
+
+// Rebuild the insurance dropdown from the payer families actually present in
+// the loaded live data, falling back to the placeholder list when no live data
+// is loaded. Keeps the current selection if still valid, else resets to cash.
+function rebuildPayerSelect(){
+  const sel = document.getElementById('payerSelect');
+  if(!sel) return;
+  let ids;
+  if(LIVE && LIVE.prices){
+    const fams = new Set(['cash']);
+    for(const proc in LIVE.prices){
+      const byH = LIVE.prices[proc];
+      for(const hid in byH){
+        const rec = byH[hid];
+        if(rec && rec.payers) for(const k in rec.payers) fams.add(k);
+      }
+    }
+    ids = [...fams];
+    ids.forEach(ensurePayer);
+    // Stable, friendly order: cash first, then known families in the
+    // placeholder order, then any extra live families alphabetically.
+    const known = payers.map(p => p.id);
+    ids.sort((a,b) => {
+      if(a === 'cash') return -1;
+      if(b === 'cash') return 1;
+      const ia = known.indexOf(a), ib = known.indexOf(b);
+      if(ia !== -1 && ib !== -1) return ia - ib;
+      if(ia !== -1) return -1;
+      if(ib !== -1) return 1;
+      return payerById[a].name.localeCompare(payerById[b].name);
+    });
+  }else{
+    ids = payers.map(p => p.id);
+  }
+  const prev = sel.value;
+  sel.innerHTML = '';
+  ids.forEach(id => {
+    const opt = document.createElement('option');
+    opt.value = id; opt.textContent = payerById[id].name;
+    sel.appendChild(opt);
+  });
+  sel.value = ids.includes(prev) ? prev : 'cash';
+  if(sel.value !== prev) state.payerId = sel.value;
+}
 
 function formatWait(min){
   if(min == null) return null;
@@ -910,12 +992,10 @@ function setRowHover(region, on){
   if(el) el.classList.toggle('hover', on);
 }
 
-const payerSelect = document.getElementById('payerSelect');
-payers.forEach(p => {
-  const opt = document.createElement('option');
-  opt.value = p.id; opt.textContent = p.name;
-  payerSelect.appendChild(opt);
-});
+// Populate the insurance dropdown. Before any live data loads this uses the
+// placeholder list; rebuildPayerSelect() is re-run after live data loads so the
+// options reflect the payer families actually present in the loaded region.
+rebuildPayerSelect();
 
 const anatomyToggle = document.getElementById('anatomyToggle');
 const bodySvg = document.getElementById('bodySvg');
@@ -1249,8 +1329,6 @@ findBtn.addEventListener('click', async () => {
 // stays and the banner keeps saying so — the site never silently shows fake
 // numbers as if they were real.
 // ---------------------------------------------------------------------------
-let SCAN_STATUS = {};
-let LIVE = null;   // { prices: { procedureId: { hospitalId: {cash,gross,payers} } } }
 
 // ---------------------------------------------------------------------------
 // OUTPUT ESCAPING
@@ -1366,6 +1444,10 @@ async function loadLiveData(region = 'san-diego'){
 
     LIVE = pRaw;
     SCAN_STATUS = pRaw.status || {};
+    // Now that real data is loaded, rebuild the insurance dropdown from the
+    // payer families this region actually publishes (adds Molina, SCAN,
+    // TRICARE, etc. that aren't in the placeholder list).
+    rebuildPayerSelect();
     document.querySelector('.banner').innerHTML =
       `<b>Live data.</b> Prices and insurance networks come from each hospital's ` +
       `federally required price file; hospital details from CMS. ` +
@@ -1935,6 +2017,64 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     (state.radius ? ` within ${state.radius} miles of ${state.zip}` : ` near ${state.zip}`) +
     ` · ${payerName}` +
     (beyond ? ` · ${beyond} more further out` : '');
+
+  // "Cheapest for your plan" guidance. Only meaningful on the live path with a
+  // real plan selected: find the hospital with the lowest IN-NETWORK negotiated
+  // rate for this plan among the shown rows, and show the saving vs that same
+  // hospital's cash price (same-hospital compare avoids crediting the plan for a
+  // difference that's really one hospital being cheaper than another).
+  const planGuide = document.getElementById('planGuide');
+  planGuide.hidden = true;
+  if(LIVE && state.payerId !== 'cash'){
+    // Require a REAL per-procedure negotiated rate for this plan — the row's
+    // inNetwork flag is hospital-level (built across all procedures), so a
+    // hospital can be "in network" yet publish no rate for THIS procedure, in
+    // which case livePriceFor fell back to cash. Checking rec.payers directly
+    // avoids presenting that cash fallback as a negotiated rate.
+    const rateFor = r => {
+      const rec = (LIVE.prices[proc.id] || {})[r.h.id];
+      return (rec && rec.payers) ? rec.payers[state.payerId] : null;
+    };
+    // Only hospitals with a REAL per-procedure negotiated rate for this plan —
+    // the row's inNetwork flag is hospital-level, so a hospital can be in
+    // network yet publish no rate for THIS procedure (livePriceFor then falls
+    // back to cash). Checking rec.payers directly avoids presenting that cash
+    // fallback as a negotiated rate.
+    const inNet = rows.filter(r => r.price != null && rateFor(r) != null);
+    if(inNet.length){
+      const best = inNet.reduce((a,b) => b.price < a.price ? b : a);
+      const cashAtBest = livePriceFor(proc, best.h.id, 'cash');
+      const save = (cashAtBest != null) ? cashAtBest - best.price : null;
+      // Peer median of this procedure's negotiated rates. A "cheapest" that is
+      // a tiny fraction of the peer median is often a parsing artefact or a
+      // placeholder ($1) in the hospital's own file — we don't hide it (it may
+      // be a genuine deep discount), but we flag it rather than presenting it
+      // as a confident win, matching how the result card cautions odd prices.
+      const peers = inNet.map(r => r.price).sort((a,b)=>a-b);
+      const median = peers[Math.floor(peers.length/2)];
+      const suspiciouslyLow = median && best.price < 0.05 * median;
+      planGuide.hidden = false;
+      let html = `<b>Cheapest for ${esc(payerName)}:</b> ` +
+        `${esc(best.h.name)} — <b>$${best.price.toLocaleString()}</b> ` +
+        `negotiated${best.info.city ? ` in ${esc(best.info.city)}` : ''}.`;
+      if(suspiciouslyLow){
+        html += ` This figure is far below what other hospitals negotiate ` +
+          `(around $${Number(median).toLocaleString()}) — it may be an error in ` +
+          `the hospital's file; confirm before relying on it.`;
+      }else if(save != null && save > 0){
+        html += ` That's <span class="pg-save">$${save.toLocaleString()} less</span> ` +
+          `than its cash price of $${cashAtBest.toLocaleString()}.`;
+      }else if(save != null && save < 0){
+        html += ` Note: its cash price ($${cashAtBest.toLocaleString()}) is actually ` +
+          `lower — paying cash may cost less than using this plan here.`;
+      }
+      if(inNet.length > 1){
+        html += ` ${inNet.length} hospitals near you are in ${esc(payerName)}'s ` +
+          `network for this procedure.`;
+      }
+      planGuide.innerHTML = html;
+    }
+  }
 
   if(!rows.length){
     document.getElementById('resultsList').innerHTML =
