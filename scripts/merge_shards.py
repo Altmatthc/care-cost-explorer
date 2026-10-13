@@ -165,7 +165,7 @@ def main():
                 for proc in site:
                     if hid in site[proc]:
                         site[proc][hid]["shared"] = True
-                        site[proc][hid]["identical_to"] = [x for x in hs if x != hid]
+                        site[proc][hid]["identical_to"] = sorted(x for x in hs if x != hid)
     else:
         print("\nNo two hospitals publish identical prices.")
 
@@ -453,6 +453,11 @@ def main():
     # (hid, proc) -> date the current price was first seen, so an unchanged
     # pair can report the start of its run rather than the latest reconfirm.
     run_start: dict[tuple, str] = {}
+    # (hid, proc) -> (date, prev_cash) of the MOST RECENT actual price change,
+    # so an unchanged merge can keep surfacing a real move instead of dropping
+    # prev the cycle after the change was first detected. A real move recorded
+    # in history must stay visible until a newer move supersedes it.
+    last_change: dict[tuple, tuple] = {}
     if hist_path.exists():
         try:
             with hist_path.open() as fh:
@@ -465,6 +470,12 @@ def main():
                         key = (row["hospital_id"], row["procedure"])
                         before = last_seen.get(key)
                         if before is None or round(before[1]) != round(cash):
+                            # The price we're moving AWAY from had been in effect
+                            # since the PRIOR run's start (captured before we
+                            # overwrite run_start). Skip first observations.
+                            if before is not None:
+                                prior_since = run_start.get(key, before[0])
+                                last_change[key] = (prior_since, before[1])
                             run_start[key] = row["date"]
                         last_seen[key] = (row["date"], cash)
         except Exception as e:
@@ -492,10 +503,23 @@ def main():
                 rec["prev"] = round(prior[1])
                 rec["since"] = prior[0]
             else:
-                # Unchanged. "since" without "prev" is ignored by the site's
-                # priceChange() (it needs prev to render a move), so this adds
-                # the run's start date without making the UI claim a change.
-                rec["since"] = run_start.get((hid, proc), prior[0])
+                # Unchanged since last refresh. If this pair's CURRENT price is
+                # the result of a real move recorded earlier in history, keep
+                # surfacing that move (prev + since) until a newer move
+                # supersedes it — otherwise the badge would vanish the cycle
+                # after a change was first detected (prev was written only on
+                # the change run). Only re-expose when the recorded move's new
+                # price still matches today's cash; a stale last_change whose
+                # price no longer holds must not resurrect a wrong prev.
+                lc = last_change.get((hid, proc))
+                if lc and round(lc[1]) != round(cash):
+                    rec["prev"] = round(lc[1])
+                    rec["since"] = lc[0]
+                else:
+                    # Truly flat run: "since" without "prev" is ignored by the
+                    # site's priceChange() (it needs prev to render a move), so
+                    # this adds the run's start date without claiming a change.
+                    rec["since"] = run_start.get((hid, proc), prior[0])
                 try:
                     stale = (date.fromisoformat(today)
                              - date.fromisoformat(prior[0])).days >= RECONFIRM_DAYS
