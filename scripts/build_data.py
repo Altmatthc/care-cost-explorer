@@ -1047,6 +1047,10 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
 
     found, scanned, types_seen, samples = [], 0, {}, []
     all_codes: dict[str, dict] = {}
+    # Mirror the CSV path so JSON-file hospitals also populate hospital_meta
+    # and the drug-comparison table: track cash-priced codes and J-code drugs.
+    coded_with_cash: set = set()
+    drugs: dict[str, dict] = {}
     loc_c = None
     for item in stream_json_items(url, array_key):
         scanned += 1
@@ -1108,6 +1112,26 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
                             "gross": (_num(ch.get("gross_charge"))
                                       and round(_num(ch.get("gross_charge")))) or None,
                         }
+                    coded_with_cash.add(f"{nt}:{code.strip().upper()}")
+                    # HCPCS J-codes are facility-administered drugs. Capture
+                    # them (keyed by code+unit so we never compare per-mg
+                    # against per-vial) exactly as the CSV path does, so the
+                    # drug-comparison table includes JSON-file hospitals.
+                    if nt == "HCPCS" and code.upper().startswith("J"):
+                        unit = clean_text(ch.get("drug_unit_of_measurement")
+                                          or ch.get("drug_unit") or "", 20)
+                        utype = clean_text(ch.get("drug_type_of_measurement")
+                                           or ch.get("drug_type") or "", 20)
+                        ukey = f"{code.upper()}|{unit.lower()}|{utype.lower()}"
+                        dd = drugs.setdefault(ukey, {
+                            "code": code.upper(), "unit": unit,
+                            "unit_type": utype,
+                            "description": clean_text(desc, 90),
+                            "cash": cash,
+                            "gross": _num(ch.get("gross_charge")),
+                        })
+                        if cash < dd["cash"]:
+                            dd["cash"] = cash
 
         pid = None
         for c in codes:
@@ -1170,6 +1194,22 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
                 print(f"      [DEBUG] wrote catalogue {safe}.json ({len(all_codes)} codes)")
         except OSError as e:
             print(f"      could not save catalogue: {e}")
+
+    # Build the per-hospital metadata the merge step needs for the drug table
+    # and hospital_meta. The JSON path previously skipped this entirely, so
+    # every JSON-file hospital was priced and searchable yet invisible to the
+    # drug-comparison table and hospital_meta (this is what dropped Paradise
+    # Valley Hospital in San Diego).
+    meta = {"quality": {}, "codes_with_cash": len(coded_with_cash), "drugs": drugs}
+    if found:
+        found[0]["_meta"] = meta
+    elif all_codes and CATALOGUE_DIR is not None:
+        # Zero curated matches but real data: carry _meta on a record with an
+        # empty procedure key. merge_shards skips empty-procedure records when
+        # building the site table, so this cannot leak a blank procedure.
+        found.append({"hospital_id": hospital_id, "procedure": "",
+                      "cash": None, "gross": None, "min": None, "max": None,
+                      "payers": {}, "description": "", "_meta": meta})
 
     return found
 
@@ -1559,6 +1599,17 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
             "drugs": drugs}
     if found:
         found[0]["_meta"] = meta
+    elif CATALOGUE_DIR is not None:
+        # Zero curated matches: the hospital still has a catalogue and drug
+        # data, and merge_shards builds hospital_meta/drugs only from _meta
+        # on a price record. Without a carrier record the hospital is priced
+        # and searchable but invisible to the drug-comparison table (this is
+        # what silently dropped Paradise Valley Hospital). The prices merge
+        # skips records with an empty procedure key, so this carrier cannot
+        # leak into the curated 58-procedure table.
+        found.append({"hospital_id": hospital_id, "procedure": "",
+                      "cash": None, "gross": None, "min": None, "max": None,
+                      "payers": {}, "description": "", "_meta": meta})
     if all_codes and CATALOGUE_DIR is not None:
         try:
             CATALOGUE_DIR.mkdir(parents=True, exist_ok=True)

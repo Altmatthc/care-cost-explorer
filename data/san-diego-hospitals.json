@@ -14,11 +14,13 @@
   "type": "Acute Care Hospitals",
   "stars": 3,
   "hasER": true,
-  "domain": "pvhospital.org",
-  "verified_source": false,
+  "domain": "paradisevalleyhospital.com",
+  "verified_source": true,
   "lat": 32.68613,
   "lng": -117.08359,
-  "mrf_url": null
+  "mrf_url": "https://paradisevalleyhospital.com/wp-content/uploads/2026/09/090000086_ParadiseValleyHospital_standardcharges.json",
+  "price_page": "https://paradisevalleyhospital.com/patients-visitors/price-transparency/",
+  "source_url": "https://paradisevalleyhospital.com/wp-content/uploads/2026/09/090000086_ParadiseValleyHospital_standardcharges.json"
  },
  {
   "id": "ccn-050025",
@@ -39,7 +41,8 @@
   "verified_source": true,
   "lat": 32.75381,
   "lng": -117.16555,
-  "mrf_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json"
+  "mrf_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json",
+  "source_url": "https://hsfiles.ucsd.edu/patientBilling/UC-San-Diego-Standard-Charges-956006144.json"
  },
  {
   "id": "ccn-050026",

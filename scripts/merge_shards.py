@@ -95,6 +95,11 @@ def main():
     unmapped: dict[str, int] = {}
     for rec in merged.values():
         proc = rec["procedure"]
+        if not proc:
+            # Carrier record from a zero-curated-match harvest: it exists
+            # only to carry _meta into hospital_meta/drugs below. It must
+            # not create an empty procedure bucket on the site.
+            continue
         hid = rec["hospital_id"]
         payers: dict[str, float] = {}
         for raw_name, rate in (rec.get("payers") or {}).items():
