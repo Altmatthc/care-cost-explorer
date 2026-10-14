@@ -12,8 +12,8 @@
   "seen": null
  },
  "https://apps.scripps.org/pricetransparency/951684089_Scripps-Mercy-Hospital-San-Diego_standardcharges.csv": {
-  "etag": "\"8628e78b5bedc1:0\"",
-  "last_modified": "Fri, 27 Mar 2026 16:19:54 GMT",
+  "etag": "\"c8eae394c4ddd1:0\"",
+  "last_modified": "Fri, 25 Sep 2026 16:40:32 GMT",
   "length": "578732995",
   "seen": null
  },
@@ -30,8 +30,8 @@
   "seen": null
  },
  "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-La-Jolla_standardcharges.csv": {
-  "etag": "\"203f91e5bedc1:0\"",
-  "last_modified": "Fri, 27 Mar 2026 16:16:51 GMT",
+  "etag": "\"f6c38e1c4ddd1:0\"",
+  "last_modified": "Fri, 25 Sep 2026 16:36:25 GMT",
   "length": "632184790",
   "seen": null
  },
@@ -48,26 +48,26 @@
   "seen": null
  },
  "https://apps.scripps.org/pricetransparency/951684089_Scripps-Green-Hospital_standardcharges.csv": {
-  "etag": "\"c63be2385bedc1:0\"",
-  "last_modified": "Fri, 27 Mar 2026 16:17:35 GMT",
+  "etag": "\"18251927b4ddd1:0\"",
+  "last_modified": "Fri, 25 Sep 2026 16:30:18 GMT",
   "length": "537741430",
   "seen": null
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-diego-zion-medical-center-standard-charges-scal-en.csv": {
   "etag": null,
-  "last_modified": "Fri, 25 Sep 2026 06:27:12 GMT",
+  "last_modified": "Fri, 09 Oct 2026 09:35:06 GMT",
   "length": null,
   "seen": null
  },
  "https://apps.scripps.org/pricetransparency/951684089_Scripps-Memorial-Hospital-Encinitas_standardcharges.csv": {
-  "etag": "\"daec63515bedc1:0\"",
-  "last_modified": "Fri, 27 Mar 2026 16:18:16 GMT",
+  "etag": "\"a8e98da3b4ddd1:0\"",
+  "last_modified": "Fri, 25 Sep 2026 16:33:47 GMT",
   "length": "554192264",
   "seen": null
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-san-marcos-medical-center-standard-charges-scal-en.csv": {
   "etag": null,
-  "last_modified": "Fri, 25 Sep 2026 06:46:38 GMT",
+  "last_modified": "Fri, 09 Oct 2026 10:56:12 GMT",
   "length": null,
   "seen": null
  },
