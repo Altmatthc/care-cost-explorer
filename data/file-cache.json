@@ -302,7 +302,7 @@
  "https://paradisevalleyhospital.com/wp-content/uploads/2026/04/205837239_ParadiseValleyHospital_standardcharges.JSON": {
   "etag": "\"4c63177-64e3ff96f6fc0-gzip\"",
   "last_modified": "Mon, 30 Mar 2026 16:02:15 GMT",
-  "length": "2246517",
+  "length": null,
   "seen": null
  },
  "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/941105628-panorama-medical-center-standard-charges-scal-en.csv": {
@@ -1350,9 +1350,9 @@
   "seen": null
  },
  "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/65-0260078_HCA-FLORIDA-KENDALL-HOSPITAL_standardcharges.json": {
-  "etag": "\"0x8DF16A9255F5AB3\"",
-  "last_modified": "Sat, 19 Sep 2026 23:53:04 GMT",
-  "length": "447494703",
+  "etag": "\"0x8DF2965336750B7\"",
+  "last_modified": "Tue, 13 Oct 2026 20:04:34 GMT",
+  "length": "447494719",
   "seen": null
  },
  "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-BLAKE-HOSPITAL_standardcharges.json": {
@@ -1532,7 +1532,7 @@
  "https://shermanoakshospital.org/wp-content/uploads/2026/09/930000149_ShermanOaksHospital_standardcharges.json": {
   "etag": "\"3790fe0-65a87333d3cc0-gzip\"",
   "last_modified": "Wed, 02 Sep 2026 22:03:07 GMT",
-  "length": null,
+  "length": "1681716",
   "seen": null
  },
  "https://sthpiprd.blob.core.windows.net/machine-readable-files/8428/760594558-1063412005_pipeline-health-system-holdings,-llc_standardcharges.csv": {

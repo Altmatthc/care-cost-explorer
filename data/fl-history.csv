@@ -4606,3 +4606,4 @@ date,hospital_id,procedure,cash,gross,pct_change
 2026-10-10,ccn-103304,us-abdomen,1082,1082,
 2026-10-10,ccn-103304,xray-extremity,733,733,
 2026-10-10,ccn-103304,xray-leg,586,586,
+2026-10-13,ccn-100209,blood-metabolic,531,531,-80.4
