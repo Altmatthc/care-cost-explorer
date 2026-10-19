@@ -1215,6 +1215,7 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
         # building the site table, so this cannot leak a blank procedure.
         found.append({"hospital_id": hospital_id, "procedure": "",
                       "cash": None, "gross": None, "min": None, "max": None,
+                      "payer": None, "rate": None,
                       "payers": {}, "description": "", "_meta": meta})
 
     return found
@@ -1615,6 +1616,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
         # leak into the curated 58-procedure table.
         found.append({"hospital_id": hospital_id, "procedure": "",
                       "cash": None, "gross": None, "min": None, "max": None,
+                      "payer": None, "rate": None,
                       "payers": {}, "description": "", "_meta": meta})
     if all_codes and CATALOGUE_DIR is not None:
         try:
@@ -1646,11 +1648,12 @@ def consolidate(rows: list[dict]) -> dict:
             rec["min"] = r["min"]
         if r.get("max") and not rec["max"]:
             rec["max"] = r["max"]
-        if r["cash"] and not rec["cash"]:
+        if r.get("cash") and not rec["cash"]:
             rec["cash"] = r["cash"]
-        if r["gross"] and not rec["gross"]:
+        if r.get("gross") and not rec["gross"]:
             rec["gross"] = r["gross"]
-        if r["payer"] and r["rate"]:
+        # _meta carrier records (zero curated matches) carry no payer/rate.
+        if r.get("payer") and r.get("rate"):
             rec["payers"][r["payer"]] = r["rate"]
         if r.get("_meta") and "_meta" not in rec:
             rec["_meta"] = r["_meta"]
