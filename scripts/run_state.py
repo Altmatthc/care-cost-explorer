@@ -157,7 +157,8 @@ def do_prices(state: str, workers: int, only: str, refresh_all: bool) -> int:
     return rc
 
 
-def do_finish(state: str, no_publish: bool, no_commit: bool) -> int:
+def do_finish(state: str, no_publish: bool, no_commit: bool,
+              ignore_coherence: bool = False) -> int:
     if harvest_running(state):
         stage_log(state, "finish: REFUSED — harvest still running")
         return 2
@@ -165,11 +166,14 @@ def do_finish(state: str, no_publish: bool, no_commit: bool) -> int:
     if not n:
         stage_log(state, "finish: no status file — run prices first")
         return 1
+    if not c.get("ok"):
+        stage_log(state, "finish: STOP — zero ok hospitals, nothing to publish")
+        return 4
     no_rows, orphan = coherence(state)
     gap = catalogue_gap(state)
     stage_log(state, f"finish: coherence ok-without-rows={len(no_rows)} "
                      f"orphan-priced={len(orphan)} ok-without-catalogue={len(gap)}")
-    if no_rows or gap:
+    if (no_rows or gap) and not ignore_coherence:
         ids = ",".join(sorted(set(no_rows) | set(gap)))
         (LOGS / f"{state}-reharvest-ids.txt").write_text(ids, encoding="utf-8")
         stage_log(state, f"finish: STOP — re-harvest first: "
@@ -277,6 +281,8 @@ def main() -> int:
     ap.add_argument("--refresh-all", action="store_true")
     ap.add_argument("--no-publish", action="store_true")
     ap.add_argument("--no-commit", action="store_true")
+    ap.add_argument("--ignore-coherence", action="store_true",
+                    help="publish even if some ok hospitals lack rows/catalogue (first-pass program)")
     a = ap.parse_args()
     state = a.state.lower()
     if not state.replace("-", "").isalnum():
@@ -287,7 +293,7 @@ def main() -> int:
     if a.stage == "prices":
         return do_prices(state, a.workers, a.only, a.refresh_all)
     if a.stage == "finish":
-        return do_finish(state, a.no_publish, a.no_commit)
+        return do_finish(state, a.no_publish, a.no_commit, a.ignore_coherence)
     if a.stage == "probe":
         return do_probe(state)
     return do_status(state)
