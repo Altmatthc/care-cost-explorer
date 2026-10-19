@@ -40,6 +40,10 @@
   .sub{color:var(--muted);font-size:13.5px;max-width:640px;line-height:1.5;}
   .banner{margin-top:12px;background:#FBF3E7;border:1px solid #E8D3A8;color:#6B4E16;font-size:12px;padding:8px 12px;border-radius:6px;max-width:820px;line-height:1.5;}
   .banner b{font-weight:600;}
+  .covered{font-size:12px;color:var(--muted);margin-top:8px;max-width:820px;line-height:1.5;}
+  .covered:empty{display:none;}
+  .covered details{display:inline;}
+  .covered summary{display:inline;cursor:pointer;color:var(--teal);text-decoration:underline dotted;}
 
   main{flex:1;display:flex;justify-content:center;padding:28px 20px 60px;}
   .screen{width:100%;max-width:920px;display:none;}
@@ -264,10 +268,11 @@
 <body>
 <div class="app">
   <header>
-    <div class="eyebrow">San Diego Metro &middot; Hospital Price Transparency</div>
+    <div class="eyebrow" id="eyebrow">Hospital Price Transparency</div>
     <h1>Care Cost Explorer</h1>
-    <div class="sub">Find what San Diego hospitals charge for a procedure, sorted by price and distance from you.</div>
+    <div class="sub" id="subhead">Find what hospitals near you charge for a procedure, sorted by price and distance from you.</div>
     <div class="banner"><b>Prototype — placeholder data.</b> Hospital names, locations, and ZIP distances are real. Prices, insurance networks, CMS ratings, and ER wait times are representative placeholders for design purposes. At launch these come from real public sources: prices and payer networks from each hospital's federally required price file, ratings and ER waits from CMS Care Compare.</div>
+    <div class="covered" id="coveredStates"></div>
   </header>
 
   <main>
@@ -1232,19 +1237,52 @@ loadManifest().then(m => {
 
   const regions = Object.values(m);
   const hospitals = regions.reduce((n, r) => n + (r.hospitals || 0), 0);
-  const areas = [...new Set(regions.flatMap(r => r.states || []))];
+  const cov = coverageInfo(m);
   const updated = regions.map(r => r.updated).filter(Boolean).sort().pop();
 
   banner.classList.add('live');
   banner.innerHTML =
     `<b>Live data.</b> Real prices for ${hospitals} hospital` +
-    `${hospitals === 1 ? '' : 's'}` +
-    `${areas.length ? ' in ' + esc(areas.join(', ')) : ''}, from each ` +
+    `${hospitals === 1 ? '' : 's'} across ${esc(cov.phrase)}, from each ` +
     `hospital's federally required price file` +
     `${updated ? `, last refreshed ${esc(updated)}` : ''}. ` +
     `Prices load once you enter your ZIP code. They are what hospitals ` +
     `publish, not a quote — doctors usually bill separately.`;
+
+  // Header + covered-states line are driven by the manifest too, so a visitor
+  // can tell whether their state is in before typing a ZIP.
+  const eyebrow = document.getElementById('eyebrow');
+  if(eyebrow) eyebrow.textContent = `Hospital Price Transparency · ${cov.phrase}`;
+  const covered = document.getElementById('coveredStates');
+  if(covered){
+    covered.innerHTML = '';
+    if(cov.names.length <= 3){
+      covered.textContent = `Covered: ${cov.names.join(', ')}. More states are being added on a rolling basis.`;
+    }else{
+      const d = document.createElement('details');
+      const s = document.createElement('summary');
+      s.textContent = `Covered: ${cov.names.length} states`;
+      d.appendChild(s);
+      d.appendChild(document.createTextNode(' ' + cov.names.join(', ') + '.'));
+      covered.appendChild(d);
+      covered.appendChild(document.createTextNode(' More states are being added on a rolling basis.'));
+    }
+  }
 });
+
+// Which states have published data, as display names, from the manifest.
+// Metro regions (san-diego) roll up into their state, so a single-state
+// manifest reads "California", not "California, CA".
+function coverageInfo(manifest){
+  const abbrs = [...new Set(Object.values(manifest || {}).flatMap(r => r.states || []))]
+    .map(a => String(a).toLowerCase());
+  const names = abbrs.map(a => STATE_NAME[a] || a.toUpperCase()).sort();
+  const phrase = names.length === 0 ? 'a limited area'
+               : names.length === 1 ? names[0]
+               : names.length <= 3 ? names.join(', ')
+               : `${names.length} states`;
+  return { names, phrase };
+}
 
 function selectRegion(key){
   state.region = key;
@@ -1321,7 +1359,7 @@ findBtn.addEventListener('click', async () => {
     renderResults();
     showScreen('screen-results');
   }catch(e){
-    zipError.textContent = "That ZIP is outside San Diego County. This early version covers San Diego County only — try a local ZIP like 92117.";
+    zipError.textContent = "We couldn't look up that ZIP code. Check it and try again.";
     zipError.style.display = 'block';
   }finally{
     zipStatus.style.display = 'none';
@@ -1365,6 +1403,21 @@ function safeRegion(r){
 }
 
 let MANIFEST = null;
+
+// Region code -> display name. Shared by the header, the live banner, the
+// "no data for your ZIP" panel and the coverage summary.
+const STATE_NAME = { "san-diego":"the San Diego area",
+  al:"Alabama", ak:"Alaska", az:"Arizona", ar:"Arkansas", ca:"California",
+  co:"Colorado", ct:"Connecticut", de:"Delaware", fl:"Florida", ga:"Georgia",
+  hi:"Hawaii", id:"Idaho", il:"Illinois", in:"Indiana", ia:"Iowa", ks:"Kansas",
+  ky:"Kentucky", la:"Louisiana", me:"Maine", md:"Maryland", ma:"Massachusetts",
+  mi:"Michigan", mn:"Minnesota", ms:"Mississippi", mo:"Missouri", mt:"Montana",
+  ne:"Nebraska", nv:"Nevada", nh:"New Hampshire", nj:"New Jersey", nm:"New Mexico",
+  ny:"New York", nc:"North Carolina", nd:"North Dakota", oh:"Ohio", ok:"Oklahoma",
+  or:"Oregon", pa:"Pennsylvania", ri:"Rhode Island", sc:"South Carolina",
+  sd:"South Dakota", tn:"Tennessee", tx:"Texas", ut:"Utah", vt:"Vermont",
+  va:"Virginia", wa:"Washington", wv:"West Virginia", wi:"Wisconsin", wy:"Wyoming",
+  dc:"the District of Columbia", pr:"Puerto Rico" };
 
 async function loadManifest(){
   try{
@@ -1872,20 +1925,8 @@ function renderCoverageSummary(){
   // Placeholder mode has no real status block, so show nothing there.
   if(!LIVE || !Object.keys(SCAN_STATUS).length){ el.innerHTML = ""; return; }
 
-  const REGION_LABEL = { "san-diego":"the San Diego area",
-    al:"Alabama", ak:"Alaska", az:"Arizona", ar:"Arkansas", ca:"California",
-    co:"Colorado", ct:"Connecticut", de:"Delaware", fl:"Florida", ga:"Georgia",
-    hi:"Hawaii", id:"Idaho", il:"Illinois", in:"Indiana", ia:"Iowa", ks:"Kansas",
-    ky:"Kentucky", la:"Louisiana", me:"Maine", md:"Maryland", ma:"Massachusetts",
-    mi:"Michigan", mn:"Minnesota", ms:"Mississippi", mo:"Missouri", mt:"Montana",
-    ne:"Nebraska", nv:"Nevada", nh:"New Hampshire", nj:"New Jersey", nm:"New Mexico",
-    ny:"New York", nc:"North Carolina", nd:"North Dakota", oh:"Ohio", ok:"Oklahoma",
-    or:"Oregon", pa:"Pennsylvania", ri:"Rhode Island", sc:"South Carolina",
-    sd:"South Dakota", tn:"Tennessee", tx:"Texas", ut:"Utah", vt:"Vermont",
-    va:"Virginia", wa:"Washington", wv:"West Virginia", wi:"Wisconsin", wy:"Wyoming",
-    dc:"the District of Columbia", pr:"Puerto Rico" };
   const regionKey = (LIVE && LIVE._region) || loadedRegion || state.regionName || "";
-  const label = REGION_LABEL[regionKey] || "this region";
+  const label = STATE_NAME[regionKey] || "this region";
 
   let ok=0, noFile=0, unreachable=0, empty=0, wrongFile=0, exempt=0, other=0;
   for(const hid in SCAN_STATUS){
@@ -1925,6 +1966,9 @@ function renderCoverageSummary(){
 function renderCoverage(rows){
   const el = document.getElementById("coveragePanel");
   if(!el) return;
+  // No region for this ZIP: renderResults already wrote the "not covered
+  // yet" explainer into this panel — leave it alone.
+  if(MANIFEST && !state.regionName) return;
   if(!LIVE || !Object.keys(SCAN_STATUS).length){ el.innerHTML = ""; return; }
 
   // Hospitals in this result set that returned no price for this procedure
@@ -2067,11 +2111,12 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
   const noCoverage = MANIFEST && !state.regionName;
   const covEl = document.getElementById('coveragePanel');
   if(noCoverage && covEl){
-    const regions = Object.values(MANIFEST)
-      .flatMap(m => m.states || []);
+    const cov = coverageInfo(MANIFEST);
+    const yours = state.zipState ? STATE_NAME[String(state.zipState).toLowerCase()] : null;
     covEl.innerHTML = `<div class="cov-head">No data for ZIP ${esc(state.zip)} yet</div>
-      <div class="cov-sub">This tool currently covers
-      ${esc([...new Set(regions)].join(', ')) || 'a limited area'}. The prices below
+      <div class="cov-sub">${yours ? esc(yours) + ' isn\u2019t covered yet. ' : ''}This tool currently
+      covers ${esc(cov.phrase)}${cov.names.length > 3 ? ': ' + esc(cov.names.join(', ')) : ''}.
+      More states are being added on a rolling basis. The prices below
       are illustrative placeholders, not real hospital prices for your area.</div>`;
   }
 
