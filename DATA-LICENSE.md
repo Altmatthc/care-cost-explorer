@@ -45,3 +45,8 @@ restricts your right to obtain them directly:
 - Hospital machine-readable files — published under 45 CFR Part 180
 - CMS Provider Data Catalog — US Government, public domain
 - US Census Bureau geocoder — US Government, public domain
+- `data/mrf-seeds.csv` — derived from TPAFS `transparency-data`
+  (https://github.com/TPAFS/transparency-data, Apache License 2.0): a slimmed
+  CCN → hospital-domain/file-URL seed list used only to point discovery at the
+  right website. Every file found through it is still verified against the
+  hospital's identity before use.

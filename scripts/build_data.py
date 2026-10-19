@@ -66,6 +66,7 @@ from ccx.config import (
     REGIONS, US_STATES, KEEP_TYPES, TARGET_CODES,
 )
 from ccx.hints import DOMAIN_HINTS, KNOWN_MRF
+from ccx.seeds import seed_domain, seed_url
 
 UA = {"User-Agent": "care-cost-explorer/1.0 (public price transparency tool)"}
 
@@ -425,6 +426,11 @@ def fetch_registry(region: str, debug: bool = False,
         stars_raw = field(r, "hospital_overall_rating", "overall_rating")
         fac_name = field(r, "facility_name", "provider_name", "name")
         known_mrf, domain = resolve_source(fac_name)
+        # Community seed list (data/mrf-seeds.csv): the hospital's own site
+        # domain, used only when no hand-written hint matched. Discovery and
+        # the identity check still gate anything found there.
+        if not domain and not known_mrf:
+            domain = seed_domain(ccn)
         hospitals.append({
             "id": f"ccn-{ccn}" if ccn else f"x-{len(hospitals)}",
             "ccn": ccn,
@@ -2207,6 +2213,29 @@ def main():
                         h["verified_source"] = True
                     if SOURCE_PAGES.get(domain):
                         h["price_page"] = SOURCE_PAGES[domain]
+
+                # Last resort: the community seed list's bare file URL. Often
+                # stale (2022), but when it still resolves it is the file —
+                # verify_file_belongs below still has to accept it.
+                if not url:
+                    cand = seed_url(h.get("ccn", ""))
+                    if cand and not host_cooling(cand):
+                        try:
+                            be_polite(cand)
+                            probe_r = SESSION.head(cand, headers=UA, timeout=10,
+                                                   allow_redirects=True)
+                            if probe_r.status_code == 405:
+                                probe_r = SESSION.get(cand, headers=UA, timeout=10,
+                                                      stream=True)
+                                probe_r.close()
+                            if probe_r.ok:
+                                url = cand
+                                h["mrf_url"] = url
+                                h["verified_source"] = False
+                                print(f"    ... {h['name']}: trying seed-list URL "
+                                      f"{host_of(cand)}")
+                        except requests.RequestException:
+                            pass
 
             if not url:
                 stats["no_mrf"] += 1
