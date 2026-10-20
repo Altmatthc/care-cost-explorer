@@ -207,6 +207,12 @@ def do_finish(state: str, no_publish: bool, no_commit: bool,
     else:
         stage_log(state, "compare: compare.json + trends rebuilt")
 
+    # CMS Care Compare quality (ER times, safety, patient survey) for this state.
+    if run(["scripts/build_quality.py", "--region", state], log):
+        stage_log(state, "quality: build_quality.py FAILED (non-fatal; cards show no quality data)")
+    else:
+        stage_log(state, "quality: <state>-quality.json rebuilt")
+
     # regions.json must still carry catalogue_base for every published region.
     regions = load(DATA / "regions.json", {})
     lost = [r for r, m in regions.items() if r != state and not m.get("catalogue_base")]

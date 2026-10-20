@@ -195,6 +195,13 @@
   .stars{color:#C9A227;letter-spacing:-1px;}
   .badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
   .badge-aid{background:#EAF0F7;color:#33587F;}
+  .badge-worse{background:#F7E4DE;color:var(--hightag);}
+  .badge-better{background:#E1F0EC;color:var(--lowtag);}
+  .badge-same{background:#EEF1F1;color:var(--muted);}
+  .q-list{margin:6px 0 0;padding-left:18px;font-size:12px;line-height:1.5;}
+  .q-list .q-worse{color:var(--hightag);}
+  .q-list .q-better{color:var(--lowtag);}
+  .bd-note{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
   .coverage{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:16px;}
   .coverage:empty{display:none;}
   .cov-head{font-family:'Fraunces',serif;font-size:15px;color:var(--teal-dark);margin-bottom:3px;}
@@ -2284,6 +2291,48 @@ async function loadRegionForSearch(){
   if(region === loadedRegion) return;          // already loaded
   const ok = await loadLiveData(region);
   loadedRegion = ok ? region : null;
+  if(ok) await loadQuality(region);
+}
+
+// ---------------------------------------------------------------------------
+// HOSPITAL QUALITY (CMS Care Compare) — data/<region>-quality.json, built by
+// scripts/build_quality.py. Joined into hospitalInfo so the cards and sorts
+// read real figures: ER wait (OP-18b), % who left unseen (OP-22), safety and
+// readmission comparisons to national, HCAHPS patient scores.
+// ---------------------------------------------------------------------------
+let QUALITY = null;          // {region, national, sources, hospitals}
+async function loadQuality(region){
+  QUALITY = null;
+  const safe = safeRegion(region);
+  if(!safe) return;
+  try{
+    const r = await fetch(`data/${safe}-quality.json`);
+    if(!r.ok) return;
+    QUALITY = await r.json();
+  }catch(e){ return; }
+  const H = QUALITY.hospitals || {};
+  for(const hid in H){
+    const q = H[hid];
+    const info = hospitalInfo[hid];
+    if(!info) continue;
+    info.erWait  = q.er && q.er.wait != null ? q.er.wait : null;
+    info.erLeft  = q.er && q.er.left != null ? q.er.left : null;
+    info.erVolume = q.er && q.er.volume || null;
+    info.quality = q;
+  }
+}
+function qualityPeriod(key){
+  const s = (QUALITY && QUALITY.sources && QUALITY.sources[key]) || {};
+  const d = s.er_period_end || s.period_end || '';
+  const m = d.match(/^(\d\d)\/\d\d\/(\d{4})$/);
+  return m ? monthYear(`${m[2]}-${m[1]}-01`) : (s.modified ? monthYear(s.modified) : '');
+}
+// One-line safety summary for a card chip. Only worse/better counts; "same" is the default.
+function safetyChip(q){
+  const s = q && q.safety; if(!s) return null;
+  if(s.worse)  return { cls:'badge-worse',  label:`Safety: ${s.worse} measure${s.worse>1?'s':''} worse than national` };
+  if(s.better) return { cls:'badge-better', label:`Safety: ${s.better} measure${s.better>1?'s':''} better than national` };
+  return { cls:'badge-same', label:'Safety: no different from national' };
 }
 
 function haversineMiles(lat1, lng1, lat2, lng2){
@@ -2398,7 +2447,50 @@ function badgeDetail(key, hid, pid){
   const rec = LIVE ? (LIVE.prices[pid] || {})[hid] : null;
   const hosp = hospitalById[hid] || {};
   const info = hospitalInfo[hid] || {};
-  if(!rec && key !== 'aid') return '<div class="bd-body">No detail available.</div>';
+  if(!rec && key !== 'aid' && key !== 'quality') return '<div class="bd-body">No detail available.</div>';
+
+  if(key === 'quality'){
+    const q = info.quality || {};
+    const row = (l, v) => v == null ? '' : `<tr><td>${l}</td><td class="num">${v}</td></tr>`;
+    const cmpList = (s) => (s && s.flags || []).map(f =>
+      `<li class="${f.cmp === 'worse' ? 'q-worse' : 'q-better'}">${esc(f.name)} — <b>${f.cmp} than national</b>${f.score != null ? ` (${f.score})` : ''}</li>`).join('');
+    const S = q.safety, R = q.readmit, P = q.patients, E = q.er;
+    let out = `<div class="bd-title">How ${esc(hosp.name)} performs on CMS quality measures</div><div class="bd-body">`;
+    if(E && (E.wait != null || E.left != null)){
+      out += `<b>Emergency department</b> (${esc(qualityPeriod('timely'))})<table class="bd-table">` +
+        row('Median time in the ER, arrival to leaving', E.wait != null ? formatWait(E.wait) : null) +
+        row('Left before being seen', E.left != null ? `${E.left}%` : null) +
+        row('ER volume', E.volume ? esc(E.volume) : null) +
+        row('Stroke patients with head CT read in 45 min', E.stroke_ct != null ? `${E.stroke_ct}%` : null) +
+        `</table>`;
+      if(QUALITY && QUALITY.national && QUALITY.national.er_wait)
+        out += `<div class="bd-note">National median: ${formatWait(Math.round(QUALITY.national.er_wait))}. This is the typical whole visit for patients sent home, not the time to see a clinician.</div>`;
+    }
+    if(S){
+      out += `<br><b>Deaths, complications and infections</b> (${esc(qualityPeriod('deaths'))}) — ` +
+        `${S.better} better, ${S.same} no different, ${S.worse} worse than the national rate across ${S.better+S.same+S.worse} measures.`;
+      if(S.flags && S.flags.length) out += `<ul class="q-list">${cmpList(S)}</ul>`;
+    }
+    if(R){
+      out += `<br><b>Unplanned return visits</b> (${esc(qualityPeriod('visits'))}) — ` +
+        `${R.better} better, ${R.same} no different, ${R.worse} worse than national across ${R.better+R.same+R.worse} measures.`;
+      if(R.flags && R.flags.length) out += `<ul class="q-list">${cmpList(R)}</ul>`;
+    }
+    if(P){
+      out += `<br><b>What patients said</b> (HCAHPS survey, ${P.surveys ? P.surveys.toLocaleString() + ' responses' : 'survey'})<table class="bd-table">` +
+        row('Patient survey rating', P.stars != null ? `${'★'.repeat(P.stars)}${'☆'.repeat(5-P.stars)} ${P.stars}/5` : null) +
+        row('Would definitely recommend', P.recommend != null ? `${P.recommend}%` : null) +
+        row('Rated the hospital 9 or 10 out of 10', P.rating9_10 != null ? `${P.rating9_10}%` : null) +
+        row('Nurses always communicated well', P.nurses != null ? `${P.nurses}%` : null) +
+        row('Doctors always communicated well', P.doctors != null ? `${P.doctors}%` : null) +
+        row('Room always clean', P.clean != null ? `${P.clean}%` : null) +
+        `</table>`;
+    }
+    if(q.flu_staff != null) out += `<br>Staff flu vaccination: <b>${q.flu_staff}%</b>.`;
+    if(!E && !S && !R && !P) out += `CMS publishes no quality measures for this hospital (too few cases, or it does not report).`;
+    out += `<div class="bd-note">Source: CMS Care Compare, public domain. "Worse than national" is CMS's own statistical comparison; most hospitals are "no different" on most measures, so a single flag is a reason to ask questions, not a verdict.</div></div>`;
+    return out;
+  }
 
   if(key === 'spread'){
     const payers = Object.entries(rec.payers || {})
@@ -2798,8 +2890,8 @@ function renderResults(){
   else if(state.sort === 'wait')     rows.sort((a,b) => byPriced(a,b) || (a.info.erWait ?? Infinity) - (b.info.erWait ?? Infinity));
 
   const setting = settingOf(proc);
-  // ER wait times are not yet sourced from CMS (OP-18) on the live path, so
-  // the sort would rank on nothing. Offer it only where there is data.
+  // ER visit times come from CMS OP-18b via data/<region>-quality.json; offer
+  // the sort only where at least one hospital in view has a figure.
   const haveWaits = rows.some(r => r.info.erWait != null);
 
   // Only offer sorts that mean something for this kind of care
@@ -3059,7 +3151,9 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
       (h.geo_approx ? ` <span class="approx" title="Located to ZIP code only">approx</span>` : '') +
       `</span></div>`;
     if(show.wait && info.erWait != null)
-      inner += `<div class="detail"><span class="dl">Median ER wait</span><span class="dv">${formatWait(info.erWait)}</span></div>`;
+      inner += `<div class="detail"><span class="dl">Median ER visit</span><span class="dv">${formatWait(info.erWait)}` +
+        (info.erLeft != null && info.erLeft >= 3 ? ` <span class="approx" title="Share of ER patients who left before being seen">${info.erLeft}% left unseen</span>` : '') +
+        `</span></div>`;
     if(show.trauma && info.trauma){
       const label = info.trauma === 'I-P' ? 'Level I (pediatric)' : `Level ${info.trauma}`;
       inner += `<div class="detail"><span class="dl">Trauma center</span><span class="dv">${label}</span></div>`;
@@ -3068,6 +3162,9 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
       const filled = '★'.repeat(info.stars) + '☆'.repeat(5-info.stars);
       inner += `<div class="detail"><span class="dl">CMS rating</span><span class="dv"><span class="stars">${filled}</span> ${info.stars}/5</span></div>`;
     }
+    const qp = info.quality && info.quality.patients;
+    if(show.rating && qp && qp.recommend != null)
+      inner += `<div class="detail"><span class="dl">Patients would recommend</span><span class="dv">${qp.recommend}%</span></div>`;
     if(show.stay && TYPICAL_STAY[proc.id] != null)
       inner += `<div class="detail"><span class="dl">Typical stay</span><span class="dv">${TYPICAL_STAY[proc.id]} night${TYPICAL_STAY[proc.id]>1?'s':''}</span></div>`;
     if(show.beds && info.beds != null)
@@ -3096,6 +3193,8 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     }
     if(info.aid) inner += badge('aid', 'badge-aid',
                                 'Financial aid available', h.id, proc.id);
+    const sc = safetyChip(info.quality);
+    if(sc) inner += badge('quality', sc.cls, sc.label, h.id, proc.id);
     if(LIVE && SCAN_STATUS[h.id]) inner += badge('source', 'badge-source',
                                                  'Source', h.id, proc.id);
     inner += `</div><div class="badge-detail" data-for="${esc(h.id)}"></div>`;

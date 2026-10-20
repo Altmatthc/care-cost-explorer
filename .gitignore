@@ -36,3 +36,6 @@ data/*-codes/
 # release map to data/release-map-<region>.json, which IS committed)
 logs/
 drafts/
+
+# CMS quality CSVs (100+ MB, re-downloadable); the compact *-quality.json IS committed
+data/quality-cache/
