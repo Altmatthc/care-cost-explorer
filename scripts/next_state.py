@@ -170,16 +170,55 @@ def stage_tail(state: str, n: int = 3) -> str:
 
 
 # --------------------------------------------------------------------------
+REFRESH_DAYS = 45   # matches merge_shards RECONFIRM_DAYS so a refresh can write reconfirm rows
+
+
+def refresh_due() -> list[tuple[str, str]]:
+    """Published regions whose data is REFRESH_DAYS+ old, oldest first."""
+    try:
+        regions = json.loads((DATA / "regions.json").read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    due = []
+    for code, m in regions.items():
+        upd = m.get("updated")
+        if not upd:
+            continue
+        try:
+            age = (datetime.now() - datetime.fromisoformat(upd[:10])).days
+        except ValueError:
+            continue
+        if age >= REFRESH_DAYS and (DATA / f"{code}-hospitals.json").exists():
+            due.append((code, upd))
+    return sorted(due, key=lambda x: x[1])
+
+
 def start_next(st: dict, out: list[str]) -> None:
+    st["finish_attempts"] = 0
+    st["reharvested"] = False
+    # A published state whose data has aged past REFRESH_DAYS takes priority
+    # over the next first-pass state: trend history only grows on re-harvest,
+    # and the GitHub Actions schedule that was meant to do this never fires.
+    due = refresh_due()
+    if due:
+        state, upd = due[0]
+        st["current"] = state
+        st["mode"] = "refresh"
+        out.append(f"{state.upper()}: refresh (last data {upd}) — registry + incremental harvest")
+        subprocess.run([PY, RUN_STATE, state, "registry"], cwd=ROOT, capture_output=True, text=True)
+        launch_detached([RUN_STATE, state, "prices", "--workers", "4"],
+                        LOGS / f"{state}-prices-driver.out", LOGS / f"{state}-prices.rc")
+        st["phase"] = "harvest"
+        st["phase_since"] = now()
+        return
+    st["mode"] = "first"
     if not st["queue"]:
         st["current"] = None
         st["phase"] = "complete"
-        out.append("program complete — queue empty")
+        out.append("program complete — queue empty (refresh cycle continues)")
         return
     state = st["queue"].pop(0)
     st["current"] = state
-    st["finish_attempts"] = 0
-    st["reharvested"] = False
     out.append(f"{state.upper()}: registry + geocode")
     r = subprocess.run([PY, RUN_STATE, state, "registry"], cwd=ROOT,
                        capture_output=True, text=True)
@@ -201,8 +240,11 @@ def tick(st: dict) -> list[str]:
     out: list[str] = []
     state = st.get("current")
     phase = st.get("phase")
+    st.setdefault("refreshed", {})
+    st.setdefault("mode", "first")
     if not state:
-        if phase != "complete":
+        # Queue drained: keep ticking for refreshes only.
+        if phase != "complete" or refresh_due():
             start_next(st, out)
         return out
 
@@ -225,9 +267,13 @@ def tick(st: dict) -> list[str]:
             return out
         rc = read_rc(LOGS / f"{state}-finish.rc")
         if rc == 0:
-            st["done"][state] = {"hospitals": regions_count(state), "counts": counts(state),
-                                 "at": now()}
-            out.append(f"{state.upper()}: PUBLISHED — {regions_count(state)} hospitals live")
+            entry = {"hospitals": regions_count(state), "counts": counts(state), "at": now()}
+            if st.get("mode") == "refresh":
+                st.setdefault("refreshed", {})[state] = entry
+                out.append(f"{state.upper()}: REFRESHED — {regions_count(state)} hospitals live")
+            else:
+                st["done"][state] = entry
+                out.append(f"{state.upper()}: PUBLISHED — {regions_count(state)} hospitals live")
             out.append(stage_tail(state, 2))
             start_next(st, out)
             return out
@@ -275,7 +321,8 @@ def main() -> int:
     if a.init:
         st = {"queue": [s for s in DEFAULT_QUEUE if s != a.init], "current": a.init,
               "phase": "harvest", "phase_since": now(), "finish_attempts": 0,
-              "reharvested": False, "done": {}, "failed": {}, "started": now()}
+              "reharvested": False, "mode": "first", "done": {}, "refreshed": {},
+              "failed": {}, "started": now()}
         save_state(st)
         print(json.dumps(st, indent=1))
         return 0
@@ -295,7 +342,7 @@ def main() -> int:
         done, left = len(st["done"]), len(st["queue"])
         print("\n".join(lines))
         print(f"[program] {done} published this program, {left} queued, "
-              f"{len(st['failed'])} flagged")
+              f"{len(st.get('refreshed', {}))} refreshed, {len(st['failed'])} flagged")
     return 0
 
 
