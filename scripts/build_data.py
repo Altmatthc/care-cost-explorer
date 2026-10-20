@@ -298,6 +298,18 @@ def resolve_source(name: str) -> tuple[Optional[str], Optional[str]]:
 # ===========================================================================
 # STAGE 1 — REGISTRY
 # ===========================================================================
+def proper_case(s: str) -> str:
+    """
+    Title-case a CMS all-caps name without the str.title() possessive bug
+    ("St Joseph'S" -> "St Joseph's"), and keep common initialisms upright.
+    """
+    out = s.title()
+    out = re.sub(r"(\w)'S\b", r"\1's", out)
+    for word in ("UCSF", "UCLA", "UCSD", "UC", "USC", "HCA", "CHI", "UT", "UTMB", "UMC", "VA", "LLC", "LP", "II", "III"):
+        out = re.sub(rf"\b{word.title()}\b", word, out)
+    return out
+
+
 def field(row: dict, *names) -> str:
     """
     CMS field names vary between dataset versions and casing conventions
@@ -434,8 +446,8 @@ def fetch_registry(region: str, debug: bool = False,
         hospitals.append({
             "id": f"ccn-{ccn}" if ccn else f"x-{len(hospitals)}",
             "ccn": ccn,
-            "name": field(r, "facility_name", "provider_name", "name").title(),
-            "system": field(r, "hospital_ownership", "ownership").title(),
+            "name": proper_case(field(r, "facility_name", "provider_name", "name")),
+            "system": proper_case(field(r, "hospital_ownership", "ownership")),
             "ownership": field(r, "hospital_ownership", "ownership"),
             "city": field(r, "citytown", "city", "city_town").title(),
             "state": field(r, "state", "state_code"),

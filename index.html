@@ -98,9 +98,9 @@
 
   /* ---- Compare states / movers ---- */
   .field-row{display:flex;gap:16px;flex-wrap:wrap;}
-  .cmp-chart{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0;overflow-x:auto;}
+  .cmp-chart{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0;overflow:auto;max-height:560px;}
   .cmp-chart:empty{display:none;}
-  .cmp-chart svg{display:block;max-width:100%;font-family:'IBM Plex Mono',monospace;}
+  .cmp-chart svg{display:block;max-width:100%;height:auto;font-family:'IBM Plex Mono',monospace;}
   .cmp-chart .bar{fill:var(--teal);opacity:.85;}
   .cmp-chart .bar.you{fill:var(--teal-dark);opacity:1;}
   .cmp-chart .whisker{stroke:var(--ink);stroke-width:1.2;}
@@ -110,6 +110,12 @@
   .cmp-chart .line{fill:none;stroke:var(--teal);stroke-width:2;}
   .cmp-chart .dot{fill:var(--teal);}
   .cmp-table-wrap{overflow-x:auto;}
+  .cmp-scroll-hint{display:none;font-size:11px;color:var(--muted);margin:4px 0 0;font-family:'IBM Plex Mono',monospace;}
+  @media (max-width:640px){
+    /* Keep chart text legible: scroll the chart sideways instead of shrinking it. */
+    .cmp-chart svg{min-width:600px;}
+    .cmp-scroll-hint{display:block;}
+  }
   .cmp-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12.5px;}
   .cmp-table th,.cmp-table td{padding:8px 10px;border-top:1px solid var(--line);text-align:left;white-space:nowrap;}
   .cmp-table th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer;user-select:none;border-top:none;}
@@ -540,6 +546,7 @@
         <select id="cmpProc"></select>
       </div>
       <div class="cmp-chart" id="cmpChart"></div>
+      <div class="cmp-scroll-hint">← scroll chart sideways →</div>
       <div class="cmp-table-wrap"><table class="cmp-table" id="cmpTable"></table></div>
       <div class="step-title" style="margin-top:28px;">Price transparency scorecard</div>
       <div class="step-sub">Every hospital subject to the federal rule must publish a
@@ -568,6 +575,7 @@
         </div>
       </div>
       <div class="cmp-chart" id="mvChart"></div>
+      <div class="cmp-scroll-hint">← scroll chart sideways →</div>
       <div class="result-count" id="mvCount"></div>
       <div class="cmp-table-wrap"><table class="cmp-table" id="mvTable"></table></div>
     </div>
@@ -1325,7 +1333,8 @@ async function loadTrends(region){
   }catch(e){ return null; }
 }
 
-function regionLabel(code){ return STATE_NAME[code] || String(code).toUpperCase(); }
+// Short form for chart/table labels: "San Diego area", not "the San Diego area".
+function regionLabel(code){ return (STATE_NAME[code] || String(code).toUpperCase()).replace(/^the /, ''); }
 function fmtUsd(n){ return n == null ? '—' : '$' + Math.round(n).toLocaleString(); }
 function fmtPct(n){ return n == null ? '—' : n + '%'; }
 
@@ -1385,10 +1394,11 @@ function renderCompareChart(el, procId, yourState){
     el.innerHTML = `<div class="cmp-empty">No state has enough published prices for this procedure yet (we need at least 5 hospitals per state).</div>`;
     return;
   }
-  const W = 720, labelW = 150, rowH = 26, pad = 10;
+  const W = 720, labelW = 150, pad = 10, rightW = 125;   // room for "$12,345 · n=140"
+  const rowH = rows.length > 15 ? 18 : 26;      // compact once many states are live
   const H = pad * 2 + rows.length * rowH + 18;
   const maxV = Math.max(...rows.map(x => x.s.p75));
-  const x = v => labelW + (v / maxV) * (W - labelW - 70);
+  const x = v => labelW + (v / maxV) * (W - labelW - rightW);
   const svg = svgEl('svg', { viewBox:`0 0 ${W} ${H}`, width: W, height: H, role:'img',
     'aria-label': `Median cash price by state for ${procById[procId] ? procById[procId].name : procId}` });
   rows.forEach((row, i) => {
@@ -1443,11 +1453,11 @@ function renderCompare(){
     { key:'subject',     label:'Subject to rule', num:true },
     { key:'ok',          label:'Readable file',   num:true },
     { key:'readable',    label:'% readable',      num:true, fmt: r => fmtPct(r.readable) },
-    { key:'no_file',     label:'No file found',   num:true },
-    { key:'unreachable', label:'Blocked / wrong', num:true },
+    { key:'no_file',     label:'No file',         num:true },
+    { key:'unreachable', label:'Blocked',         num:true },
     { key:'m300',        label:'300+ codes',      num:true, fmt: r => fmtPct(r.m300) },
     { key:'dollar',      label:'Dollar rates',    num:true, fmt: r => fmtPct(r.dollar) },
-    { key:'moves',       label:'Price moves (90d)', num:true },
+    { key:'moves',       label:'Moves 90d',       num:true },
     { key:'updated',     label:'Refreshed' },
   ], score, 'readable', true, youRow);
 
@@ -1501,11 +1511,17 @@ function renderTrendChart(el, t, procId){
       pts && pts.length === 1 ? ` — one observation (${esc(monthYear(pts[0][0]))}, median ${fmtUsd(pts[0][1])} across ${pts[0][2]} hospitals)` : ''}.</div>`;
     return;
   }
-  const W = 720, H = 200, L = 70, R = 20, T = 16, B = 34;
+  const W = 720, H = 200, L = 70, R = 44, T = 16, B = 34;
   const vals = pts.map(p => p[1]);
   const lo = Math.min(...vals) * 0.95, hi = Math.max(...vals) * 1.05 || 1;
   const x = i => L + (i / (pts.length - 1)) * (W - L - R);
   const y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  // Refreshes can land twice in one month, so label with the day when any two
+  // points share a month; keep the first and last labels inside the frame.
+  const months = new Set(pts.map(p => p[0].slice(0, 7)));
+  const dateLbl = months.size < pts.length ? monthDay : monthYear;
+  const anchor = i => i === 0 ? 'start' : (i === pts.length - 1 ? 'end' : 'middle');
+  const lx = i => i === 0 ? x(i) - 12 : (i === pts.length - 1 ? x(i) + 12 : x(i));
   const svg = svgEl('svg', { viewBox:`0 0 ${W} ${H}`, width: W, height: H, role:'img',
     'aria-label': `Statewide median cash price over time` });
   svg.appendChild(svgEl('line', { x1:L, x2:W-R, y1:y(lo), y2:y(lo), class:'axis' }));
@@ -1517,8 +1533,8 @@ function renderTrendChart(el, t, procId){
   svg.appendChild(svgEl('path', { d, class:'line' }));
   pts.forEach((p, i) => {
     svg.appendChild(svgEl('circle', { cx:x(i), cy:y(p[1]), r:3.5, class:'dot' }));
-    svg.appendChild(svgEl('text', { x:x(i), y:H - 18, 'text-anchor':'middle', class:'lbl muted' }, monthYear(p[0])));
-    svg.appendChild(svgEl('text', { x:x(i), y:H - 6, 'text-anchor':'middle', class:'lbl muted' }, `n=${p[2]}`));
+    svg.appendChild(svgEl('text', { x:lx(i), y:H - 18, 'text-anchor':anchor(i), class:'lbl muted' }, dateLbl(p[0])));
+    svg.appendChild(svgEl('text', { x:lx(i), y:H - 6, 'text-anchor':anchor(i), class:'lbl muted' }, `n=${p[2]}`));
   });
   el.appendChild(svg);
 }
@@ -1543,11 +1559,11 @@ async function renderMovers(){
   // Hospital names: from the loaded region if it's this one, else the registry file.
   let names = {};
   if(LIVE && LIVE._region === region){
-    hospitals.forEach(h => { names[h.id] = h.name; });
+    hospitals.forEach(h => { names[h.id] = fixName(h.name); });
   }else{
     try{
       const r = await fetch(`data/${safeRegion(region)}-hospitals.json`);
-      if(r.ok) (await r.json()).forEach(h => { names[h.id] = h.name; });
+      if(r.ok) (await r.json()).forEach(h => { names[h.id] = fixName(h.name); });
     }catch(e){}
   }
   const rows = (t.movers || []).map(m => ({
@@ -1566,7 +1582,7 @@ async function renderMovers(){
     { key:'cash',      label:'Now',  num:true, fmt: r => fmtUsd(r.cash) },
     { key:'pct',       label:'Change', num:true, fmt: r => (r.pct > 0 ? '▲ +' : '▼ ') + r.pct + '%',
       cls: r => r.pct > 0 ? 'up' : 'down' },
-    { key:'since',     label:'Previous price since', fmt: r => monthYear(r.since) },
+    { key:'since',     label:'Prior price since', fmt: r => monthYear(r.since) },
   ], rows, 'date', true);
 }
 
@@ -1593,6 +1609,12 @@ document.getElementById('mvProc').addEventListener('change', async () => {
 });
 document.getElementById('backFromMovers').addEventListener('click',
   () => showScreen('screen-body'));
+
+// Deep links to the data screens: #compare / #movers open them directly.
+window.addEventListener('load', () => {
+  if(location.hash === '#compare') document.getElementById('compareBtn').click();
+  else if(location.hash === '#movers') document.getElementById('moversBtn').click();
+});
 
 // Re-measure the map when the window changes shape, or it keeps the old size.
 window.addEventListener('resize', () => {
@@ -1853,7 +1875,7 @@ async function loadLiveData(region = 'san-diego'){
 
     hospitals.length = 0;
     live.forEach(h => hospitals.push({
-      id:h.id, name:h.name, system:h.system || h.type || '', city:h.city,
+      id:h.id, name:fixName(h.name), system:h.system || h.type || '', city:h.city,
       lat:h.lat, lng:h.lng, geo_approx: !!h.geo_approx,
     }));
 
@@ -2203,6 +2225,15 @@ function monthYear(iso){
   if(isNaN(d)) return '';
   return d.toLocaleDateString(undefined, { month:'short', year:'numeric' });
 }
+function monthDay(iso){
+  if(!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  if(isNaN(d)) return '';
+  return d.toLocaleDateString(undefined, { month:'short', day:'numeric' });
+}
+// CMS publishes names in ALL CAPS; str.title() upstream leaves "St Mary'S".
+// Repair on display so already-published data reads correctly too.
+function fixName(s){ return String(s || '').replace(/(\w)'S\b/g, "$1's"); }
 
 function renderDrugs(filter){
   const el = document.getElementById('drugList');
