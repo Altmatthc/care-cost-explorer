@@ -138,6 +138,9 @@
   .cmp-table td.down{color:var(--lowtag);font-weight:600;}
   .cmp-table a{color:var(--teal-dark);}
   .cmp-foot{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.5;}
+  .cmp-caveat{margin-top:18px;background:#FBF3E7;border:1px solid #E8D3A8;color:#6B4E16;font-size:12px;padding:10px 12px;border-radius:6px;line-height:1.55;}
+  .cmp-chart .refline{stroke:var(--hightag);stroke-width:1.2;stroke-dasharray:4 3;}
+  .cmp-chart .lbl.val{paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;}
   .cmp-empty{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px;font-size:13.5px;line-height:1.6;color:var(--muted);}
 
   /* ---- Screen 2: procedure + zip ---- */
@@ -489,6 +492,7 @@
       </div>
       <button class="general-btn" id="generalBtn">NOT SURE / GENERAL CARE &rarr; SEE ALL PROCEDURES</button>
       <button class="general-btn" id="drugsBtn" style="margin-top:8px;">COMPARE DRUG &amp; INFUSION PRICES &rarr;</button>
+      <button class="general-btn" id="insurersBtn" style="margin-top:8px;">COMPARE INSURERS &rarr;</button>
       <button class="general-btn" id="compareBtn" style="margin-top:8px;">COMPARE STATES &rarr;</button>
       <button class="general-btn" id="moversBtn" style="margin-top:8px;">PRICE MOVERS &amp; TRENDS &rarr;</button>
     </div>
@@ -549,6 +553,52 @@
       <div class="step-sub" id="codeSub"></div>
       <div class="cost-note" id="codeNote"></div>
       <div id="codeResults"></div>
+    </div>
+
+    <!-- SCREEN 2f: compare insurers -->
+    <div class="screen" id="screen-insurers">
+      <div class="back-link" id="backFromInsurers">&larr; BACK</div>
+      <div class="step-title">Compare insurers</div>
+      <div class="step-sub">Which insurance carriers negotiate the lowest hospital
+        rates — for one procedure, for everything we track, in one state or
+        across every state we cover. Rates are the ones hospitals publish in
+        their federally required price files; the cash price is shown alongside
+        as the yardstick.</div>
+      <div class="field-row">
+        <div class="field" style="max-width:300px;">
+          <label for="insView">Show</label>
+          <select id="insView">
+            <option value="overall">Overall ranking — every procedure</option>
+            <option value="proc">One procedure</option>
+            <option value="carrier">One carrier, state by state</option>
+          </select>
+        </div>
+        <div class="field" id="insScopeField" style="max-width:240px;">
+          <label for="insScope">Where</label>
+          <select id="insScope"></select>
+        </div>
+        <div class="field" id="insProcField" style="max-width:360px;display:none;">
+          <label for="insProc">Procedure</label>
+          <select id="insProc"></select>
+        </div>
+        <div class="field" id="insCarrierField" style="max-width:300px;display:none;">
+          <label for="insCarrier">Carrier</label>
+          <select id="insCarrier"></select>
+        </div>
+      </div>
+      <div class="cmp-chart" id="insChart"></div>
+      <div class="cmp-scroll-hint">← scroll chart sideways →</div>
+      <div class="result-count" id="insCount"></div>
+      <div class="cmp-table-wrap"><table class="cmp-table" id="insTable"></table></div>
+      <div class="cmp-caveat"><b>What this can and can't tell you.</b> Each figure is the
+        lowest rate a hospital publishes for that carrier family (HMO, PPO and
+        tiered plans are pooled). A lower negotiated rate means a smaller bill
+        before your deductible is met and less for the plan to pay after — it
+        says nothing about premiums, copays, networks, or whether the carrier
+        sells plans where you live. Carriers that operate mainly in one state
+        (Kaiser in California, Oscar in Florida) are measured only at hospitals
+        that publish a rate for them. Medicare and Medicaid rates are set by
+        government, not negotiated; they're included as a reference.</div>
     </div>
 
     <!-- SCREEN 2d: compare states -->
@@ -1670,6 +1720,202 @@ document.getElementById('mvProc').addEventListener('change', async () => {
   renderTrendChart(document.getElementById('mvChart'), t, document.getElementById('mvProc').value);
 });
 document.getElementById('backFromMovers').addEventListener('click',
+  () => showScreen('screen-body'));
+
+// ---------------------------------------------------------------------------
+// COMPARE INSURERS
+// Reads compare.json (national pool + per-state carrier index) and
+// data/<region>-insurers.json (per-procedure carrier medians for one state).
+// A "carrier" is a payer family as normalised by merge_shards; the figure is
+// each hospital's lowest published rate for that family.
+// ---------------------------------------------------------------------------
+const CARRIER_LABELS = {
+  aetna:"Aetna", anthem:"Blue Cross (Anthem, FL Blue…)", blueshield:"Blue Shield",
+  cigna:"Cigna", healthnet:"Health Net", uhc:"UnitedHealthcare", kaiser:"Kaiser Permanente",
+  medicare:"Medicare", medical:"Medicaid (Medi-Cal…)", molina:"Molina Healthcare",
+  scan:"SCAN Health Plan", tricare:"TRICARE", centivo:"Centivo", alignment:"Alignment Health",
+  oscar:"Oscar Health", brandnew:"Brand New Day",
+};
+function carrierLabel(id){ return CARRIER_LABELS[id] || PAYER_LABELS[id] || String(id); }
+const INSURERS = {};   // region -> insurers json
+
+async function loadInsurers(scope){
+  if(scope === 'all') return (COMPARE && COMPARE.insurers) || null;
+  const safe = safeRegion(scope);
+  if(!safe) return null;
+  if(INSURERS[safe]) return INSURERS[safe];
+  try{
+    const r = await fetch(`data/${safe}-insurers.json`);
+    if(!r.ok) return null;
+    INSURERS[safe] = await r.json();
+    return INSURERS[safe];
+  }catch(e){ return null; }
+}
+function insScopeLabel(scope){ return scope === 'all' ? 'all covered states' : regionLabel(scope); }
+
+// Generic horizontal bars: rows [{label, value, lo?, hi?, text, cls?}];
+// opts.ref {value} draws a dashed reference line; opts.foot is the legend.
+function hBars(el, rows, opts){
+  el.innerHTML = '';
+  if(!rows.length){
+    el.innerHTML = `<div class="cmp-empty">${esc(opts.empty || 'Nothing to show yet.')}</div>`;
+    return;
+  }
+  const W = 720, labelW = 210, pad = 10, rightW = 175;
+  const rowH = rows.length > 15 ? 18 : 26;
+  const H = pad * 2 + rows.length * rowH + 18;
+  const maxV = Math.max(...rows.map(r => r.hi != null ? r.hi : r.value), opts.ref ? opts.ref.value : 0) || 1;
+  const x = v => labelW + (v / maxV) * (W - labelW - rightW);
+  const svg = svgEl('svg', { viewBox:`0 0 ${W} ${H}`, width: W, height: H, role:'img', 'aria-label': opts.aria || '' });
+  if(opts.ref){
+    const rx = x(opts.ref.value);
+    svg.appendChild(svgEl('line', { x1: rx, x2: rx, y1: pad, y2: H - 20, class:'refline' }));
+  }
+  rows.forEach((row, i) => {
+    const y = pad + i * rowH;
+    svg.appendChild(svgEl('text', { x: labelW - 8, y: y + 16, 'text-anchor':'end', class:'lbl' }, row.label));
+    svg.appendChild(svgEl('rect', { x: x(0), y: y + 4, width: Math.max(1, x(row.value) - x(0)), height: rowH - 10, rx: 2,
+                                    class: 'bar' + (row.cls ? ' ' + row.cls : '') }));
+    if(row.lo != null && row.hi != null){
+      svg.appendChild(svgEl('line', { x1: x(row.lo), x2: x(row.hi), y1: y + rowH/2, y2: y + rowH/2, class:'whisker' }));
+      svg.appendChild(svgEl('line', { x1: x(row.lo), x2: x(row.lo), y1: y + 7, y2: y + rowH - 7, class:'whisker' }));
+      svg.appendChild(svgEl('line', { x1: x(row.hi), x2: x(row.hi), y1: y + 7, y2: y + rowH - 7, class:'whisker' }));
+    }
+    svg.appendChild(svgEl('text', { x: x(row.hi != null ? row.hi : row.value) + 6, y: y + 16, class:'lbl val' }, row.text || ''));
+  });
+  if(opts.foot) svg.appendChild(svgEl('text', { x: 8, y: H - 4, class:'lbl muted' }, opts.foot));
+  el.appendChild(svg);
+}
+
+async function renderInsurers(){
+  const view = document.getElementById('insView').value;
+  const scope = document.getElementById('insScope').value || 'all';
+  document.getElementById('insScopeField').style.display = view === 'carrier' ? 'none' : '';
+  document.getElementById('insProcField').style.display = view === 'proc' ? '' : 'none';
+  document.getElementById('insCarrierField').style.display = view === 'carrier' ? '' : 'none';
+  const chart = document.getElementById('insChart');
+  const count = document.getElementById('insCount');
+  const table = document.getElementById('insTable');
+  const yourState = state.zipState ? String(state.zipState).toLowerCase() : null;
+
+  if(view === 'carrier'){
+    const fam = document.getElementById('insCarrier').value;
+    const rows = Object.entries(COMPARE.regions)
+      .filter(([c, r]) => r.insurers && r.insurers[fam] && r.insurers[fam].ratio != null)
+      .map(([c, r]) => ({ code: c, state: regionLabel(c), ratio: r.insurers[fam].ratio,
+                          cheapest: r.insurers[fam].cheapest_in, procs: r.insurers[fam].procs,
+                          hospitals: r.insurers[fam].hospitals }))
+      .sort((a,b) => a.ratio - b.ratio);
+    hBars(chart, rows.map(r => ({ label: r.state, value: r.ratio, cls: r.code === yourState ? 'you' : '',
+                                  text: `${r.ratio}× cash · cheapest in ${r.cheapest}/${r.procs}` })),
+      { ref: {value: 1}, aria: `${carrierLabel(fam)} rates by state`,
+        foot: 'bar = negotiated rate as a multiple of the same hospital\'s cash price · dashed = cash',
+        empty: `${carrierLabel(fam)} has no published rates in any covered state yet.` });
+    count.textContent = rows.length
+      ? `${carrierLabel(fam)} publishes rates in ${rows.length} covered ${rows.length === 1 ? 'region' : 'regions'}. Lower is better for the patient.`
+      : '';
+    renderTable(table, [
+      { key:'state',     label:'State' },
+      { key:'ratio',     label:'vs cash price', num:true, fmt: r => r.ratio + '×' },
+      { key:'cheapest',  label:'Cheapest carrier for', num:true, fmt: r => `${r.cheapest} of ${r.procs} procedures` },
+      { key:'hospitals', label:'Hospitals', num:true },
+    ], rows, 'ratio', false, r => r.code === yourState ? 'you' : '');
+    return;
+  }
+
+  const data = await loadInsurers(scope);
+  if(!data || !data.payers || !Object.keys(data.payers).length){
+    chart.innerHTML = `<div class="cmp-empty">No insurer data published for ${esc(insScopeLabel(scope))} yet.</div>`;
+    count.textContent = ''; table.innerHTML = ''; return;
+  }
+
+  if(view === 'overall'){
+    const rows = Object.entries(data.payers).filter(([f, s]) => s.ratio != null)
+      .map(([f, s]) => ({ id: f, carrier: carrierLabel(f), ratio: s.ratio, cheapest: s.cheapest_in,
+                          procs: s.procs, hospitals: s.hospitals, states: s.states ?? null, pairs: s.pairs }))
+      .sort((a,b) => a.ratio - b.ratio);
+    hBars(chart, rows.map(r => ({ label: r.carrier, value: r.ratio,
+                                  text: `${r.ratio}× cash · cheapest in ${r.cheapest}/${r.procs}` })),
+      { ref: {value: 1}, aria: 'Carrier negotiated rates relative to cash price',
+        foot: 'bar = negotiated rate as a multiple of the same hospital\'s cash price · dashed = cash' });
+    count.textContent = `${rows.length} carriers in ${insScopeLabel(scope)}, ranked by how their negotiated rates compare with the hospitals' own cash prices across every procedure we track. Lower is better for the patient.`;
+    renderTable(table, [
+      { key:'carrier',   label:'Carrier' },
+      { key:'ratio',     label:'vs cash price', num:true, fmt: r => r.ratio + '×' },
+      { key:'cheapest',  label:'Cheapest carrier for', num:true, fmt: r => `${r.cheapest} of ${r.procs} procedures` },
+      { key:'hospitals', label:'Hospitals', num:true },
+      ...(scope === 'all' ? [{ key:'states', label:'States', num:true }] : []),
+      { key:'pairs',     label:'Price points', num:true, fmt: r => (r.pairs || 0).toLocaleString() },
+    ], rows, 'ratio', false);
+    return;
+  }
+
+  // view === 'proc'
+  const procSel = document.getElementById('insProc');
+  if(procSel.dataset.scope !== scope){
+    const keep = procSel.value;
+    fillProcSelect(procSel, Object.keys(data.procs || {}));
+    if(keep && [...procSel.options].some(o => o.value === keep)) procSel.value = keep;
+    procSel.dataset.scope = scope;
+  }
+  const proc = procSel.value;
+  const e = (data.procs || {})[proc] || { payers: {} };
+  const cash = e.cash || null;
+  const rows = Object.entries(e.payers)
+    .map(([f, s]) => ({ id: f, carrier: carrierLabel(f), n: s.n, median: s.median, p25: s.p25, p75: s.p75,
+                        vs: cash ? s.median / cash.median : null }))
+    .sort((a,b) => a.median - b.median);
+  const pname = procById[proc] ? procById[proc].name : proc;
+  hBars(chart, rows.map(r => ({ label: r.carrier, value: r.median, lo: r.p25, hi: r.p75,
+                                text: `${fmtUsd(r.median)} · n=${r.n}` })),
+    { ref: cash ? {value: cash.median} : null, aria: `${pname}: median negotiated rate by carrier`,
+      foot: 'bar = median rate · whisker = middle half of hospitals' +
+            (cash ? ` · dashed = median cash ${fmtUsd(cash.median)} (n=${cash.n})` : ''),
+      empty: 'Fewer than 5 hospitals publish carrier rates for this procedure here.' });
+  count.textContent = rows.length
+    ? `${pname} in ${insScopeLabel(scope)}: ${rows.length} carriers with rates from at least 5 hospitals.`
+    : '';
+  renderTable(table, [
+    { key:'carrier', label:'Carrier' },
+    { key:'median',  label:'Median rate', num:true, fmt: r => fmtUsd(r.median) },
+    { key:'p25',     label:'25th pct',    num:true, fmt: r => fmtUsd(r.p25) },
+    { key:'p75',     label:'75th pct',    num:true, fmt: r => fmtUsd(r.p75) },
+    { key:'vs',      label:'vs cash',     num:true, fmt: r => r.vs == null ? '—' : (Math.round(r.vs * 100) / 100) + '×' },
+    { key:'n',       label:'Hospitals',   num:true },
+  ], rows, 'median', false);
+}
+
+document.getElementById('insurersBtn').addEventListener('click', async () => {
+  if(!MANIFEST) await loadManifest();
+  const c = await loadCompare();
+  const chart = document.getElementById('insChart');
+  if(!c || !c.insurers){
+    chart.innerHTML = `<div class="cmp-empty">No insurer summary published yet. It appears after the next data refresh.</div>`;
+    document.getElementById('insCount').textContent = '';
+    document.getElementById('insTable').innerHTML = '';
+    showScreen('screen-insurers');
+    return;
+  }
+  const scope = document.getElementById('insScope');
+  if(!scope.options.length){
+    const add = (sel, v, t) => { const o = document.createElement('option'); o.value = v; o.textContent = t; sel.appendChild(o); };
+    add(scope, 'all', 'All covered states');
+    Object.keys(c.regions).filter(k => c.regions[k].insurers)
+      .sort((a,b) => regionLabel(a).localeCompare(regionLabel(b)))
+      .forEach(k => add(scope, k, regionLabel(k)));
+    const yours = state.zipState && String(state.zipState).toLowerCase();
+    if(yours && c.regions[yours] && c.regions[yours].insurers) scope.value = yours;
+    const car = document.getElementById('insCarrier');
+    Object.keys(c.insurers.payers).sort((a,b) => carrierLabel(a).localeCompare(carrierLabel(b)))
+      .forEach(f => add(car, f, carrierLabel(f)));
+    if(state.payerId && state.payerId !== 'cash' && c.insurers.payers[state.payerId]) car.value = state.payerId;
+  }
+  await renderInsurers();
+  showScreen('screen-insurers');
+});
+['insView','insScope','insProc','insCarrier'].forEach(id =>
+  document.getElementById(id).addEventListener('change', renderInsurers));
+document.getElementById('backFromInsurers').addEventListener('click',
   () => showScreen('screen-body'));
 
 // Deep links: route the hash on load (buttons exist by now, data loads lazily).
