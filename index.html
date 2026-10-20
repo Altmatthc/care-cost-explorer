@@ -112,9 +112,14 @@
 
   /* ---- Screen 3: results ---- */
   .results-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
-  .sort-toggle{display:flex;gap:6px;}
+  .sort-toggle{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
   .sort-btn{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--line);border-radius:5px;background:#fff;cursor:pointer;color:var(--muted);}
   .sort-btn.active{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .toggle{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:6px;padding:7px 4px;cursor:pointer;user-select:none;}
+  .toggle input{accent-color:var(--teal);margin:0;}
+  .hidden-note{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);padding:10px 0 4px;}
+  .hidden-note button{background:none;border:none;color:var(--teal);text-decoration:underline;cursor:pointer;font:inherit;padding:0;}
+  .since{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:2px;}
 
   .results-body{display:flex;gap:20px;flex-wrap:wrap;}
   .results-list{flex:1 1 380px;min-width:300px;}
@@ -506,6 +511,7 @@
           <button class="sort-btn" data-sort="distance">Nearest</button>
           <button class="sort-btn" data-sort="rating">Highest rated</button>
           <button class="sort-btn" data-sort="wait">Shortest ER wait</button>
+          <label class="toggle"><input type="checkbox" id="pricedOnly" checked> Only hospitals with a price</label>
         </div>
       </div>
       <div class="setting-note" id="settingNote"></div>
@@ -961,7 +967,7 @@ const ZIPS = {
 // ---------------------------------------------------------------------------
 // STATE + SCREEN NAV
 // ---------------------------------------------------------------------------
-let state = { region:null, procedureId:null, payerId:'cash', zip:null, zipLat:null, zipLng:null, sort:'price', radius:25 };
+let state = { region:null, procedureId:null, payerId:'cash', zip:null, zipLat:null, zipLng:null, sort:'price', radius:25, pricedOnly:true };
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -1605,6 +1611,14 @@ function tierOf(price, sorted){
 // Delegated: result cards are rebuilt on every render, so binding to each
 // badge individually would leak handlers and break after a re-sort.
 document.getElementById('resultsList').addEventListener('click', e => {
+  const showAll = e.target.closest('.show-unpriced-btn');
+  if(showAll){
+    state.pricedOnly = false;
+    const cb = document.getElementById('pricedOnly');
+    if(cb) cb.checked = false;
+    renderResults();
+    return;
+  }
   const widen = e.target.closest('.widen-btn');
   if(widen){
     state.radius = parseInt(widen.dataset.r, 10);
@@ -1641,6 +1655,11 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     state.sort = btn.dataset.sort;
     renderResults();
   });
+});
+
+document.getElementById('pricedOnly').addEventListener('change', e => {
+  state.pricedOnly = e.target.checked;
+  renderResults();
 });
 
 const STATUS_LABEL = {
@@ -2053,12 +2072,23 @@ function renderResults(){
 
   const validPrices = rows.filter(r=>r.price!=null).map(r=>r.price).sort((a,b)=>a-b);
 
+  // Hospitals with no price for this procedure never outrank one that has
+  // one, whatever the sort. With the toggle on they drop out entirely; the
+  // count of what was hidden is shown so the gap is never silent.
+  const unpriced = rows.filter(r => r.price == null).length;
+  const allRows = rows;                       // coverage explainer needs the unfiltered set
+  if(state.pricedOnly) rows = rows.filter(r => r.price != null);
+  const byPriced = (a,b) => (a.price == null) - (b.price == null);
+
   if(state.sort === 'price')         rows.sort((a,b) => (a.price ?? Infinity) - (b.price ?? Infinity));
-  else if(state.sort === 'distance') rows.sort((a,b) => a.distance - b.distance);
-  else if(state.sort === 'rating')   rows.sort((a,b) => (b.info.stars ?? 0) - (a.info.stars ?? 0));
-  else if(state.sort === 'wait')     rows.sort((a,b) => (a.info.erWait ?? Infinity) - (b.info.erWait ?? Infinity));
+  else if(state.sort === 'distance') rows.sort((a,b) => byPriced(a,b) || a.distance - b.distance);
+  else if(state.sort === 'rating')   rows.sort((a,b) => byPriced(a,b) || (b.info.stars ?? 0) - (a.info.stars ?? 0));
+  else if(state.sort === 'wait')     rows.sort((a,b) => byPriced(a,b) || (a.info.erWait ?? Infinity) - (b.info.erWait ?? Infinity));
 
   const setting = settingOf(proc);
+  // ER wait times are not yet sourced from CMS (OP-18) on the live path, so
+  // the sort would rank on nothing. Offer it only where there is data.
+  const haveWaits = rows.some(r => r.info.erWait != null);
 
   // Only offer sorts that mean something for this kind of care
   // Delegated: result cards are rebuilt on every render, so binding to each
@@ -2097,7 +2127,7 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     const s = btn.dataset.sort;
     const relevant = s === 'price' || s === 'distance'
       || (s === 'rating' && ['emergency','inpatient','outpatient','recurring'].includes(setting))
-      || (s === 'wait' && setting === 'emergency');
+      || (s === 'wait' && setting === 'emergency' && haveWaits);
     btn.style.display = relevant ? '' : 'none';
     if(!relevant && btn.classList.contains('active')){
       btn.classList.remove('active');
@@ -2188,15 +2218,19 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     }
   }
 
+  const listEl = document.getElementById('resultsList');
+  listEl.innerHTML = '';
   if(!rows.length){
-    document.getElementById('resultsList').innerHTML =
-      `<div class="no-results">No hospitals within ${state.radius} miles of
+    listEl.innerHTML = unpriced && state.pricedOnly
+      ? `<div class="no-results">No hospital within ${state.radius || 'any'} miles of
+       ${esc(state.zip)} publishes a price for this. ${unpriced} nearby
+       ${unpriced === 1 ? 'hospital has' : 'hospitals have'} no price listed —
+       <button type="button" class="show-unpriced-btn">show them</button>
+       <button type="button" class="widen-btn" data-r="0">or search any distance</button></div>`
+      : `<div class="no-results">No hospitals within ${state.radius} miles of
        ${esc(state.zip)}. <button type="button" class="widen-btn"
        data-r="0">Search any distance</button></div>`;
   }
-
-  const listEl = document.getElementById('resultsList');
-  listEl.innerHTML = '';
   let rank = 0;
   rows.forEach(({h, price, info, distance, driveMin, inNetwork}) => {
     rank++;
@@ -2207,12 +2241,19 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     const priceLabel = state.payerId === 'cash' ? 'cash price'
                      : inNetwork ? 'negotiated rate' : 'cash price (out of network)';
 
+    // "Steady since" — the date we first recorded this exact price. Only
+    // when there is no move to show; a move badge below carries its own date.
+    const liveRecEarly = LIVE ? (LIVE.prices[proc.id] || {})[h.id] : null;
+    const steady = (liveRecEarly && price != null && liveRecEarly.prev == null
+                    && liveRecEarly.since) ? monthYear(liveRecEarly.since) : '';
+
     let inner = `<div class="card-top"><div class="card-name">` +
                 `<span class="rank-badge" style="background:${tierColor[tier]}">${rank}</span>` +
                 `${esc(h.name)}</div>`;
     inner += price!=null
-      ? `<div style="text-align:right;"><div class="card-price">$${price.toLocaleString()}</div><div class="price-label">${priceLabel}</div></div>`
-      : `<div class="no-data">not offered here</div>`;
+      ? `<div style="text-align:right;"><div class="card-price">$${price.toLocaleString()}</div><div class="price-label">${priceLabel}</div>` +
+        (steady ? `<div class="since">steady since ${esc(steady)}</div>` : '') + `</div>`
+      : `<div class="no-data">no price published</div>`;
     inner += `</div><div class="card-meta">${esc(h.system)} &middot; ${esc(h.city)}</div>`;
 
     // A published price far from every peer is worth a caution. We don't know
@@ -2382,8 +2423,19 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     markers[h.id] = marker;
   });
 
+  // Say how many hospitals were hidden by the toggle, with a one-click undo.
+  if(rows.length && unpriced && state.pricedOnly){
+    const note = document.createElement('div');
+    note.className = 'hidden-note';
+    note.append(`${unpriced} nearby hospital${unpriced === 1 ? '' : 's'} with no published price hidden — `);
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'show-unpriced-btn'; b.textContent = 'show them';
+    note.appendChild(b);
+    listEl.appendChild(note);
+  }
+
   renderCoverageSummary();
-  renderCoverage(rows);
+  renderCoverage(allRows);
 
   zipMarker = L.marker([state.zipLat, state.zipLng], {
     icon: L.divIcon({
