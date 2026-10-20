@@ -21,9 +21,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import platform
 import subprocess
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -62,20 +64,55 @@ def save_state(st: dict) -> None:
     STATE_PATH.write_text(json.dumps(st, indent=1), encoding="utf-8")
 
 
+def _cmdlines() -> list[str]:
+    """Command lines of live python processes. PowerShell by full path (the
+    cron environment may not have it on PATH), with WMIC/tasklist fallbacks."""
+    if platform.system() != "Windows":
+        try:
+            r = subprocess.run(["pgrep", "-af", "python"], capture_output=True, text=True, timeout=30)
+            return r.stdout.splitlines()
+        except Exception:
+            return []
+    ps = Path(os.environ.get("SystemRoot", r"C:\Windows")) / "System32" / "WindowsPowerShell" / "v1.0" / "powershell.exe"
+    for cmd in (
+        [str(ps), "-NoProfile", "-NonInteractive", "-Command",
+         "Get-CimInstance Win32_Process -Filter \"Name='python.exe'\" | "
+         "Select-Object -ExpandProperty CommandLine"],
+        ["wmic", "process", "where", "name='python.exe'", "get", "CommandLine"],
+    ):
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+            if r.returncode == 0 and r.stdout.strip():
+                return r.stdout.splitlines()
+        except Exception:
+            continue
+    return []
+
+
 def processes_matching(fragment: str) -> int:
     """Count live python processes whose command line contains `fragment`."""
-    try:
-        if platform.system() == "Windows":
-            r = subprocess.run(
-                ["powershell", "-NoProfile", "-Command",
-                 "Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'python.exe' } "
-                 "| Select-Object -ExpandProperty CommandLine"],
-                capture_output=True, text=True, timeout=60)
-        else:
-            r = subprocess.run(["pgrep", "-af", "python"], capture_output=True, text=True)
-        return sum(1 for ln in r.stdout.splitlines() if fragment in ln)
-    except Exception:
-        return 0
+    return sum(1 for ln in _cmdlines() if fragment in ln)
+
+
+def stage_active(state: str, stage: str) -> bool:
+    """Is a run_state.py <state> <stage> still running?
+
+    Belt and braces: a live process match wins; otherwise, for stages that
+    were launched through launch_detached, 'no rc file yet' means running;
+    and for a harvest launched any other way, a prices log written in the
+    last 20 minutes means running. Process scanning alone proved unreliable
+    from the cron environment (returned nothing while the harvest ran)."""
+    if processes_matching(f"run_state.py {state} {stage}"):
+        return True
+    rc = LOGS / f"{state}-{stage}.rc"
+    log = LOGS / (f"{state}-prices.log" if stage == "prices" else f"{state}-finish.log")
+    launched = LOGS / (f"{state}-prices-driver.out" if stage == "prices" else f"{state}-finish-driver.out")
+    if launched.exists() and not rc.exists() and stage == "finish":
+        # finish is minutes, not hours; a missing rc file 30 min after launch is a crash
+        return (time.time() - launched.stat().st_mtime) < 1800
+    if stage == "prices" and log.exists():
+        return (time.time() - log.stat().st_mtime) < 1200
+    return False
 
 
 def launch_detached(args: list[str], log: Path, rc_file: Path) -> None:
@@ -170,7 +207,7 @@ def tick(st: dict) -> list[str]:
         return out
 
     if phase in ("harvest", "reharvest"):
-        if processes_matching(f"run_state.py {state} prices"):
+        if stage_active(state, "prices"):
             return out
         out.append(f"{state.upper()}: harvest finished — {counts(state)}")
         args = [RUN_STATE, state, "finish"]
@@ -184,7 +221,7 @@ def tick(st: dict) -> list[str]:
         return out
 
     if phase == "finish":
-        if processes_matching(f"run_state.py {state} finish"):
+        if stage_active(state, "finish"):
             return out
         rc = read_rc(LOGS / f"{state}-finish.rc")
         if rc == 0:

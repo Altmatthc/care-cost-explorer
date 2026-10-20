@@ -68,21 +68,29 @@ def load(p: Path, default):
 
 
 def harvest_running(state: str) -> bool:
-    """True if a build_data.py --region <state> process is alive (Windows/Unix)."""
+    """True if a build_data.py --region <state> process is alive, or its
+    prices log was written in the last 20 minutes (process scanning can
+    return nothing from a service/cron context, so the log is the backstop)."""
+    lines = ""
     try:
         if platform.system() == "Windows":
+            ps = Path(os.environ.get("SystemRoot", r"C:\Windows")) / "System32" / \
+                "WindowsPowerShell" / "v1.0" / "powershell.exe"
             r = subprocess.run(
-                ["powershell", "-NoProfile", "-Command",
-                 "Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like "
-                 "'*build_data.py*' } | Select-Object -ExpandProperty CommandLine"],
-                capture_output=True, text=True, timeout=30)
+                [str(ps), "-NoProfile", "-NonInteractive", "-Command",
+                 "Get-CimInstance Win32_Process -Filter \"Name='python.exe'\" | "
+                 "Select-Object -ExpandProperty CommandLine"],
+                capture_output=True, text=True, timeout=90)
             lines = r.stdout
         else:
             r = subprocess.run(["pgrep", "-af", "build_data.py"], capture_output=True, text=True)
             lines = r.stdout
     except Exception:
-        return False
-    return any(f"--region {state}" in ln for ln in lines.splitlines())
+        lines = ""
+    if any("build_data.py" in ln and f"--region {state}" in ln for ln in lines.splitlines()):
+        return True
+    log = LOGS / f"{state}-prices.log"
+    return log.exists() and (time.time() - log.stat().st_mtime) < 1200
 
 
 def status_counts(state: str) -> tuple[int, Counter]:
