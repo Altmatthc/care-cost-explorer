@@ -214,6 +214,21 @@
   .cov-warn{background:#FBF0DA;color:#8A6A2E;}
   .cov-bad{background:#F7E4DE;color:var(--hightag);}
   .cov-neutral{background:#EDF1F1;color:var(--muted);}
+  /* "What you can do" steps on unpriced hospitals */
+  .cov-act{margin-top:7px;background:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-dark);cursor:pointer;}
+  .cov-act[aria-expanded="true"]{background:var(--teal-soft);border-color:var(--teal-soft);}
+  .cov-steps{display:none;}
+  .cov-steps.open{display:block;margin-top:8px;}
+  .cov-step{position:relative;padding:9px 10px 9px 36px;margin-top:6px;background:#F7FAFA;border:1px solid var(--line);border-radius:6px;font-size:12.5px;line-height:1.55;}
+  .cov-step-plain{padding-left:10px;}
+  .cov-step a{color:var(--teal-dark);font-weight:600;}
+  .cov-stepn{position:absolute;left:10px;top:10px;width:18px;height:18px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+  details.cov-step summary{cursor:pointer;list-style:none;}
+  details.cov-step summary::-webkit-details-marker{display:none;}
+  .cov-letter{display:block;width:100%;box-sizing:border-box;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.45;padding:8px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink);resize:vertical;}
+  .cov-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+  .copy-btn{display:inline-block;padding:6px 10px;border:1px solid var(--teal);border-radius:5px;background:#fff;color:var(--teal-dark);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;text-decoration:none;font-weight:500;}
+  .copy-btn:hover{background:var(--teal-soft);}
   .cov-age{font-size:11.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
   .cov-detail{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45;}
   .cov-report{margin-top:12px;padding:10px 12px;background:#F4F8F7;border:1px solid var(--line);border-radius:6px;font-size:12.5px;line-height:1.55;}
@@ -2189,6 +2204,9 @@ async function loadLiveData(region = 'san-diego'){
     live.forEach(h => hospitals.push({
       id:h.id, name:fixName(h.name), system:h.system || h.type || '', city:h.city,
       lat:h.lat, lng:h.lng, geo_approx: !!h.geo_approx,
+      // Contact details for the "what you can do" steps on unpriced hospitals.
+      phone:h.phone || '', address:h.address || '', zip:h.zip || '', st:h.state || '',
+      ccn:h.ccn || '', domain:h.domain || '',
     }));
 
     // Real hospital attributes from CMS
@@ -2825,6 +2843,8 @@ function renderCoverage(rows){
     if(s.consecutive_failures > 1){
       html += `<div class="cov-detail">failed ${s.consecutive_failures} checks in a row</div>`;
     }
+    html += `<button type="button" class="cov-act" data-h="${esc(h.id)}" aria-expanded="false">What you can do ›</button>
+      <div class="cov-steps"></div>`;
     html += `</div>`;
   });
 
@@ -2843,15 +2863,125 @@ function renderCoverage(rows){
 
   if(reportable.length){
     html += `<div class="cov-report">
-      <b>${reportable.length} of these are subject to the federal price
-      transparency rule</b> (45 CFR 180) and appear not to have published a
-      usable file. CMS investigates public complaints, and they can be filed
-      anonymously.
-      <a href="https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency"
-         target="_blank" rel="noopener">Report to CMS →</a></div>`;
+      <b>${reportable.length} of these ${reportable.length === 1 ? 'is' : 'are'} subject to the federal price
+      transparency rule</b> (45 CFR Part 180) and appear${reportable.length === 1 ? 's' : ''} not to have published a
+      usable file. Open <i>What you can do</i> on any of them for a ready-to-send
+      request to the hospital and, if they don't answer, a CMS complaint.</div>`;
   }
   el.innerHTML = html;
 }
+
+// ---------------------------------------------------------------------------
+// NON-COMPLIANCE: what a patient can do about a hospital with no usable file.
+// Check it yourself -> ask the hospital -> report to CMS. The letters are
+// written as the patient and state only what they can verify themselves.
+// ---------------------------------------------------------------------------
+const CMS_COMPLAINT_FORM = 'https://surveys.cms.gov/jfe/form/SV_5db4s0KOvVns5gy';
+const CMS_HPT_PAGE = 'https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency';
+const CMS_HPT_EMAIL = 'PriceTransparencyHospitalCharges@cms.hhs.gov';
+
+function hostOf(h){ const d = String(h.domain || '').toLowerCase(); return /^[a-z0-9.-]+\.[a-z]{2,}$/.test(d) ? d : ''; }
+function todayLong(){ return new Date().toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'}); }
+function hospAddr(h){ return [h.address, [h.city, h.st].filter(Boolean).join(', '), h.zip].filter(Boolean).join(', '); }
+
+function askLetter(h, procName){
+  return `To the billing / patient financial services team at ${h.name},
+
+I'm trying to find out what ${h.name} charges${procName ? ` for ${procName}` : ''} before deciding where to get care. Under the federal Hospital Price Transparency rule (45 CFR Part 180), every hospital must publish a machine-readable file of its standard charges on its website, with a link to it in a "cms-hpt.txt" file at the root of the site, and must offer a consumer-friendly way to shop for common services.
+
+I looked for this on your website on ${todayLong()} and couldn't find it. Could you please send me:
+1. The web address of your machine-readable standard charges file, and
+2. Your discounted cash price${procName ? ` for ${procName}` : ' for the service I need'}, and the negotiated rate for my insurance plan if you have one.
+
+Hospital: ${h.name}${h.ccn ? ` (CMS certification number ${h.ccn})` : ''}
+Address: ${hospAddr(h)}
+
+Thank you,
+[your name]
+[your phone or email]`;
+}
+
+function complaintLetter(h){
+  const host = hostOf(h);
+  return `Hospital price transparency complaint
+
+Hospital: ${h.name}
+CMS certification number (CCN): ${h.ccn || 'unknown'}
+Address: ${hospAddr(h)}
+Phone: ${h.phone || 'unknown'}
+Hospital website: ${host ? 'https://' + host : 'not found'}
+
+What I found: On ${todayLong()} I looked for this hospital's machine-readable standard charges file and could not find one. ${host ? `There is no cms-hpt.txt file at https://${host}/cms-hpt.txt and I could not locate a standard charges file anywhere on the website.` : "I could not locate a standard charges file on the hospital's website."}
+
+What I did next: I contacted the hospital on [date] by [phone / email] to ask where the file is published. [They did not respond / They could not provide it / They said: ...]
+
+I believe this hospital is not meeting the requirements of 45 CFR Part 180 and ask CMS to review it.
+
+[your name]
+[your contact details, if you wish to be contacted]`;
+}
+
+function complianceSteps(h, s, proc){
+  const host = hostOf(h);
+  const procName = proc ? proc.name : '';
+  const tel = String(h.phone || '').replace(/[^\d+]/g, '');
+  const callLink = tel ? `<a href="tel:${esc(tel)}">${esc(h.phone)}</a>` : 'the hospital';
+  const search = `https://www.google.com/search?q=${encodeURIComponent(`"${h.name}" price transparency standard charges`)}`;
+  if(s.status === 'exempt'){
+    return `<div class="cov-step cov-step-plain"><b>Nothing to report.</b> This is a federal facility (VA or military). The hospital price transparency rule applies only to state-licensed hospitals; ask the facility's patient services directly about costs.</div>`;
+  }
+  if(s.status === 'empty'){
+    return `<div class="cov-step cov-step-plain"><b>They do publish a file</b> — it just didn't include ${procName ? esc(procName) : 'this service'} in a form we could read. Call ${callLink} and ask for the discounted cash price${procName ? ` for ${esc(procName)}` : ''}; hospitals must give you one on request.</div>`;
+  }
+  let html = `<div class="cov-step"><span class="cov-stepn">1</span><b>Check for yourself.</b> `;
+  if(s.status === 'unreachable'){
+    const u = safeUrl(s.source_url);
+    html += `We found a file but the hospital's server blocked our reader. Try opening it yourself: ` +
+      (u ? `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(u.replace(/^https?:\/\//, '').slice(0, 60))}…</a>` : 'look for a "Price Transparency" link on the hospital website') + '.';
+  }else if(host){
+    html += `The rule requires a small text file at <a href="https://${esc(host)}/cms-hpt.txt" target="_blank" rel="noopener noreferrer">${esc(host)}/cms-hpt.txt</a> that points to the price file. We found nothing there. Also look for a "Price Transparency" or "Standard Charges" link, usually in the website footer.`;
+  }else{
+    html += `We couldn't identify this hospital's website, so we may simply have missed it. <a href="${esc(search)}" target="_blank" rel="noopener noreferrer">Search for its price-transparency page</a> — the rule requires a machine-readable standard charges file, usually linked from the footer.`;
+  }
+  html += `</div>`;
+  const ask = askLetter(h, procName);
+  const askSubject = 'Request for your standard charges (hospital price transparency)';
+  html += `<div class="cov-step"><span class="cov-stepn">2</span><b>Ask the hospital.</b> Call ${callLink} and ask for patient financial services, or send this (add their billing email — hospitals rarely publish one):` +
+    `<textarea class="cov-letter" readonly rows="6">${esc(ask)}</textarea>` +
+    `<div class="cov-btns"><button type="button" class="copy-btn" data-copy="Copy message">Copy message</button>` +
+    `<a class="copy-btn" href="mailto:?subject=${encodeURIComponent(askSubject)}&body=${encodeURIComponent(ask)}">Open in email</a></div></div>`;
+  const cl = complaintLetter(h);
+  html += `<details class="cov-step cov-report-step"><summary><span class="cov-stepn">3</span><b>No answer after two weeks? Report it to CMS.</b></summary>` +
+    `<div class="cov-sub">CMS enforces this rule with warning letters, corrective-action plans and fines, and complaints can be anonymous. File once you've looked on the website, asked the hospital and waited for a reply — the complaint says what you did and when.</div>` +
+    `<textarea class="cov-letter" readonly rows="8">${esc(cl)}</textarea>` +
+    `<div class="cov-btns"><button type="button" class="copy-btn" data-copy="Copy complaint">Copy complaint</button>` +
+    `<a class="copy-btn" href="${CMS_COMPLAINT_FORM}" target="_blank" rel="noopener noreferrer">CMS complaint form →</a>` +
+    `<a class="copy-btn" href="mailto:${CMS_HPT_EMAIL}?subject=${encodeURIComponent('Hospital price transparency complaint: ' + h.name)}&body=${encodeURIComponent(cl)}">Email CMS</a></div>` +
+    `<div class="cov-sub">CMS's own page on the rule: <a href="${CMS_HPT_PAGE}" target="_blank" rel="noopener noreferrer">hospital price transparency</a>.</div></details>`;
+  return html;
+}
+
+document.getElementById('coveragePanel').addEventListener('click', e => {
+  const act = e.target.closest('.cov-act');
+  if(act){
+    const box = act.closest('.cov-row').querySelector('.cov-steps');
+    const open = box.classList.toggle('open');
+    act.setAttribute('aria-expanded', String(open));
+    if(open && !box.innerHTML){
+      const h = hospitalById[act.dataset.h] || {name: 'this hospital'};
+      box.innerHTML = complianceSteps(h, SCAN_STATUS[act.dataset.h] || {}, procById[state.procedureId]);
+    }
+    return;
+  }
+  const cp = e.target.closest('button.copy-btn');
+  if(cp){
+    const ta = cp.closest('.cov-step').querySelector('textarea');
+    const done = () => { cp.textContent = 'Copied ✓'; setTimeout(() => { cp.textContent = cp.dataset.copy; }, 1500); };
+    const fallback = () => { ta.focus(); ta.select(); try{ document.execCommand('copy'); }catch(_){} done(); };
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(done, fallback);
+    else fallback();
+  }
+});
 
 function renderResults(){
   const proc = procById[state.procedureId];
@@ -2897,35 +3027,8 @@ function renderResults(){
   // Only offer sorts that mean something for this kind of care
   // Delegated: result cards are rebuilt on every render, so binding to each
 // badge individually would leak handlers and break after a re-sort.
-document.getElementById('resultsList').addEventListener('click', e => {
-  const widen = e.target.closest('.widen-btn');
-  if(widen){
-    state.radius = parseInt(widen.dataset.r, 10);
-    const sel = document.getElementById('radiusSelect');
-    if(sel) sel.value = String(state.radius);
-    renderResults();
-    return;
-  }
-  const btn = e.target.closest('.badge-btn');
-  if(!btn) return;
-  e.stopPropagation();                       // don't also fly the map to the pin
-  const card = btn.closest('.card');
-  const panel = card.querySelector('.badge-detail');
-  const key = btn.dataset.badge;
-  const open = btn.getAttribute('aria-expanded') === 'true';
-
-  card.querySelectorAll('.badge-btn').forEach(b =>
-    b.setAttribute('aria-expanded', 'false'));
-
-  if(open){                                   // clicking the open one closes it
-    panel.innerHTML = '';
-    panel.classList.remove('open');
-    return;
-  }
-  btn.setAttribute('aria-expanded', 'true');
-  panel.innerHTML = badgeDetail(key, btn.dataset.h, btn.dataset.p);
-  panel.classList.add('open');
-});
+// (The handler itself lives above with the show-unpriced / widen buttons —
+// a second copy here double-fired badgeDetail and raced the map fly-to.)
 
 document.querySelectorAll('.sort-btn').forEach(btn => {
     const s = btn.dataset.sort;
@@ -3211,7 +3314,12 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
     }
 
     card.innerHTML = inner;
-    card.addEventListener('click', () => { map.flyTo([h.lat,h.lng], 13, {duration:0.6}); markers[h.id].openPopup(); });
+    card.addEventListener('click', e => {
+      // Badge buttons and links inside the card handle their own clicks.
+      if(e.target.closest('.badge-btn, .badge-detail, a, button')) return;
+      if(!(isFinite(h.lat) && isFinite(h.lng))) return;
+      try{ map.flyTo([h.lat,h.lng], 13, {duration:0.6}); if(markers[h.id]) markers[h.id].openPopup(); }catch(_){}
+    });
     listEl.appendChild(card);
 
     // Numbered pin matching this card's position in the list.
