@@ -201,6 +201,12 @@ def do_finish(state: str, no_publish: bool, no_commit: bool,
     rc = run(["scripts/validate_data.py", "--region", state], log)
     stage_log(state, f"validate: exit={rc} (plausibility FAILs on odd published prices are expected; read the log)")
 
+    # Cross-state summary + per-state trends for the compare / movers views.
+    if run(["scripts/build_compare.py"], log):
+        stage_log(state, "compare: build_compare.py FAILED (non-fatal; site compare page may be stale)")
+    else:
+        stage_log(state, "compare: compare.json + trends rebuilt")
+
     # regions.json must still carry catalogue_base for every published region.
     regions = load(DATA / "regions.json", {})
     lost = [r for r, m in regions.items() if r != state and not m.get("catalogue_base")]

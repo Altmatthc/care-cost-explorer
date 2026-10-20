@@ -96,6 +96,33 @@
   .general-btn{margin-top:22px;display:block;width:100%;text-align:center;padding:13px;border:1px dashed var(--line);border-radius:8px;background:transparent;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;cursor:pointer;}
   .general-btn:hover{border-color:var(--teal);color:var(--teal-dark);}
 
+  /* ---- Compare states / movers ---- */
+  .field-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .cmp-chart{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0;overflow-x:auto;}
+  .cmp-chart:empty{display:none;}
+  .cmp-chart svg{display:block;max-width:100%;font-family:'IBM Plex Mono',monospace;}
+  .cmp-chart .bar{fill:var(--teal);opacity:.85;}
+  .cmp-chart .bar.you{fill:var(--teal-dark);opacity:1;}
+  .cmp-chart .whisker{stroke:var(--ink);stroke-width:1.2;}
+  .cmp-chart .lbl{font-size:11px;fill:var(--ink);}
+  .cmp-chart .lbl.muted{fill:var(--muted);}
+  .cmp-chart .axis{stroke:var(--line);stroke-width:1;}
+  .cmp-chart .line{fill:none;stroke:var(--teal);stroke-width:2;}
+  .cmp-chart .dot{fill:var(--teal);}
+  .cmp-table-wrap{overflow-x:auto;}
+  .cmp-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12.5px;}
+  .cmp-table th,.cmp-table td{padding:8px 10px;border-top:1px solid var(--line);text-align:left;white-space:nowrap;}
+  .cmp-table th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer;user-select:none;border-top:none;}
+  .cmp-table th.sorted{color:var(--teal-dark);}
+  .cmp-table td.num{font-family:'IBM Plex Mono',monospace;text-align:right;}
+  .cmp-table th.num{text-align:right;}
+  .cmp-table tr.you td{background:var(--teal-soft);}
+  .cmp-table td.up{color:var(--hightag);font-weight:600;}
+  .cmp-table td.down{color:var(--lowtag);font-weight:600;}
+  .cmp-table a{color:var(--teal-dark);}
+  .cmp-foot{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.5;}
+  .cmp-empty{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px;font-size:13.5px;line-height:1.6;color:var(--muted);}
+
   /* ---- Screen 2: procedure + zip ---- */
   .back-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:16px;font-family:'IBM Plex Mono',monospace;}
   .back-link:hover{color:var(--teal-dark);}
@@ -438,6 +465,8 @@
       </div>
       <button class="general-btn" id="generalBtn">NOT SURE / GENERAL CARE &rarr; SEE ALL PROCEDURES</button>
       <button class="general-btn" id="drugsBtn" style="margin-top:8px;">COMPARE DRUG &amp; INFUSION PRICES &rarr;</button>
+      <button class="general-btn" id="compareBtn" style="margin-top:8px;">COMPARE STATES &rarr;</button>
+      <button class="general-btn" id="moversBtn" style="margin-top:8px;">PRICE MOVERS &amp; TRENDS &rarr;</button>
     </div>
 
     <!-- SCREEN 2: procedure + zip -->
@@ -496,6 +525,51 @@
       <div class="step-sub" id="codeSub"></div>
       <div class="cost-note" id="codeNote"></div>
       <div id="codeResults"></div>
+    </div>
+
+    <!-- SCREEN 2d: compare states -->
+    <div class="screen" id="screen-compare">
+      <div class="back-link" id="backFromCompare">&larr; BACK</div>
+      <div class="step-title">Compare states</div>
+      <div class="step-sub">How states compare on what hospitals charge, and on
+        whether their hospitals publish prices at all. Medians are over the
+        hospitals in each state that published a usable price; the count is
+        shown so a thin sample is never mistaken for a trend.</div>
+      <div class="field" style="max-width:420px;">
+        <label for="cmpProc">Procedure</label>
+        <select id="cmpProc"></select>
+      </div>
+      <div class="cmp-chart" id="cmpChart"></div>
+      <div class="cmp-table-wrap"><table class="cmp-table" id="cmpTable"></table></div>
+      <div class="step-title" style="margin-top:28px;">Price transparency scorecard</div>
+      <div class="step-sub">Every hospital subject to the federal rule must publish a
+        machine-readable price file. "Readable" means we found one and could
+        parse real prices from it; "300+ codes" and "dollar rates" are quality
+        marks on the files that exist.</div>
+      <div class="cmp-table-wrap"><table class="cmp-table" id="scoreTable"></table></div>
+      <div class="cmp-foot" id="cmpFoot"></div>
+    </div>
+
+    <!-- SCREEN 2e: price movers / trends -->
+    <div class="screen" id="screen-movers">
+      <div class="back-link" id="backFromMovers">&larr; BACK</div>
+      <div class="step-title">Price movers &amp; trends</div>
+      <div class="step-sub">Hospitals overwrite their price files in place, so
+        nobody else keeps a record of what a price used to be. We do. Every
+        change we have observed is listed below, newest first.</div>
+      <div class="field-row">
+        <div class="field" style="max-width:260px;">
+          <label for="mvRegion">State</label>
+          <select id="mvRegion"></select>
+        </div>
+        <div class="field" style="max-width:420px;">
+          <label for="mvProc">Procedure (chart)</label>
+          <select id="mvProc"></select>
+        </div>
+      </div>
+      <div class="cmp-chart" id="mvChart"></div>
+      <div class="result-count" id="mvCount"></div>
+      <div class="cmp-table-wrap"><table class="cmp-table" id="mvTable"></table></div>
     </div>
 
     <!-- SCREEN 3: results -->
@@ -1217,6 +1291,308 @@ document.getElementById('backFromCode').addEventListener('click',
   () => showScreen('screen-body'));
 document.getElementById('drugSearch').addEventListener('input',
   e => renderDrugs(e.target.value));
+
+// ---------------------------------------------------------------------------
+// COMPARE STATES + PRICE MOVERS
+// Both read small precomputed files written by scripts/build_compare.py at the
+// end of every publish: data/compare.json (one summary per region) and
+// data/<region>-trends.json (every observed price change + statewide median
+// series). Charts are inline SVG built with DOM calls — no chart library, and
+// every data-derived string goes through esc() or textContent.
+// ---------------------------------------------------------------------------
+let COMPARE = null;
+const TRENDS = {};          // region -> trends json
+
+async function loadCompare(){
+  if(COMPARE) return COMPARE;
+  try{
+    const r = await fetch('data/compare.json');
+    if(!r.ok) return null;
+    COMPARE = await r.json();
+    return COMPARE;
+  }catch(e){ return null; }
+}
+
+async function loadTrends(region){
+  const safe = safeRegion(region);
+  if(!safe) return null;
+  if(TRENDS[safe]) return TRENDS[safe];
+  try{
+    const r = await fetch(`data/${safe}-trends.json`);
+    if(!r.ok) return null;
+    TRENDS[safe] = await r.json();
+    return TRENDS[safe];
+  }catch(e){ return null; }
+}
+
+function regionLabel(code){ return STATE_NAME[code] || String(code).toUpperCase(); }
+function fmtUsd(n){ return n == null ? '—' : '$' + Math.round(n).toLocaleString(); }
+function fmtPct(n){ return n == null ? '—' : n + '%'; }
+
+// Generic sortable table. cols: [{key, label, num, cls(row)->class, fmt(row)->string}]
+function renderTable(table, cols, rows, sortKey, desc, rowClass){
+  table.innerHTML = '';
+  const thead = table.createTHead();
+  const hr = thead.insertRow();
+  cols.forEach(c => {
+    const th = document.createElement('th');
+    th.textContent = c.label + (c.key === sortKey ? (desc ? ' ▼' : ' ▲') : '');
+    if(c.num) th.classList.add('num');
+    if(c.key === sortKey) th.classList.add('sorted');
+    th.addEventListener('click', () => {
+      const nd = (c.key === sortKey) ? !desc : !!c.num;
+      renderTable(table, cols, rows, c.key, nd, rowClass);
+    });
+    hr.appendChild(th);
+  });
+  const sorted = [...rows].sort((a,b) => {
+    const va = a[sortKey], vb = b[sortKey];
+    if(va == null && vb == null) return 0;
+    if(va == null) return 1;
+    if(vb == null) return -1;
+    const r = (typeof va === 'number') ? va - vb : String(va).localeCompare(String(vb));
+    return desc ? -r : r;
+  });
+  const tb = table.createTBody();
+  sorted.forEach(row => {
+    const tr = tb.insertRow();
+    if(rowClass && rowClass(row)) tr.className = rowClass(row);
+    cols.forEach(c => {
+      const td = tr.insertCell();
+      if(c.num) td.classList.add('num');
+      if(c.cls && c.cls(row)) td.classList.add(c.cls(row));
+      td.textContent = c.fmt ? c.fmt(row) : (row[c.key] == null ? '—' : row[c.key]);
+    });
+  });
+}
+
+function svgEl(tag, attrs, text){
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for(const k in attrs) el.setAttribute(k, attrs[k]);
+  if(text != null) el.textContent = text;
+  return el;
+}
+
+// Horizontal bars: one per state, median cash with a p25–p75 whisker.
+function renderCompareChart(el, procId, yourState){
+  el.innerHTML = '';
+  if(!COMPARE) return;
+  const rows = Object.entries(COMPARE.regions)
+    .map(([code, r]) => ({ code, s: r.procedures[procId] }))
+    .filter(x => x.s)
+    .sort((a,b) => a.s.median - b.s.median);
+  if(!rows.length){
+    el.innerHTML = `<div class="cmp-empty">No state has enough published prices for this procedure yet (we need at least 5 hospitals per state).</div>`;
+    return;
+  }
+  const W = 720, labelW = 150, rowH = 26, pad = 10;
+  const H = pad * 2 + rows.length * rowH + 18;
+  const maxV = Math.max(...rows.map(x => x.s.p75));
+  const x = v => labelW + (v / maxV) * (W - labelW - 70);
+  const svg = svgEl('svg', { viewBox:`0 0 ${W} ${H}`, width: W, height: H, role:'img',
+    'aria-label': `Median cash price by state for ${procById[procId] ? procById[procId].name : procId}` });
+  rows.forEach((row, i) => {
+    const y = pad + i * rowH;
+    const you = (row.code === yourState) || (yourState && COMPARE.regions[row.code] && (MANIFEST && (MANIFEST[row.code]||{}).states||[]).includes(yourState.toUpperCase()));
+    svg.appendChild(svgEl('text', { x: labelW - 8, y: y + 16, 'text-anchor':'end', class:'lbl' }, regionLabel(row.code)));
+    const bar = svgEl('rect', { x: x(0), y: y + 4, width: Math.max(1, x(row.s.median) - x(0)), height: rowH - 10, rx: 2,
+                                 class: 'bar' + (you ? ' you' : '') });
+    svg.appendChild(bar);
+    svg.appendChild(svgEl('line', { x1: x(row.s.p25), x2: x(row.s.p75), y1: y + rowH/2, y2: y + rowH/2, class:'whisker' }));
+    svg.appendChild(svgEl('line', { x1: x(row.s.p25), x2: x(row.s.p25), y1: y + 7, y2: y + rowH - 7, class:'whisker' }));
+    svg.appendChild(svgEl('line', { x1: x(row.s.p75), x2: x(row.s.p75), y1: y + 7, y2: y + rowH - 7, class:'whisker' }));
+    svg.appendChild(svgEl('text', { x: x(row.s.p75) + 6, y: y + 16, class:'lbl' }, `${fmtUsd(row.s.median)} · n=${row.s.n}`));
+  });
+  svg.appendChild(svgEl('text', { x: labelW, y: H - 4, class:'lbl muted' }, 'bar = median cash price · whisker = middle half of hospitals (25th–75th percentile)'));
+  el.appendChild(svg);
+}
+
+function renderCompare(){
+  if(!COMPARE){ return; }
+  const procSel = document.getElementById('cmpProc');
+  const procId = procSel.value;
+  const yourState = state.zipState ? String(state.zipState).toLowerCase() : null;
+  renderCompareChart(document.getElementById('cmpChart'), procId, yourState);
+
+  const rows = Object.entries(COMPARE.regions).map(([code, r]) => {
+    const s = r.procedures[procId] || {};
+    return { code, state: regionLabel(code), n: s.n ?? null, median: s.median ?? null,
+             p25: s.p25 ?? null, p75: s.p75 ?? null, min: s.min ?? null, max: s.max ?? null,
+             updated: r.updated };
+  });
+  const youRow = r => (r.code === yourState) ? 'you' : '';
+  renderTable(document.getElementById('cmpTable'), [
+    { key:'state',  label:'State' },
+    { key:'median', label:'Median cash', num:true, fmt: r => fmtUsd(r.median) },
+    { key:'p25',    label:'25th pct',    num:true, fmt: r => fmtUsd(r.p25) },
+    { key:'p75',    label:'75th pct',    num:true, fmt: r => fmtUsd(r.p75) },
+    { key:'min',    label:'Lowest',      num:true, fmt: r => fmtUsd(r.min) },
+    { key:'max',    label:'Highest',     num:true, fmt: r => fmtUsd(r.max) },
+    { key:'n',      label:'Hospitals',   num:true, fmt: r => r.n == null ? 'under 5' : String(r.n) },
+  ], rows, 'median', false, youRow);
+
+  const score = Object.entries(COMPARE.regions).map(([code, r]) => {
+    const c = r.coverage, t = r.trend;
+    return { code, state: regionLabel(code), subject: c.subject_to_rule, ok: c.ok,
+             readable: c.readable_pct, m300: c.meets_300_pct, dollar: c.dollar_rate_pct,
+             no_file: c.no_file, unreachable: c.unreachable, moves: t.moves_90d,
+             refreshes: t.refreshes, updated: r.updated };
+  });
+  renderTable(document.getElementById('scoreTable'), [
+    { key:'state',       label:'State' },
+    { key:'subject',     label:'Subject to rule', num:true },
+    { key:'ok',          label:'Readable file',   num:true },
+    { key:'readable',    label:'% readable',      num:true, fmt: r => fmtPct(r.readable) },
+    { key:'no_file',     label:'No file found',   num:true },
+    { key:'unreachable', label:'Blocked / wrong', num:true },
+    { key:'m300',        label:'300+ codes',      num:true, fmt: r => fmtPct(r.m300) },
+    { key:'dollar',      label:'Dollar rates',    num:true, fmt: r => fmtPct(r.dollar) },
+    { key:'moves',       label:'Price moves (90d)', num:true },
+    { key:'updated',     label:'Refreshed' },
+  ], score, 'readable', true, youRow);
+
+  const n = Object.keys(COMPARE.regions).length;
+  document.getElementById('cmpFoot').textContent =
+    `${n} region${n === 1 ? '' : 's'} published · summary built ${COMPARE.updated}. ` +
+    `Cash prices are the self-pay figures each hospital publishes in its federally required file; ` +
+    `"300+ codes" = the file prices at least 300 distinct billing codes; "dollar rates" = share of ` +
+    `negotiated rates given as dollar amounts rather than formulas. A metro region (San Diego) is ` +
+    `listed separately from its state.`;
+}
+
+function fillProcSelect(sel, procIds){
+  sel.innerHTML = '';
+  const ids = procIds.filter(id => procById[id]);
+  ids.sort((a,b) => procById[a].name.localeCompare(procById[b].name));
+  ids.forEach(id => {
+    const o = document.createElement('option');
+    o.value = id; o.textContent = procById[id].name;
+    sel.appendChild(o);
+  });
+  if(ids.includes('mri-brain')) sel.value = 'mri-brain';
+}
+
+document.getElementById('compareBtn').addEventListener('click', async () => {
+  if(!MANIFEST) await loadManifest();
+  const c = await loadCompare();
+  const chart = document.getElementById('cmpChart');
+  if(!c || !Object.keys(c.regions || {}).length){
+    chart.innerHTML = `<div class="cmp-empty">No cross-state summary published yet. It appears after the next data refresh.</div>`;
+    document.getElementById('cmpTable').innerHTML = '';
+    document.getElementById('scoreTable').innerHTML = '';
+    showScreen('screen-compare');
+    return;
+  }
+  const procIds = [...new Set(Object.values(c.regions).flatMap(r => Object.keys(r.procedures)))];
+  fillProcSelect(document.getElementById('cmpProc'), procIds);
+  renderCompare();
+  showScreen('screen-compare');
+});
+document.getElementById('cmpProc').addEventListener('change', renderCompare);
+document.getElementById('backFromCompare').addEventListener('click',
+  () => showScreen('screen-body'));
+
+// Statewide median line, one point per refresh date.
+function renderTrendChart(el, t, procId){
+  el.innerHTML = '';
+  const pts = t && t.series && t.series[procId];
+  if(!pts || pts.length < 2){
+    el.innerHTML = `<div class="cmp-empty">Not enough refreshes yet to draw a line for this procedure${
+      pts && pts.length === 1 ? ` — one observation (${esc(monthYear(pts[0][0]))}, median ${fmtUsd(pts[0][1])} across ${pts[0][2]} hospitals)` : ''}.</div>`;
+    return;
+  }
+  const W = 720, H = 200, L = 70, R = 20, T = 16, B = 34;
+  const vals = pts.map(p => p[1]);
+  const lo = Math.min(...vals) * 0.95, hi = Math.max(...vals) * 1.05 || 1;
+  const x = i => L + (i / (pts.length - 1)) * (W - L - R);
+  const y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const svg = svgEl('svg', { viewBox:`0 0 ${W} ${H}`, width: W, height: H, role:'img',
+    'aria-label': `Statewide median cash price over time` });
+  svg.appendChild(svgEl('line', { x1:L, x2:W-R, y1:y(lo), y2:y(lo), class:'axis' }));
+  [lo, (lo+hi)/2, hi].forEach(v => {
+    svg.appendChild(svgEl('text', { x: L - 6, y: y(v) + 4, 'text-anchor':'end', class:'lbl muted' }, fmtUsd(v)));
+    svg.appendChild(svgEl('line', { x1:L, x2:W-R, y1:y(v), y2:y(v), class:'axis', 'stroke-dasharray':'2 4' }));
+  });
+  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p[1]).toFixed(1)}`).join(' ');
+  svg.appendChild(svgEl('path', { d, class:'line' }));
+  pts.forEach((p, i) => {
+    svg.appendChild(svgEl('circle', { cx:x(i), cy:y(p[1]), r:3.5, class:'dot' }));
+    svg.appendChild(svgEl('text', { x:x(i), y:H - 18, 'text-anchor':'middle', class:'lbl muted' }, monthYear(p[0])));
+    svg.appendChild(svgEl('text', { x:x(i), y:H - 6, 'text-anchor':'middle', class:'lbl muted' }, `n=${p[2]}`));
+  });
+  el.appendChild(svg);
+}
+
+async function renderMovers(){
+  const region = document.getElementById('mvRegion').value;
+  const t = await loadTrends(region);
+  const chartEl = document.getElementById('mvChart');
+  const countEl = document.getElementById('mvCount');
+  const table = document.getElementById('mvTable');
+  if(!t){
+    chartEl.innerHTML = `<div class="cmp-empty">No trend data published for ${esc(regionLabel(region))} yet.</div>`;
+    countEl.textContent = ''; table.innerHTML = ''; return;
+  }
+  const procSel = document.getElementById('mvProc');
+  const wanted = procSel.dataset.region === region ? procSel.value : null;
+  fillProcSelect(procSel, Object.keys(t.series || {}));
+  procSel.dataset.region = region;
+  if(wanted && [...procSel.options].some(o => o.value === wanted)) procSel.value = wanted;
+  renderTrendChart(chartEl, t, procSel.value);
+
+  // Hospital names: from the loaded region if it's this one, else the registry file.
+  let names = {};
+  if(LIVE && LIVE._region === region){
+    hospitals.forEach(h => { names[h.id] = h.name; });
+  }else{
+    try{
+      const r = await fetch(`data/${safeRegion(region)}-hospitals.json`);
+      if(r.ok) (await r.json()).forEach(h => { names[h.id] = h.name; });
+    }catch(e){}
+  }
+  const rows = (t.movers || []).map(m => ({
+    hospital: names[m.h] || m.h, procedure: procById[m.p] ? procById[m.p].name : m.p,
+    prev: m.prev, cash: m.cash, pct: m.pct, date: m.date, since: m.since }));
+  const first = t.dates && t.dates[0];
+  countEl.textContent = rows.length
+    ? `${rows.length} price change${rows.length === 1 ? '' : 's'} observed across ${t.pairs_tracked.toLocaleString()} tracked prices in ${regionLabel(region)} since ${monthYear(first)} (${t.dates.length} refreshes).`
+    : `${(t.pairs_tracked || 0).toLocaleString()} prices tracked in ${regionLabel(region)} since ${monthYear(first)} over ${(t.dates||[]).length} refreshes — no changes observed yet. Hospitals update their files quarterly at most, so moves accumulate slowly.`;
+  if(!rows.length){ table.innerHTML = ''; return; }
+  renderTable(table, [
+    { key:'date',      label:'Seen' },
+    { key:'hospital',  label:'Hospital' },
+    { key:'procedure', label:'Procedure' },
+    { key:'prev',      label:'Was',  num:true, fmt: r => fmtUsd(r.prev) },
+    { key:'cash',      label:'Now',  num:true, fmt: r => fmtUsd(r.cash) },
+    { key:'pct',       label:'Change', num:true, fmt: r => (r.pct > 0 ? '▲ +' : '▼ ') + r.pct + '%',
+      cls: r => r.pct > 0 ? 'up' : 'down' },
+    { key:'since',     label:'Previous price since', fmt: r => monthYear(r.since) },
+  ], rows, 'date', true);
+}
+
+document.getElementById('moversBtn').addEventListener('click', async () => {
+  if(!MANIFEST) await loadManifest();
+  const sel = document.getElementById('mvRegion');
+  sel.innerHTML = '';
+  const codes = Object.keys(MANIFEST || {}).sort((a,b) => regionLabel(a).localeCompare(regionLabel(b)));
+  codes.forEach(code => {
+    const o = document.createElement('option');
+    o.value = code; o.textContent = regionLabel(code);
+    sel.appendChild(o);
+  });
+  const prefer = (LIVE && LIVE._region) || state.regionName
+    || (state.zipState && codes.find(c => c === String(state.zipState).toLowerCase()));
+  if(prefer && codes.includes(prefer)) sel.value = prefer;
+  await renderMovers();
+  showScreen('screen-movers');
+});
+document.getElementById('mvRegion').addEventListener('change', renderMovers);
+document.getElementById('mvProc').addEventListener('change', async () => {
+  const t = await loadTrends(document.getElementById('mvRegion').value);
+  renderTrendChart(document.getElementById('mvChart'), t, document.getElementById('mvProc').value);
+});
+document.getElementById('backFromMovers').addEventListener('click',
+  () => showScreen('screen-body'));
 
 // Re-measure the map when the window changes shape, or it keeps the old size.
 window.addEventListener('resize', () => {
