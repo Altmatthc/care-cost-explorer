@@ -280,11 +280,16 @@ def tick(st: dict) -> list[str]:
         if rc == 3 and not st.get("reharvested"):
             ids = (LOGS / f"{state}-reharvest-ids.txt").read_text(encoding="utf-8").strip()
             st["reharvested"] = True
-            launch_detached([RUN_STATE, state, "prices", "--only", ids],
+            # --refresh-all is essential: the gap is "ok but no catalogue", and a
+            # catalogue is only written when the price file is actually fetched
+            # and parsed. Without forcing a re-fetch these hospitals come back
+            # "unchanged since last run", the fetch (and catalogue write) is
+            # skipped, and the gap never closes. Bypass the not-modified cache.
+            launch_detached([RUN_STATE, state, "prices", "--only", ids, "--refresh-all"],
                             LOGS / f"{state}-prices-driver.out", LOGS / f"{state}-prices.rc")
             st["phase"] = "reharvest"
             st["phase_since"] = now()
-            out.append(f"{state.upper()}: coherence gap — re-harvesting {ids.count(',') + 1} hospitals")
+            out.append(f"{state.upper()}: coherence gap — re-harvesting {ids.count(',') + 1} hospitals (forced re-fetch)")
             return out
         if rc == 4:
             st["failed"][state] = "zero ok hospitals"
