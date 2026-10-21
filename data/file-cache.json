@@ -1554,9 +1554,9 @@
   "seen": null
  },
  "https://hospitalpricedisclosure.com/Download.aspx": {
-  "etag": "0x8DF01E57B2548AB",
-  "last_modified": "Mon, 24 Aug 2026 13:42:03 GMT",
-  "length": "6769234",
+  "etag": "0x8DED2D0E35141B0",
+  "last_modified": "Thu, 25 Jun 2026 15:46:14 GMT",
+  "length": "5124619",
   "seen": null
  },
  "https://hospitalpricedisclosure.com/select (Palomar Escondido/Downtown)": {
@@ -1581,6 +1581,1098 @@
   "etag": "\"4c63177-65a86bf306000-gzip\"",
   "last_modified": "Wed, 02 Sep 2026 21:30:40 GMT",
   "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/txnm/live/822913146_covenant-medical-center_standardcharges.json": {
+  "etag": "W/\"ef9f20b4c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:52:11 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/751837454_baylor-university-medical-center_standardcharges.csv": {
+  "etag": "0x8DEE8012CDF9728",
+  "last_modified": "Wed, 22 Jul 2026 14:54:47 GMT",
+  "length": "582227162",
+  "seen": null
+ },
+ "https://www.laredomedical.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/200175530_laredo-medical-center_standardcharges.csv": {
+  "etag": "\"0a84706ed7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 00:23:44 GMT",
+  "length": "271474204",
+  "seen": null
+ },
+ "https://sjmctx.org/pricetransparency/204835578_hsa-st.-joseph-llc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 16 Sep 2026 15:09:19 GMT",
+  "length": "227201450",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/741166904_baylor-scott--white-medical-center--temple_standardcharges.csv": {
+  "etag": "0x8DEE80069C8B76F",
+  "last_modified": "Wed, 22 Jul 2026 14:49:20 GMT",
+  "length": "651773639",
+  "seen": null
+ },
+ "https://www.jpshealthnet.org/price-transparency/75-6000439_jps-health-network_standardcharges.csv": {
+  "etag": "\"73e364da5cddc1:0\"",
+  "last_modified": "Thu, 16 Apr 2026 13:31:16 GMT",
+  "length": "38040747",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/752586857_baylor-scott--white-medical-center--irving_standardcharges.csv": {
+  "etag": "0x8DEE80133282374",
+  "last_modified": "Wed, 22 Jul 2026 14:54:58 GMT",
+  "length": "512011044",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/741161944_baylor-scott--white-medical-center--hillcrest_standardcharges.csv": {
+  "etag": "0x8DEE800608A2F39",
+  "last_modified": "Wed, 22 Jul 2026 14:49:05 GMT",
+  "length": "602994474",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/751008430_baylor-scott--white-all-saints-medical-center--fort-worth_standardcharges.csv": {
+  "etag": "0x8DEE800F4A1255F",
+  "last_modified": "Wed, 22 Jul 2026 14:53:13 GMT",
+  "length": "571523183",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/751777119_baylor-scott--white-medical-center--grapevine_standardcharges.csv": {
+  "etag": "0x8DEE8011EB104FC",
+  "last_modified": "Wed, 22 Jul 2026 14:54:24 GMT",
+  "length": "520148949",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1164526786_ascension-seton_standardcharges.csv": {
+  "etag": "1c9005a9f38247a1836437516cecf063",
+  "last_modified": "Tue, 07 Apr 2026 16:42:39 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/260194016_baylor-scott--white-medical-center--lake-pointe_standardcharges.csv": {
+  "etag": "0x8DEE7FFF03EE31A",
+  "last_modified": "Wed, 22 Jul 2026 14:45:56 GMT",
+  "length": "525206718",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/752834135_baylor-scott--white-heart-and-vascular-hospital--dallas_standardcharges.csv": {
+  "etag": "0x8DEE801309A98D1",
+  "last_modified": "Wed, 22 Jul 2026 14:54:54 GMT",
+  "length": "466447569",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/813040663_baylor-scott--white-medical-center--austin_standardcharges.csv": {
+  "etag": "0x8DEE8015976A26D",
+  "last_modified": "Wed, 22 Jul 2026 14:56:02 GMT",
+  "length": "371666748",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/824052186_baylor-scott--white-medical-center--centennial_standardcharges.csv": {
+  "etag": "0x8DEE8016FE490CF",
+  "last_modified": "Wed, 22 Jul 2026 14:56:40 GMT",
+  "length": "513847855",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/820551704_baylor-scott--white-medical-center--plano_standardcharges.csv": {
+  "etag": "0x8DEE8016B2B5866",
+  "last_modified": "Wed, 22 Jul 2026 14:56:32 GMT",
+  "length": "524160024",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1093810327_ascension-seton_standardcharges.csv": {
+  "etag": "0617ab25e2bb41cc98929826abb81847",
+  "last_modified": "Tue, 07 Apr 2026 16:42:26 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/263603862_baylor-scott--white-the-heart-hospital--denton_standardcharges.csv": {
+  "etag": "0x8DEE7FFF0D5772D",
+  "last_modified": "Wed, 22 Jul 2026 14:45:57 GMT",
+  "length": "470202570",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/741595711_baylor-scott--white-medical-center--taylor_standardcharges.csv": {
+  "etag": "0x8DEE800F926DE31",
+  "last_modified": "Wed, 22 Jul 2026 14:53:21 GMT",
+  "length": "626525496",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/412101361_baylor-scott--white-the-heart-hospital--plano_standardcharges.csv": {
+  "etag": "0x8DEE80059FC2492",
+  "last_modified": "Wed, 22 Jul 2026 14:48:54 GMT",
+  "length": "481189958",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/203749695_baylor-scott--white-medical-center--round-rock_standardcharges.csv": {
+  "etag": "0x8DEE7FFF1909567",
+  "last_modified": "Wed, 22 Jul 2026 14:45:58 GMT",
+  "length": "566056616",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/751037591_baylor-scott--white-medical-center--mckinney_standardcharges.csv": {
+  "etag": "0x8DEE800ED54517C",
+  "last_modified": "Wed, 22 Jul 2026 14:53:01 GMT",
+  "length": "499312256",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/274434451_baylor-scott--white-medical-center--college-station_standardcharges.csv": {
+  "etag": "0x8DEE7FFF7967D3E",
+  "last_modified": "Wed, 22 Jul 2026 14:46:08 GMT",
+  "length": "504809335",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1750499273_ascension-seton_standardcharges.csv": {
+  "etag": "885156d68a8940029de13f1b5645f5a6",
+  "last_modified": "Tue, 07 Apr 2026 16:43:02 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://stjoseph.stlukeshealth.org/content/dam/stjoseph-stlukeshealth/documents/pricing-transparency-files/741282696_St-Joseph-Health-Regional-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE40EEB511CB\"",
+  "last_modified": "Wed, 18 Jun 2025 08:20:06 GMT",
+  "length": "4428683",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/464007700_baylor-scott--white-medical-center--marble-falls_standardcharges.csv": {
+  "etag": "0x8DEE8005BD63236",
+  "last_modified": "Wed, 22 Jul 2026 14:48:57 GMT",
+  "length": "510324706",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/813040663_baylor-scott--white-medical-center--pflugerville_standardcharges.csv": {
+  "etag": "0x8DEE80168166489",
+  "last_modified": "Wed, 22 Jul 2026 14:56:27 GMT",
+  "length": "495187418",
+  "seen": null
+ },
+ "https://wadcdn.azureedge.net/bswhealth/com/siteassets/pricing-transparency/813040663_baylor-scott--white-medical-center--buda_standardcharges.csv": {
+  "etag": "0x8DEE8015B2A1216",
+  "last_modified": "Wed, 22 Jul 2026 14:56:05 GMT",
+  "length": "372513433",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13786/750972805_texas-health-arlington-memorial-hospital_standardcharges.csv": {
+  "etag": "0x8DE9FC047D7EB1F",
+  "last_modified": "Tue, 21 Apr 2026 16:08:52 GMT",
+  "length": "2051915505",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1124137054_ascension-seton_standardcharges.csv": {
+  "etag": "bf09b63b558d4e32b14a41f1b73d7b34",
+  "last_modified": "Tue, 07 Apr 2026 16:42:30 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13793/756001743_texas-health-harris-methodist-hospital-fort-worth_standardcharges.csv": {
+  "etag": "0x8DE9FCFFC7A5FAA",
+  "last_modified": "Tue, 21 Apr 2026 18:01:17 GMT",
+  "length": "2004632001",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13789/751977850_texas-health-harris-methodist-hospital-cleburne_standardcharges.csv": {
+  "etag": "0x8DE9FD00AA260FC",
+  "last_modified": "Tue, 21 Apr 2026 18:01:41 GMT",
+  "length": "1979837552",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1003833013_ascension-seton_standardcharges.csv": {
+  "etag": "e3a9487a69f447c1ae03fe3096ab8ff1",
+  "last_modified": "Tue, 07 Apr 2026 16:42:21 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13798/752771437_texas-health-presbyterian-hospital-kaufman_standardcharges.csv": {
+  "etag": "0x8DEA08B54A624AE",
+  "last_modified": "Wed, 22 Apr 2026 16:22:21 GMT",
+  "length": "1922773207",
+  "seen": null
+ },
+ "https://stjoseph.stlukeshealth.org/content/dam/stjoseph-stlukeshealth/documents/pricing-transparency-files/742759890_St-Joseph-Health-Burleson-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE40EFB7CA67\"",
+  "last_modified": "Wed, 18 Jun 2025 08:20:07 GMT",
+  "length": "4812804",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13806/751752253_texas-health-harris-methodist-hospital-stephenville_standardcharges.csv": {
+  "etag": "0x8DE9FD5EAD385F1",
+  "last_modified": "Tue, 21 Apr 2026 18:43:44 GMT",
+  "length": "1873587658",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv": {
+  "etag": "16314b0271d94dcb8711b5af0f4f0638",
+  "last_modified": "Tue, 07 Apr 2026 16:42:44 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13787/751748586_texas-health-harris-methodist-hospital-azle_standardcharges.csv": {
+  "etag": "0x8DE9FCC71EAD465",
+  "last_modified": "Tue, 21 Apr 2026 17:35:56 GMT",
+  "length": "1972149444",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13790/751047527_texas-health-presbyterian-hospital-dallas_standardcharges.csv": {
+  "etag": "0x8DEA173656A9223",
+  "last_modified": "Thu, 23 Apr 2026 20:03:32 GMT",
+  "length": "2230408489",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13796/751438726-1104845015_texas-health-harris-methodist-hospital-hursteulessbedford_standardcharges.csv": {
+  "etag": "0x8DEA0AF956961B2",
+  "last_modified": "Wed, 22 Apr 2026 20:41:51 GMT",
+  "length": "2047649992",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13791/432008974_texas-health-presbyterian-hospital-denton_standardcharges.csv": {
+  "etag": "0x8DEA06F7D730E30",
+  "last_modified": "Wed, 22 Apr 2026 13:03:03 GMT",
+  "length": "1993725052",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1578780870_ascension-seton_standardcharges.csv": {
+  "etag": "69b5a324a40d4b70ba5e74cdc03f2d40",
+  "last_modified": "Tue, 07 Apr 2026 16:42:53 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13799/752770738-1770514077_texas-health-presbyterian-hospital-plano_standardcharges.csv": {
+  "etag": "0x8DEA06FF4AF20FA",
+  "last_modified": "Wed, 22 Apr 2026 13:06:24 GMT",
+  "length": "1953158380",
+  "seen": null
+ },
+ "https://stjoseph.stlukeshealth.org/content/dam/stjoseph-stlukeshealth/documents/pricing-transparency-files/742761145_St-Joseph-Health-Madison-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE40F03F9B9C\"",
+  "last_modified": "Wed, 18 Jun 2025 08:20:08 GMT",
+  "length": "4980084",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13803/752678857_texas-health-harris-methodist-hospital-southwest-fort-worth_standardcharges.csv": {
+  "etag": "0x8DEA186088A192D",
+  "last_modified": "Thu, 23 Apr 2026 22:16:57 GMT",
+  "length": "1990905013",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13784/752890358_texas-health-presbyterian-hospital-allen_standardcharges.csv": {
+  "etag": "0x8DEA06A5B3F9E9B",
+  "last_modified": "Wed, 22 Apr 2026 12:26:19 GMT",
+  "length": "1943091259",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1619115383_ascension-seton_standardcharges.csv": {
+  "etag": "191c350486914021bf15e1fdf5d6dcb2",
+  "last_modified": "Tue, 07 Apr 2026 16:42:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://memorialhermann.org/-/media/memorial-hermann/org/files/patients-and-visitors/cms-standard-hospital-charges/741152597_memorial-hermann-texas-medical-center_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": null,
+  "length": "36141332",
+  "seen": null
+ },
+ "https://memorialhermann.org/-/media/memorial-hermann/org/files/patients-and-visitors/cms-standard-hospital-charges/741152597_memorial-hermann-greater-heights-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": null,
+  "length": "33835547",
+  "seen": null
+ },
+ "https://memorialhermann.org/-/media/memorial-hermann/org/files/patients-and-visitors/cms-standard-hospital-charges/741152597_memorial-hermann-memorial-city-medical-center_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": null,
+  "length": "30701945",
+  "seen": null
+ },
+ "https://memorialhermann.org/-/media/memorial-hermann/org/files/patients-and-visitors/cms-standard-hospital-charges/741152597_memorial-hermann-northeast-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": null,
+  "length": "25842922",
+  "seen": null
+ },
+ "https://memorialhermann.org/-/media/memorial-hermann/org/files/patients-and-visitors/cms-standard-hospital-charges/741152597_memorial-hermann-katy-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": null,
+  "length": "27861605",
+  "seen": null
+ },
+ "https://memorialhermann.org/-/media/memorial-hermann/org/files/patients-and-visitors/cms-standard-hospital-charges/741152597_memorial-hermann-sugar-land-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": null,
+  "length": "28879356",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13802/020555370_southlake-specialty-hospital-llc_standardcharges.csv": {
+  "etag": "0x8DE9FD279035731",
+  "last_modified": "Tue, 21 Apr 2026 18:19:05 GMT",
+  "length": "1948013366",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13788/481281376_physicians-medical-center-llc_standardcharges.csv": {
+  "etag": "0x8DE9FC1A6301B59",
+  "last_modified": "Tue, 21 Apr 2026 16:18:39 GMT",
+  "length": "1900686930",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13800/202848116_rockwall-regional-hospital-llc_standardcharges.csv": {
+  "etag": "0x8DE9FE277A38A75",
+  "last_modified": "Tue, 21 Apr 2026 20:13:35 GMT",
+  "length": "1929763870",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13792/260684968_flower-mound-hospital-partners-llc_standardcharges.csv": {
+  "etag": "0x8DEA06CF5D75AAD",
+  "last_modified": "Wed, 22 Apr 2026 12:44:57 GMT",
+  "length": "1983142207",
+  "seen": null
+ },
+ "https://stjoseph.stlukeshealth.org/content/dam/stjoseph-stlukeshealth/documents/pricing-transparency-files/741282696_St-Joseph-Health-Grimes-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDB0190551CEB3\"",
+  "last_modified": "Fri, 20 Jun 2025 16:39:26 GMT",
+  "length": "4317269",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13795/203003947_amh-cath-labs-llc_standardcharges.csv": {
+  "etag": "0x8DE9FD8CB315218",
+  "last_modified": "Tue, 21 Apr 2026 19:04:20 GMT",
+  "length": "2042638324",
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/price-transparency-files/741385192_Brazosport-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE422916A4C6\"",
+  "last_modified": "Wed, 18 Jun 2025 08:28:53 GMT",
+  "length": "3054369",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13785/451502252_texas-health-harris-methodist-hospital-alliance_standardcharges.csv": {
+  "etag": "0x8DE9FCC8C67C2FB",
+  "last_modified": "Tue, 21 Apr 2026 17:36:41 GMT",
+  "length": "1991475748",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/5f8e2f5a25/machine-readable/831683025_north-texas-medical-center_standardcharges.json": {
+  "etag": "W/\"210dc80-GduDOr6aWYAYrkR8bIhMZw3wYKE\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/price-transparency-files/741161938_Baylor-St-Lukes-Medical-Center_standardcharges.csv": {
+  "etag": "\"0x8DDAE407EE51F35\"",
+  "last_modified": "Wed, 18 Jun 2025 08:16:58 GMT",
+  "length": "6503074",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/62-1682205_medical-city-north-hills_standardcharges.csv": {
+  "etag": "dot:4548709f-67bf-4568-a571-7c037a362cd7:1710865269000:65350295",
+  "last_modified": "Tue, 19 Mar 2024 16:21:09 +0000",
+  "length": "65350295",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2073410_MEDICAL-CITY-WEATHERFORD_standardcharges.json": {
+  "etag": "\"0x8DF16002F7B5124\"",
+  "last_modified": "Sat, 19 Sep 2026 03:43:36 GMT",
+  "length": "727947066",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682207_MEDICAL-CITY-MCKINNEY_standardcharges.json": {
+  "etag": "\"0x8DF163305453B08\"",
+  "last_modified": "Sat, 19 Sep 2026 09:47:29 GMT",
+  "length": "708993648",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/621801359_hca-houston-southeast_standardcharges.csv": {
+  "etag": "dot:0c135f76-3b14-4206-8e69-204e116cd758:1703709157000:96183201",
+  "last_modified": "Wed, 27 Dec 2023 20:32:37 +0000",
+  "length": "96183201",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682213_MEDICAL-CITY-DENTON_standardcharges.json": {
+  "etag": "\"0x8DF163A78791E95\"",
+  "last_modified": "Sat, 19 Sep 2026 10:40:49 GMT",
+  "length": "1035165675",
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/750755367_st-lukes-health-memorial-lufkin_standardcharges.csv": {
+  "etag": "\"0x8DDAE4127CA2A6E\"",
+  "last_modified": "Wed, 18 Jun 2025 08:21:42 GMT",
+  "length": "6031765",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682198_MEDICAL-CITY-DALLAS_standardcharges.json": {
+  "etag": "\"0x8DF1626A01CE760\"",
+  "last_modified": "Sat, 19 Sep 2026 08:18:46 GMT",
+  "length": "839009580",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/621801361_hca-houston-conroe_standardcharges.csv": {
+  "etag": "dot:b92231bd-195a-44cd-8782-0c369a65b55f:1703709140000:95736254",
+  "last_modified": "Wed, 27 Dec 2023 20:32:20 +0000",
+  "length": "95736254",
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/760436439_st-lukes-health-memorial-livingston_standardcharges.csv": {
+  "etag": "\"0x8DDAE4128C4D5A5\"",
+  "last_modified": "Wed, 18 Jun 2025 08:21:43 GMT",
+  "length": "6175075",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/62-1682203_medical-city-plano_standardcharges.csv": {
+  "etag": "dot:cca39135-3d7f-4045-aec7-0eeb71472aeb:1710865267000:62288963",
+  "last_modified": "Tue, 19 Mar 2024 16:21:07 +0000",
+  "length": "62288963",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682210_MEDICAL-CITY-LEWISVILLE_standardcharges.json": {
+  "etag": "\"0x8DF162321347607\"",
+  "last_modified": "Sat, 19 Sep 2026 07:53:44 GMT",
+  "length": "673781738",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682202_MEDICAL-CITY-FORT-WORTH_standardcharges.json": {
+  "etag": "\"0x8DF160841880589\"",
+  "last_modified": "Sat, 19 Sep 2026 04:41:22 GMT",
+  "length": "780028612",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682201_MEDICAL-CITY-ARLINGTON_standardcharges.json": {
+  "etag": "\"0x8DF188DC5BEA40F\"",
+  "last_modified": "Tue, 22 Sep 2026 09:42:09 GMT",
+  "length": "710973597",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1650582_MEDICAL-CITY-LAS-COLINAS_standardcharges.json": {
+  "etag": "\"0x8DF15E293734462\"",
+  "last_modified": "Sat, 19 Sep 2026 00:11:39 GMT",
+  "length": "575276030",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/46-4027347_MEDICAL-CITY-ALLIANCE_standardcharges.json": {
+  "etag": "\"0x8DF15F62E3E91C2\"",
+  "last_modified": "Sat, 19 Sep 2026 02:31:59 GMT",
+  "length": "746982062",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2499952_LAS-PALMAS-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF1745D7450F92\"",
+  "last_modified": "Sun, 20 Sep 2026 18:34:44 GMT",
+  "length": "885508064",
+  "seen": null
+ },
+ "https://knappmed.org/wp-content/uploads/2026/09/000480_KnappMedicalCenter_standardcharges.json": {
+  "etag": "\"2b46459-65a821c66a040-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 15:58:49 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/price-transparency-files/760536234_The-Woodlands-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE42299EC38C\"",
+  "last_modified": "Wed, 18 Jun 2025 08:28:54 GMT",
+  "length": "6117681",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/621801360_hca-houston-clear-lake_standardcharges.csv": {
+  "etag": "dot:adac8426-b1b8-4f34-a770-0dd7061ce10a:1703709153000:93842246",
+  "last_modified": "Wed, 27 Dec 2023 20:32:33 +0000",
+  "length": "93842246",
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/price-transparency-files/273280598_Patients-Medical-Center_standardcharges.csv": {
+  "etag": "\"0x8DDAE4227C34126\"",
+  "last_modified": "Wed, 18 Jun 2025 08:28:51 GMT",
+  "length": "4783241",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL--ATASCOSA_standardcharges.json": {
+  "etag": "\"0x8DF163B8021B113\"",
+  "last_modified": "Sat, 19 Sep 2026 10:48:11 GMT",
+  "length": "503750749",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16486EB2B9CF\"",
+  "last_modified": "Sat, 19 Sep 2026 12:20:46 GMT",
+  "length": "1018195253",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL-STONE-OAK_standardcharges.json": {
+  "etag": "\"0x8DF162F536B9A4E\"",
+  "last_modified": "Sat, 19 Sep 2026 09:21:02 GMT",
+  "length": "678788292",
+  "seen": null
+ },
+ "https://missionrmc.org/wp-content/uploads/2026/09/000370_MissionRegionalMedicalCenter_standardcharges.json": {
+  "etag": "\"1f92507-65a8218a55280-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 15:57:46 GMT",
+  "length": "1331844",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/261512163_hca-houston-northwest_standardcharges.csv": {
+  "etag": "dot:171ea908-a96c-4f04-98de-fa75bf26f5ff:1703709237000:86231009",
+  "last_modified": "Wed, 27 Dec 2023 20:33:57 +0000",
+  "length": "86231009",
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/price-transparency-files/261947374_Sugar-Land-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE4226058576\"",
+  "last_modified": "Wed, 18 Jun 2025 08:28:48 GMT",
+  "length": "6048697",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/621801363_hca-houston-west_standardcharges.csv": {
+  "etag": "dot:6e3e04eb-d82e-4ca4-99f5-8b2f4cb4708b:1703709123000:91954185",
+  "last_modified": "Wed, 27 Dec 2023 20:32:03 +0000",
+  "length": "91954185",
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/price-transparency-files/300427437_Lakeside-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE422841323B\"",
+  "last_modified": "Wed, 18 Jun 2025 08:28:52 GMT",
+  "length": "6249446",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/82-1635538_hca-houston-med-ctr_standardcharges.csv": {
+  "etag": "dot:b7957715-d7fc-40f8-b85a-dc0c3e37ef9a:1703709010000:83930616",
+  "last_modified": "Wed, 27 Dec 2023 20:30:10 +0000",
+  "length": "83930616",
+  "seen": null
+ },
+ "https://www.stlukeshealth.org/content/dam/stlukeshealth/documents/price-transparency-files/263734606_The-Vintage-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DDAE4226F4A4AD\"",
+  "last_modified": "Wed, 18 Jun 2025 08:28:50 GMT",
+  "length": "6192229",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/232238976_northwest-texas-healthcare-system_standardcharges.csv": {
+  "etag": "\"3b95e3c97cd6ac137d5bd4ead5bd596e-26\"",
+  "last_modified": "Thu, 17 Sep 2026 22:24:28 GMT",
+  "length": "131907083",
+  "seen": null
+ },
+ "https://cdn.ardenthealthservices.com/price-transparency/30-0754305_BSA-Hospital_standardcharges.csv": {
+  "etag": "\"726bec98d752ef215e189236ae0842ab-79\"",
+  "last_modified": "Wed, 01 Apr 2026 13:06:44 GMT",
+  "length": "1347809566",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/821349955_hca-houston-tomball_standardcharges.csv": {
+  "etag": "dot:df9a514b-141c-4be1-85aa-7df1c1fe0017:1703709118000:87354023",
+  "last_modified": "Wed, 27 Dec 2023 20:31:58 +0000",
+  "length": "87354023",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/205908627_texoma-medical-center_standardcharges.csv": {
+  "etag": "\"fda7e9c960e1bc70c71b037559ec391b-15\"",
+  "last_modified": "Thu, 10 Sep 2026 21:00:08 GMT",
+  "length": "76030169",
+  "seen": null
+ },
+ "https://www.houstonmethodist.org/-/media/files/patient-resources/760545192_methodist-west-houston-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 25 Mar 2026 02:20:47 GMT",
+  "length": "64757525",
+  "seen": null
+ },
+ "https://www.houstonmethodist.org/-/media/files/patient-resources/741287015_houston-methodist-baytown-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Mon, 06 Jul 2026 16:07:30 GMT",
+  "length": "61661795",
+  "seen": null
+ },
+ "https://www.houstonmethodist.org/-/media/files/patient-resources/464389870_houston-methodist-clear-lake-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 25 Mar 2026 02:13:46 GMT",
+  "length": "64090063",
+  "seen": null
+ },
+ "https://www.houstonmethodist.org/-/media/files/patient-resources/760545192_houston-methodist-the-woodlands-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 25 Mar 2026 02:15:13 GMT",
+  "length": "63154694",
+  "seen": null
+ },
+ "https://dallasmedcenter.com/wp-content/uploads/2026/09/100214_DallasMedicalCenter_standardcharges.json": {
+  "etag": "\"287ed3c-65a8536372dc0-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 19:40:47 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/USPI/752829613_msh-partners,-llc_standardcharges.json": {
+  "etag": "\"0x8DF1E3589701134\"",
+  "last_modified": "Tue, 29 Sep 2026 14:25:39 GMT",
+  "length": "51380872",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-GEORGETOWN-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16697BCE2B0D\"",
+  "last_modified": "Sat, 19 Sep 2026 16:17:21 GMT",
+  "length": "871942180",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-SOUTH-AUSTIN-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF18890D44A7FB\"",
+  "last_modified": "Tue, 22 Sep 2026 09:08:22 GMT",
+  "length": "1064987054",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-ROUND-ROCK-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF18955575419D\"",
+  "last_modified": "Tue, 22 Sep 2026 10:36:17 GMT",
+  "length": "909375395",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-NORTH-AUSTIN-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF185DE83A7D42\"",
+  "last_modified": "Tue, 22 Sep 2026 03:59:31 GMT",
+  "length": "915703829",
+  "seen": null
+ },
+ "https://www.navarrohospital.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/621762428_navarro-regional-hospital_standardcharges.csv": {
+  "etag": "\"6b4ec194e3d7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 14:22:16 GMT",
+  "length": "109509689",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/NUH2773072790/machine-readable/463085950_glen-rose-medical-center_standardcharges.json": {
+  "etag": "W/\"1c1d839-Vx11GAgmT1ZBDCMosYsIGt4Q46s\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/62-1619857_hca-houston-kingwood_standardcharges.csv": {
+  "etag": "dot:1c2605cb-32b8-40e5-9227-34f7ed91a4b2:1703709194000:96159861",
+  "last_modified": "Wed, 27 Dec 2023 20:33:14 +0000",
+  "length": "96159861",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/233044530_fort-duncan-regional-medical-center_standardcharges.csv": {
+  "etag": "\"658a3e674e43c7befa2c46ae806d2438-12\"",
+  "last_modified": "Thu, 10 Sep 2026 21:32:45 GMT",
+  "length": "60594287",
+  "seen": null
+ },
+ "https://www.woodlandheights.net/Uploads/Public/Documents/charge-masters/charge-masters-2024/621762559_woodland-heights-medical-center_standardcharges.csv": {
+  "etag": "\"78f7fd97e3d7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 14:22:22 GMT",
+  "length": "96652839",
+  "seen": null
+ },
+ "https://www.methodisthealthsystem.org/sites/default/files/Price%20Transparency/750800661_MethodistRichardsonMedicalCenter_standardcharges.zip": {
+  "etag": "\"6abd2a38-186698a\"",
+  "last_modified": "Wed, 30 Sep 2026 15:26:48 GMT",
+  "length": "25586058",
+  "seen": null
+ },
+ "https://www.methodisthealthsystem.org/sites/default/files/Price%20Transparency/750800661_MethodistMansfieldMedicalCenter_standardcharges.zip": {
+  "etag": "\"6abd2a18-1c18e44\"",
+  "last_modified": "Wed, 30 Sep 2026 15:26:16 GMT",
+  "length": "29462084",
+  "seen": null
+ },
+ "https://www.methodisthealthsystem.org/sites/default/files/Price%20Transparency/750800661_MethodistSouthlakeMedicalCenter_standardcharges.zip": {
+  "etag": "\"6abd2a4a-2865bc7\"",
+  "last_modified": "Wed, 30 Sep 2026 15:27:06 GMT",
+  "length": "42359751",
+  "seen": null
+ },
+ "https://www.methodisthealthsystem.org/sites/default/files/Price%20Transparency/750800661_MethodistMidlothianMedicalCenter_standardcharges.zip": {
+  "etag": "\"6abd2a22-153b40b\"",
+  "last_modified": "Wed, 30 Sep 2026 15:26:26 GMT",
+  "length": "22262795",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11019/752559845-1992707228_shannon-medical-center_standardcharges.csv": {
+  "etag": "0x8DE80466FCA62EC",
+  "last_modified": "Thu, 12 Mar 2026 14:48:34 GMT",
+  "length": "495658965",
+  "seen": null
+ },
+ "https://www.lakegranburymedicalcenter.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/752682017_lake-granbury-medical-center_standardcharges.csv": {
+  "etag": "\"6c491fb3e3d7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 14:23:07 GMT",
+  "length": "118597077",
+  "seen": null
+ },
+ "https://noconageneral.com/wp-content/uploads/2026/03/751368648_nocona-general-hospital_standardcharges-02.26.2026.csv": {
+  "etag": null,
+  "last_modified": "Wed, 04 Mar 2026 17:08:22 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/050631189_hca-houston-pearland_standardcharges.csv": {
+  "etag": "dot:6c0112c0-b47b-46dc-9f46-bfab6f9d8ab5:1703709009000:80960572",
+  "last_modified": "Wed, 27 Dec 2023 20:30:09 +0000",
+  "length": "80960572",
+  "seen": null
+ },
+ "https://www.odessaregional.com/wp-content/uploads/2026/04/621795574_OdessaTexasHospitalCompany_standardcharges_TX.csv": {
+  "etag": "\"69e2687d-28baff\"",
+  "last_modified": "Fri, 17 Apr 2026 17:06:05 GMT",
+  "length": "2669311",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1669572_VALLEY-REGIONAL-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF188B73A54B51\"",
+  "last_modified": "Tue, 22 Sep 2026 09:25:32 GMT",
+  "length": "391910079",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/621810381_womans-hospital-of-texas_standardcharges.csv": {
+  "etag": "dot:03a3a41a-dab9-44b2-acda-d48dac96e216:1703709118000:82494096",
+  "last_modified": "Wed, 27 Dec 2023 20:31:58 +0000",
+  "length": "82494096",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/233069260_south-texas-health-system-edinburg_standardcharges.csv": {
+  "etag": "\"4e8b9f0919acf54fa85dee6466824ee9-31\"",
+  "last_modified": "Thu, 17 Sep 2026 22:26:03 GMT",
+  "length": "158726724",
+  "seen": null
+ },
+ "https://www.longviewregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/621762420_longview-regional-medical-center_standardcharges.csv": {
+  "etag": "\"51463594e3d7dc1:0\"",
+  "last_modified": "Wed, 29 Apr 2026 14:22:15 GMT",
+  "length": "150804484",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1656022_RIO-GRANDE-REGIONAL-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16C7D46F1882\"",
+  "last_modified": "Sun, 20 Sep 2026 03:32:42 GMT",
+  "length": "514720425",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2387418_Corpus-Christi-Medical-Center---Bay-Area_standardcharges.json": {
+  "etag": "\"0x8DF16B961E49DF9\"",
+  "last_modified": "Sun, 20 Sep 2026 01:49:17 GMT",
+  "length": "515613959",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/76-0418502_texas-orthopedic-hospital_standardcharges.csv": {
+  "etag": "dot:28401e92-d5a6-45be-80d3-bae6ee888f90:1703709037000:88117086",
+  "last_modified": "Wed, 27 Dec 2023 20:30:37 +0000",
+  "length": "88117086",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/745e003c7b1ed226ff610f4a5e3a9a68/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/USPI/481260190_trophy-club-medical-center-lp_standardcharges.json": {
+  "etag": "\"0x8DF1E355D06B3C4\"",
+  "last_modified": "Tue, 29 Sep 2026 14:24:25 GMT",
+  "length": "53733503",
+  "seen": null
+ },
+ "https://groesbeckhospital.slicedhealth.io/pricer/74-1744089-1861487779_LimestoneMedicalCenter_standardcharges.CSV": {
+  "etag": "\"4771551924d6db17bc6f37de34824d4a\"",
+  "last_modified": "Thu, 26 Mar 2026 16:55:40 GMT",
+  "length": "9085746",
+  "seen": null
+ },
+ "https://app.box.com/shared/static/cl35ye5werooz862l4roztpj6djxsymj.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://ricemedicalcenter.slicedhealth.io/pricer/270565499_cahrmc,-dba-rice-medical-center_standardcharges.csv": {
+  "etag": "\"aa465e235ac199198cb72ddb0f7da7d2\"",
+  "last_modified": "Mon, 27 Apr 2026 15:36:09 GMT",
+  "length": "16728471",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/sutton-county-hospital-district/752152933_Sutton-County-Hospital-District_standardcharges.csv": {
+  "etag": "\"0b965d28b877c28a8c3127f95adebdf0\"",
+  "last_modified": "Tue, 28 Jul 2026 18:21:09 GMT",
+  "length": "738820",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/YHGJ-1784232189801/machine-readable/751188675_parkview-hospital_standardcharges.json": {
+  "etag": "W/\"6af81c-P3HlSYRylfqxBaez/zJDewLJcQM\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/preferred-hospital-leasing-van-horn-inc/201355256_Preferred-Hospital-Leasing-Van-Horn-Inc_standardcharges.csv": {
+  "etag": "\"f03ce86ded33fe7654b8484b2540a7e5\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:23 GMT",
+  "length": "171835",
+  "seen": null
+ },
+ "https://app.box.com/shared/static/8snmebm9qbv4ut7o1a4qqmf7j82pcv84.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/preferred-hospital-leasing-coleman-inc/844594512_Preferred-Hospital-Leasing-Coleman-Inc_standardcharges.csv": {
+  "etag": "\"30a74518a733859757705c717c8fbc75\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:21 GMT",
+  "length": "601833",
+  "seen": null
+ },
+ "https://heartoftexashealthcare.slicedhealth.io/pricer/320326595-1558349399_heart-of-texas-healthcare-system_standardcharges.csv": {
+  "etag": "\"c87da1b052a6166c272c9e38137ceda6\"",
+  "last_modified": "Mon, 24 Aug 2026 13:33:35 GMT",
+  "length": "11200175",
+  "seen": null
+ },
+ "https://www.cranememorial.org/docs/35-2336501_Crane_County_HospitaL_District.csv": {
+  "etag": "\"591af-5e82e8596c1a7\"",
+  "last_modified": "Thu, 08 Sep 2022 18:23:10 GMT",
+  "length": "364975",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/PNQ6834664504/machine-readable/23-7297190_hansford-county-hospital-district_standardcharges.json": {
+  "etag": "W/\"a75c12-5+hR3lWcUqLe7kbDOcOa80/VTrY\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/preferred-hospital-leasing-hemphill-inc/261955689_Preferred-Hospital-Leasing-Hemphill-Inc_standardcharges.csv": {
+  "etag": "\"29cf0cb9977a1d9da6efbd60bdb370e0\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:18 GMT",
+  "length": "475160",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/MAF8631799197/machine-readable/75-6000727_clay-county-memorial-hospital_standardcharges.json": {
+  "etag": "W/\"325360-2fcDt1XJtGUSbNSSeOrpyhcwJus\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://goldenplains.slicedhealth.io/pricer/26-0328929-1841497153_GoldenPlainsCommunityHospital_standardcharges.CSV": {
+  "etag": "\"3a093d6d24ec7671996383d203c8c581\"",
+  "last_modified": "Mon, 08 Jun 2026 13:26:42 GMT",
+  "length": "16057640",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/ac/461353294_tmc-bonham-hospital_standardcharges.csv": {
+  "etag": "W/\"1ee2351c4af4c3f8300c689dcce7e0f5\"",
+  "last_modified": "Thu, 10 Sep 2026 21:38:45 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/QNWA-1762447523274/machine-readable/752290436_muleshoe-area-medical-center_standardcharges.json": {
+  "etag": "W/\"56fe8b-Wz1AaUw72QpuSAgdHh3yqrQ48qk\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.lavacamedcen.com/docs/746240037_LavacaMedicalCenter_standardcharges.csv": {
+  "etag": "\"32988b-64e692af6cd84\"",
+  "last_modified": "Wed, 01 Apr 2026 17:10:59 GMT",
+  "length": "3315851",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/RNM2687187587/machine-readable/263091251_dimmit-regional-hospital_standardcharges.json": {
+  "etag": "W/\"865602-MZQyoU1NFou3+ELHBtU6d97BmJs\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://cookchildrens.pt.panaceainc.com/MRFDownload/cookchildrens/cookchildrensprosper": {
+  "etag": null,
+  "last_modified": null,
+  "length": "426129513",
+  "seen": null
+ },
+ "https://driscollchildrens.org/wp-content/uploads/742577746-1548286172_Driscoll-Childrens-Hospital_standardcharges.csv": {
+  "etag": "\"22b6975-642645d13b780\"",
+  "last_modified": "Thu, 30 Oct 2025 18:24:46 GMT",
+  "length": "36399477",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/8d02e645e89934e5d30914384f33aef9/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://chst-mkt-mrf.s3.amazonaws.com/752062019_childrens-health-system-of-texas_plano_standardcharges.json": {
+  "etag": "\"011a964ef81bf742e0face5f00314f44-18\"",
+  "last_modified": "Tue, 24 May 2022 20:50:37 GMT",
+  "length": "294198282",
+  "seen": null
+ },
+ "https://www.westlakemedical.com/wp-content/uploads/2024/10/820578078_westlake-surgical_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 09 Oct 2024 19:22:39 GMT",
+  "length": "80035738",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/USPI/510570864_texas-regional-medical-center,-llc_standardcharges.json": {
+  "etag": "\"0x8DF1E35612ED9E8\"",
+  "last_modified": "Tue, 29 Sep 2026 14:24:32 GMT",
+  "length": "21998242",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/USPI/261578178_arlington-orthopedic-and-spine-hospital,-llc_standardcharges.json": {
+  "etag": "\"0x8DF1E35496D1174\"",
+  "last_modified": "Tue, 29 Sep 2026 14:23:52 GMT",
+  "length": "52645828",
+  "seen": null
+ },
+ "https://methodistsite.s3.us-east-1.amazonaws.com/263195791_Methodist-Hospital-for-Surgery_standardcharges.csv": {
+  "etag": "\"30a9bb32f68305a83625b1f4b1585250-5\"",
+  "last_modified": "Wed, 01 Apr 2026 14:25:48 GMT",
+  "length": "71634304",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/USPI/611762781_heritage-park-surgical-hospital-llc_standardcharges.json": {
+  "etag": "\"0x8DF1E356A76A904\"",
+  "last_modified": "Tue, 29 Sep 2026 14:24:47 GMT",
+  "length": "23814264",
+  "seen": null
+ },
+ "https://cdn.ardenthealthservices.com/price-transparency/27-2814378_Seton_Medical_Center_standardcharges.csv": {
+  "etag": "\"9d610cb95e192ed57c09cec6ce8d4654-23\"",
+  "last_modified": "Wed, 01 Apr 2026 13:05:36 GMT",
+  "length": "383327209",
+  "seen": null
+ },
+ "https://elitekingwood.com/823349983_Elite-Hospital-Kingwood_Standard-Charges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 21 Sep 2026 21:14:04 GMT",
+  "length": "312612",
+  "seen": null
+ },
+ "https://www.24hrer.com/842589283_St-Michaels-Medical-Hospital-LLC_standardcharges.csv": {
+  "etag": "\"5701a-65d6ea4fb9200\"",
+  "last_modified": "Fri, 09 Oct 2026 21:00:56 GMT",
+  "length": "356378",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/9382/746002164_bexar-county-hospital-district_standardcharges.csv": {
+  "etag": "0x8DF24B946AD4AB2",
+  "last_modified": "Wed, 07 Oct 2026 21:23:48 GMT",
+  "length": "4040142471",
+  "seen": null
+ },
+ "https://www.christushealth.org/-/media/christus-health/plan-care/files/bill-pay/machine-readable-files/741109665_santarosahospitalsanmarcos_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Fri, 24 Apr 2026 04:19:15 GMT",
+  "length": "171344773",
+  "seen": null
+ },
+ "https://www.harrishealth.org/SiteCollectionDocuments/financials/charge%20description%20master/2026/741536936_Harris-Health-Ben-Taub-Hospital_StandardCharges.zip": {
+  "etag": "\"{12B94307-FBBE-473D-A3EA-828AF61B6948},5\"",
+  "last_modified": "Fri, 27 Mar 2026 16:40:41 GMT",
+  "length": "1994462",
+  "seen": null
+ },
+ "https://dallasregionalmedicalcenter.com/wp-content/uploads/2026/09/100292_DallasRegionalMedicalCenter_standardcharges.json": {
+  "etag": "\"2dad96f-65a8538c74e80-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 19:41:30 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://northwesthillssurgical.com/582028767_Northwest_Hills_Surgical_Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 16:57:41 GMT",
+  "length": "867942189",
+  "seen": null
+ },
+ "https://harlingenmedicalcenter.com/wp-content/uploads/2026/09/007880_HarlingenMedicalCenter_standardcharges.json": {
+  "etag": "\"3cdbfae-65a83eac10d80-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 18:08:06 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://assets.usmdarlington.com/Images/Sites/U/USMDArlington/731662763_usmd-hospital-at-arlington-llc_standardcharges.csv": {
+  "etag": "\"27b322adbd13dd1:0\"",
+  "last_modified": "Tue, 14 Jul 2026 18:22:06 GMT",
+  "length": "32240280",
+  "seen": null
+ },
+ "https://cdn.ardenthealthservices.com/price-transparency/73-1620274_Physicians-Surgical-Hospitals-Quail-Creek_standardcharges.csv": {
+  "etag": "\"3265d0bb764f570f185193a2afd6edb0-44\"",
+  "last_modified": "Wed, 01 Apr 2026 13:14:04 GMT",
+  "length": "745014769",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/preferred-hospital-leasing-junction-inc/262294680_Preferred-Hospital-Leasing-Junction-Inc_standardcharges.csv": {
+  "etag": "\"ab7a080cd909ed5479f4b47e74f8f457\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:22 GMT",
+  "length": "372335",
+  "seen": null
+ },
+ "https://pricetransparency.healthcare/van-diest-medical-center/charges/export": {
+  "etag": "\"5f31922b3115c63d44392088dc4a2b53-2\"",
+  "last_modified": "Wed, 11 Feb 2026 17:34:55 GMT",
+  "length": "21241010",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/WJBE-1656005164598/machine-readable/741461220_frio-regional-hospital_standardcharges.json": {
+  "etag": "W/\"d1ec3c-j1K1ZJ8tBdOceNtGw+lfaAFKiPM\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/EYUF-1731106135200/machine-readable/742425482_hill-regional-hospital_standardcharges.json": {
+  "etag": "W/\"107f316-DtTkb+q9gqfq6l2wigNTcyC/7ao\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://seymourhospital.slicedhealth.io/pricer/752299922_seymour-hospital_standardcharges.csv": {
+  "etag": "\"b261db06c7570311ee4534dc7db95a10\"",
+  "last_modified": "Mon, 15 Jun 2026 13:53:47 GMT",
+  "length": "11996491",
+  "seen": null
+ },
+ "https://www.texaschildrens.org/sites/tc/files/uploads/documents/741100555_texas-childrens-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 18 Mar 2026 17:24:07 GMT",
+  "length": "40436431",
+  "seen": null
+ },
+ "https://www.texaschildrens.org/sites/tc/files/uploads/documents/741100555_texas-childrens-hospital-north-austin-campus_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 18 Mar 2026 17:24:08 GMT",
+  "length": "40814659",
+  "seen": null
+ },
+ "https://uhsfilecdn.eskycity.net/bh/274126263_mayhill_standardcharges.csv": {
+  "etag": "\"b16062a80d6a60a59460d2359e152216\"",
+  "last_modified": "Tue, 31 Mar 2026 23:37:08 GMT",
+  "length": "42897",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/USPI/201508140_north-central-surgical-center-l.l.p._standardcharges.json": {
+  "etag": "\"0x8DF1E352FF27974\"",
+  "last_modified": "Tue, 29 Sep 2026 14:23:09 GMT",
+  "length": "55568426",
+  "seen": null
+ },
+ "https://methodistmckinneyhospital.com/wp-content/uploads/2026/03/208847736_Methodist-Mckinney-Hospital_standardcharges.zip": {
+  "etag": "\"6a1b4777-c64cd9\"",
+  "last_modified": "Sat, 30 May 2026 20:24:23 GMT",
+  "length": "12995801",
+  "seen": null
+ },
+ "https://www.townsenmemorial.com/images/Files/364867804_townsen-memorial-hospital_standardcharges.csv": {
+  "etag": "\"1e9e47b-6acd3037-e46acb;;;\"",
+  "last_modified": "Mon, 12 Oct 2026 19:08:39 GMT",
+  "length": "32105595",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/advanced-dallas-hospital-and-clinics/852671865_Advanced-Dallas-Hospital-and-Clinics-LLC_standardcharges.csv": {
+  "etag": "\"b4e5a1592f5ad9c393ab761208c7676c\"",
+  "last_modified": "Mon, 28 Sep 2026 16:21:23 GMT",
+  "length": "107269",
+  "seen": null
+ },
+ "https://www.houstonmethodist.org/-/media/files/patient-resources/760545192_houston-methodist-cypress-hospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 25 Mar 2026 02:01:54 GMT",
+  "length": "54031999",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/USPI/752865177_frisco-medical-center-llp_standardcharges.json": {
+  "etag": "\"0x8DF1E34FDFB7984\"",
+  "last_modified": "Tue, 29 Sep 2026 14:21:45 GMT",
+  "length": "173374345",
   "seen": null
  }
 }
