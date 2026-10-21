@@ -150,6 +150,7 @@
    "797",
    "798",
    "799"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-tx"
  }
 }
