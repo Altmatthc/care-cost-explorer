@@ -1554,9 +1554,9 @@
   "seen": null
  },
  "https://hospitalpricedisclosure.com/Download.aspx": {
-  "etag": "0x8DED2D0E35141B0",
-  "last_modified": "Thu, 25 Jun 2026 15:46:14 GMT",
-  "length": "5124619",
+  "etag": "0x8DEB4FC9EFE7883",
+  "last_modified": "Mon, 18 May 2026 16:43:42 GMT",
+  "length": "48182521",
   "seen": null
  },
  "https://hospitalpricedisclosure.com/select (Palomar Escondido/Downtown)": {
@@ -2673,6 +2673,354 @@
   "etag": "\"0x8DF1E34FDFB7984\"",
   "last_modified": "Tue, 29 Sep 2026 14:21:45 GMT",
   "length": "173374345",
+  "seen": null
+ },
+ "https://www.bronxcare.org/about-us/paying-for-care/charges/131974191_bronxcare-hospital-center-fulton-campus_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 05 May 2026 22:35:02 GMT",
+  "length": "46126665",
+  "seen": null
+ },
+ "https://hospitalpricedisclosure.com/download.aspx": {
+  "etag": "0x8DEBCE064435B2E",
+  "last_modified": "Thu, 28 May 2026 17:41:47 GMT",
+  "length": "183846057",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/100287/131740127_st-josephs-hospital-yonkers_standardcharges.csv": {
+  "etag": "0x8DEE93A0DBD9C41",
+  "last_modified": "Fri, 24 Jul 2026 04:14:28 GMT",
+  "length": "328899056",
+  "seen": null
+ },
+ "https://www.northwell.edu/sites/northwell.edu/files/machine-readable-files/141338586_vassar-brothers-medical-center_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Thu, 30 Jul 2026 20:53:17 GMT",
+  "length": "1701131",
+  "seen": null
+ },
+ "https://www.northwell.edu/sites/northwell.edu/files/machine-readable-files/141338467_northern-dutchess-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Thu, 30 Jul 2026 20:53:14 GMT",
+  "length": "1583660",
+  "seen": null
+ },
+ "https://www.northwell.edu/sites/northwell.edu/files/machine-readable-files/146019179_putnam-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Fri, 31 Jul 2026 16:37:45 GMT",
+  "length": "1478571",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/13384/113465690-1801857172_nassau-health-care-corporation_standardcharges.csv": {
+  "etag": "0x8DE16FE74EDD7F9",
+  "last_modified": "Wed, 29 Oct 2025 15:18:47 GMT",
+  "length": "200318293",
+  "seen": null
+ },
+ "https://rumcsi.pt.panaceainc.com/MRFDownload/rumcsi/rumcsi": {
+  "etag": null,
+  "last_modified": null,
+  "length": "273986499",
+  "seen": null
+ },
+ "https://albany.pt.panaceainc.com/MRFDownload/albany/albanyamc": {
+  "etag": null,
+  "last_modified": null,
+  "length": "1550934446",
+  "seen": null
+ },
+ "https://www.northwell.edu/sites/northwell.edu/files/machine-readable-files/Peconic_Bay_Medical_Center_StandardCharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 07 Oct 2026 17:01:19 GMT",
+  "length": "29924986",
+  "seen": null
+ },
+ "https://www.northwell.edu/sites/northwell.edu/files/machine-readable-files/Northern_Westchester_Hospital_StandardCharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 07 Oct 2026 17:01:35 GMT",
+  "length": "27460186",
+  "seen": null
+ },
+ "https://www.northwell.edu/sites/northwell.edu/files/machine-readable-files/Long_Island_Jewish_Forest_Hills_StandardCharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 07 Oct 2026 17:04:03 GMT",
+  "length": "30974683",
+  "seen": null
+ },
+ "https://www.northwell.edu/sites/northwell.edu/files/machine-readable-files/Phelps_Hospital_StandardCharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 07 Oct 2026 17:01:05 GMT",
+  "length": "27360766",
+  "seen": null
+ },
+ "https://www.chsbuffalo.org/wp-content/uploads/2026/09/16-0743187_Sisters-of-Charity-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 01 Sep 2026 17:33:58 GMT",
+  "length": "8358626532",
+  "seen": null
+ },
+ "https://adirondackhealth.box.com/shared/static/r0wsvcixd88hvcijkyv3zb9tj7grjy57.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/lincoln-medical": {
+  "etag": null,
+  "last_modified": null,
+  "length": "680614243",
+  "seen": null
+ },
+ "https://www.chsbuffalo.org/wp-content/uploads/2026/09/16-0762843_Kenmore-Mercy-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 23 Sep 2026 18:25:46 GMT",
+  "length": "4111849140",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/jacobi": {
+  "etag": null,
+  "last_modified": null,
+  "length": "681183898",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/elmhurst": {
+  "etag": null,
+  "last_modified": null,
+  "length": "688479640",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/south-brooklyn": {
+  "etag": null,
+  "last_modified": null,
+  "length": "673840543",
+  "seen": null
+ },
+ "https://www.chsbuffalo.org/wp-content/uploads/2026/06/16-1523353_Mount-St-Marys-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 25 Jun 2026 14:58:49 GMT",
+  "length": "4192020936",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/metropolitan": {
+  "etag": null,
+  "last_modified": null,
+  "length": "682659634",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/kings": {
+  "etag": null,
+  "last_modified": null,
+  "length": "796097057",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/bellevue": {
+  "etag": null,
+  "last_modified": null,
+  "length": "789671792",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/queens": {
+  "etag": null,
+  "last_modified": null,
+  "length": "784785464",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/harlem": {
+  "etag": null,
+  "last_modified": null,
+  "length": "674739321",
+  "seen": null
+ },
+ "https://nychh.pt.panaceainc.com/MRFDownload/nychh/woodhull": {
+  "etag": null,
+  "last_modified": null,
+  "length": "793254326",
+  "seen": null
+ },
+ "https://rca.elevatepfs.com/ptapp/api/cdm/export/oneclick": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.chsbuffalo.org/wp-content/uploads/2026/09/16-0756336_Mercy-Hospital-of-Buffalo_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 16 Sep 2026 18:56:13 GMT",
+  "length": "8467530084",
+  "seen": null
+ },
+ "https://www.urmc.rochester.edu/getmedia/636ee711-58e5-4a53-abe8-aac528ae0614/222807681-JONES-MEMORIAL-HOSPITAL-standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 08 Jul 2026 17:44:30 GMT",
+  "length": "135484704",
+  "seen": null
+ },
+ "https://www.urmc.rochester.edu/getmedia/824004d0-5956-4624-bbd7-018711440b65/160743310-ST-JAMES-HOSPITAL-standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 08 Jul 2026 17:43:29 GMT",
+  "length": "122695590",
+  "seen": null
+ },
+ "https://www.urmc.rochester.edu/getmedia/5479e418-958b-4a8a-b3ab-610f5962d661/160743037-HIGHLAND-HOSPITAL-OF-ROCHESTER-standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 29 Jun 2026 12:05:49 GMT",
+  "length": "363553175",
+  "seen": null
+ },
+ "https://www.urmc.rochester.edu/getmedia/016bb4df-9b94-41b6-a803-c44ad94a879c/160743979-NICHOLAS-H-NOYES-MEMORIAL-HOSPITAL-standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 08 Jul 2026 17:44:02 GMT",
+  "length": "130621733",
+  "seen": null
+ },
+ "https://www.garnethealth.org/sites/default/files/cms-hpt/141364536_garnet-health-medical-center_standardcharges.csv": {
+  "etag": "\"69fcb633-3a16d78\"",
+  "last_modified": "Thu, 07 May 2026 15:56:35 GMT",
+  "length": "60910968",
+  "seen": null
+ },
+ "https://www.garnethealth.org/sites/default/files/cms-hpt/146049030_garnet-health-medical-center-catskills_standardcharges.csv": {
+  "etag": "\"69fcb67b-2fa63cd\"",
+  "last_modified": "Thu, 07 May 2026 15:57:47 GMT",
+  "length": "49963981",
+  "seen": null
+ },
+ "https://www.urmc.rochester.edu/getmedia/b1fa98a4-bf2c-4b54-883d-edbc50653e7a/161029490-STRONG-MEMORIAL-HOSPITAL-standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 29 Jun 2026 11:53:00 GMT",
+  "length": "505895677",
+  "seen": null
+ },
+ "https://www.ellismedicine.org/141338428_ellis-hospital_standardcharges.csv": {
+  "etag": "\"8fad68c5b5fdd1:0\"",
+  "last_modified": "Thu, 09 Jul 2026 15:15:26 GMT",
+  "length": "103595168",
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/540647482_bon-secours-richmond-community-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:40:53 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/160743222_westfield-memorial-hospital-inc_standardcharges.csv": {
+  "etag": "\"c582573-65dd21b335ef3:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:40:40 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/CHSLI/112050523_st-francis-hospital-&-heart-center_standardcharges.json": {
+  "etag": "\"0x8DEAC574ED829CC\"",
+  "last_modified": "Thu, 07 May 2026 16:40:11 GMT",
+  "length": "634048901",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/CHSLI/111871039_st-charles-hospital_standardcharges.json": {
+  "etag": "\"0x8DEAC5741DE0634\"",
+  "last_modified": "Thu, 07 May 2026 16:39:50 GMT",
+  "length": "725179779",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/CHSLI/111635088_mercy-hospital_standardcharges.json": {
+  "etag": "\"0x8DEAC5733E86FB4\"",
+  "last_modified": "Thu, 07 May 2026 16:39:26 GMT",
+  "length": "728271583",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/CHSLI/111888924_good-samaritan-hospital_standardcharges.json": {
+  "etag": "\"0x8DEAC57483F0A78\"",
+  "last_modified": "Thu, 07 May 2026 16:40:00 GMT",
+  "length": "635278067",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/CHSLI/061562701_st-catherine-of-siena-hospital_standardcharges.json": {
+  "etag": "\"0x8DEAC572CCE757C\"",
+  "last_modified": "Thu, 07 May 2026 16:39:14 GMT",
+  "length": "728124558",
+  "seen": null
+ },
+ "https://mather.wpenginepowered.com/wp-content/uploads/2022/10/11-1639818_John-T.-Mather-Memorial-Hospital_standardcharges.zip": {
+  "etag": "\"63602b7b-a45984\"",
+  "last_modified": "Mon, 31 Oct 2022 20:09:31 GMT",
+  "length": "10770820",
+  "seen": null
+ },
+ "https://onebrooklynhealth.org/media/z13jc2ra/111631746_BrookdaleHospitalMedicalCenter_StandardCharges.csv": {
+  "etag": "\"1dd2e9628c2247b\"",
+  "last_modified": "Mon, 17 Aug 2026 22:16:57 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.auburnhospital.org/wp-content/uploads/2025/01/150532054_auburn-community-hospital_standardcharges-2.zip": {
+  "etag": null,
+  "last_modified": "Tue, 21 Jan 2025 17:33:50 GMT",
+  "length": "15612087",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/160743226_upmc-chautauqua_standardcharges.csv": {
+  "etag": "7e6605cda66345e4bffcc69f7a14a442",
+  "last_modified": "Fri, 13 Mar 2026 12:34:43 GMT",
+  "length": "68805029",
+  "seen": null
+ },
+ "https://www.downstate.edu/patient-care/_documents/charges/364983111_suny-university-hospital-at-downstate_standardcharges.csv": {
+  "etag": "\"3afedd-6336324838ab6\"",
+  "last_modified": "Tue, 22 Apr 2025 19:39:27 GMT",
+  "length": "3866333",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/952453295c1ee89ee3ba06e6e42496e5/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.healthcare/sbhny/charges/export": {
+  "etag": "\"538691c506f15f0247433e38e9cb6787-6\"",
+  "last_modified": "Mon, 02 Mar 2026 20:20:17 GMT",
+  "length": "98683159",
+  "seen": null
+ },
+ "https://shop.helenhayeshosp.org/00-0432000_Helen-Hayes-Hospital_standardcharges_2026.csv": {
+  "etag": "\"1dd5bde9c042869\"",
+  "last_modified": "Wed, 14 Oct 2026 13:19:15 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.uvmhealth.org/sites/default/files/141364513_elizabethtown-community-hospital_standardcharges.csv": {
+  "etag": "\"233f77b-651e057649e40\"",
+  "last_modified": "Fri, 15 May 2026 19:37:21 GMT",
+  "length": "36960123",
+  "seen": null
+ },
+ "https://drive.google.com/uc": {
+  "etag": null,
+  "last_modified": "Fri, 21 Aug 2026 20:10:42 GMT",
+  "length": "27257629",
+  "seen": null
+ },
+ "https://s3.amazonaws.com/ycubaa-production-marlin-1-charge-management-public/facilities/a7b918c3-56d9-410c-bec6-e3d86fde3f92/160743921_BERTRAND-CHAFFEE-HOSPITAL_standardcharges.zip": {
+  "etag": "\"73d55fb951763342ef86069c2b506cd9\"",
+  "last_modified": "Thu, 01 Oct 2026 07:30:48 GMT",
+  "length": "22344808",
+  "seen": null
+ },
+ "https://www.crouse.org/wp-content/uploads/2026/05/16-0960470_Crouse-Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 22 May 2026 12:16:20 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://standard-charges-prod.s3.amazonaws.com/pricing_files/133971298-1801992631_nyu-langone-tisch_standardcharges.csv": {
+  "etag": "\"cc6d8d648a61a9ec36131ff68df4374c-29\"",
+  "last_modified": "Fri, 13 Mar 2026 15:11:39 GMT",
+  "length": "482303807",
+  "seen": null
+ },
+ "https://communitymemorial.org/wp-content/uploads/2026/03/150548010_community-memorial-hospital_standardcharges.csv": {
+  "etag": "\"1013534-6544c1932b371\"",
+  "last_modified": "Mon, 15 Jun 2026 15:01:17 GMT",
+  "length": "16856372",
   "seen": null
  }
 }
