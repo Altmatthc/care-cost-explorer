@@ -108,10 +108,19 @@ def coherence(state: str) -> tuple[list[str], list[str]]:
 
 
 def catalogue_gap(state: str) -> list[str]:
+    """
+    Hospitals that are 'ok' but have no on-disk catalogue AND did catalogue
+    codes last run — i.e. a genuine write/parse failure worth re-harvesting.
+    A hospital whose file legitimately yields no catalogable standard codes
+    (HCA-style chargemasters, thin stubs) reports catalogued == 0 and is NOT a
+    gap: it has prices and is searchable by description, just not by code.
+    """
     st = load(DATA / f"{state}-status.json", {})
-    ok = {hid for hid, v in st.items() if v.get("status") == "ok"}
     cat = {p.stem for p in (DATA / f"{state}-catalogue").glob("*.json")}
-    return sorted(ok - cat)
+    return sorted(hid for hid, v in st.items()
+                  if v.get("status") == "ok"
+                  and hid not in cat
+                  and v.get("catalogued", 0) > 0)
 
 
 def probe(url: str) -> int:

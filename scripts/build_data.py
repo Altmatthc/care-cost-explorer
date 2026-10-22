@@ -675,11 +675,21 @@ def pick_matching_file(hospital_name: str, domain: str,
     return None
 
 
-# A real code column is exactly "code", "code|1", "code_1" etc. Matching
-# loosely on the substring "code" previously caused the parser to mistake a
-# hospital's legal attestation paragraph (which contains "encoded") for the
-# column header row.
-CODE_COL_RE = re.compile(r"^code\s*[|_]?\s*\d*$")
+# A real code column is "code"/"code|1"/"code_1", or a named standard-code
+# column such as "hcpcs/cpt code", "cpt", "ms-drg", "apc", "billing code".
+# Matching loosely on the substring "code" previously caught a hospital's legal
+# attestation paragraph (which contains "encoded"), so every alternative is
+# anchored and bounded — short header cells only (looks_like_header drops cells
+# >= 80 chars), never free prose.
+CODE_COL_RE = re.compile(
+    r"^(?:"
+    r"code\s*[|_]?\s*\d*"                        # code, code|1, code_2
+    r"|(?:hcpcs|cpt)(?:[\s/]*(?:hcpcs|cpt))?(?:\s*code)?"   # hcpcs, cpt, hcpcs/cpt code
+    r"|(?:ms[\s-]*)?drg(?:\s*code)?"             # drg, ms-drg, ms drg code
+    r"|apc(?:\s*code)?"                          # apc
+    r"|(?:billing|procedure|charge)\s*code"      # billing/procedure/charge code
+    r"|code[\s_]*(?:type|1|2)?\s*[|_]?\s*\d*"
+    r")$")
 CHARGE_HINTS = ("standard_charge", "gross_charge", "discounted_cash",
                 "cash_price", "negotiated", "payer_name")
 
@@ -1218,7 +1228,8 @@ def extract_prices_json(hospital_id: str, url: str, verbose: bool = True) -> lis
     # every JSON-file hospital was priced and searchable yet invisible to the
     # drug-comparison table and hospital_meta (this is what dropped Paradise
     # Valley Hospital in San Diego).
-    meta = {"quality": {}, "codes_with_cash": len(coded_with_cash), "drugs": drugs}
+    meta = {"quality": {}, "codes_with_cash": len(coded_with_cash),
+            "catalogued": len(all_codes), "drugs": drugs}
     if found:
         found[0]["_meta"] = meta
     elif all_codes and CATALOGUE_DIR is not None:
@@ -1615,6 +1626,7 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
     # would mean tens of gigabytes of pointless writes on a statewide run.
     meta = {"quality": quality,
             "codes_with_cash": len(coded_with_cash),
+            "catalogued": len(all_codes),
             "drugs": drugs}
     if found:
         found[0]["_meta"] = meta
@@ -1636,11 +1648,10 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
             safe = re.sub(r"[^A-Za-z0-9_.-]", "_", hospital_id)
             (CATALOGUE_DIR / f"{safe}.json").write_text(
                 json.dumps(all_codes, separators=(",", ":")))
-            print(f"      [DEBUG] wrote catalogue {safe}.json ({len(all_codes)} codes)")
+            if verbose:
+                print(f"      [DEBUG] wrote catalogue {safe}.json ({len(all_codes)} codes)")
         except Exception as e:
             print(f"      could not save catalogue: {e}")
-    else:
-        print(f"      [DEBUG] NO CATALOGUE WRITE — all_codes={len(all_codes) if all_codes else 0}, CATALOGUE_DIR={CATALOGUE_DIR}")
     if not found:
         print(f"      NO MATCHES. Sample codes in file: {sample_codes}")
     return found
@@ -2046,7 +2057,7 @@ def main():
                   f"kept {len(keep)}/{len(rows)} rows for this hospital")
             return keep if keep else rows
 
-        def record(h, st, detail="", rows=0, url=None, reparsed=True):
+        def record(h, st, detail="", rows=0, url=None, reparsed=True, catalogued=None):
             # last_success means "we actually downloaded and parsed this file".
             # last_verified means "we confirmed the data is current" -- either by
             # parsing it or by the server saying the file is byte-identical.
@@ -2068,6 +2079,8 @@ def main():
                 "consecutive_failures": 0 if st == STATUS_OK
                                         else prior.get("consecutive_failures", 0) + 1,
                 "rule_applies": not is_federal(h["name"], h.get("system", "")),
+                "catalogued": (catalogued if catalogued is not None
+                               else prior.get("catalogued", 0)),
             }
 
         def carry_over(h):
@@ -2329,9 +2342,12 @@ def main():
                 with lock:
                     all_rows.extend(rows)
                     stats["found"] += 1
+                cat_n = next((r["_meta"]["catalogued"] for r in rows
+                              if isinstance(r, dict) and r.get("_meta")
+                              and "catalogued" in r["_meta"]), 0)
                 record(h, STATUS_OK if rows else STATUS_EMPTY,
                        "" if rows else "file parsed but held none of our procedures",
-                       rows=len(rows), url=cb)
+                       rows=len(rows), url=cb, catalogued=cat_n)
                 checkpoint()
             except Exception as e:
                 short = str(e).split("(Caused by")[0][:110]
