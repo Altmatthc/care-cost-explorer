@@ -228,6 +228,7 @@
    "456",
    "457",
    "458"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-oh"
  }
 }
