@@ -3022,5 +3022,437 @@
   "last_modified": "Mon, 15 Jun 2026 15:01:17 GMT",
   "length": "16856372",
   "seen": null
+ },
+ "https://www.uchealth.com/content/dam/uchealth/json-files/311479038_University-of-Cincinnati-Medical-Center_StandardCharges.json": {
+  "etag": null,
+  "last_modified": "Fri, 18 Sep 2026 17:32:19 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.uchealth.com/content/dam/uchealth/json-files/311588499_West-Chester-Hospital_StandardCharges.json": {
+  "etag": null,
+  "last_modified": "Tue, 01 Sep 2026 20:20:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/314394942_riverside-methodist-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb60f0a0b33\"",
+  "last_modified": "Tue, 24 Mar 2026 17:45:52 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/311070887_marion-general-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb667949688\"",
+  "last_modified": "Tue, 24 Mar 2026 17:48:20 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/314446959_ohiohealth-o-_bleness-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb6828b0736\"",
+  "last_modified": "Tue, 24 Mar 2026 17:49:08 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/271408630_jewish-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:35:33 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/314394942_grant-medical-center_standardcharges.json": {
+  "etag": "W/\"1dcbbb62f45ba07\"",
+  "last_modified": "Tue, 24 Mar 2026 17:46:46 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/310714456_ohiohealth-mansfield-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb66edc657a\"",
+  "last_modified": "Tue, 24 Mar 2026 17:48:35 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/384105653_berger-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb5c5bb8ee1\"",
+  "last_modified": "Tue, 24 Mar 2026 17:43:48 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/310538532_mercy-health-fairfield-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:37:06 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/314394942_dublin-methodist-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb63bc1c899\"",
+  "last_modified": "Tue, 24 Mar 2026 17:47:05 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/314440479_hardin-memorial-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb603f54976\"",
+  "last_modified": "Tue, 24 Mar 2026 17:45:33 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/341105619_mercy-health-st-ritas-medical-center-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:34:25 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/340714456_ohiohealth-shelby-hospital_standardcharges.json": {
+  "etag": "W/\"1dcbbb5f63b06e3\"",
+  "last_modified": "Tue, 24 Mar 2026 17:45:11 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/344431174_mercy-health-tiffin-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:26:05 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.limamemorial.org/media/bahnfbgb/344434676_lima-memorial-health-system_standardcharges.json": {
+  "etag": "\"1dcb714189c17e6\"",
+  "last_modified": "Wed, 18 Mar 2026 20:16:29 GMT",
+  "length": "36150118",
+  "seen": null
+ },
+ "https://8589329.fs1.hubspotusercontent-na1.net/hubfs/8589329/344427944_shelby-county-memorial-hospital-association_standardcharges.csv": {
+  "etag": "\"40feeca0fbdf46899bb3a437dd19f336\"",
+  "last_modified": "Wed, 10 Jun 2026 20:03:07 GMT",
+  "length": "24660819",
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/344428250-1467493551_mercy-health-st-vincent-medical-center-llc_v_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:22:49 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/340714704_mercy-health-regional-medical-center-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:32:45 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.summahealth.org/-/media/project/summahealth/website/page-content/patients-visitors/insurance-billing/261375072_summa-health-system_standardcharges.json": {
+  "etag": null,
+  "last_modified": null,
+  "length": "75039556",
+  "seen": null
+ },
+ "https://ketteringhealth.org/wp-content/uploads/2026/03/310621866_1043233984_kettering-medical-center-_standardcharges.json": {
+  "etag": "\"69cad509-3bf9584\"",
+  "last_modified": "Mon, 30 Mar 2026 19:54:49 GMT",
+  "length": "62887300",
+  "seen": null
+ },
+ "https://ketteringhealth.org/wp-content/uploads/2026/03/270712680_1760764849_beavercreek-medical-center_standardcharges.json": {
+  "etag": "\"69cad4dd-3945285\"",
+  "last_modified": "Mon, 30 Mar 2026 19:54:05 GMT",
+  "length": "60052101",
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/310830955_mercy-health-clermont-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:36:43 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/020701635_mercy-health-defiance-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:27:10 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/340864230_mercy-health-allen-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:32:26 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/341577110_mercy-health-willard-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:26:27 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.com/-/media/mercy/patient-resources/hospital-pricing-transparency/310785684-1144286352_community-mercy-health-partners_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Fri, 17 Apr 2026 18:30:57 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.woodcountyhospital.org/media/0x5fw0tn/344440884_wood-county_standardcharges.csv": {
+  "etag": "\"1dacbf693eb71b3\"",
+  "last_modified": "Mon, 01 Jul 2024 20:38:00 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/akron-general": {
+  "etag": null,
+  "last_modified": null,
+  "length": "19023614",
+  "seen": null
+ },
+ "https://www.premierhealth.com/docs/default-source/default-document-library/31-0537504_miami-valley-hospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Tue, 31 Mar 2026 19:03:14 GMT",
+  "length": "60863888",
+  "seen": null
+ },
+ "https://www.premierhealth.com/docs/default-source/default-document-library/31-1079309_atrium-medical-center_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Tue, 31 Mar 2026 19:03:51 GMT",
+  "length": "53649015",
+  "seen": null
+ },
+ "https://www.premierhealth.com/docs/default-source/default-document-library/31-0537095_upper-valley-medical-center_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Tue, 31 Mar 2026 19:04:07 GMT",
+  "length": "55216044",
+  "seen": null
+ },
+ "https://estimator.myinsightcare.com/static/mrf/994836852_insight-hospital-and-medical-center-trumbull_standardcharges.csv": {
+  "etag": "W/\"21bd8-1a0ecf33930\"",
+  "last_modified": "Tue, 29 Sep 2026 11:35:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/fairview": {
+  "etag": null,
+  "last_modified": null,
+  "length": "18134459",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/euclid": {
+  "etag": null,
+  "last_modified": null,
+  "length": "17431869",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/lutheran": {
+  "etag": null,
+  "last_modified": null,
+  "length": "18188399",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/medina": {
+  "etag": null,
+  "last_modified": null,
+  "length": "17542717",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/marymount": {
+  "etag": null,
+  "last_modified": null,
+  "length": "18242507",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/southpointe": {
+  "etag": null,
+  "last_modified": null,
+  "length": "16148677",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/hillcrest-mentor": {
+  "etag": null,
+  "last_modified": null,
+  "length": "16830491",
+  "seen": null
+ },
+ "https://clevelandclinic.pt.panaceainc.com/MRFDownload/clevelandclinic/akron-lodi": {
+  "etag": null,
+  "last_modified": null,
+  "length": "8779759",
+  "seen": null
+ },
+ "https://wexnermedical.osu.edu/Files/31-1340739_OHIO-STATE-UNIVERSITY-HOSPITALS_standardcharges.csv.zip": {
+  "etag": "\"2094762d939dd1:0\"",
+  "last_modified": "Wed, 01 Jul 2026 19:52:41 GMT",
+  "length": "22031538",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/blanchard-valley-regional-health-center/341369963_Blanchard-Valley-Regional-Health-Center_standardcharges.csv": {
+  "etag": "\"987288ac402b962d559b5bff1be5771e\"",
+  "last_modified": "Tue, 28 Jul 2026 18:48:07 GMT",
+  "length": "80408947",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/blanchard-valley-regional-health-center/344429941_Blanchard-Valley-Regional-Health-Center_standardcharges.csv": {
+  "etag": "\"41b3dfeab34d7b0f560c56303c2a28ff-12\"",
+  "last_modified": "Tue, 28 Jul 2026 18:40:41 GMT",
+  "length": "117900551",
+  "seen": null
+ },
+ "https://elch.org/wp-content/uploads/2026/09/1127LH_EastLiverpoolCityHospital_standardcharges.json": {
+  "etag": "\"2469aed-65a821dd4d640-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 15:59:13 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/3db6d9983f7ff0556c8777f0755ff297/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://coshoctonhospital.org/wp-content/uploads/2026/09/1129LH_CoshoctonRegionalMedicalCenter_standardcharges.json": {
+  "etag": "\"232bf28-65a82e4caacc0-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 16:54:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://aultman.org/pricing-transparency/2026/1942385794_alliance-community-hospital_standardcharges.json": {
+  "etag": "\"1ac859f-65dcc2bf16cf7\"",
+  "last_modified": "Wed, 14 Oct 2026 12:35:52 GMT",
+  "length": "28083615",
+  "seen": null
+ },
+ "https://apps.trihealth.com/static/pricing/310537486_THEGOODSAMARITANHOSPITAL_STANDARDCHARGES.csv": {
+  "etag": "\"784571af35eddc1:0\"",
+  "last_modified": "Tue, 26 May 2026 17:32:54 GMT",
+  "length": "64788315",
+  "seen": null
+ },
+ "https://apps.trihealth.com/static/pricing/310537122_BETHESDAHOSPITALINC_STANDARDCHARGES.csv": {
+  "etag": "\"a9886aac35eddc1:0\"",
+  "last_modified": "Tue, 26 May 2026 17:32:49 GMT",
+  "length": "64285754",
+  "seen": null
+ },
+ "https://www.madison-health.com/166189498_madison-health_standardcharges.json": {
+  "etag": "W/\"69d0097c-14812f5\"",
+  "last_modified": "Fri, 03 Apr 2026 18:39:56 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://avitahealth.org/": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.trinitytwincity.org/upload/275401105-1629050240_twin-city-hospital-corporation_standardcharges.json": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.henrycountyhospital.org/documents/344477047_henry-county-hospital_standardcharges.csv": {
+  "etag": "\"617caab7abcdc1:0\"",
+  "last_modified": "Wed, 25 Mar 2026 17:13:16 GMT",
+  "length": "10873177",
+  "seen": null
+ },
+ "https://wvumedicine.org/wp-content/uploads/2026/08/341571750_Harrison-Community-Hospital-Inc._standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 03 Aug 2026 13:14:38 GMT",
+  "length": "43303132",
+  "seen": null
+ },
+ "https://wvumedicine.org/wp-content/uploads/2026/08/340719172_Barnesville-Hospital-Association-Inc._standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 03 Aug 2026 13:16:01 GMT",
+  "length": "50715077",
+  "seen": null
+ },
+ "https://my.clevelandclinic.org/-/scassets/files/org/patients-visitors/hospital-standard-charge-files/340714585_cleveland-clinic-main-campus_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": "48913084",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10269/852985806_adena-fayette-medical-center_standardcharges.csv": {
+  "etag": "0x8DEFE34D53A5860",
+  "last_modified": "Wed, 19 Aug 2026 21:00:00 GMT",
+  "length": "1358000526",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/e4321d67b76f7bd1057463296792b027/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://my.clevelandclinic.org/-/scassets/files/org/patients-visitors/hospital-standard-charge-files/474442902_avon-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": "15296504",
+  "seen": null
+ },
+ "https://www.firelands.com/app/files/public/f431cc81-07d8-4f2b-a027-dab8621d088d/341401659%20_firelands-regional-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 15 Jun 2026 20:02:57 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://grandlakehealth.org/wp-content/uploads/2026/08/34-1623770_grand-lake-health-system_standardcharges.csv": {
+  "etag": "\"147120d-659e0ab67af38\"",
+  "last_modified": "Tue, 25 Aug 2026 15:22:23 GMT",
+  "length": "21434893",
+  "seen": null
+ },
+ "https://my.clevelandclinic.org/-/scassets/files/org/patients-visitors/hospital-standard-charge-files/340714570_cleveland-clinic-childrens-hospital-for-rehabilitation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": "6754930",
+  "seen": null
+ },
+ "https://www.metrohealth.org/globalassets/metrohealth-documents/patients-and-visitors/pricing-transparency-2026/346004382_metrohealth-system_standardcharges.csv": {
+  "etag": "\"1dcc6ae80eaa215\"",
+  "last_modified": "Tue, 07 Apr 2026 16:49:37 GMT",
+  "length": "70714517",
+  "seen": null
+ },
+ "https://ft-data.org/wp-content/uploads/2026/06/344430716_Fisher_Titus_Medical_Center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 27 May 2026 12:25:22 GMT",
+  "length": "294845243",
+  "seen": null
+ },
+ "https://aultman.org/pricing-transparency/2026/1356366991_aultman-hospital_standardcharges.json": {
+  "etag": "\"28ba70a-65dcc2bef7125\"",
+  "last_modified": "Wed, 14 Oct 2026 12:35:52 GMT",
+  "length": "42706698",
+  "seen": null
+ },
+ "https://irp.cdn-website.com/94898d03/files/uploaded/311518658_pomerene-hospital_standardcharges.csv": {
+  "etag": "\"5722fc946b5b7e21e5a35d3269df9026\"",
+  "last_modified": "Tue, 07 Apr 2026 18:28:34 GMT",
+  "length": "91972082",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10272/314379443_adena-health-system_standardcharges.csv": {
+  "etag": "0x8DEFE38E459697E",
+  "last_modified": "Wed, 19 Aug 2026 21:29:03 GMT",
+  "length": "1473271846",
+  "seen": null
+ },
+ "https://res.cloudinary.com/dpmykpsih/raw/upload/mary-rutan-redesign-site-505/media/42319e350c4244218295200023f73fad/341407259_mary-rutan-hospital_standardcharges.json": {
+  "etag": "W/\"71230e34afdc6caee843c4e41d63d487\"",
+  "last_modified": "Tue, 02 Jun 2026 16:11:04 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pauldingcountyhospital.com/wp-content/uploads/2026/10/346405718_Paulding-County-Hospital_standardcharges.xlsx": {
+  "etag": "\"6ad8cbda-bdfbc\"",
+  "last_modified": "Wed, 21 Oct 2026 14:27:38 GMT",
+  "length": "778172",
+  "seen": null
+ },
+ "https://ncstoragemlholzer.blob.core.windows.net/public/2026_311724085_holzer-medical-center-jackson_standard-charges.json.csv": {
+  "etag": "0x8DF1A4BAD247CE6",
+  "last_modified": "Thu, 24 Sep 2026 14:54:03 GMT",
+  "length": "26950331",
+  "seen": null
+ },
+ "https://www.waynehealthcare.org/documents/finance/34-4428598_Wayne-Healthcare_standardcharges-4.1.26.csv": {
+  "etag": "\"9e5f34145cbdc1:0\"",
+  "last_modified": "Mon, 13 Apr 2026 12:58:41 GMT",
+  "length": "21072738",
+  "seen": null
  }
 }
