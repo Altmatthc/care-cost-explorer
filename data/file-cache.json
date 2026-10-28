@@ -3454,5 +3454,593 @@
   "last_modified": "Mon, 13 Apr 2026 12:58:41 GMT",
   "length": "21072738",
   "seen": null
+ },
+ "https://www.pennstatehealth.org/sites/default/files/Finance/Apr-2026/231512747_penn-state-health-holy-spirit-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 17:33:49 GMT",
+  "length": "98594871",
+  "seen": null
+ },
+ "https://www.pennstatehealth.org/sites/default/files/Finance/Apr-2026/851608328_penn-state-health-hampden-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 17:38:42 GMT",
+  "length": "101321752",
+  "seen": null
+ },
+ "https://www.pennstatehealth.org/sites/default/files/Finance/Apr-2026/251854772_the-milton-s.-hershey-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 17:38:13 GMT",
+  "length": "123472386",
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/250965547_saint-vincent-health-center_standardcharges.csv": {
+  "etag": "\"172d58d2-65dd1e8861c71:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:26:29 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/251875178_alle-kiski-medical-center_standardcharges.csv": {
+  "etag": "\"141a626e-65dd1f39f32b8:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:29:36 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250965423_upmc-mckeesport_standardcharges.csv": {
+  "etag": "c7be85d097a342cb91332f02ef0e2615",
+  "last_modified": "Mon, 16 Mar 2026 14:37:17 GMT",
+  "length": "87708310",
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/250969492-1285667493_west-penn-allegheny-health-system-inc_standardcharges.csv": {
+  "etag": "\"15875fa5-65dd1fbe17f55:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:31:54 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250965406_upmc-jameson_standardcharges.csv": {
+  "etag": "3ef09c00ab984a859fdb948421bb0fdd",
+  "last_modified": "Mon, 16 Mar 2026 17:21:19 GMT",
+  "length": "63030278",
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/250969492-1194744805_west-penn-allegheny-health-system-inc_standardcharges.csv": {
+  "etag": "\"13a77313-65dd20fd07a5e:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:37:29 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/251737079_canonsburg-general-hospital_standardcharges.csv": {
+  "etag": "\"13ce76d7-65dd2207e0a38:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:42:08 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/251340370_grove-city-medical-center_standardcharges.csv": {
+  "etag": "\"1439502e-65dd2436b02a7:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:51:54 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/250969492-1679592380_west-penn-allegheny-health-system-inc_standardcharges.csv": {
+  "etag": "\"15f968f3-65dd251c8ad32:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:55:55 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250965429_upmc-mercy_standardcharges.csv": {
+  "etag": "b7b5336b79644925bf256631ac827097",
+  "last_modified": "Mon, 16 Mar 2026 14:48:41 GMT",
+  "length": "199073957",
+  "seen": null
+ },
+ "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/250969492-1588269898_west-penn-allegheny-health-system-inc_standardcharges.csv": {
+  "etag": "\"11cba2f0-65dd259d936d9:dtagent10347260902154543uGO7\"",
+  "last_modified": "Wed, 14 Oct 2026 19:58:11 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/240795508_upmc-williamsport_standardcharges.csv": {
+  "etag": "c99a7340fbcd49b69ab1d1540586173b",
+  "last_modified": "Mon, 16 Mar 2026 17:50:57 GMT",
+  "length": "148601359",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/820880337_upmc-carlisle_standardcharges.csv": {
+  "etag": "1e783b1c11504f5d8028f69834cfd2e8",
+  "last_modified": "Mon, 16 Mar 2026 13:00:05 GMT",
+  "length": "134676058",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250965387_upmc-hamot_standardcharges.csv": {
+  "etag": "b4a1a60e4b1e4f16a5f6c8423ca91afe",
+  "last_modified": "Mon, 16 Mar 2026 17:25:47 GMT",
+  "length": "158389545",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/251778644_upmc-pinnacle-hospitals_standardcharges.csv": {
+  "etag": "b7bb299d4c3547f18cb5c12f3b28d1dd",
+  "last_modified": "Mon, 16 Mar 2026 11:52:27 GMT",
+  "length": "108941822",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/820844453_upmc-lititz_standardcharges.csv": {
+  "etag": "9511a7dfa92c4aa194706013db7782d3",
+  "last_modified": "Mon, 16 Mar 2026 13:01:43 GMT",
+  "length": "129527977",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/231352155_upmc-altoona_standardcharges.csv": {
+  "etag": "098c0e681dcf436584a873c30e9f25b0",
+  "last_modified": "Fri, 13 Mar 2026 12:39:18 GMT",
+  "length": "88460252",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250489010_upmc-northwest_standardcharges.csv": {
+  "etag": "76533b654e6441068e5e47878ebd2c05",
+  "last_modified": "Mon, 16 Mar 2026 18:02:32 GMT",
+  "length": "107664192",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/820912090_upmc-memorial_standardcharges.csv": {
+  "etag": "7d7592b91d254b4580de7d5d28f6548d",
+  "last_modified": "Mon, 16 Mar 2026 12:54:12 GMT",
+  "length": "112300957",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/232875070_upmc-st-margaret_standardcharges.csv": {
+  "etag": "1540bd1934ee487d8470bd29f14f3198",
+  "last_modified": "Fri, 13 Mar 2026 13:16:39 GMT",
+  "length": "129168494",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/269a6006063e-wellspanxmcef9f-production4406-c241/media/Project/Wellspan-Site-Tenant/wellspan-site/data/media/files/Patient-Resources/Cost/240795411_evangelical-community-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF33341561219D\"",
+  "last_modified": "Mon, 26 Oct 2026 07:38:09 GMT",
+  "length": "7005673",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250965451_upmc-passavant_standardcharges.csv": {
+  "etag": "aba47509ba364265a95d692e2501c134",
+  "last_modified": "Mon, 16 Mar 2026 17:55:55 GMT",
+  "length": "156077720",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250965420_upmc-magee_standardcharges.csv": {
+  "etag": "a5610692e2ad4696b4ba25bb30f979b8",
+  "last_modified": "Mon, 16 Mar 2026 14:52:43 GMT",
+  "length": "199964754",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/231396795_upmc-bedford_standardcharges.csv": {
+  "etag": "9a820a9e48c749a4a47edc868e7ff444",
+  "last_modified": "Fri, 13 Mar 2026 12:49:49 GMT",
+  "length": "82337335",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250965480_upmc-presbyterian-shadyside_standardcharges.csv": {
+  "etag": "e3f404890b1c417daf8af5564b5cd80a",
+  "last_modified": "Mon, 16 Mar 2026 13:51:26 GMT",
+  "length": "309136592",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250523970_upmc-horizon_standardcharges.csv": {
+  "etag": "991a2498d05441289cbe94fffccc0d04",
+  "last_modified": "Mon, 16 Mar 2026 17:38:45 GMT",
+  "length": "124970374",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/231360851_upmc-hanover_standardcharges.csv": {
+  "etag": "d085b9a71e8f4731b538609ba04b283a",
+  "last_modified": "Fri, 13 Mar 2026 12:45:46 GMT",
+  "length": "113761809",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/274814831_upmc-east_standardcharges.csv": {
+  "etag": "701b1741b6f24110b23f12b717aacb69",
+  "last_modified": "Mon, 16 Mar 2026 11:44:33 GMT",
+  "length": "132896916",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/240806023_upmc-muncy_standardcharges.csv": {
+  "etag": "e6d5afcd106040d69a6408a2ccac4162",
+  "last_modified": "Fri, 13 Mar 2026 13:25:05 GMT",
+  "length": "122522496",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/240802108_upmc-cole_standardcharges.csv": {
+  "etag": "b07bccec9e7d4221aae89f2159bebc01",
+  "last_modified": "Fri, 13 Mar 2026 13:20:16 GMT",
+  "length": "66556104",
+  "seen": null
+ },
+ "https://towerhealth.org/sites/default/files/pricing/23-1352204_Reading-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 29 May 2026 17:53:02 GMT",
+  "length": "73630173",
+  "seen": null
+ },
+ "https://towerhealth.org/sites/default/files/pricing/82-2132538_Pottstown-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 29 May 2026 17:55:44 GMT",
+  "length": "38321887",
+  "seen": null
+ },
+ "https://towerhealth.org/sites/default/files/pricing/82-2062413_Phoenixville-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 29 May 2026 17:54:23 GMT",
+  "length": "35688661",
+  "seen": null
+ },
+ "https://towerhealth.org/sites/default/files/pricing/84-3224793_StChristophers-Hospital-For-Children_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 29 May 2026 17:56:40 GMT",
+  "length": "26594431",
+  "seen": null
+ },
+ "https://www.templehealth.org/sites/default/files/file/2026-04/232825878_temple-university-hospital-inc-main-campus_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 30 Apr 2026 19:51:01 GMT",
+  "length": "125014482",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/232176963_upmc-wellsboro_standardcharges.csv": {
+  "etag": "0ee28cb3297e41c38709d0f62315dbde",
+  "last_modified": "Fri, 13 Mar 2026 12:52:41 GMT",
+  "length": "158804135",
+  "seen": null
+ },
+ "https://www.slhn.org/-/media/sluhn/billing/pdf/standard-charges/23-1352203_stlukeshospitalupperbuckscampus_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Tue, 15 Sep 2026 13:57:05 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://lvhn.pt.panaceainc.com/MRFDownload/lvhn/Schuylkill": {
+  "etag": null,
+  "last_modified": null,
+  "length": "436128558",
+  "seen": null
+ },
+ "https://www.slhn.org/-/media/sluhn/billing/pdf/standard-charges/84-4475996_stlukeshospitaleastoncampus_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Tue, 15 Sep 2026 14:35:31 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.heritagevalley.org/wp-content/uploads/2026/04/251801532_heritage-valley-beaver_standardcharges-April-2026.csv": {
+  "etag": "\"3f3a118-64e66f4a66f12\"",
+  "last_modified": "Wed, 01 Apr 2026 14:32:38 GMT",
+  "length": "66298136",
+  "seen": null
+ },
+ "https://www.heritagevalley.org/wp-content/uploads/2026/04/251801532_heritage-valley-sewickley_standardcharges-April-2026.csv": {
+  "etag": "\"3f40461-64e66f532e028\"",
+  "last_modified": "Wed, 01 Apr 2026 14:32:47 GMT",
+  "length": "66323553",
+  "seen": null
+ },
+ "https://www.slhn.org/-/media/sluhn/billing/pdf/standard-charges/25-1550350_stlukeshospitalminerscampus_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Tue, 15 Sep 2026 14:23:20 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.slhn.org/-/media/sluhn/billing/pdf/standard-charges/46-5143606_stlukeshospitalmonroecampus_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Tue, 15 Sep 2026 14:30:30 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://lvhn.pt.panaceainc.com/MRFDownload/lvhn/lehigh": {
+  "etag": null,
+  "last_modified": null,
+  "length": "681336852",
+  "seen": null
+ },
+ "https://www.slhn.org/-/media/sluhn/billing/pdf/standard-charges/82-4432109_geisingerstlukeshospitalorwigsburgcamups_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Tue, 15 Sep 2026 14:33:49 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://content.wellspan.org/MRF/231352222_york-hospital_standardcharges.csv": {
+  "etag": "\"4ca327c6e741dd1:0\"",
+  "last_modified": "Fri, 11 Sep 2026 12:19:20 GMT",
+  "length": "86660145",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/269a6006063e-wellspanxmcef9f-production4406-c241/media/Project/Wellspan-Site-Tenant/wellspan-site/data/media/files/Patient-Resources/Cost/231352220_gettysburg-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF33341449DB8B\"",
+  "last_modified": "Mon, 26 Oct 2026 07:38:08 GMT",
+  "length": "40620383",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/269a6006063e-wellspanxmcef9f-production4406-c241/media/Project/Wellspan-Site-Tenant/wellspan-site/data/media/files/Patient-Resources/Cost/230794160_good-samaritan-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF3334145A91AD\"",
+  "last_modified": "Mon, 26 Oct 2026 07:38:08 GMT",
+  "length": "30215432",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/269a6006063e-wellspanxmcef9f-production4406-c241/media/Project/Wellspan-Site-Tenant/wellspan-site/data/media/files/Patient-Resources/Cost/231360854_waynesboro-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF3334145A43E8\"",
+  "last_modified": "Mon, 26 Oct 2026 07:38:08 GMT",
+  "length": "15215910",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/269a6006063e-wellspanxmcef9f-production4406-c241/media/Project/Wellspan-Site-Tenant/wellspan-site/data/media/files/Patient-Resources/Cost/230465970_chambersburg-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF3334150192A1\"",
+  "last_modified": "Mon, 26 Oct 2026 07:38:09 GMT",
+  "length": "37747102",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/269a6006063e-wellspanxmcef9f-production4406-c241/media/Project/Wellspan-Site-Tenant/wellspan-site/data/media/files/Patient-Resources/Cost/231370484_ephrata-community-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF333415BA4DC5\"",
+  "last_modified": "Mon, 26 Oct 2026 07:38:10 GMT",
+  "length": "42092280",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/269a6006063e-wellspanxmcef9f-production4406-c241/media/Project/Wellspan-Site-Tenant/wellspan-site/data/media/files/Patient-Resources/Cost/232899911_wellspan-surgery-and-rehabilitation-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF333414F93797\"",
+  "last_modified": "Mon, 26 Oct 2026 07:38:09 GMT",
+  "length": "28174927",
+  "seen": null
+ },
+ "https://www.phhealthcare.org/download/": {
+  "etag": null,
+  "last_modified": null,
+  "length": "44682071",
+  "seen": null
+ },
+ "https://www.conemaugh.org/docs/ahconemaughhealthsystemlibraries/hcl/mrf3q262/472546387_nason-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 00:24:27 GMT",
+  "length": "16933375",
+  "seen": null
+ },
+ "https://www.conemaugh.org/docs/ahconemaughhealthsystemlibraries/hcl/mrf3q262/611739000_conemaugh-memorial-medical-center_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 16:14:54 GMT",
+  "length": "634623",
+  "seen": null
+ },
+ "https://www.conemaugh.org/docs/ahconemaughhealthsystemlibraries/hcl/mrf3q263/364787404_conemaugh-meyersdale-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 17 Sep 2026 21:19:51 GMT",
+  "length": "10372828",
+  "seen": null
+ },
+ "https://www.conemaugh.org/docs/ahconemaughhealthsystemlibraries/hcl/mrf3q262/320442133_conemaugh-miners-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 00:24:22 GMT",
+  "length": "13708154",
+  "seen": null
+ },
+ "https://lowerbuckshosp.com/wp-content/uploads/2026/09/911120_LowerBucksHospital_standardcharges.json": {
+  "etag": "\"20aaa39-65a8624378600-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 20:47:20 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.independence.health/documents/content/251010039_Butler-Clarion_standardcharges.csv": {
+  "etag": "\"b187557b4f7fdc1:0\"",
+  "last_modified": "Tue, 06 Jan 2026 21:00:26 GMT",
+  "length": "61945456",
+  "seen": null
+ },
+ "https://www.independence.health/documents/content/250965274_Butler-Memorial_StandardCharges.csv": {
+  "etag": "\"b1c9846d4f7fdc1:0\"",
+  "last_modified": "Tue, 06 Jan 2026 21:00:03 GMT",
+  "length": "198017333",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/250965570_upmc-somerset_standardcharges.csv": {
+  "etag": "8eb9afa759c8405c9cca5a15c794127f",
+  "last_modified": "Mon, 16 Mar 2026 13:40:03 GMT",
+  "length": "72201863",
+  "seen": null
+ },
+ "https://tupa-q-001.sitecorecontenthub.cloud/api/public/content/230469150_the-chester-county-hospital_standardcharges.csv": {
+  "etag": "\"0x8DF048241034BD9\"",
+  "last_modified": "Thu, 27 Aug 2026 21:29:19 GMT",
+  "length": "492834959",
+  "seen": null
+ },
+ "https://www.windbercare.org/251244202_Chan-Soon-Shiong-Medical-Center-at-Windber_standardcharges.csv": {
+  "etag": "\"37afb80-64c4840e5b18b\"",
+  "last_modified": "Thu, 05 Mar 2026 15:04:30 GMT",
+  "length": "58391424",
+  "seen": null
+ },
+ "https://www.mmchs.org/wp-content/uploads/2026/09/251512436_Meadville-Medical-Center_standardcharges_09.11.26.csv": {
+  "etag": null,
+  "last_modified": "Fri, 11 Sep 2026 13:34:10 GMT",
+  "length": "14692545",
+  "seen": null
+ },
+ "https://use2webtechstgpricelist.blob.core.windows.net/pricelist/Complete%20File/230596940_jefferson-torresdale-hospital_standardcharges.csv": {
+  "etag": "0x8DF18C84B440578",
+  "last_modified": "Tue, 22 Sep 2026 16:41:04 GMT",
+  "length": "261185085",
+  "seen": null
+ },
+ "https://use2webtechstgpricelist.blob.core.windows.net/pricelist/Complete%20File/232829095_thomas-jefferson-university-hospital_standardcharges.csv": {
+  "etag": "0x8DF18CA433DA66F",
+  "last_modified": "Tue, 22 Sep 2026 16:55:10 GMT",
+  "length": "306077145",
+  "seen": null
+ },
+ "https://www.wmh.org/wp-content/uploads/2026/09/PricingTransparency-Wayne-Memorial_F-3559-20260916115044.csv": {
+  "etag": null,
+  "last_modified": "Thu, 17 Sep 2026 15:35:01 GMT",
+  "length": "20257826",
+  "seen": null
+ },
+ "https://commonwealthhealth.net/wp-content/uploads/sheets/263632648_wilkes-barre-general-hospital_standardcharges.csv": {
+  "etag": "\"6a7cc120-a339ffe\"",
+  "last_modified": "Wed, 12 Aug 2026 18:53:20 GMT",
+  "length": "171155454",
+  "seen": null
+ },
+ "https://commonwealthhealth.net//wp-content/uploads/sheets/274564798_regional-hospital-of-scranton_standardcharges.csv": {
+  "etag": "\"6a7cc120-8aba425\"",
+  "last_modified": "Wed, 12 Aug 2026 18:53:20 GMT",
+  "length": "145466405",
+  "seen": null
+ },
+ "https://www.mainlinehealth.org/-/media/files/pdf/basic-content/patient-services/patient-billing/price-transparency/2026/231352160_the-bryn-mawr-hospital_standardcharges.xlsx": {
+  "etag": "1c73b02614f54a0ea681c0f4abd3a01a",
+  "last_modified": "Fri, 07 Aug 2026 01:00:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mainlinehealth.org/-/media/files/pdf/basic-content/patient-services/patient-billing/price-transparency/2026/23-1352160_paoli-hospital_standardcharges.csv": {
+  "etag": "315a9ce716004321a5e4b3ae59c0a318",
+  "last_modified": "Wed, 01 Apr 2026 13:43:42 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mainlinehealth.org/-/media/files/pdf/basic-content/patient-services/patient-billing/price-transparency/2026/23-1352160_lankenau-medical-center_standardcharges.csv": {
+  "etag": "a2540e9eed3a4b4dbbdec6f754698200",
+  "last_modified": "Wed, 01 Apr 2026 13:42:22 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mainlinehealth.org/-/media/files/pdf/basic-content/patient-services/patient-billing/price-transparency/2026/23-1529076_riddle-memorial-hospital_standardcharges.csv": {
+  "etag": "54591c05731e4b1b82d62b76121feb03",
+  "last_modified": "Wed, 01 Apr 2026 13:44:18 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.independence.health/documents/content/250965612_WestmorelandRegionalHospital_StandardCharges.csv": {
+  "etag": "\"7397a6526770dc1:0\"",
+  "last_modified": "Thu, 18 Dec 2025 21:43:18 GMT",
+  "length": "17904153",
+  "seen": null
+ },
+ "https://www.independence.health/documents/content/250965375_FrickHospital_StandardCharges.csv": {
+  "etag": "\"52fa8a524e74dc1:0\"",
+  "last_modified": "Tue, 23 Dec 2025 20:54:25 GMT",
+  "length": "9764315",
+  "seen": null
+ },
+ "https://pub-dd9ed2ce8da741aba680475ac31af6a3.r2.dev/250965598-1659360220_warren-general-hospital_standardcharges.csv": {
+  "etag": "\"ee25dd2ac86ff3dfde52f9c5ed61fe96\"",
+  "last_modified": "Fri, 25 Sep 2026 12:13:23 GMT",
+  "length": "28611902",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8118/231534300_holy-redeemer-health-system_standardcharges.csv": {
+  "etag": "0x8DF180992197761",
+  "last_modified": "Mon, 21 Sep 2026 17:55:49 GMT",
+  "length": "105130622",
+  "seen": null
+ },
+ "https://whs.org/wp-content/uploads/2026/03/437884840_upmc-greene_standardcharges.csv": {
+  "etag": "\"421c5b1-6a4122bc-b9dc3cdf48b556ea;gz\"",
+  "last_modified": "Sun, 28 Jun 2026 13:33:48 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.irmc.org/clientfiles/getfile/250965404_Indiana-Regional-Medical-Center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://hpt.trinity-health.org/232794121_nazareth-hospital_standardcharges.zip": {
+  "etag": "\"80c5131a39d4dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 22:24:23 GMT",
+  "length": "106034842",
+  "seen": null
+ },
+ "https://www.pah.org/download/": {
+  "etag": null,
+  "last_modified": "Wed, 28 Oct 2026 04:55:11 GMT",
+  "length": "82169809",
+  "seen": null
+ },
+ "https://www.vfmc.net/863012091_avenuesrecovery-valleyforge_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": "43253",
+  "seen": null
+ },
+ "https://www.doylestownhealth.org/-/media/files/doylestown-health/billing/231352174_doylestown_hospital_standard-charges-01012021-(5).csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": "212",
+  "seen": null
+ },
+ "https://roxboroughmemorial.com/wp-content/uploads/2026/09/910401_RoxboroughMemorialHospital_standardcharges.json": {
+  "etag": "\"1cb81ff-65a853922dc00-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 19:41:36 GMT",
+  "length": "1316491",
+  "seen": null
+ },
+ "https://rothmanorthohospital.com/270260289_rothman-orthopaedic-specialty-hospital-llc_standardcharges.csv": {
+  "etag": "\"69ce6841-17451d0\"",
+  "last_modified": "Thu, 02 Apr 2026 12:59:45 GMT",
+  "length": "24400336",
+  "seen": null
+ },
+ "https://storage.googleapis.com/treatspace-prod-media/pracf/u-2709/264093335_advanced-surgical-hospital_standardcharges.csv": {
+  "etag": "\"13f03b199a3348ccb82997f69fa2950d\"",
+  "last_modified": "Mon, 15 Jun 2026 16:18:36 GMT",
+  "length": "28178042",
+  "seen": null
+ },
+ "https://www.phycarehospital.com/documents/261239962_Physicians-Care-Surgical-Hospital_standardcharges.csv": {
+  "etag": "\"c334dd3ca18dd1:0\"",
+  "last_modified": "Tue, 30 Jun 2026 15:00:49 GMT",
+  "length": "53812469",
+  "seen": null
+ },
+ "https://osshealth.com/uploads/docs/800458999_OSS-Orthopaedic-Hospital-LLC_standard-charges-1.csv": {
+  "etag": "\"61969423-1beaac\"",
+  "last_modified": "Thu, 18 Nov 2021 17:57:55 GMT",
+  "length": "1829548",
+  "seen": null
+ },
+ "https://www.willseye.org/wp-content/uploads/2026/03/236000204_wills-eye-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 31 Mar 2026 14:15:57 GMT",
+  "length": "322167",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/Emerus/852744492_AHN-Emerus-Westmoreland-LLC_standardcharges.csv": {
+  "etag": "\"0x8DE89F0BA3E0210\"",
+  "last_modified": "Tue, 24 Mar 2026 22:00:14 GMT",
+  "length": "10477640",
+  "seen": null
+ },
+ "https://www.endlesscare.org/s/232720289_endless-mountains-health-systems-inc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": "2165114",
+  "seen": null
+ },
+ "https://www.titusvillehospital.org/wp-content/uploads/sites/2/2026/09/250965579_Titusville-Area-Hospital_standardcharges_09.11.26.csv": {
+  "etag": null,
+  "last_modified": "Fri, 11 Sep 2026 13:42:09 GMT",
+  "length": "8751640",
+  "seen": null
+ },
+ "https://media.chop.edu/data/files/finance/23-1352166_ChildrensHospitalofPhiladelphia_standardcharges.csv": {
+  "etag": "\"4acc8e816be77740ae26f075392b60fa\"",
+  "last_modified": "Fri, 16 Jan 2026 14:34:09 GMT",
+  "length": "62157141",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/7c93d4ea279eee36743b98172f7de455/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/250402510_upmc-childrens_standardcharges.csv": {
+  "etag": "9930e1097b7242a5ac76ad7f7371c47f",
+  "last_modified": "Mon, 16 Mar 2026 18:05:51 GMT",
+  "length": "189063814",
+  "seen": null
  }
 }
