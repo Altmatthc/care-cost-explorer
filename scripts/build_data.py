@@ -68,7 +68,7 @@ from ccx.config import (
 from ccx.hints import DOMAIN_HINTS, KNOWN_MRF
 from ccx.seeds import seed_domain, seed_url
 
-UA = {"User-Agent": "care-cost-explorer/1.0 (public price transparency tool)"}
+UA = {"User-Agent": "care-cost-explorer (public CMS data; github.com/Altmatthc/care-cost-explorer)"}
 
 # Hospitals' file servers throttle or refuse repeated automated requests —
 # Scripps began refusing connections after several runs. Retry with backoff
@@ -329,47 +329,45 @@ def field(row: dict, *names) -> str:
 
 def fetch_all_rows(debug: bool = False) -> list[dict]:
     """
-    Page through the whole dataset with no server-side filtering.
+    Fetch the whole Hospital General Information dataset as the bulk CSV and
+    filter locally.
 
-    Filtering locally is deliberate: CMS's filter syntax has changed between
-    API versions, and a wrong filter fails silently by returning zero rows
-    rather than an error. The dataset is only ~5,400 rows of metadata, so
-    fetching it all and filtering here is both cheap and far more robust.
+    We used to page the datastore *query* API (…/datastore/query/<id>/0?limit&
+    offset). That API became unreliable in Oct 2026: it rate-limits with 403s
+    and rejects deep pages with 400 past ~offset 4000, which killed the registry
+    step for every state. The bulk CSV is one request, no paging, no offset
+    ceiling, and is the same source build_quality.py already uses successfully.
+    Cached 7 days under data/registry-cache/ so a statewide run hits CMS once.
+
+    Returns rows with the CSV's own header keys ("Facility ID", "City/Town",
+    …); field() normalizes punctuation so every existing lookup still resolves.
     """
-    out, offset, limit = [], 0, 500
-    while True:
-        r = SESSION.get(CMS_API, params={"limit": limit, "offset": offset},
-                         headers=UA, timeout=60)
-        r.raise_for_status()
-        payload = r.json()
+    cache_dir = DATA / "registry-cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = cache_dir / "hospital_general_information.csv"
+    fresh = csv_path.exists() and (time.time() - csv_path.stat().st_mtime) < 7 * 86400
 
-        # Response shape has varied across API versions.
-        if isinstance(payload, list):
-            rows = payload
-        elif isinstance(payload, dict):
-            rows = payload.get("results") or payload.get("data") or []
-            if isinstance(rows, dict):
-                rows = list(rows.values())
-        else:
-            rows = []
+    if not fresh:
+        meta_url = (f"https://data.cms.gov/provider-data/api/1/metastore/"
+                    f"schemas/dataset/items/{CMS_DATASET}")
+        meta = SESSION.get(meta_url, headers=UA, timeout=60)
+        meta.raise_for_status()
+        url = meta.json()["distribution"][0]["downloadURL"]
+        resp = SESSION.get(url, headers=UA, timeout=180)
+        resp.raise_for_status()
+        csv_path.write_bytes(resp.content)
+        if debug:
+            print(f"  downloaded registry CSV ({len(resp.content)//1024} KB) from {url}")
 
-        if offset == 0:
-            if not rows:
-                print("  !! API returned no rows at all.", file=sys.stderr)
-                print(f"  !! Response keys: {list(payload)[:10] if isinstance(payload, dict) else type(payload)}",
-                      file=sys.stderr)
-                print(f"  !! URL: {r.url}", file=sys.stderr)
-                return []
-            print(f"  API OK. Available fields: {sorted(rows[0].keys())}")
-            if debug:
-                print(f"  Sample row: {json.dumps(rows[0], indent=2)[:1200]}")
-
-        out.extend(rows)
-        offset += limit
-        if len(rows) < limit:
-            break
-        time.sleep(0.2)
-    return out
+    text = csv_path.read_text(encoding="utf-8-sig", errors="replace")
+    rows = list(csv.DictReader(io.StringIO(text)))
+    if not rows:
+        print("  !! registry CSV parsed to zero rows.", file=sys.stderr)
+        return []
+    print(f"  registry CSV OK ({len(rows)} rows). Fields: {sorted(rows[0].keys())[:8]}…")
+    if debug:
+        print(f"  Sample row: {json.dumps(rows[0], indent=2)[:1200]}")
+    return rows
 
 
 def fetch_registry(region: str, debug: bool = False,

@@ -39,3 +39,6 @@ drafts/
 
 # CMS quality CSVs (100+ MB, re-downloadable); the compact *-quality.json IS committed
 data/quality-cache/
+
+# CMS registry CSV cache (re-downloadable)
+data/registry-cache/
