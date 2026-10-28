@@ -3076,11 +3076,13 @@
   "type": "Acute Care Hospitals",
   "stars": 3,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "pennstatehealth.org",
+  "verified_source": true,
   "lat": 40.08137,
   "lng": -76.38202,
-  "mrf_url": null
+  "mrf_url": "https://www.pennstatehealth.org/sites/default/files/Finance/Apr-2026/851620990_penn-state-health-lancaster-medical-center_standardcharges.csv",
+  "price_page": "https://www.pennstatehealth.org/patients-visitors/billing-medical-records/hospital-price-transparency",
+  "source_url": "https://www.pennstatehealth.org/sites/default/files/Finance/Apr-2026/851620990_penn-state-health-lancaster-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-390430",
@@ -3208,7 +3210,7 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
+  "domain": "bucktailmedicalcenter.org",
   "verified_source": false,
   "lat": 41.32684,
   "lng": -77.73802,
@@ -3476,11 +3478,13 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "upmc.com",
+  "verified_source": true,
   "lat": 41.6619,
   "lng": -78.7978,
-  "mrf_url": null
+  "mrf_url": "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/250998168_upmc-kane_standardcharges.csv?",
+  "price_page": "https://www.upmc.com/locations/hospitals/altoona/patients-visitors/patient-info/cdm",
+  "source_url": "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/250998168_upmc-kane_standardcharges.csv"
  },
  {
   "id": "ccn-393302",

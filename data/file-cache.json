@@ -2682,9 +2682,9 @@
   "seen": null
  },
  "https://hospitalpricedisclosure.com/download.aspx": {
-  "etag": "0x8DEBCE064435B2E",
-  "last_modified": "Thu, 28 May 2026 17:41:47 GMT",
-  "length": "183846057",
+  "etag": "0x8DF08780944567B",
+  "last_modified": "Tue, 01 Sep 2026 22:26:15 GMT",
+  "length": "13228905",
   "seen": null
  },
  "https://sthpiprd.blob.core.windows.net/machine-readable-files/100287/131740127_st-josephs-hospital-yonkers_standardcharges.csv": {
@@ -4041,6 +4041,426 @@
   "etag": "9930e1097b7242a5ac76ad7f7371c47f",
   "last_modified": "Mon, 16 Mar 2026 18:05:51 GMT",
   "length": "189063814",
+  "seen": null
+ },
+ "https://www.pennstatehealth.org/sites/default/files/Finance/Apr-2026/851620990_penn-state-health-lancaster-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 17:44:56 GMT",
+  "length": "95329238",
+  "seen": null
+ },
+ "https://dam.upmc.com/-/media/upmc/locations/hospitals/documents/cdm-json-files/machine-readable-csv-not-json/250998168_upmc-kane_standardcharges.csv": {
+  "etag": "2231f349db0b448fbbe238ff765c0d1b",
+  "last_modified": "Wed, 15 Apr 2026 16:43:01 GMT",
+  "length": "64413053",
+  "seen": null
+ },
+ "https://www.grahamhealthsystem.org/docs/default-source/machine-readable-file-standard-charges-(chargemaster-pricing)/370673506_graham_hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 28 Oct 2026 09:46:40 GMT",
+  "length": "34089681",
+  "seen": null
+ },
+ "https://www.bjc.org/hpt/1/370661172_AltonMemorialHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 07:57:50 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/7959/362739299-1316047632_trinity-medical-center_standardcharges.csv": {
+  "etag": "0x8DEC192C2BD66AB",
+  "last_modified": "Wed, 03 Jun 2026 17:08:40 GMT",
+  "length": "289645226",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11269/362167920_advocate-sherman-hospital_standardcharges.csv": {
+  "etag": "0x8DE8A686C917ACE",
+  "last_modified": "Wed, 25 Mar 2026 12:17:03 GMT",
+  "length": "100716656",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/in-csv/350992717_st-joseph-hospital-and-health-center-inc_standardcharges.csv": {
+  "etag": "3eacb1ff1c174dfd964531a240ecf41c",
+  "last_modified": "Tue, 09 Jun 2026 17:58:03 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11271/362169147_advocate-trinity-hospital_standardcharges.csv": {
+  "etag": "0x8DE8A6A238D7ABE",
+  "last_modified": "Wed, 25 Mar 2026 12:29:20 GMT",
+  "length": "72712482",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11267/363196629_advocate-illinois-masonic-medical-center_standardcharges.csv": {
+  "etag": "0x8DE8B38F39CB63F",
+  "last_modified": "Thu, 26 Mar 2026 13:09:45 GMT",
+  "length": "107178639",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11264/262525968_advocate-condell-medical-center_standardcharges.csv": {
+  "etag": "0x8DE89E4438B62FE",
+  "last_modified": "Tue, 24 Mar 2026 20:31:01 GMT",
+  "length": "111922572",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11263/362169147_advocate-christ-medical-center_standardcharges.csv": {
+  "etag": "0x8DE8B3887F61DA6",
+  "last_modified": "Thu, 26 Mar 2026 13:06:44 GMT",
+  "length": "147545030",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11268/362169147_advocate-lutheran-general-hospital_standardcharges.csv": {
+  "etag": "0x8DE8A67AFE45F73",
+  "last_modified": "Wed, 25 Mar 2026 12:11:47 GMT",
+  "length": "132952885",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11265/362169147_advocate-good-samaritan-hospital_standardcharges.csv": {
+  "etag": "0x8DE89FCD6EBBA37",
+  "last_modified": "Tue, 24 Mar 2026 23:26:56 GMT",
+  "length": "113043229",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11266/362169147_advocate-good-shepherd-hospital_standardcharges.csv": {
+  "etag": "0x8DE89FCF8F5EDFC",
+  "last_modified": "Tue, 24 Mar 2026 23:27:53 GMT",
+  "length": "102687545",
+  "seen": null
+ },
+ "https://www.hshs.org/getmedia/c7276038-46f5-487f-b25a-1f430c049844/370661233_st-anthonys-memorial-hospital-of-the-hospital-sisters-of-the-third-order-of-st-francis_standardcharges.zip": {
+  "etag": "\"639192120451841415\"",
+  "last_modified": "Thu, 09 Jul 2026 21:40:45 GMT",
+  "length": "4742016",
+  "seen": null
+ },
+ "https://www.hshs.org/getmedia/e495b700-31ce-4936-baaf-af58e043c28c/370661238_st-johns-hospital-of-the-hospital-sisters-of-the-third-order-of-st-francis_standardcharges.zip": {
+  "etag": "\"639183267018468394\"",
+  "last_modified": "Mon, 29 Jun 2026 15:45:01 GMT",
+  "length": "10170986",
+  "seen": null
+ },
+ "https://www.hshs.org/getmedia/8d02779d-f50b-422c-95e1-4f78ffb3c574/370792770_hshs-holy-family-hospital-inc_standardcharges.zip": {
+  "etag": "\"639183267590876658\"",
+  "last_modified": "Mon, 29 Jun 2026 15:45:59 GMT",
+  "length": "2404641",
+  "seen": null
+ },
+ "https://www.hshs.org/getmedia/99caf2d8-ca1e-425f-b068-6205c57f9aeb/370663567_st-elizabeths-hospital-of-the-hospital-sisters-of-the-third-order-of-st-francis_standardcharges.zip": {
+  "etag": "\"639183267158778172\"",
+  "last_modified": "Mon, 29 Jun 2026 15:45:15 GMT",
+  "length": "5872143",
+  "seen": null
+ },
+ "https://www.hshs.org/getmedia/492da073-285b-4a53-aee0-2523dcb171da/370661236_st-francis-hospital-sisters-of-the-third-order-of-st-francis_standardcharges.zip": {
+  "etag": "\"639183266957529891\"",
+  "last_modified": "Mon, 29 Jun 2026 15:44:55 GMT",
+  "length": "4514575",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/il-csv/362235165_presence-chicago-hospitals-network_standardcharges.csv": {
+  "etag": "4347dc12ba63469fb22b4cad3380ab75:dtagent10345260810170330mf0Z",
+  "last_modified": "Mon, 30 Mar 2026 21:31:20 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/il-csv/364251846_st-alexius-medical-center_standardcharges.csv": {
+  "etag": "aa1c3af5634741f6a30a81e74f788508:dtagent10345260810170330mf0Z",
+  "last_modified": "Tue, 31 Mar 2026 19:12:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/370813229_1699288449_osf-healthcare-system_standardcharges.json": {
+  "etag": "W/\"0x8DEC0C3A1536261\"",
+  "last_modified": "Tue, 02 Jun 2026 16:25:59 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/370662581_osf-st-mary-medical-center_standardcharges.json": {
+  "etag": "W/\"0x8DEC0C3597CFF8A\"",
+  "last_modified": "Tue, 02 Jun 2026 16:23:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/370662569_osf-saint-francis-medical-center_standardcharges.json": {
+  "etag": "W/\"0x8DEC0C337101AA1\"",
+  "last_modified": "Tue, 02 Jun 2026 16:23:00 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/370662570_osf-saint-james-john-w-albrecht-medical-center_standardcharges.json": {
+  "etag": "W/\"0x8DEC0C34A6D3269\"",
+  "last_modified": "Tue, 02 Jun 2026 16:23:33 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/370662576_osf-st-joseph-medical-center_standardcharges.json": {
+  "etag": "W/\"0x8DEC0C351BBD2AA\"",
+  "last_modified": "Tue, 02 Jun 2026 16:23:45 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/362167864_osf-saint-anthony-medical-center_standardcharges.json": {
+  "etag": "W/\"0x8DEC0C34414AF81\"",
+  "last_modified": "Tue, 02 Jun 2026 16:23:22 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.nm.org/site_data/362169179_palos-community-hospital_standardcharges.json": {
+  "etag": "\"9b7396fcdb7dc1:0\"",
+  "last_modified": "Thu, 19 Mar 2026 18:20:27 GMT",
+  "length": "1261659353",
+  "seen": null
+ },
+ "https://www.allegiancecosttransparency.com/2022-07-01_RUSH_UNIVERSITY_MEDICAL_CENTER_index.json": {
+  "etag": "\"d71f74ea8252dd1:0\"",
+  "last_modified": "Fri, 02 Oct 2026 15:30:12 GMT",
+  "length": "5779",
+  "seen": null
+ },
+ "https://www.lorettohospital.org/documents/362200248_loretto-hospital_standardcharges.csv": {
+  "etag": "\"c1df90758665dd1:0\"",
+  "last_modified": "Mon, 26 Oct 2026 20:13:26 GMT",
+  "length": "62908394",
+  "seen": null
+ },
+ "https://vistahealth.com//wp-content/uploads/2025/06/203978521_VISTA-MEDICAL-CENTER_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Sun, 12 Oct 2025 09:03:29 GMT",
+  "length": "4216696",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/unichicagomc-81nbqnb3/media/files/pricing-transparency/2026/363488183_the-university-of-chicago-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE903043BDA19F\"",
+  "last_modified": "Wed, 01 Apr 2026 20:50:10 GMT",
+  "length": "42386565",
+  "seen": null
+ },
+ "https://edge.sitecorecloud.io/unichicagomc-81nbqnb3/media/files/pricing-transparency/2026/362170866_ingalls-memorial-hospital_standardcharges.json": {
+  "etag": "\"0x8DE903043891126\"",
+  "last_modified": "Wed, 01 Apr 2026 20:50:09 GMT",
+  "length": "31266171",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11405/371119538_the-carle-foundation-hospital_standardcharges.csv": {
+  "etag": "0x8DE9B09525F08C2",
+  "last_modified": "Wed, 15 Apr 2026 16:09:07 GMT",
+  "length": "697169303",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11475/850682363_carle-bromenn-medical-center_standardcharges.csv": {
+  "etag": "0x8DE9B04E79057BF",
+  "last_modified": "Wed, 15 Apr 2026 15:37:30 GMT",
+  "length": "473869492",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11404/850688306_carle-eureka-hospital_standardcharges.csv": {
+  "etag": "0x8DE9B05412A8086",
+  "last_modified": "Wed, 15 Apr 2026 15:40:00 GMT",
+  "length": "453501524",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11410/363637465_hoopeston-community-memorial-hospital_standardcharges.csv": {
+  "etag": "0x8DE9B0E1A952154",
+  "last_modified": "Wed, 15 Apr 2026 16:43:21 GMT",
+  "length": "343510451",
+  "seen": null
+ },
+ "https://www.stbh.org/wp-content/uploads/362264414_st-bernard-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 26 Jun 2026 16:59:03 GMT",
+  "length": "1588250",
+  "seen": null
+ },
+ "https://www.nm.org/site_data/362338884_northern-illinois-medical-center-dba-northwestern-medicine-mchenry-hospital_standardcharges.json": {
+  "etag": "\"82a244643b3dc1:0\"",
+  "last_modified": "Fri, 13 Mar 2026 16:06:46 GMT",
+  "length": "1631148913",
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/swedish/live/910433740_swedish-medical-center_standardcharges.json": {
+  "etag": "W/\"3ab59890b2c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:41:01 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.thorek.org/hubfs/files/366000085_thorek-memorial-hospital_standardcharges.json": {
+  "etag": "W/\"da1105376990b4292321ace5fffcca00\"",
+  "last_modified": "Wed, 25 Feb 2026 19:36:54 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://cookcountyhealth.org/wp-content/uploads/366006541_JOHN-H-STROGER-JR-HOSP-OF-COOK-COUNTY-PROVIDENT-HOSPITAL_standardcharges-2.csv": {
+  "etag": "\"7db788-652308fa30f80\"",
+  "last_modified": "Tue, 19 May 2026 19:19:42 GMT",
+  "length": "8238984",
+  "seen": null
+ },
+ "https://gatewayregional.net/PriceTransparency/88-3850676_GATEWAY-REGIONAL-MEDICAL-CENTER_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 21 Apr 2026 20:04:49 GMT",
+  "length": "14070595",
+  "seen": null
+ },
+ "https://memorial.health/Resources/463a1f34-823e-44f8-9278-9e022e939496/370661199_Decatur_Memorial_Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://memorial.health/Resources/452b1df1-ad01-4063-a729-31a091660635/370661220_Springfield_Memorial_Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://memorial.health/Resources/c8ccf9a4-b44a-4c87-b135-52ee53b192fa/370723793_Lincoln_Memorial_Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://memorial.health/Resources/fa78bf96-0368-4cd1-8b83-ef42eaa4f0ab/370661250_Taylorville_Memorial_Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://memorial.health/Resources/d997e3f0-da18-4ce6-9de5-f1465abf6e66/370661230_Jacksonville_Memorial_Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.hospital.uillinois.edu/documents/PatientAndVisitors/billing/376000511_University-of-Illinois-Hospital-and-Clinics_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "35305943",
+  "seen": null
+ },
+ "https://www.jacksonparkhospital.org/assets/1/7/362448028%20Jackson%20Park%20Hospital%20Foundation%20standardcharges4.csv": {
+  "etag": "\"d6a9ebf0bafcdc1:0\"",
+  "last_modified": "Mon, 15 Jun 2026 11:34:35 GMT",
+  "length": "516993",
+  "seen": null
+ },
+ "https://andersonhospital.org/wp-content/uploads/2026/04/370662561_anderson_healthcare_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 10 Apr 2026 18:09:14 GMT",
+  "length": "300178862",
+  "seen": null
+ },
+ "https://www.nm.org/site_data/362179779_northwestern-lake-forest-hospital_standardcharges.json": {
+  "etag": "\"904f4c20cdb7dc1:0\"",
+  "last_modified": "Thu, 19 Mar 2026 18:20:55 GMT",
+  "length": "2127444306",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11428/370661215_kirby-medical-center_standardcharges.csv": {
+  "etag": "0x8DEC7DD20830766",
+  "last_modified": "Thu, 11 Jun 2026 17:16:08 GMT",
+  "length": "105732918",
+  "seen": null
+ },
+ "https://www.midwestmedicalcenter.org/content/pdfs/204560540_midwest-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 13 Oct 2026 13:24:25 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://stauntonhospital.org/wp-content/uploads/2026/04/370624255_anderson_healthcare_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 10 Apr 2026 17:39:30 GMT",
+  "length": "35936850",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/100282/376020408-1659321560_washington-county-hospital_standardcharges.csv": {
+  "etag": "0x8DEE2B2A8567C31",
+  "last_modified": "Wed, 15 Jul 2026 20:50:08 GMT",
+  "length": "102847834",
+  "seen": null
+ },
+ "https://www.fairfieldmemorial.org/getmedia/3148410c-77f7-4131-9705-df34dd772692/370661202_fairfield-memorial-hospital_standardcharges.csv": {
+  "etag": "\"639280928615663612\"",
+  "last_modified": "Tue, 20 Oct 2026 16:34:21 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.masondistricthospital.org/wp-content/uploads/2026/05/Price-TransV3.0.0_Wide_CSV_Format_Template.csv": {
+  "etag": "\"5a5c18-6a055473-78146e8254b61034;gz\"",
+  "last_modified": "Thu, 14 May 2026 04:49:55 GMT",
+  "length": null,
+  "seen": null
+ },
+ "http://www.franklinhospital.net/docs/376006885_Franklin-Hospital-District_standardcharges.csv": {
+  "etag": "\"40c0827-644fb6dbf5640\"",
+  "last_modified": "Tue, 02 Dec 2025 17:28:49 GMT",
+  "length": "67897383",
+  "seen": null
+ },
+ "https://www.nm.org/site_data/363484281_northwestern-medicine-delnor-hospital_standardcharges.json": {
+  "etag": "\"2e81e2ae3b3dc1:0\"",
+  "last_modified": "Fri, 13 Mar 2026 16:08:51 GMT",
+  "length": "1149953943",
+  "seen": null
+ },
+ "https://www.nm.org/site_data/362513909_northwestern-medicine-central-dupage-hospital_standardcharges.json": {
+  "etag": "\"f01c2f9b3b3dc1:0\"",
+  "last_modified": "Fri, 13 Mar 2026 16:08:18 GMT",
+  "length": "1754280280",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/salem-township-hospital/370925318_Salem-Township-Hospital_standardcharges.csv": {
+  "etag": "\"f65c5a965e474f6a270ed80739f73de2\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:41 GMT",
+  "length": "881229",
+  "seen": null
+ },
+ "https://www.crawfordmh.org/clientuploads/CMS-4205-F/370793762_Crawford-Memorial-Hospital_standardcharges.csv": {
+  "etag": "\"81bf42-658b7cdf66380-gzip\"",
+  "last_modified": "Mon, 10 Aug 2026 21:11:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10477/884142509_deaconess-illinois-red-bud-regional-hospital-inc_standardcharges.csv": {
+  "etag": "0x8DE6F2B2656636B",
+  "last_modified": "Wed, 18 Feb 2026 20:20:25 GMT",
+  "length": "253457396",
+  "seen": null
+ },
+ "https://www.nm.org/site_data/370960170_northwestern-memorial-hospital_standardcharges.json": {
+  "etag": "\"3a1714dfd1b7dc1:0\"",
+  "last_modified": "Thu, 19 Mar 2026 18:54:53 GMT",
+  "length": "5019534101",
+  "seen": null
+ },
+ "https://www.nm.org/site_data/237087041_northwestern-medicine-kishwaukee-hospital_standardcharges.json": {
+  "etag": "\"a5b1a4fd0b3dc1:0\"",
+  "last_modified": "Fri, 13 Mar 2026 15:49:35 GMT",
+  "length": "827937268",
+  "seen": null
+ },
+ "https://www.nm.org/site_data/364244337_northwestern-medicine-valley-west-hospital_standardcharges.json": {
+  "etag": "\"77d1e5b43b3dc1:0\"",
+  "last_modified": "Fri, 13 Mar 2026 16:09:01 GMT",
+  "length": "316985591",
+  "seen": null
+ },
+ "https://touchette.org/media-library/documents/371305510_touchette-regional-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": "12142562",
+  "seen": null
+ },
+ "https://estimator.myinsightcare.com/static/mrf/862358048_insight-hospital-and-medical-center-chicago_standardcharges.csv": {
+  "etag": "W/\"23c72-1a0ecf33930\"",
+  "last_modified": "Tue, 29 Sep 2026 11:35:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.thorek.org/hubfs/files/366000085_thorek-memorial-hospital-andersonville_standardcharges.json": {
+  "etag": "W/\"faaf36160095e8b45671549155ba81bb\"",
+  "last_modified": "Mon, 06 Apr 2026 20:14:51 GMT",
+  "length": null,
   "seen": null
  }
 }

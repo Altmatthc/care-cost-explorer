@@ -281,5 +281,40 @@
    "196"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-pa"
+ },
+ "il": {
+  "file": "il.json",
+  "updated": "2026-10-28",
+  "hospitals": 86,
+  "procedures": 58,
+  "states": [
+   "IL"
+  ],
+  "zip3": [
+   "600",
+   "601",
+   "604",
+   "605",
+   "606",
+   "608",
+   "609",
+   "610",
+   "611",
+   "612",
+   "613",
+   "614",
+   "615",
+   "616",
+   "617",
+   "618",
+   "619",
+   "620",
+   "622",
+   "624",
+   "625",
+   "626",
+   "627",
+   "628"
+  ]
  }
 }
