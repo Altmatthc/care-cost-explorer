@@ -363,6 +363,7 @@
    "287",
    "288",
    "289"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-nc"
  }
 }
