@@ -317,5 +317,22 @@
    "628"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-il"
+ },
+ "ga": {
+  "file": "ga.json",
+  "updated": "2026-10-28",
+  "hospitals": 18,
+  "procedures": 58,
+  "states": [
+   "GA"
+  ],
+  "zip3": [
+   "300",
+   "301",
+   "302",
+   "314",
+   "315",
+   "317"
+  ]
  }
 }

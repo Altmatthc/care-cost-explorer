@@ -4462,5 +4462,113 @@
   "last_modified": "Mon, 06 Apr 2026 20:14:51 GMT",
   "length": null,
   "seen": null
+ },
+ "https://urldefense.com/v3/__https:/hospitalpricedisclosure.com/download.aspx": {
+  "etag": "0x8DE9A366CEC30F2",
+  "last_modified": "Tue, 14 Apr 2026 14:59:27 GMT",
+  "length": "22036762",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-west-georgia-medical-center_standard-charges": {
+  "etag": "20043b39263e40d9a139fec291d70d67",
+  "last_modified": "Mon, 30 Mar 2026 13:33:29 GMT",
+  "length": "56166456",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-spalding-regional-hospital_standard-charges": {
+  "etag": "07df37ec3c7e471ea410ab8eb38b9652",
+  "last_modified": "Mon, 30 Mar 2026 13:37:30 GMT",
+  "length": "54807021",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-kennestone-hospital_standard-charges": {
+  "etag": "b659b57781ce42b29821c67b4013fe5a",
+  "last_modified": "Mon, 30 Mar 2026 13:34:03 GMT",
+  "length": "57419711",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-paulding-hospital_standard-charges": {
+  "etag": "2175e48fc5f24141a6d30aef40bf8b7b",
+  "last_modified": "Mon, 30 Mar 2026 13:35:40 GMT",
+  "length": "54264026",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-cobb-hospital_standard-charges": {
+  "etag": "62b40f106cc544ad9e6921cb772dfdf8",
+  "last_modified": "Mon, 30 Mar 2026 13:33:40 GMT",
+  "length": "56096668",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-douglas-hospital_standard-charges": {
+  "etag": "6f4761a95ea3467490c3ccb0f0ec5311",
+  "last_modified": "Mon, 30 Mar 2026 13:33:52 GMT",
+  "length": "54414415",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-north-fulton-hospital_standard-charges": {
+  "etag": "163f3489739845dc8aec5ccb62e04778",
+  "last_modified": "Mon, 30 Mar 2026 13:37:19 GMT",
+  "length": "54818024",
+  "seen": null
+ },
+ "https://www.wellstar.org/wellstar-sylvan-grove-hospital_standard-charges": {
+  "etag": "99c79d6cdc1d4d0ca559f3b339b4cc43",
+  "last_modified": "Mon, 30 Mar 2026 13:37:37 GMT",
+  "length": "29870906",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/81-4223395_MEMORIAL-SATILLA-HEALTH_standardcharges.json": {
+  "etag": "\"0x8DF1646F206A068\"",
+  "last_modified": "Sat, 19 Sep 2026 12:10:07 GMT",
+  "length": "357671838",
+  "seen": null
+ },
+ "https://www.tanner.org/upload/docs/PDFs/FinancialAssistance/581790149_Tanner-Medical-Center---Carrollton_standardcharges.csv": {
+  "etag": "\"8d9c6f201d3add1:0\"",
+  "last_modified": "Tue, 01 Sep 2026 14:21:06 GMT",
+  "length": "84218748",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582155150_piedmont-newton-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "68790178",
+  "seen": null
+ },
+ "https://www.tanner.org/upload/docs/PDFs/FinancialAssistance/582453303_Tanner-Medical-Center---Villa-Rica_standardcharges.csv": {
+  "etag": "\"4e1215271d3add1:0\"",
+  "last_modified": "Tue, 01 Sep 2026 14:21:17 GMT",
+  "length": "87364774",
+  "seen": null
+ },
+ "https://www.tanner.org/upload/docs/PDFs/FinancialAssistance/582414416_Higgins-General-Hospital_standardcharges.csv": {
+  "etag": "\"ad75f3221d3add1:0\"",
+  "last_modified": "Tue, 01 Sep 2026 14:21:10 GMT",
+  "length": "51584825",
+  "seen": null
+ },
+ "https://www.sjchs.org/docs/default-source/default-document-library/580593388_candler-hospital_standardcharges293f9cd3-a627-4d74-aabc-b691b192010e.json": {
+  "etag": null,
+  "last_modified": "Mon, 30 Jun 2025 17:42:17 GMT",
+  "length": "1120047",
+  "seen": null
+ },
+ "https://res.cloudinary.com/dpmykpsih/raw/upload/southeast-georgia-site-441/media/r/3973089e73b74845a679c5863cedd135/581911751_southeast-georgia-health-system-brunswick-campus_standardcharg.csv": {
+  "etag": "\"534997865bab07218bc5fe7180f79b89\"",
+  "last_modified": "Thu, 09 Jan 2025 17:41:20 GMT",
+  "length": "43834226",
+  "seen": null
+ },
+ "https://res.cloudinary.com/dpmykpsih/raw/upload/southeast-georgia-site-441/media/r/2b7af40f710742bdb73b6db38189c1a2/581911751_southeast-georgia-health-system-camden-campus_standardcharges.csv": {
+  "etag": "\"473055627aa15503f22bc7c0de02cada\"",
+  "last_modified": "Thu, 30 Jan 2025 17:45:06 GMT",
+  "length": "43749488",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582433438_piedmont-cartersville-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "76648501",
+  "seen": null
  }
 }
