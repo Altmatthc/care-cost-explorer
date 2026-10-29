@@ -335,5 +335,34 @@
    "317"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-ga"
+ },
+ "nc": {
+  "file": "nc.json",
+  "updated": "2026-10-29",
+  "hospitals": 53,
+  "procedures": 58,
+  "states": [
+   "NC"
+  ],
+  "zip3": [
+   "270",
+   "271",
+   "272",
+   "273",
+   "275",
+   "276",
+   "277",
+   "278",
+   "279",
+   "280",
+   "281",
+   "282",
+   "283",
+   "284",
+   "286",
+   "287",
+   "288",
+   "289"
+  ]
  }
 }

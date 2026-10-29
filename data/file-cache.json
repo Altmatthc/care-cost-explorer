@@ -4570,5 +4570,329 @@
   "last_modified": null,
   "length": "76648501",
   "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048706_MISSION-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF2F816E2E844D\"",
+  "last_modified": "Wed, 21 Oct 2026 14:41:45 GMT",
+  "length": "782729448",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048888_MISSION-HOSPITAL-MCDOWELL_standardcharges.json": {
+  "etag": "\"0x8DF15C64547978B\"",
+  "last_modified": "Fri, 18 Sep 2026 20:49:01 GMT",
+  "length": "453432242",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/northern-hospital-district-of-surry-county/566015416_Northern-Hospital-District-of-Surry-County_standardcharges.csv": {
+  "etag": "\"0ef19accb50a7d345f5b00bc2718b15d\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:42 GMT",
+  "length": "20660562",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048950_HIGHLANDS-CASHIERS-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1878D17D8162\"",
+  "last_modified": "Tue, 22 Sep 2026 07:12:09 GMT",
+  "length": "425586987",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11240/560532309_high-point-regional-health_standardcharges.csv": {
+  "etag": "0x8DE8D163E0F2CFB",
+  "last_modified": "Sat, 28 Mar 2026 22:06:20 GMT",
+  "length": "2160188326",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11173/561398929-1053358945_carolinas-medical-center_standardcharges.csv": {
+  "etag": "0x8DF3545EBAA2E7C",
+  "last_modified": "Wed, 28 Oct 2026 22:50:53 GMT",
+  "length": "3260876338",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11242/830343789_wrmc-hospital-operating-corporation_standardcharges.csv": {
+  "etag": "0x8DE8DC2634F26FE",
+  "last_modified": "Sun, 29 Mar 2026 18:38:36 GMT",
+  "length": "1870764828",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048854_TRANSYLVANIA-REGIONAL-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF1881FD657CD2\"",
+  "last_modified": "Tue, 22 Sep 2026 08:17:49 GMT",
+  "length": "2243605437",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2053115_ANGEL-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF186F5EE51AE9\"",
+  "last_modified": "Tue, 22 Sep 2026 06:04:32 GMT",
+  "length": "444601082",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11241/560543238_lexington-medical-center_standardcharges.csv": {
+  "etag": "0x8DE8DC36261C666",
+  "last_modified": "Sun, 29 Mar 2026 18:45:44 GMT",
+  "length": "2144653346",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048759_BLUE-RIDGE-REGIONAL-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF15C780BF2DE1\"",
+  "last_modified": "Fri, 18 Sep 2026 20:57:51 GMT",
+  "length": "445228434",
+  "seen": null
+ },
+ "https://www.myrutherfordregional.com/docs/ahrutherfordregionalhealthsystemlibraries/hcl/mrf3q262/300811171_rutherford-regional-medical-center_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 00:51:26 GMT",
+  "length": "2165369",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/scotland-memorial-hospital-inc/560583151_Scotland-Memorial-Hospital-Inc_standardcharges.csv": {
+  "etag": "\"3eab68f003b92124a61c32100e10b264\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:53 GMT",
+  "length": "26325088",
+  "seen": null
+ },
+ "https://www.myharrisregional.com/docs/ahharrisregionallibraries/hcl/mrf3q263/383932775_harris-regional-hospital_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Thu, 17 Sep 2026 21:25:15 GMT",
+  "length": "2278475",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11166/334038167-1669348991_atrium-health-hospitals-inc_standardcharges.csv": {
+  "etag": "0x8DF354E819F020A",
+  "last_modified": "Wed, 28 Oct 2026 23:52:20 GMT",
+  "length": "3811514683",
+  "seen": null
+ },
+ "https://www.centralcarolinahosp.com/docs/ahcentralcarolinahospitallibraries/hcl/mrf3q26/81-0691912_central-carolina-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 24 Jul 2026 16:29:03 GMT",
+  "length": "14396141",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/560928089_forsyth-memorial-hospital-inc.-dba-novant-health-clemmons-medical-center_standardcharges.json": {
+  "etag": "\"60f7549bf0d3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 13:45:26 GMT",
+  "length": "294166537",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/560554230_the-presbyterian-hospital-dba-novant-health-charlotte-orthopedic-hospital_standardcharges.json": {
+  "etag": "\"60b1cd43f2d3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 13:57:18 GMT",
+  "length": "283933642",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/560636250_novant-health-thomasville-medical-center-llc-dba-novant-health-thomasville-medical-center_standardcharges.json": {
+  "etag": "\"e894b62df1d3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 13:49:32 GMT",
+  "length": "250315652",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/561340424_medical-park-hospital-llc-dba-novant-health-medical-park-hospital_standardcharges.json": {
+  "etag": "\"583450c7efd3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 13:39:30 GMT",
+  "length": "295051487",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/204278130_brunswick-community-hospital-llc-dba-novant-health-brunswick-medical-center_standardcharges.json": {
+  "etag": "\"e3b9efdf3d3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 14:02:57 GMT",
+  "length": "254537128",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/561376368_novant-health-matthews-medical-center-llc-dba-novant-health-matthews-medical-center_standardcharges.json": {
+  "etag": "\"ce98b283efd3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 13:37:37 GMT",
+  "length": "284604028",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/560554230_the-presbyterian-hospital-dba-novant-health-huntersville-medical-center_standardcharges.json": {
+  "etag": "\"edebe36f2d3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 13:55:36 GMT",
+  "length": "284420572",
+  "seen": null
+ },
+ "https://www2.novanthealth.org/Public_Files/regulatory/260599536_novant-health-mint-hill-medical-center-llc-dba-novant-health-mint-hill-medical-center_standardcharges.json": {
+  "etag": "\"7aecf6c4f2d3dc1:0\"",
+  "last_modified": "Fri, 24 Apr 2026 14:00:55 GMT",
+  "length": "284291986",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/bd444fab100e10c23db800bdc152b2ef/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/18037fbdeff68cea48f68e1af9364558/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/100268/560619359_gaston-memorial-hospital_standardcharges.csv": {
+  "etag": "0x8DEAFA4BE9FC27B",
+  "last_modified": "Mon, 11 May 2026 21:32:04 GMT",
+  "length": "916868626",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11172/560529945-1417432840_the-charlotte-mecklenburg-hospital-authority_standardcharges.csv": {
+  "etag": "0x8DE8DA9B032FBED",
+  "last_modified": "Sun, 29 Mar 2026 15:41:47 GMT",
+  "length": "2530251283",
+  "seen": null
+ },
+ "https://www.ecuhealth.org/mrf-files/560585243_ecu-health-medical-center_standardcharges.zip": {
+  "etag": "\"6a314795-3648766\"",
+  "last_modified": "Tue, 16 Jun 2026 12:54:45 GMT",
+  "length": "56919910",
+  "seen": null
+ },
+ "https://www.ecuhealth.org/mrf-files/562003393_ecu-health-roanoke-chowan-hospital_standardcharges.zip": {
+  "etag": "\"6a3147ca-2e623da\"",
+  "last_modified": "Tue, 16 Jun 2026 12:55:38 GMT",
+  "length": "48636890",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11170/561398929-1295789907_carolinas-medical-center_standardcharges.csv": {
+  "etag": "0x8DE8D2413FCA9A0",
+  "last_modified": "Sat, 28 Mar 2026 23:45:22 GMT",
+  "length": "2879551417",
+  "seen": null
+ },
+ "https://www.ecuhealth.org/mrf-files/560989789_ecu-health-north-hospital_standardcharges.zip": {
+  "etag": "\"6a3147bc-2cc4f2a\"",
+  "last_modified": "Tue, 16 Jun 2026 12:55:24 GMT",
+  "length": "46944042",
+  "seen": null
+ },
+ "https://www.ecuhealth.org/mrf-files/562072002_ecu-health-bertie-hospital_standardcharges.zip": {
+  "etag": "\"6a3147d9-3243939\"",
+  "last_modified": "Tue, 16 Jun 2026 12:55:53 GMT",
+  "length": "52705593",
+  "seen": null
+ },
+ "https://www.ncspecialty.com/wp-content/uploads/2022/02/56-2109998_north-carolina-specialty-hospital_standardcharges-1.csv": {
+  "etag": "\"2be8d1-5d6f896fdc440\"",
+  "last_modified": "Tue, 01 Feb 2022 17:54:17 GMT",
+  "length": "2877649",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11178/560529945-1396790325_the-charlotte-mecklenburg-hospital-authority_standardcharges.csv": {
+  "etag": "0x8DE8DBC0D9C7024",
+  "last_modified": "Sun, 29 Mar 2026 17:53:15 GMT",
+  "length": "2525971098",
+  "seen": null
+ },
+ "https://www.ecuhealth.org/mrf-files/562112733_the-outer-banks-hospital_standardcharges.zip": {
+  "etag": "\"6a399b1b-351c663\"",
+  "last_modified": "Mon, 22 Jun 2026 20:29:15 GMT",
+  "length": "55690851",
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaraalbemarlemedicalcenterstandardchargesxlsx-1395240": {
+  "etag": "\"0x8DF2ACDFE8D9DFC\"",
+  "last_modified": "Thu, 15 Oct 2026 15:07:13 GMT",
+  "length": "10285241",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11169/334038167-1730055054_atrium-health-hospitals-inc_standardcharges.csv": {
+  "etag": "0x8DED3A8A8ECE5B7",
+  "last_modified": "Fri, 26 Jun 2026 17:30:47 GMT",
+  "length": "2354334856",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11179/560529945-1346297892_the-charlotte-mecklenburg-hospital-authority_standardcharges.csv": {
+  "etag": "0x8DE8DBF855BACE9",
+  "last_modified": "Sun, 29 Mar 2026 18:18:04 GMT",
+  "length": "2703757286",
+  "seen": null
+ },
+ "https://www.fryemedctr.com/docs/ahfryemedicalcenterlibraries/hcl/mrf3q26/352547114_frye-regional-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 09 Jul 2026 20:56:17 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.wilsonmedical.com/docs/ahwilsonmedicalcenterlibraries/hcl/mrf3q262/464317222_wilson-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 01:07:34 GMT",
+  "length": "18784997",
+  "seen": null
+ },
+ "https://www.mariaparham.com/docs/ahmariaparhamhealthlibraries/hcl/mrf3q262/452743520_maria-parham-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 00:38:32 GMT",
+  "length": "11258222",
+  "seen": null
+ },
+ "https://www.personhospital.com/docs/ahpersonmemorialhospitallibraries/hcl/mrf3q262/452909143_person-memorial-_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 00:49:55 GMT",
+  "length": "12622112",
+  "seen": null
+ },
+ "https://www.myhaywoodregional.com/docs/ahhaywoodregionalmedicalcenterlibraries/hcl/mrf3q262/300830918_haywood-regional-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 00:32:05 GMT",
+  "length": "12206831",
+  "seen": null
+ },
+ "https://www.myswaincommunity.com/docs/ahswaincommunityhospitallibraries/hcl/mrf3q262/320441929_swain-county-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 01:00:12 GMT",
+  "length": "9893215",
+  "seen": null
+ },
+ "https://www.uncbr.org/56-0529976-UNC-Blue-Ridge-Standard-Charges.json.zip": {
+  "etag": "\"19ae6fa-5f93ba6eeb025\"",
+  "last_modified": "Thu, 13 Apr 2023 18:11:22 GMT",
+  "length": "26928890",
+  "seen": null
+ },
+ "https://erlanger.pt.panaceainc.com/MRFDownload/erlanger/westcarolina": {
+  "etag": null,
+  "last_modified": null,
+  "length": "31358056",
+  "seen": null
+ },
+ "https://search.hospitalpriceindex.com/hpi2/machineReadable/onslowmemorialhospital/11821": {
+  "etag": "\"6ab569e3-847\"",
+  "last_modified": "Thu, 24 Sep 2026 18:20:19 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.wakemed.org/sites/default/files/PricingTransparency/566017737_wakemed-raleigh-campus-and-north-hospital_standardcharges.csv": {
+  "etag": "\"69ebde46-f3be9c3\"",
+  "last_modified": "Fri, 24 Apr 2026 21:19:02 GMT",
+  "length": "255584707",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/100323/830343789-1881614071_wrmc-hospital-operating-corporation_standardcharges.csv": {
+  "etag": "0x8DEE37AF5FD3E1B",
+  "last_modified": "Thu, 16 Jul 2026 20:43:58 GMT",
+  "length": "1868530958",
+  "seen": null
+ },
+ "https://secure.claraprice.net/price-transparency/KNAL-1701801986440/machine-readable/560789196_catawba-valley-health-system_standardcharges.json": {
+  "etag": "W/\"391eeb7-UBgH31xDuZHiS0OTYmJLStwuIeU\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.wilmingtontreatment.com/wp-content/uploads/pricing/2026/249/54-1436102Wilmington-Treatment-Center-LLC_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 01 Jan 2026 10:44:54 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.wakemed.org/sites/default/files/PricingTransparency/566017737_wakemed-cary-hospital_standardcharges.csv": {
+  "etag": "\"69ebde5c-a95b099\"",
+  "last_modified": "Fri, 24 Apr 2026 21:19:24 GMT",
+  "length": "177582233",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/ce5859a3e1522778c0b0cafe4913c4b9/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
  }
 }
