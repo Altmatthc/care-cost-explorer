@@ -365,5 +365,30 @@
    "289"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-nc"
+ },
+ "mi": {
+  "file": "mi.json",
+  "updated": "2026-10-29",
+  "hospitals": 21,
+  "procedures": 57,
+  "states": [
+   "MI"
+  ],
+  "zip3": [
+   "480",
+   "481",
+   "482",
+   "483",
+   "484",
+   "485",
+   "487",
+   "488",
+   "489",
+   "490",
+   "492",
+   "497",
+   "498",
+   "499"
+  ]
  }
 }

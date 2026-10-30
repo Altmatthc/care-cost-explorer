@@ -4894,5 +4894,131 @@
   "last_modified": null,
   "length": null,
   "seen": null
+ },
+ "https://www.beaconhealthsystem.org/wp-content/uploads/2026/05/451257972_Three-Rivers-Health_standardcharges.csv": {
+  "etag": "\"6a7f736d-1d25e97\"",
+  "last_modified": "Fri, 14 Aug 2026 19:58:37 GMT",
+  "length": "30563991",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1976271_McLarenBayRegion_standardcharges.csv": {
+  "etag": "\"384cad245de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:32:45 GMT",
+  "length": "62597074",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1420304_McLarenCentral_standardcharges.csv": {
+  "etag": "\"7132d005de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:31:45 GMT",
+  "length": "62502881",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-2146751_McLarenNorthernMichigan_standardcharges.csv": {
+  "etag": "\"d569ac2c5de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:32:59 GMT",
+  "length": "57920291",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-2383119_McLarenFlint_standardcharges.csv": {
+  "etag": "\"b67cb1b55de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:36:49 GMT",
+  "length": "60946604",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1434090_McLarenGreaterLansing_standardcharges.csv": {
+  "etag": "\"6a8cb0135de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:32:17 GMT",
+  "length": "67989337",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-2689033_McLarenLapeer_standardcharges.csv": {
+  "etag": "\"cf6642985de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:35:59 GMT",
+  "length": "56833416",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1428164_McLarenOakland_standardcharges.csv": {
+  "etag": "\"a4cdfd95de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:32:01 GMT",
+  "length": "65013138",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1369611_McLarenPortHuron_standardcharges.csv": {
+  "etag": "\"61ac98f65ce8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:31:28 GMT",
+  "length": "52787031",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1218516_McLarenMacomb_standardcharges.csv": {
+  "etag": "\"4397f5ee5ce8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:31:15 GMT",
+  "length": "65985140",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1613280_KarmanosCancerInstitute_standardcharges.csv": {
+  "etag": "\"e25c251e6bc0dc1:0\"",
+  "last_modified": "Mon, 30 Mar 2026 17:32:01 GMT",
+  "length": "49992528",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-3426063_McLarenCaroCommunityHospital_standardcharges.csv": {
+  "etag": "\"3888dd9e5de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:36:10 GMT",
+  "length": "47249317",
+  "seen": null
+ },
+ "https://www.mclaren.org/Uploads/Public/Documents/corporate/ChargeMasterFile/2026/38-1474929_McLarenThumbRegion_standardcharges.csv": {
+  "etag": "\"a5cea91a5de8dc1:0\"",
+  "last_modified": "Wed, 20 May 2026 13:32:29 GMT",
+  "length": "48585050",
+  "seen": null
+ },
+ "https://www.henryford.com/-/media/files/henry-ford/patients-visitors/price-transparency-06-26/382947657_henry-ford-macomb-hospital-corporation_standardcharges.csv": {
+  "etag": "a595f6a9508d48418f1f7f168146707f",
+  "last_modified": "Mon, 29 Jun 2026 19:33:48 GMT",
+  "length": "954293976",
+  "seen": null
+ },
+ "https://www.henryford.com/-/media/files/henry-ford/patients-visitors/price-transparency-06-26/381357020-1134144801_henry-ford-health-system_standardcharges.csv": {
+  "etag": "4b24bc39fa7a4f569559b86db03960cf",
+  "last_modified": "Tue, 30 Jun 2026 21:14:44 GMT",
+  "length": "1297510394",
+  "seen": null
+ },
+ "https://www.henryford.com/-/media/files/henry-ford/patients-visitors/price-transparency-06-26/382027689_wa-foote-memorial-hospital_standardcharges.csv": {
+  "etag": "8fc1bb9f86ee46728e00b20505be718f",
+  "last_modified": "Fri, 26 Jun 2026 20:55:49 GMT",
+  "length": "825972658",
+  "seen": null
+ },
+ "https://www.henryford.com/-/media/files/henry-ford/patients-visitors/price-transparency-06-26/382791823_henry-ford-wyandotte-hospital_standardcharges.csv": {
+  "etag": "0395627237fe45f2886c22129d238e4f",
+  "last_modified": "Mon, 29 Jun 2026 19:37:07 GMT",
+  "length": "878580801",
+  "seen": null
+ },
+ "https://www.henryford.com/-/media/files/henry-ford/patients-visitors/price-transparency-06-26/381357020-1407867559_henry-ford-health-system_standardcharges.csv": {
+  "etag": "de2e423426824f619b6d7c176be12d02",
+  "last_modified": "Tue, 30 Jun 2026 21:08:22 GMT",
+  "length": "1188897222",
+  "seen": null
+ },
+ "https://www.uphealthsystem.com/docs/ahuphealthsystemlibraries/hcl/mrf3q26/800818718_marquette-general-hospital_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 18:07:43 GMT",
+  "length": "2133338",
+  "seen": null
+ },
+ "https://www.uphealthsystem.com/docs/ahuphealthsystemlibraries/hcl/mrf3q26/900998484_portage-health_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 18:07:42 GMT",
+  "length": "1545644",
+  "seen": null
+ },
+ "https://www.uphealthsystem.com/docs/ahuphealthsystemlibraries/hcl/mrf3q26/800935981_bell-hospital_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 18:07:42 GMT",
+  "length": "1814741",
+  "seen": null
  }
 }
