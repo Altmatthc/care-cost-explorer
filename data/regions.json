@@ -416,6 +416,7 @@
    "087",
    "088",
    "089"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-nj"
  }
 }
