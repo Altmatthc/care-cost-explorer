@@ -391,5 +391,31 @@
    "499"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-mi"
+ },
+ "nj": {
+  "file": "nj.json",
+  "updated": "2026-10-30",
+  "hospitals": 37,
+  "procedures": 58,
+  "states": [
+   "NJ"
+  ],
+  "zip3": [
+   "070",
+   "071",
+   "072",
+   "073",
+   "076",
+   "077",
+   "080",
+   "081",
+   "082",
+   "083",
+   "084",
+   "086",
+   "087",
+   "088",
+   "089"
+  ]
  }
 }

@@ -5020,5 +5020,215 @@
   "last_modified": "Wed, 12 Aug 2026 18:07:42 GMT",
   "length": "1814741",
   "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/223452311_newark-beth-israel-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE8B2F6BFF354C\"",
+  "last_modified": "Thu, 26 Mar 2026 12:01:32 GMT",
+  "length": "448689347",
+  "seen": null
+ },
+ "https://www.holyname.org/HospitalCharges/resources/221487322_holy-name_standardcharges.csv": {
+  "etag": "\"94e2a910fd35dd1:0:dtagent10249220905100923uv+I\"",
+  "last_modified": "Thu, 27 Aug 2026 08:21:30 GMT",
+  "length": "905082107",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/221500556_clara-maass-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE8B2F5B2B22D0\"",
+  "last_modified": "Thu, 26 Mar 2026 12:01:04 GMT",
+  "length": "448301783",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/221487305_robert-wood-johnson-university-hospital-rahway_standardcharges.json": {
+  "etag": "\"0x8DE8B2F52637194\"",
+  "last_modified": "Thu, 26 Mar 2026 12:00:49 GMT",
+  "length": "373469695",
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1730692344_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/223601678_trinitas-regional-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE8B2F777FBA14\"",
+  "last_modified": "Thu, 26 Mar 2026 12:01:51 GMT",
+  "length": "218457793",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/210634572_robert-wood-johnson-university-hospital-hamilton_standardcharges.json": {
+  "etag": "\"0x8DE8B2F2AD712B4\"",
+  "last_modified": "Thu, 26 Mar 2026 11:59:43 GMT",
+  "length": "310562536",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/223452306_community-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE8B2F67872784\"",
+  "last_modified": "Thu, 26 Mar 2026 12:01:24 GMT",
+  "length": "448899460",
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1710499462_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/221487243_robert-wood-johnson-university-hospital-somerset_standardcharges.json": {
+  "etag": "\"0x8DE8B2F4E66CA80\"",
+  "last_modified": "Thu, 26 Mar 2026 12:00:42 GMT",
+  "length": "361353027",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/222783298_jersey-city-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE8B2F5F66BD38\"",
+  "last_modified": "Thu, 26 Mar 2026 12:01:11 GMT",
+  "length": "399020097",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/223452412_monmouth-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE8B2F73D7AF0C\"",
+  "last_modified": "Thu, 26 Mar 2026 12:01:45 GMT",
+  "length": "445153911",
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1790297455_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/221494440_cooperman-barnabas-medical-center_standardcharges.json": {
+  "etag": "\"0x8DE8B2F56B54280\"",
+  "last_modified": "Thu, 26 Mar 2026 12:00:56 GMT",
+  "length": "434070222",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/RWJBarnabasHealth/221487148_children's-specialized-hospital_standardcharges.json": {
+  "etag": "\"0x8DE8B2F40A776B8\"",
+  "last_modified": "Thu, 26 Mar 2026 12:00:19 GMT",
+  "length": "5034952",
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1477065126_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1790297547_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1144894577_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1760994412_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.hackensackmeridianhealth.org/-/media/project/hmh/hmh/public/files/cdm/20260520/221487576-1831601590_hmh-hospitals-corporation_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/hudson_regional_health_heights/383870608_heights-university-hospital_standardcharges.csv": {
+  "etag": "\"238c917e5d73a3ba62c75afe034b8475-14\"",
+  "last_modified": "Thu, 10 Sep 2026 17:23:23 GMT",
+  "length": "240101928",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/hudson_regional_health_hoboken/452147328_hoboken-university-hospital_standardcharges.csv": {
+  "etag": "\"a27e0ef1411ad2839b6900b4cda76e7e-12\"",
+  "last_modified": "Thu, 20 Aug 2026 16:27:44 GMT",
+  "length": "191019559",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/69b5485bad55c951f8e08688dc034a14/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.inspirahealthnetwork.org/sites/default/files/price_transparency/210634484_inspira-medical-center-vineland_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 25 Mar 2026 21:36:02 GMT",
+  "length": "545983629",
+  "seen": null
+ },
+ "https://www.inspirahealthnetwork.org/sites/default/files/price_transparency/210634484_inspira-medical-center-mullica-hill_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 18:25:11 GMT",
+  "length": "557140286",
+  "seen": null
+ },
+ "https://atlanticare.pt.panaceainc.com/MRFDownload/atlanticare/atlanticare": {
+  "etag": null,
+  "last_modified": null,
+  "length": "1054023199",
+  "seen": null
+ },
+ "https://use2webtechstgpricelist.blob.core.windows.net/pricelist/Complete%20File/221773439_jefferson-stratford-hospital_standardcharges.csv": {
+  "etag": "0x8DF18C77C7B0034",
+  "last_modified": "Tue, 22 Sep 2026 16:35:17 GMT",
+  "length": "228148916",
+  "seen": null
+ },
+ "https://www.slhn.org/-/media/sluhn/billing/pdf/standard-charges/22-1494454_stlukeswarrenhospital_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Tue, 15 Sep 2026 13:49:30 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.virtua.org/-/media/Project/Virtua-Tenant/Virtua/PDFs/Hospital-Charges-Sept-2026/210634532_Virtua-West-Jersey-Health-System-Inc_standardcharges.csv": {
+  "etag": "820ce0cccf3b4afa8b1bf9b6e4375547",
+  "last_modified": "Mon, 28 Sep 2026 13:21:21 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.virtua.org/-/media/Project/Virtua-Tenant/Virtua/PDFs/Hospital-Charges-June-2026/210635001_virtua-our-lady-of-lourdes-hospital-inc_standardcharges.csv": {
+  "etag": "1c688d4ad46e4666baa080b8d61f4773",
+  "last_modified": "Wed, 03 Jun 2026 20:27:47 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.virtua.org/-/media/Project/Virtua-Tenant/Virtua/PDFs/Hospital-Charges-June-2026/210634562_virtua-memorial-hospital-burlington-county-inc_standardcharges.csv": {
+  "etag": "99900b771e2945a3a3f23f19c78cd608",
+  "last_modified": "Wed, 03 Jun 2026 19:58:52 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.virtua.org/-/media/Project/Virtua-Tenant/Virtua/PDFs/Hospital-Charges-June-2026/223612265_Virtua-Willingboro-Hospital-Inc_standardcharges.csv": {
+  "etag": "2e0a106cb41842478577d25513673970",
+  "last_modified": "Wed, 03 Jun 2026 20:28:01 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://shoremedical.pt.panaceainc.com/MRFDownload/shoremedical/shoremedicalcenter": {
+  "etag": null,
+  "last_modified": null,
+  "length": "87454097",
+  "seen": null
+ },
+ "https://www.atlantichealth.org/content/dam/atlantichealth-v2/insurance/price-transparency/221750190_centrastate-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 28 Jan 2026 18:29:30 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://weismanchildrens.com/wp-content/uploads/2026/09/WCRH-Hospital-Standard-Charges.csv": {
+  "etag": "\"229e3-65b254d8d8f99\"",
+  "last_modified": "Thu, 10 Sep 2026 18:40:33 GMT",
+  "length": "141795",
+  "seen": null
  }
 }
