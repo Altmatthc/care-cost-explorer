@@ -2682,9 +2682,9 @@
   "seen": null
  },
  "https://hospitalpricedisclosure.com/download.aspx": {
-  "etag": "0x8DF08780944567B",
-  "last_modified": "Tue, 01 Sep 2026 22:26:15 GMT",
-  "length": "13228905",
+  "etag": "0x8DED2D252B1850E",
+  "last_modified": "Thu, 25 Jun 2026 15:56:30 GMT",
+  "length": "12883360",
   "seen": null
  },
  "https://sthpiprd.blob.core.windows.net/machine-readable-files/100287/131740127_st-josephs-hospital-yonkers_standardcharges.csv": {
@@ -5229,6 +5229,576 @@
   "etag": "\"229e3-65b254d8d8f99\"",
   "last_modified": "Thu, 10 Sep 2026 18:40:33 GMT",
   "length": "141795",
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentararmhmedicalcenterstandardchargesxlsx-1395259": {
+  "etag": "\"0x8DF2ACFCF4F9DA1\"",
+  "last_modified": "Thu, 15 Oct 2026 15:20:13 GMT",
+  "length": "22362286",
+  "seen": null
+ },
+ "https://brand.uvahealth.com/api/asset/eyJjbGllbnRJZCI6bnVsbCwiaWQiOjE2NDEwNSwidGltZXN0YW1wIjoxNzkyNTIzNzc0LCJ2ZXJzaW9uIjoxNzkyNTIwOTQzfQ:uva-health:xyQB_X9icZu2D67m-qVqCtHRWOSEBC77QXSGsziOHb4/download": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaranorfolkgeneralhospitalstandardchargesxlsx-1395284": {
+  "etag": "\"0x8DE8F2F1C46B74F\"",
+  "last_modified": "Tue, 31 Mar 2026 14:09:23 GMT",
+  "length": "42462958",
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/540506463_maryview-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:34:05 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/540548200_mary-immaculate-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:33:25 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentarahalifaxregionalhospitalstandardchargesxlsx-1395297": {
+  "etag": "\"0x8DF2ACEF0EBEE37\"",
+  "last_modified": "Thu, 15 Oct 2026 15:14:00 GMT",
+  "length": "20104126",
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/540793767_bon-secours-st-marys-hospital-of-richmond-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:40:32 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaraobicihospitalstandardchargesxlsx-1395273": {
+  "etag": "\"0x8DE8F2F89AAB2B4\"",
+  "last_modified": "Tue, 31 Mar 2026 14:12:26 GMT",
+  "length": "38500757",
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/843050337_bon-secours-mercy-health-petersburg-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:41:49 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/541744931_bon-secours-memorial-regional-medical-center-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:42:40 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaraleighhospitalstandardchargesxlsx-1395299": {
+  "etag": "\"0x8DF2AD3F1F4C2C6\"",
+  "last_modified": "Thu, 15 Oct 2026 15:49:49 GMT",
+  "length": "32897465",
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/843041473_bon-secours-mercy-health-franklin-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:34:39 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/843065045_bon-secours-mercy-health-emporia-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:41:27 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaravirginiabeachgeneralhospitalstandardchargesxlsx-1395265": {
+  "etag": "\"0x8DE8F2FFBC7D877\"",
+  "last_modified": "Tue, 31 Mar 2026 14:15:38 GMT",
+  "length": "37841821",
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/311716973_bon-secours-st-francis-medical-center-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:42:15 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/237424835_chesapeake-hospital-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:37:05 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentarawilliamsburgregionalmedicalcenterstandardchargesxlsx-1395261": {
+  "etag": "\"0x8DF2AD573822A21\"",
+  "last_modified": "Thu, 15 Oct 2026 16:00:36 GMT",
+  "length": "24327745",
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaramarthajeffersonhospitalstandardchargesxlsx-1395290": {
+  "etag": "\"0x8DE8F2ED7FF422A\"",
+  "last_modified": "Tue, 31 Mar 2026 14:07:28 GMT",
+  "length": "30566546",
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/611272888_john-randolph-medical-center_standardcharges.csv": {
+  "etag": "dot:1cf9bf5f-888f-4c10-a470-e38ca037cabd:1665692234000:2277432",
+  "last_modified": "Thu, 13 Oct 2022 20:17:14 +0000",
+  "length": "2277432",
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaracareplexhospitalstandardchargesxlsx-1395308": {
+  "etag": "\"0x8DF2ACED74D440E\"",
+  "last_modified": "Thu, 15 Oct 2026 15:13:17 GMT",
+  "length": "30219773",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-1761046_LEWISGALE-HOSPITAL-ALLEGHANY_standardcharges.json": {
+  "etag": "\"0x8DF1613186D27A5\"",
+  "last_modified": "Sat, 19 Sep 2026 05:58:57 GMT",
+  "length": "267858516",
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentaranorthernvirginiamedicalcenterstandardchargesxlsx-1395275": {
+  "etag": "\"0x8DF2ACF85A243D2\"",
+  "last_modified": "Thu, 15 Oct 2026 15:18:09 GMT",
+  "length": "32352956",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1777534_RESTON-HOSPITAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF2EFEC2D0A2AB\"",
+  "last_modified": "Tue, 20 Oct 2026 23:06:23 GMT",
+  "length": "333193347",
+  "seen": null
+ },
+ "https://www.sentara.com/Documents/s/sentara-princess-anne-hospital_standardcharges": {
+  "etag": "\"0x8DF2AD4F13B01C8\"",
+  "last_modified": "Thu, 15 Oct 2026 15:56:57 GMT",
+  "length": "30697095",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0889154_LEWISGALE-HOSPITAL-MONTGOMERY_standardcharges.json": {
+  "etag": "\"0x8DF306804B2F753\"",
+  "last_modified": "Thu, 22 Oct 2026 18:12:22 GMT",
+  "length": "325693631",
+  "seen": null
+ },
+ "https://www.carilionclinic.org/540549603_Carilion-Giles-Community-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 21 Apr 2026 18:29:14 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://core.secure.ehc.com/src/util/detail-price-list/54-1779911_cjw-medical-center_standardcharges.csv": {
+  "etag": "dot:92875ee7-49d4-4211-be01-2944c0330374:1670012882000:12201093",
+  "last_modified": "Fri, 02 Dec 2022 20:28:02 +0000",
+  "length": "12201093",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0941129_LEWISGALE-HOSPITAL-PULASKI_standardcharges.json": {
+  "etag": "\"0x8DF160FD3154405\"",
+  "last_modified": "Sat, 19 Sep 2026 05:35:33 GMT",
+  "length": "270561289",
+  "seen": null
+ },
+ "https://www.carilionclinic.org/540553805_Carilion-New-River-Valley-Medical-Center_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 21 Apr 2026 18:34:09 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.carilionclinic.org/540480606_Carilion-Franklin-Memorial-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 21 Apr 2026 18:26:48 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/06-1760818_SPOTSYLVANIA-REGIONAL-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF2F0C405E6441\"",
+  "last_modified": "Wed, 21 Oct 2026 00:42:57 GMT",
+  "length": "229433179",
+  "seen": null
+ },
+ "https://www.carilionclinic.org/546074580_Carilion-Tazewell-Community-Hospital_StandardCharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 21 Apr 2026 18:26:03 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/04-3665595_STONESPRINGS-HOSPITAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF15FD6945E617\"",
+  "last_modified": "Sat, 19 Sep 2026 03:23:44 GMT",
+  "length": "226400875",
+  "seen": null
+ },
+ "https://www.inova.org/sites/default/files/patient_visitor/price_transparency/2026/540620889_inova-alexandria-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 16:27:21 GMT",
+  "length": "20462959",
+  "seen": null
+ },
+ "https://www.inova.org/sites/default/files/patient_visitor/price_transparency/2026/540620889_inova-loudoun-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 20:09:24 GMT",
+  "length": "20445015",
+  "seen": null
+ },
+ "https://www.inova.org/sites/default/files/patient_visitor/price_transparency/2026/540620889_inova-fairfax-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 17:48:48 GMT",
+  "length": "20875742",
+  "seen": null
+ },
+ "https://www.inova.org/sites/default/files/patient_visitor/price_transparency/2026/540620889_inova-fair-oaks-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 20:05:45 GMT",
+  "length": "20530943",
+  "seen": null
+ },
+ "https://www.inova.org/sites/default/files/patient_visitor/price_transparency/2026/540620889_inova-mount-vernon-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 20:09:45 GMT",
+  "length": "20338381",
+  "seen": null
+ },
+ "https://vcuhealth.pt.panaceainc.com/MRFDownload/vcuhealth/vcumedicalcenter": {
+  "etag": null,
+  "last_modified": null,
+  "length": "648196675",
+  "seen": null
+ },
+ "https://urldefense.com/v3/__https:/vcuhealth.pt.panaceainc.com/MRFDownload/vcuhealth/vcucommunitymemorialhospital__;!!JqxBPMk!mOcOmC-wRsyqvW9oP8tVbu46_Pj-TZtfpAN2ZWljc3XQVbpmW8SnXp6J2Phjl4zbQ9y2D-k-Jg2ulasmQpq9MSH-$": {
+  "etag": null,
+  "last_modified": null,
+  "length": "158455311",
+  "seen": null
+ },
+ "https://www.sovahhealth.com/docs/ahsovahhealthlibraries/hcl/mrf3q262/202028539_sovah-health-danville_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 00:55:52 GMT",
+  "length": "2459443",
+  "seen": null
+ },
+ "https://www.wcch.org/docs/ahwythecountycommunityhospitallibraries/hcl/mrf3q262/202468795_wythe-county-community_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 01:06:32 GMT",
+  "length": "1356646",
+  "seen": null
+ },
+ "https://www.tcrh.org/docs/ahtwincountyregionalhealthcarelibraries/hcl/mrf3q262/454601843_twin-county-regional_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 01:02:43 GMT",
+  "length": "19569419",
+  "seen": null
+ },
+ "https://www.bgh.org/docs/540895648_buchanan-general-hospital-_standardcharges.csv": {
+  "etag": "\"11ca273-65badf2e54420\"",
+  "last_modified": "Thu, 17 Sep 2026 13:42:02 GMT",
+  "length": "18653811",
+  "seen": null
+ },
+ "https://bathhospital.org/wp-content/uploads/2026/09/540505913_bath-community-hospital_standardcharges.csv": {
+  "etag": "\"56b5b6-65b38d02be276\"",
+  "last_modified": "Fri, 11 Sep 2026 17:57:09 GMT",
+  "length": "5682614",
+  "seen": null
+ },
+ "https://www.chkd.org/media/5yhlxvtl/540506321_childrens-hospital-of-the-kings-daughters_standardcharges.csv": {
+  "etag": "\"1dcc048f89c080b\"",
+  "last_modified": "Mon, 30 Mar 2026 13:27:43 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bonsecours.com/-/media/bon-secours/patients-and-visitors/corporate/pricing/991888617_harbour-view-medical-center-llc_standardcharges.ashx": {
+  "etag": null,
+  "last_modified": "Wed, 01 Apr 2026 18:23:59 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/824194264_piedmont-walton-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "68205521",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/581685139_piedmont-columbus-regional-midtown-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "81644935",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582179986_piedmont-athens-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "79151201",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/580566213_piedmont-atlanta-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "74662224",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/300999841_piedmont-rockdale-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "71744574",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582200195_piedmont-henry-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "72860084",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582433432_piedmont-eastside-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "73081506",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/331216751_piedmont-columbus-regional-northside-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "77237452",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582322328_piedmont-fayette-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "74110460",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/352228583_piedmont-mountainside-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "67972702",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/205077249_piedmont-newnan-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "74154913",
+  "seen": null
+ },
+ "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/581694098_1427055821_northeast-georgia-medical-center,-inc._standardcharges.json": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 13:49:44 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/814015190_ngmc-barrow,-llc_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Mon, 30 Mar 2026 13:49:50 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-1969974_MEMORIAL-HEALTH-UNIVERSITY-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF2F631661237A\"",
+  "last_modified": "Wed, 21 Oct 2026 11:04:33 GMT",
+  "length": "486207895",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-2556972_MEMORIAL-HEALTH-MEADOWS-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF16476A399FAA\"",
+  "last_modified": "Sat, 19 Sep 2026 12:13:29 GMT",
+  "length": "285914518",
+  "seen": null
+ },
+ "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/581581103_piedmont-augusta-hospital_standardcharges.zip": {
+  "etag": null,
+  "last_modified": null,
+  "length": "90442152",
+  "seen": null
+ },
+ "https://uniongeneralhealthsystem.com/wp-content/uploads/2026/03/586025393_union-general-hospital_standardcharges.csv": {
+  "etag": "\"69c2fd27-2803f20\"",
+  "last_modified": "Tue, 24 Mar 2026 21:07:51 GMT",
+  "length": "41959200",
+  "seen": null
+ },
+ "https://uniongeneralhealthsystem.com/wp-content/uploads/2026/03/582513901_chatuge-regional-hospital-inc_standardcharges.csv": {
+  "etag": "\"69c2fd1e-258b373\"",
+  "last_modified": "Tue, 24 Mar 2026 21:07:42 GMT",
+  "length": "39367539",
+  "seen": null
+ },
+ "https://www.eastgeorgiaregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/582190713_east-georgia-regional-medical-center_standardcharges.csv": {
+  "etag": "\"0323ea533dd1:0\"",
+  "last_modified": "Tue, 23 Jun 2026 20:58:28 GMT",
+  "length": "118378441",
+  "seen": null
+ },
+ "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/581966795-1093716979_dekalb-medical-center-inc_standardcharges.csv": {
+  "etag": "d6aa8c691d3d46b0b0c1a63c540a0121",
+  "last_modified": "Wed, 03 Jun 2026 21:38:04 GMT",
+  "length": "52500162",
+  "seen": null
+ },
+ "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/580566256_1588640692_emory-university_standardcharges.csv": {
+  "etag": "beb0c23900c64ab2872353b9f8a15a58",
+  "last_modified": "Wed, 03 Jun 2026 21:31:28 GMT",
+  "length": "53983440",
+  "seen": null
+ },
+ "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/580566257_1679664395_saint-josephs-hospital-of-atlanta-inc_standardcharges.csv": {
+  "etag": "23f213333d744d9bb84fc757a540b9a8",
+  "last_modified": "Thu, 07 May 2026 19:12:45 GMT",
+  "length": "47147502",
+  "seen": null
+ },
+ "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/582433436-1679632137_ehca-johns-creek-llc_standardcharges.csv": {
+  "etag": "e2c039f19b4543b2991ae48c1564556b",
+  "last_modified": "Wed, 03 Jun 2026 21:36:03 GMT",
+  "length": "51600501",
+  "seen": null
+ },
+ "https://dodgecountyhospital.slicedhealth.io/pricer/580625140_dodge-county-hospital-authority_standardcharges.csv": {
+  "etag": "\"dc3324259a7adfe6a4fecad742345397-6\"",
+  "last_modified": "Thu, 14 May 2026 19:45:58 GMT",
+  "length": "27696367",
+  "seen": null
+ },
+ "https://s3.amazonaws.com/assets.bbmconnect.com/Southwell/453072990_TiftRegionalMedicalCenter_standardcharges.csv": {
+  "etag": "\"3a9185300d7f5e66adc756ac5d2c4df0-20\"",
+  "last_modified": "Tue, 13 Oct 2026 17:26:24 GMT",
+  "length": "202881459",
+  "seen": null
+ },
+ "https://s3.amazonaws.com/assets.bbmconnect.com/Southwell/453072990_SouthwellMedical_standardcharges.csv": {
+  "etag": "\"65485a659cdc36a6b80e8d012b62d101-29\"",
+  "last_modified": "Tue, 13 Oct 2026 17:26:39 GMT",
+  "length": "294879932",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/4cecbc1866d4b3969f2e6e4b402b4e46/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/e7adf0ceb5e527a31ac6a1163ed219fc/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11181/582149128_the-medical-center-of-central-georgia-inc_standardcharges.csv": {
+  "etag": "0x8DF36CC1790BFB5",
+  "last_modified": "Fri, 30 Oct 2026 21:23:50 GMT",
+  "length": "2068714543",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/7fcbb90a551c34019840f6118c1b8c11/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/c3585e3a6b1ff3d09f1adc81a5ce6c29/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1817469_FAIRVIEW-PARK-HOSPITAL_standardcharges.json": {
+  "etag": "\"0x8DF164BF1647AB7\"",
+  "last_modified": "Sat, 19 Sep 2026 12:45:53 GMT",
+  "length": "455791426",
+  "seen": null
+ },
+ "https://memorialhospitalmanor.pg.quadax.revenuemasters.com/cdm-files/134148824_memorial-hospital-and-manor_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 01 May 2026 19:47:48 GMT",
+  "length": "37510276",
+  "seen": null
+ },
+ "https://southernregional.org/wp-content/uploads/2026/09/031710_SouthernRegionalMedicalCenter_standardcharges.json": {
+  "etag": "\"20d330d-65a8480b82a80-gzip\"",
+  "last_modified": "Wed, 02 Sep 2026 18:50:02 GMT",
+  "length": "1288786",
+  "seen": null
+ },
+ "https://donalsonvillehospital.org/wp-content/uploads/2025/08/standardcharges.csv": {
+  "etag": "\"c5f659-63d5eb13c4080\"",
+  "last_modified": "Wed, 27 Aug 2025 20:32:50 GMT",
+  "length": "12973657",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11180/823914925_navicent-health-baldwin-inc_standardcharges.csv": {
+  "etag": "0x8DF36C8DB561F61",
+  "last_modified": "Fri, 30 Oct 2026 21:00:41 GMT",
+  "length": "1795388493",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11182/453765471_the-medical-center-of-peach-county-inc_standardcharges.csv": {
+  "etag": "0x8DF36D94CF8C537",
+  "last_modified": "Fri, 30 Oct 2026 22:58:23 GMT",
+  "length": "1852704924",
+  "seen": null
+ },
+ "https://www.commonspirit.org/content/dam/commonspiritorg/en/chime/sotg/finance/price-transparency/620532345-1255428736_memorial-health-care-system-inc_standardcharges.json": {
+  "etag": "W/\"0x8DEC712E5C01AA9\"",
+  "last_modified": "Wed, 10 Jun 2026 17:08:31 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://linkprotect.cudasvc.com/url": {
+  "etag": "\"2b12d74b29a0e28f8b6eaa9c5c327702\"",
+  "last_modified": "Tue, 20 Jan 2026 22:03:14 GMT",
+  "length": "10544339",
+  "seen": null
+ },
+ "https://morganmedical.org/582223937_morgan-county-georgia-hospital-authority_standardcharges.csv": {
+  "etag": "\"1e809f-657c3e6c344e7\"",
+  "last_modified": "Wed, 29 Jul 2026 18:12:42 GMT",
+  "length": "1999007",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/f973f1ad6fe48fae84de1e2c28c28186/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/7b88b29118a26bcb25380d0d437b999c/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://monroecountyhospital.pg.quadax.revenuemasters.com/cdm-files/586010602_monroe-county-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 07 May 2026 18:19:45 GMT",
+  "length": "10672169",
+  "seen": null
+ },
+ "https://willsmemorialhospital.pg.quadax.revenuemasters.com/cdm-files/582036813_wills-memorial-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 01 Jul 2026 20:48:59 GMT",
+  "length": "1421467",
+  "seen": null
+ },
+ "https://candlercountyhospital.slicedhealth.io/pricer/58-0593388-1790888089_CandlerCountyHospital_standardcharges.CSV": {
+  "etag": "\"1e75c44856f25d6ee9e2475ae087ab6f\"",
+  "last_modified": "Fri, 10 Apr 2026 15:05:12 GMT",
+  "length": "11765250",
+  "seen": null
+ },
+ "https://www.libertyregional.org/docs/586025016_liberty-regional-medical-center_standardcharges.csv": {
+  "etag": "\"307c1d-64e7a9d81d03e\"",
+  "last_modified": "Thu, 02 Apr 2026 13:59:55 GMT",
+  "length": "3177501",
+  "seen": null
+ },
+ "https://stephenscountyhospital.pg.quadax.revenuemasters.com/cdm-files/586001667_stephens-county-hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 19 May 2026 20:53:19 GMT",
+  "length": "17845973",
+  "seen": null
+ },
+ "https://evansmemorialhospital.slicedhealth.io/pricer/58-2257925-1730110826_EvansMemorialHospital_standardcharges.CSV": {
+  "etag": "\"5ff08e4ec5a804ba62f8e12a903efbf8\"",
+  "last_modified": "Mon, 13 Apr 2026 16:14:48 GMT",
+  "length": "10335288",
   "seen": null
  }
 }

@@ -386,12 +386,14 @@
   "type": "Acute Care Hospitals",
   "stars": 2,
   "hasER": true,
-  "domain": "universityhealth.org",
-  "verified_source": false,
+  "domain": "piedmont.org",
+  "verified_source": true,
   "lat": 33.4601,
   "lng": -81.973,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/581581103_piedmont-augusta-hospital_standardcharges.zip",
+  "geo_approx": true,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/581581103_piedmont-augusta-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110029",
@@ -409,11 +411,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "nghs.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.30237,
   "lng": -83.8182,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/581694098_1427055821_northeast-georgia-medical-center,-inc._standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.nghs.com/price-estimates",
+  "source_url": "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/581694098_1427055821_northeast-georgia-medical-center,-inc._standardcharges.json"
  },
  {
   "id": "ccn-110030",
@@ -478,12 +482,14 @@
   "type": "Acute Care Hospitals",
   "stars": 2,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "stephenscountyhospital.com",
+  "verified_source": true,
   "lat": 34.59298,
   "lng": -83.34723,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://stephenscountyhospital.pg.quadax.revenuemasters.com/cdm-files/586001667_stephens-county-hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://stephenscountyhospital.pg.quadax.revenuemasters.com/disclaimer",
+  "source_url": "https://stephenscountyhospital.pg.quadax.revenuemasters.com/cdm-files/586001667_stephens-county-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-110034",
@@ -547,11 +553,13 @@
   "stars": 1,
   "hasER": true,
   "domain": "memorialhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.03218,
   "lng": -81.09162,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-1969974_MEMORIAL-HEALTH-UNIVERSITY-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "geo_approx": false,
+  "price_page": "https://memorialhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-1969974_MEMORIAL-HEALTH-UNIVERSITY-MEDICAL-CENTER_standardcharges.json"
  },
  {
   "id": "ccn-110038",
@@ -568,12 +576,14 @@
   "type": "Acute Care Hospitals",
   "stars": 2,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "archbold.org",
+  "verified_source": true,
   "lat": 30.82612,
   "lng": -83.97394,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://hospitalpricedisclosure.com/download.aspx?pi=NZqVlXSAun5*_*Y59vJ8UnCA*-*",
+  "geo_approx": false,
+  "price_page": "https://hospitalpricedisclosure.com/default.aspx?ci=G*__*Z8NUFPd0POQzXwg*__*32OA*-*",
+  "source_url": "https://hospitalpricedisclosure.com/download.aspx"
  },
  {
   "id": "ccn-110041",
@@ -683,11 +693,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "nghs.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.00602,
   "lng": -83.70678,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/814015190_ngmc-barrow,-llc_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.nghs.com/price-estimates",
+  "source_url": "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/814015190_ngmc-barrow,-llc_standardcharges.json"
  },
  {
   "id": "ccn-110046",
@@ -705,11 +717,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.7883,
   "lng": -83.7013,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/824194264_piedmont-walton-hospital_standardcharges.zip",
+  "geo_approx": true,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/824194264_piedmont-walton-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110050",
@@ -749,11 +763,13 @@
   "stars": 3,
   "hasER": false,
   "domain": "uniongeneralhealthsystem.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.88557,
   "lng": -83.9616,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://uniongeneralhealthsystem.com/wp-content/uploads/2026/03/586025393_union-general-hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://uniongeneralhealthsystem.com/pricing-transparency/",
+  "source_url": "https://uniongeneralhealthsystem.com/wp-content/uploads/2026/03/586025393_union-general-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-110054",
@@ -793,11 +809,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.48133,
   "lng": -84.98309,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/581685139_piedmont-columbus-regional-midtown-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/581685139_piedmont-columbus-regional-midtown-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110069",
@@ -881,11 +899,13 @@
   "stars": 4,
   "hasER": false,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.96239,
   "lng": -83.39834,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582179986_piedmont-athens-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582179986_piedmont-athens-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110075",
@@ -903,11 +923,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "eastgeorgiaregional.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.41517,
   "lng": -81.76872,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.eastgeorgiaregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/582190713_east-georgia-regional-medical-center_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.eastgeorgiaregional.com/pricing-information",
+  "source_url": "https://www.eastgeorgiaregional.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/582190713_east-georgia-regional-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-110076",
@@ -925,11 +947,13 @@
   "stars": 2,
   "hasER": false,
   "domain": "emoryhealthcare.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.79196,
   "lng": -84.28366,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/581966795-1093716979_dekalb-medical-center-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.emoryhealthcare.org/patients-visitors/insurance-billing/price-transparency",
+  "source_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/581966795-1093716979_dekalb-medical-center-inc_standardcharges.csv"
  },
  {
   "id": "ccn-110078",
@@ -947,11 +971,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "emoryhealthcare.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.76968,
   "lng": -84.38522,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/580566256_1588640692_emory-university_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.emoryhealthcare.org/patients-visitors/insurance-billing/price-transparency",
+  "source_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/580566256_1588640692_emory-university_standardcharges.csv"
  },
  {
   "id": "ccn-110079",
@@ -973,7 +999,8 @@
   "lat": 33.75421,
   "lng": -84.38039,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://www.rchsd.org/patients-visitors/price-transparency/"
  },
  {
   "id": "ccn-110082",
@@ -991,11 +1018,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "emoryhealthcare.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.90837,
   "lng": -84.35179,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/580566257_1679664395_saint-josephs-hospital-of-atlanta-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.emoryhealthcare.org/patients-visitors/insurance-billing/price-transparency",
+  "source_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/580566257_1679664395_saint-josephs-hospital-of-atlanta-inc_standardcharges.csv"
  },
  {
   "id": "ccn-110083",
@@ -1013,11 +1042,13 @@
   "stars": 4,
   "hasER": false,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.80841,
   "lng": -84.39366,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/580566213_piedmont-atlanta-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/580566213_piedmont-atlanta-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110086",
@@ -1103,11 +1134,13 @@
   "stars": 3,
   "hasER": false,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.68021,
   "lng": -84.00009,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/300999841_piedmont-rockdale-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/300999841_piedmont-rockdale-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110092",
@@ -1125,11 +1158,13 @@
   "stars": null,
   "hasER": true,
   "domain": "dodgecountyhospital.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.18572,
   "lng": -83.17862,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://dodgecountyhospital.slicedhealth.io/pricer/580625140_dodge-county-hospital-authority_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://dodgecountyhospital.slicedhealth.io/home",
+  "source_url": "https://dodgecountyhospital.slicedhealth.io/pricer/580625140_dodge-county-hospital-authority_standardcharges.csv"
  },
  {
   "id": "ccn-110095",
@@ -1147,11 +1182,13 @@
   "stars": 3,
   "hasER": false,
   "domain": "mysouthwell.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.4706,
   "lng": -83.49257,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://s3.amazonaws.com/assets.bbmconnect.com/Southwell/453072990_TiftRegionalMedicalCenter_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://mysouthwell.com/chargemaster/",
+  "source_url": "https://s3.amazonaws.com/assets.bbmconnect.com/Southwell/453072990_TiftRegionalMedicalCenter_standardcharges.csv"
  },
  {
   "id": "ccn-110100",
@@ -1169,11 +1206,13 @@
   "stars": null,
   "hasER": true,
   "domain": "ahn.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.01236,
   "lng": -82.40429,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/251260215_jefferson-regional-medical-center_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.ahn.org/patients-visitors/patients/financial-services/hospital-charges",
+  "source_url": "https://www.ahn.org/content/dam/ahn/en/dmxahn/documents/patients-visitors/patients/financial-services/hospital-charges/251260215_jefferson-regional-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-110101",
@@ -1191,11 +1230,13 @@
   "stars": null,
   "hasER": false,
   "domain": "mysouthwell.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.10793,
   "lng": -83.4258,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://s3.amazonaws.com/assets.bbmconnect.com/Southwell/453072990_SouthwellMedical_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://mysouthwell.com/chargemaster/",
+  "source_url": "https://s3.amazonaws.com/assets.bbmconnect.com/Southwell/453072990_SouthwellMedical_standardcharges.csv"
  },
  {
   "id": "ccn-110104",
@@ -1213,11 +1254,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "crispregional.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.97685,
   "lng": -83.78278,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/4cecbc1866d4b3969f2e6e4b402b4e46/charges/mrf",
+  "geo_approx": false,
+  "price_page": "https://www.cdmpricing.com/4cecbc1866d4b3969f2e6e4b402b4e46/",
+  "source_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/4cecbc1866d4b3969f2e6e4b402b4e46/charges/mrf"
  },
  {
   "id": "ccn-110105",
@@ -1257,11 +1300,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "navicenthealth.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.83312,
   "lng": -83.63629,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/11181/582149128_the-medical-center-of-central-georgia-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://navicenthealth.org/for-patients-and-visitors/pt",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/11181/582149128_the-medical-center-of-central-georgia-inc_standardcharges.csv"
  },
  {
   "id": "ccn-110109",
@@ -1349,7 +1394,8 @@
   "lat": 30.86328,
   "lng": -84.2001,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://www.rchsd.org/patients-visitors/price-transparency/"
  },
  {
   "id": "ccn-110122",
@@ -1367,11 +1413,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "sgmc.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 30.86167,
   "lng": -83.28881,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/e7adf0ceb5e527a31ac6a1163ed219fc/charges/mrf",
+  "geo_approx": false,
+  "price_page": "https://www.sgmc.org/price-transparency/",
+  "source_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/e7adf0ceb5e527a31ac6a1163ed219fc/charges/mrf"
  },
  {
   "id": "ccn-110124",
@@ -1389,11 +1437,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "wmh.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.61832,
   "lng": -81.87285,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.wmh.org/wp-content/uploads/2026/09/PricingTransparency-Wayne-Memorial_F-3559-20260916115044.csv",
+  "geo_approx": false,
+  "price_page": "https://www.wmh.org/wayne-memorial-hospital/cost-charges/",
+  "source_url": "https://www.wmh.org/wp-content/uploads/2026/09/PricingTransparency-Wayne-Memorial_F-3559-20260916115044.csv"
  },
  {
   "id": "ccn-110125",
@@ -1411,11 +1461,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "fairviewparkhospital.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.54036,
   "lng": -82.95734,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1817469_FAIRVIEW-PARK-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "geo_approx": false,
+  "price_page": "https://fairviewparkhospital.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1817469_FAIRVIEW-PARK-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-110128",
@@ -1433,11 +1485,13 @@
   "stars": 5,
   "hasER": true,
   "domain": "memorialhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.1934,
   "lng": -82.4067,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-2556972_MEMORIAL-HEALTH-MEADOWS-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "geo_approx": true,
+  "price_page": "https://memorialhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-2556972_MEMORIAL-HEALTH-MEADOWS-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-110129",
@@ -1477,11 +1531,13 @@
   "stars": 1,
   "hasER": false,
   "domain": "mh-m.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 30.90384,
   "lng": -84.55363,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://memorialhospitalmanor.pg.quadax.revenuemasters.com/cdm-files/134148824_memorial-hospital-and-manor_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://memorialhospitalmanor.pg.quadax.revenuemasters.com/disclaimer",
+  "source_url": "https://memorialhospitalmanor.pg.quadax.revenuemasters.com/cdm-files/134148824_memorial-hospital-and-manor_standardcharges.csv"
  },
  {
   "id": "ccn-110142",
@@ -1498,12 +1554,14 @@
   "type": "Acute Care Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "evansmemorialhospital.org",
+  "verified_source": true,
   "lat": 32.16419,
   "lng": -81.90046,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://evansmemorialhospital.slicedhealth.io/pricer/58-2257925-1730110826_EvansMemorialHospital_standardcharges.CSV",
+  "geo_approx": false,
+  "price_page": "https://evansmemorialhospital.slicedhealth.io/home",
+  "source_url": "https://evansmemorialhospital.slicedhealth.io/pricer/58-2257925-1730110826_EvansMemorialHospital_standardcharges.CSV"
  },
  {
   "id": "ccn-110143",
@@ -1569,11 +1627,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "navicenthealth.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.08845,
   "lng": -83.24509,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/11180/823914925_navicent-health-baldwin-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://navicenthealth.org/for-patients-and-visitors/pt",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/11180/823914925_navicent-health-baldwin-inc_standardcharges.csv"
  },
  {
   "id": "ccn-110161",
@@ -1619,7 +1679,8 @@
   "lat": 32.84593,
   "lng": -83.61802,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates"
  },
  {
   "id": "ccn-110165",
@@ -1637,11 +1698,13 @@
   "stars": 1,
   "hasER": true,
   "domain": "southernregional.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.57688,
   "lng": -84.39288,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://southernregional.org/wp-content/uploads/2026/09/031710_SouthernRegionalMedicalCenter_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://southernregional.org/patients-visitors/financial-assistance/",
+  "source_url": "https://southernregional.org/wp-content/uploads/2026/09/031710_SouthernRegionalMedicalCenter_standardcharges.json"
  },
  {
   "id": "ccn-110168",
@@ -1685,7 +1748,8 @@
   "lat": 33.48273,
   "lng": -82.09276,
   "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip",
-  "geo_approx": false
+  "geo_approx": false,
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110184",
@@ -1749,11 +1813,13 @@
   "stars": 2,
   "hasER": false,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.5633,
   "lng": -84.2165,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582200195_piedmont-henry-hospital_standardcharges.zip",
+  "geo_approx": true,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582200195_piedmont-henry-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110192",
@@ -1771,11 +1837,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.87759,
   "lng": -84.01973,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582433432_piedmont-eastside-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582433432_piedmont-eastside-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110194",
@@ -1793,11 +1861,13 @@
   "stars": null,
   "hasER": false,
   "domain": "donalsonvillehospital.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.0505,
   "lng": -84.8801,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://donalsonvillehospital.org/wp-content/uploads/2025/08/standardcharges.csv",
+  "geo_approx": true,
+  "price_page": "https://donalsonvillehospital.org/billing/hospital-pricing-transparency/",
+  "source_url": "https://donalsonvillehospital.org/wp-content/uploads/2025/08/standardcharges.csv"
  },
  {
   "id": "ccn-110198",
@@ -1839,11 +1909,13 @@
   "stars": 5,
   "hasER": false,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.53605,
   "lng": -84.95471,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/331216751_piedmont-columbus-regional-northside-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/331216751_piedmont-columbus-regional-northside-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110201",
@@ -1905,11 +1977,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.45093,
   "lng": -84.50783,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582322328_piedmont-fayette-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/582322328_piedmont-fayette-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110225",
@@ -1927,11 +2001,13 @@
   "stars": 4,
   "hasER": false,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.44805,
   "lng": -84.44733,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/352228583_piedmont-mountainside-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/352228583_piedmont-mountainside-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110226",
@@ -1953,7 +2029,8 @@
   "lat": 33.70771,
   "lng": -84.14692,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://www.emoryhealthcare.org/patients-visitors/insurance-billing/price-transparency"
  },
  {
   "id": "ccn-110229",
@@ -1971,11 +2048,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "piedmont.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.35928,
   "lng": -84.75386,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/205077249_piedmont-newnan-hospital_standardcharges.zip",
+  "geo_approx": false,
+  "price_page": "https://www.piedmont.org/patients-and-visitors/price-estimates",
+  "source_url": "https://www.piedmont.org/-/media/files/patients-and-visitors/price-estimates/price-estimates-2026/205077249_piedmont-newnan-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-110230",
@@ -1993,11 +2072,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "emoryhealthcare.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.06796,
   "lng": -84.17556,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/582433436-1679632137_ehca-johns-creek-llc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.emoryhealthcare.org/patients-visitors/insurance-billing/price-transparency",
+  "source_url": "https://www.emoryhealthcare.org/-/media/Project/EH/Emory/ui/pricing-transparency/csv/2026/582433436-1679632137_ehca-johns-creek-llc_standardcharges.csv"
  },
  {
   "id": "ccn-110233",
@@ -2037,11 +2118,13 @@
   "stars": null,
   "hasER": true,
   "domain": "sgmc.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.20352,
   "lng": -83.23814,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/7fcbb90a551c34019840f6118c1b8c11/charges/mrf",
+  "geo_approx": false,
+  "price_page": "https://www.sgmc.org/price-transparency/",
+  "source_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/7fcbb90a551c34019840f6118c1b8c11/charges/mrf"
  },
  {
   "id": "ccn-110236",
@@ -2059,11 +2142,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "commonspirit.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.93299,
   "lng": -85.18787,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.commonspirit.org/content/dam/commonspiritorg/en/chime/sotg/finance/price-transparency/620532345-1255428736_memorial-health-care-system-inc_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.commonspirit.org/patient-resources/dignity-health-arizona-price-transparency",
+  "source_url": "https://www.commonspirit.org/content/dam/commonspiritorg/en/chime/sotg/finance/price-transparency/620532345-1255428736_memorial-health-care-system-inc_standardcharges.json"
  },
  {
   "id": "ccn-110237",
@@ -2081,11 +2166,13 @@
   "stars": 5,
   "hasER": true,
   "domain": "nghs.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.52127,
   "lng": -83.97876,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/581694098_1427055821_northeast-georgia-medical-center,-inc._standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.nghs.com/price-estimates",
+  "source_url": "https://www.nghs.com/wp-content/themes/nghs-v2/assets/files/price-transparency/581694098_1427055821_northeast-georgia-medical-center,-inc._standardcharges.json"
  },
  {
   "id": "ccn-110252",
@@ -2325,11 +2412,13 @@
   "stars": null,
   "hasER": true,
   "domain": "jaspermemorialhospital.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.31384,
   "lng": -83.68678,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://linkprotect.cudasvc.com/url?a=https%3a%2f%2fjaspermemorialhospital.slicedhealth.io%2fpricer%2f58-2510435_JasperHealthServices_StandardCharges.csv&c=E,1,WBqSXErjNoz4dVEoCyB6koPZuPorHtjiXEVNDvjHpeQtcxSO_5z5wc_dW5_5K5ca0XK8N2lf_MNo9z5RUxaii6F_tacsi-LkztV8ML5e04tT&typo=1",
+  "geo_approx": false,
+  "price_page": "https://linkprotect.cudasvc.com/url?a=https%3a%2f%2fjaspermemorialhospital.slicedhealth.io%2fhome&c=E,1,egP-_6owjwV02xpXJMa5QAizRFJdtjvfLENM6zYO2WgWcNvnkIPtFY8J7vFqryWeODcqv6cMoVmo7IPR-wZgeFuk7bnzeT4do8IWCJmQCs4dwVoRAfq3dr54jKQ,&typo=1",
+  "source_url": "https://linkprotect.cudasvc.com/url"
  },
  {
   "id": "ccn-111304",
@@ -2347,11 +2436,13 @@
   "stars": null,
   "hasER": true,
   "domain": "morganmedical.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.5947,
   "lng": -83.4618,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://morganmedical.org/582223937_morgan-county-georgia-hospital-authority_standardcharges.csv",
+  "geo_approx": true,
+  "price_page": "https://morganmedical.org/financial-information/",
+  "source_url": "https://morganmedical.org/582223937_morgan-county-georgia-hospital-authority_standardcharges.csv"
  },
  {
   "id": "ccn-111305",
@@ -2391,11 +2482,13 @@
   "stars": null,
   "hasER": true,
   "domain": "effinghamhealth.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.36348,
   "lng": -81.32467,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://effingham.pg.quadax.revenuemasters.com/cdm-files/474393589_effingham-health-system_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://effingham.pg.quadax.revenuemasters.com/disclaimer",
+  "source_url": "https://effingham.pg.quadax.revenuemasters.com/cdm-files/474393589_effingham-health-system_standardcharges.csv"
  },
  {
   "id": "ccn-111308",
@@ -2435,11 +2528,13 @@
   "stars": 1,
   "hasER": true,
   "domain": "navicenthealth.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.6181,
   "lng": -83.789,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/11182/453765471_the-medical-center-of-peach-county-inc_standardcharges.csv",
+  "geo_approx": true,
+  "price_page": "https://navicenthealth.org/for-patients-and-visitors/pt",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/11182/453765471_the-medical-center-of-peach-county-inc_standardcharges.csv"
  },
  {
   "id": "ccn-111311",
@@ -2479,11 +2574,13 @@
   "stars": null,
   "hasER": true,
   "domain": "optimhealthsystem.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.75004,
   "lng": -81.6459,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/f973f1ad6fe48fae84de1e2c28c28186/charges/mrf",
+  "geo_approx": false,
+  "price_page": "https://optimhealthsystem.com/about-us/cms-hospital-standard-charges/",
+  "source_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/f973f1ad6fe48fae84de1e2c28c28186/charges/mrf"
  },
  {
   "id": "ccn-111313",
@@ -2567,11 +2664,13 @@
   "stars": null,
   "hasER": true,
   "domain": "monroehospital.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.03202,
   "lng": -83.94643,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://monroecountyhospital.pg.quadax.revenuemasters.com/cdm-files/586010602_monroe-county-hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://monroecountyhospital.pg.quadax.revenuemasters.com/disclaimer",
+  "source_url": "https://monroecountyhospital.pg.quadax.revenuemasters.com/cdm-files/586010602_monroe-county-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-111319",
@@ -2637,11 +2736,13 @@
   "stars": null,
   "hasER": true,
   "domain": "optimhealthsystem.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.07911,
   "lng": -82.10899,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/7b88b29118a26bcb25380d0d437b999c/charges/mrf",
+  "geo_approx": false,
+  "price_page": "https://optimhealthsystem.com/about-us/cms-hospital-standard-charges/",
+  "source_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/7b88b29118a26bcb25380d0d437b999c/charges/mrf"
  },
  {
   "id": "ccn-111324",
@@ -2659,11 +2760,13 @@
   "stars": null,
   "hasER": true,
   "domain": "uniongeneralhealthsystem.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.9456,
   "lng": -83.75304,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://uniongeneralhealthsystem.com/wp-content/uploads/2026/03/582513901_chatuge-regional-hospital-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://uniongeneralhealthsystem.com/pricing-transparency/",
+  "source_url": "https://uniongeneralhealthsystem.com/wp-content/uploads/2026/03/582513901_chatuge-regional-hospital-inc_standardcharges.csv"
  },
  {
   "id": "ccn-111325",
@@ -2681,11 +2784,13 @@
   "stars": null,
   "hasER": true,
   "domain": "willsmemorialhospital.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.72945,
   "lng": -82.74363,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://willsmemorialhospital.pg.quadax.revenuemasters.com/cdm-files/582036813_wills-memorial-hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://willsmemorialhospital.pg.quadax.revenuemasters.com/disclaimer",
+  "source_url": "https://willsmemorialhospital.pg.quadax.revenuemasters.com/cdm-files/582036813_wills-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-111326",
@@ -2703,11 +2808,13 @@
   "stars": null,
   "hasER": true,
   "domain": "sgmc.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.04177,
   "lng": -83.08803,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/c3585e3a6b1ff3d09f1adc81a5ce6c29/charges/mrf",
+  "geo_approx": false,
+  "price_page": "https://www.sgmc.org/price-transparency/",
+  "source_url": "https://apim.services.craneware.com/api-pricing-transparency/api/public/c3585e3a6b1ff3d09f1adc81a5ce6c29/charges/mrf"
  },
  {
   "id": "ccn-111327",
@@ -2880,11 +2987,13 @@
   "stars": null,
   "hasER": true,
   "domain": "candlercountyhospital.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.4069,
   "lng": -82.06644,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://candlercountyhospital.slicedhealth.io/pricer/58-0593388-1790888089_CandlerCountyHospital_standardcharges.CSV",
+  "geo_approx": false,
+  "price_page": "https://candlercountyhospital.slicedhealth.io/home",
+  "source_url": "https://candlercountyhospital.slicedhealth.io/pricer/58-0593388-1790888089_CandlerCountyHospital_standardcharges.CSV"
  },
  {
   "id": "ccn-111335",
@@ -2902,11 +3011,13 @@
   "stars": null,
   "hasER": true,
   "domain": "libertyregional.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.8513,
   "lng": -81.6072,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://www.libertyregional.org/docs/586025016_liberty-regional-medical-center_standardcharges.csv",
+  "geo_approx": true,
+  "price_page": "https://www.libertyregional.org/getpage.php?name=Pricing_Transparency&sub+Patient%20Information",
+  "source_url": "https://www.libertyregional.org/docs/586025016_liberty-regional-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-111336",

@@ -418,5 +418,38 @@
    "089"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-nj"
+ },
+ "va": {
+  "file": "va.json",
+  "updated": "2026-10-30",
+  "hospitals": 53,
+  "procedures": 58,
+  "states": [
+   "VA"
+  ],
+  "zip3": [
+   "201",
+   "220",
+   "221",
+   "223",
+   "224",
+   "225",
+   "228",
+   "229",
+   "231",
+   "232",
+   "234",
+   "235",
+   "236",
+   "237",
+   "238",
+   "239",
+   "240",
+   "241",
+   "243",
+   "244",
+   "245",
+   "246"
+  ]
  }
 }
