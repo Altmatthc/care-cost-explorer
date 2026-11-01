@@ -62,7 +62,7 @@
   "verified_source": true,
   "lat": 31.22598,
   "lng": -82.34917,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/81-4223395_MEMORIAL-SATILLA-HEALTH_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/81-4223395_MEMORIAL-SATILLA-HEALTH_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://memorialsatillahealth.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/81-4223395_MEMORIAL-SATILLA-HEALTH_standardcharges.json"
@@ -557,7 +557,7 @@
   "verified_source": true,
   "lat": 32.03218,
   "lng": -81.09162,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-1969974_MEMORIAL-HEALTH-UNIVERSITY-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-1969974_MEMORIAL-HEALTH-UNIVERSITY-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://memorialhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-1969974_MEMORIAL-HEALTH-UNIVERSITY-MEDICAL-CENTER_standardcharges.json"
@@ -1470,7 +1470,7 @@
   "verified_source": true,
   "lat": 32.54036,
   "lng": -82.95734,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1817469_FAIRVIEW-PARK-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1817469_FAIRVIEW-PARK-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://fairviewparkhospital.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1817469_FAIRVIEW-PARK-HOSPITAL_standardcharges.json"
@@ -1494,7 +1494,7 @@
   "verified_source": true,
   "lat": 32.1934,
   "lng": -82.4067,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-2556972_MEMORIAL-HEALTH-MEADOWS-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-2556972_MEMORIAL-HEALTH-MEADOWS-HOSPITAL_standardcharges.json",
   "geo_approx": true,
   "price_page": "https://memorialhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-2556972_MEMORIAL-HEALTH-MEADOWS-HOSPITAL_standardcharges.json"

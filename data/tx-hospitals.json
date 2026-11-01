@@ -911,7 +911,7 @@
   "verified_source": true,
   "lat": 31.7699,
   "lng": -106.49832,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2499952_LAS-PALMAS-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2499952_LAS-PALMAS-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.laspalmasdelsolhealthcare.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2499952_LAS-PALMAS-MEDICAL-CENTER_standardcharges.json"
@@ -1301,7 +1301,7 @@
   "verified_source": true,
   "lat": 28.92093,
   "lng": -98.57761,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL--ATASCOSA_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL--ATASCOSA_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://sahealth.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL--ATASCOSA_standardcharges.json"
@@ -1462,7 +1462,7 @@
   "verified_source": true,
   "lat": 32.74756,
   "lng": -97.78714,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2073410_MEDICAL-CITY-WEATHERFORD_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2073410_MEDICAL-CITY-WEATHERFORD_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/82-2073410_MEDICAL-CITY-WEATHERFORD_standardcharges.json"
@@ -2081,7 +2081,7 @@
   "verified_source": true,
   "lat": 29.50737,
   "lng": -98.57345,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://sahealth.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL_standardcharges.json"
@@ -2196,7 +2196,7 @@
   "verified_source": true,
   "lat": 33.16149,
   "lng": -96.63552,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682207_MEDICAL-CITY-MCKINNEY_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682207_MEDICAL-CITY-MCKINNEY_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682207_MEDICAL-CITY-MCKINNEY_standardcharges.json"
@@ -2292,7 +2292,7 @@
   "verified_source": true,
   "lat": 30.2908,
   "lng": -97.72675,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-GEORGETOWN-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-GEORGETOWN-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://stdavids.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-GEORGETOWN-HOSPITAL_standardcharges.json"
@@ -2887,7 +2887,7 @@
   "verified_source": true,
   "lat": 33.17577,
   "lng": -97.09238,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682213_MEDICAL-CITY-DENTON_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682213_MEDICAL-CITY-DENTON_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682213_MEDICAL-CITY-DENTON_standardcharges.json"
@@ -3028,7 +3028,7 @@
   "verified_source": true,
   "lat": 32.90951,
   "lng": -96.77215,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682198_MEDICAL-CITY-DALLAS_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682198_MEDICAL-CITY-DALLAS_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682198_MEDICAL-CITY-DALLAS_standardcharges.json"
@@ -3210,7 +3210,7 @@
   "verified_source": true,
   "lat": 25.97898,
   "lng": -97.5161,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1669572_VALLEY-REGIONAL-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1669572_VALLEY-REGIONAL-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://valleyregionalmedicalcenter.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1669572_VALLEY-REGIONAL-MEDICAL-CENTER_standardcharges.json"
@@ -3256,7 +3256,7 @@
   "verified_source": true,
   "lat": 33.04626,
   "lng": -97.00424,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682210_MEDICAL-CITY-LEWISVILLE_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682210_MEDICAL-CITY-LEWISVILLE_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682210_MEDICAL-CITY-LEWISVILLE_standardcharges.json"
@@ -3325,7 +3325,7 @@
   "verified_source": true,
   "lat": 32.73553,
   "lng": -97.34374,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682202_MEDICAL-CITY-FORT-WORTH_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682202_MEDICAL-CITY-FORT-WORTH_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682202_MEDICAL-CITY-FORT-WORTH_standardcharges.json"
@@ -3373,7 +3373,7 @@
   "verified_source": true,
   "lat": 32.69271,
   "lng": -97.11472,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682201_MEDICAL-CITY-ARLINGTON_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682201_MEDICAL-CITY-ARLINGTON_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1682201_MEDICAL-CITY-ARLINGTON_standardcharges.json"
@@ -3692,7 +3692,7 @@
   "verified_source": true,
   "lat": 26.18595,
   "lng": -98.22377,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1656022_RIO-GRANDE-REGIONAL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1656022_RIO-GRANDE-REGIONAL-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.riohealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1656022_RIO-GRANDE-REGIONAL-HOSPITAL_standardcharges.json"
@@ -3716,7 +3716,7 @@
   "verified_source": true,
   "lat": 30.22726,
   "lng": -97.77354,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-SOUTH-AUSTIN-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-SOUTH-AUSTIN-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://stdavids.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-SOUTH-AUSTIN-MEDICAL-CENTER_standardcharges.json"
@@ -3740,7 +3740,7 @@
   "verified_source": true,
   "lat": 30.50962,
   "lng": -97.71177,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-ROUND-ROCK-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-ROUND-ROCK-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://stdavids.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-ROUND-ROCK-MEDICAL-CENTER_standardcharges.json"
@@ -4018,7 +4018,7 @@
   "verified_source": true,
   "lat": 27.75231,
   "lng": -97.38704,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2387418_Corpus-Christi-Medical-Center---Bay-Area_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2387418_Corpus-Christi-Medical-Center---Bay-Area_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.ccmedicalcenter.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2387418_Corpus-Christi-Medical-Center---Bay-Area_standardcharges.json"
@@ -4112,7 +4112,7 @@
   "verified_source": true,
   "lat": 30.41259,
   "lng": -97.70758,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-NORTH-AUSTIN-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-NORTH-AUSTIN-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://stdavids.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2781812_ST.-DAVID'S-NORTH-AUSTIN-MEDICAL-CENTER_standardcharges.json"
@@ -4160,7 +4160,7 @@
   "verified_source": true,
   "lat": 32.90201,
   "lng": -96.95861,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1650582_MEDICAL-CITY-LAS-COLINAS_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1650582_MEDICAL-CITY-LAS-COLINAS_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1650582_MEDICAL-CITY-LAS-COLINAS_standardcharges.json"
@@ -7687,7 +7687,7 @@
   "verified_source": true,
   "lat": 29.61499,
   "lng": -98.47374,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL-STONE-OAK_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL-STONE-OAK_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://sahealth.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/74-2730328_METHODIST-HOSPITAL-STONE-OAK_standardcharges.json"
@@ -8202,7 +8202,7 @@
   "verified_source": true,
   "lat": 32.89826,
   "lng": -97.31285,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/46-4027347_MEDICAL-CITY-ALLIANCE_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/46-4027347_MEDICAL-CITY-ALLIANCE_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://medicalcityhealthcare.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/46-4027347_MEDICAL-CITY-ALLIANCE_standardcharges.json"

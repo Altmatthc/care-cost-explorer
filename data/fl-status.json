@@ -67,7 +67,7 @@
   "status": "unreachable",
   "detail": "(\"Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote hos",
   "rows": 3909,
-  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1836808_HCA-FLORIDA-TWIN-CITIES-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1836808_HCA-FLORIDA-TWIN-CITIES-HOSPITAL_standardcharges.json",
   "last_attempt": "2026-10-13",
   "last_success": "2026-10-04",
   "last_verified": "2026-10-04",

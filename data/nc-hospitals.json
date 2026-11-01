@@ -42,7 +42,7 @@
   "verified_source": true,
   "lat": 35.57863,
   "lng": -82.54945,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048706_MISSION-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048706_MISSION-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.missionhealth.org/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048706_MISSION-HOSPITAL_standardcharges.json"
@@ -899,7 +899,7 @@
   "verified_source": true,
   "lat": 35.66341,
   "lng": -82.02771,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048888_MISSION-HOSPITAL-MCDOWELL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048888_MISSION-HOSPITAL-MCDOWELL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.missionhealth.org/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048888_MISSION-HOSPITAL-MCDOWELL_standardcharges.json"
@@ -2170,7 +2170,7 @@
   "verified_source": true,
   "lat": 35.08636,
   "lng": -83.18569,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048950_HIGHLANDS-CASHIERS-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048950_HIGHLANDS-CASHIERS-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.missionhealth.org/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048950_HIGHLANDS-CASHIERS-HOSPITAL_standardcharges.json"
@@ -2239,7 +2239,7 @@
   "verified_source": true,
   "lat": 35.2208,
   "lng": -82.7404,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048854_TRANSYLVANIA-REGIONAL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048854_TRANSYLVANIA-REGIONAL-HOSPITAL_standardcharges.json",
   "geo_approx": true,
   "price_page": "https://www.missionhealth.org/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048854_TRANSYLVANIA-REGIONAL-HOSPITAL_standardcharges.json"
@@ -2375,7 +2375,7 @@
   "verified_source": true,
   "lat": 35.181,
   "lng": -83.3885,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2053115_ANGEL-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2053115_ANGEL-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": true,
   "price_page": "https://www.missionhealth.org/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2053115_ANGEL-MEDICAL-CENTER_standardcharges.json"
@@ -2445,7 +2445,7 @@
   "verified_source": true,
   "lat": 35.91057,
   "lng": -82.06272,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048759_BLUE-RIDGE-REGIONAL-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048759_BLUE-RIDGE-REGIONAL-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.missionhealth.org/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/83-2048759_BLUE-RIDGE-REGIONAL-HOSPITAL_standardcharges.json"

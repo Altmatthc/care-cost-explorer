@@ -2309,7 +2309,9 @@ def main():
                         h["name"], domain,
                         expected_address=f"{h.get('address','')} "
                                          f"{h.get('city','')} {h.get('zip','')}")
-                    h["mrf_url"] = url
+                    # Persist only the base blob path, never the signed token
+                    # (the local `url` keeps the token for the fetch below).
+                    h["mrf_url"] = base_url(url)
                     if url:
                         h["verified_source"] = True
                     if SOURCE_PAGES.get(domain):
@@ -2331,7 +2333,7 @@ def main():
                                 probe_r.close()
                             if probe_r.ok:
                                 url = cand
-                                h["mrf_url"] = url
+                                h["mrf_url"] = base_url(url)
                                 h["verified_source"] = False
                                 print(f"    ... {h['name']}: trying seed-list URL "
                                       f"{host_of(cand)}")

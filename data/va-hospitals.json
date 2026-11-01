@@ -619,7 +619,7 @@
   "verified_source": true,
   "lat": 37.26408,
   "lng": -80.03322,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-1761046_LEWISGALE-HOSPITAL-ALLEGHANY_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-1761046_LEWISGALE-HOSPITAL-ALLEGHANY_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.hcavirginia.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-1761046_LEWISGALE-HOSPITAL-ALLEGHANY_standardcharges.json"
@@ -1225,7 +1225,7 @@
   "verified_source": true,
   "lat": 38.96146,
   "lng": -77.36288,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1777534_RESTON-HOSPITAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1777534_RESTON-HOSPITAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.hcavirginia.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1777534_RESTON-HOSPITAL-CENTER_standardcharges.json"
@@ -1271,7 +1271,7 @@
   "verified_source": true,
   "lat": 37.1857,
   "lng": -80.40864,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0889154_LEWISGALE-HOSPITAL-MONTGOMERY_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0889154_LEWISGALE-HOSPITAL-MONTGOMERY_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.hcavirginia.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0889154_LEWISGALE-HOSPITAL-MONTGOMERY_standardcharges.json"
@@ -1413,7 +1413,7 @@
   "verified_source": true,
   "lat": 37.06995,
   "lng": -80.75696,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0941129_LEWISGALE-HOSPITAL-PULASKI_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0941129_LEWISGALE-HOSPITAL-PULASKI_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.hcavirginia.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-0941129_LEWISGALE-HOSPITAL-PULASKI_standardcharges.json"
@@ -1576,7 +1576,7 @@
   "verified_source": true,
   "lat": 37.7804,
   "lng": -79.8828,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-1761046_LEWISGALE-HOSPITAL-ALLEGHANY_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-1761046_LEWISGALE-HOSPITAL-ALLEGHANY_standardcharges.json",
   "geo_approx": true,
   "price_page": "https://www.hcavirginia.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-1761046_LEWISGALE-HOSPITAL-ALLEGHANY_standardcharges.json"
@@ -1692,7 +1692,7 @@
   "verified_source": true,
   "lat": 38.21943,
   "lng": -77.49632,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/06-1760818_SPOTSYLVANIA-REGIONAL-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/06-1760818_SPOTSYLVANIA-REGIONAL-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.hcavirginia.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/06-1760818_SPOTSYLVANIA-REGIONAL-MEDICAL-CENTER_standardcharges.json"
@@ -1761,7 +1761,7 @@
   "verified_source": true,
   "lat": 38.94227,
   "lng": -77.54257,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/04-3665595_STONESPRINGS-HOSPITAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/04-3665595_STONESPRINGS-HOSPITAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.hcavirginia.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/04-3665595_STONESPRINGS-HOSPITAL-CENTER_standardcharges.json"
