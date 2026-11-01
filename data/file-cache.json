@@ -5800,5 +5800,209 @@
   "last_modified": "Mon, 13 Apr 2026 16:14:48 GMT",
   "length": "10335288",
   "seen": null
+ },
+ "https://southgeorgiaspecialtyhospital.com/wp-content/uploads/2025/05/844617179_affabilis-ii-llc-dba-south-georgia-specialty-hospital_standardcharges.csv": {
+  "etag": "\"3240f68-8760f-6366571f1d30d\"",
+  "last_modified": "Sat, 31 May 2025 02:39:51 GMT",
+  "length": "554511",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8026/586010601_hospital-authority-of-miller-county_standardcharges.csv": {
+  "etag": "0x8DEBCCC0119BB33",
+  "last_modified": "Thu, 28 May 2026 15:15:51 GMT",
+  "length": "70640168",
+  "seen": null
+ },
+ "https://jeffdavis.pg.quadax.revenuemasters.com/cdm-files/580903829_jeff_davis_hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 26 May 2026 18:19:35 GMT",
+  "length": "31435398",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/professional-resource-mgmt-of-rabun-llc/202012765_Professional-Resource-Mgmt-of-Rabun-LLC_standardcharges.csv": {
+  "etag": "\"3dfddcc05787a310f7710d81019bc879\"",
+  "last_modified": "Tue, 28 Jul 2026 18:23:26 GMT",
+  "length": "5650167",
+  "seen": null
+ },
+ "https://www.habershammedical.com/wp-content/uploads/2021/01/586002961_HabershamMedicalCenter_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Sat, 31 Oct 2026 19:42:18 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.phoebehealth.com/media/file/BillPay/PSMC_CDM_PricingTransparencyDec2020.csv": {
+  "etag": null,
+  "last_modified": "Mon, 29 Jul 2024 11:40:20 GMT",
+  "length": "1633666",
+  "seen": null
+ },
+ "https://www.phoebehealth.com/media/file/BillPay/PWMC_CDM_PricingTransparencyDec2020.csv": {
+  "etag": null,
+  "last_modified": "Mon, 29 Jul 2024 11:40:20 GMT",
+  "length": "1602157",
+  "seen": null
+ },
+ "https://www.vmfh.org/content/dam/vmfhorg/documents/price-transparency/910565539-1801851258_virginia-mason-medical-center_standardcharges.csv": {
+  "etag": "\"106056a2-646a51a984980-gzip\"",
+  "last_modified": "Tue, 23 Dec 2025 21:19:50 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/wamt/live/352346161_providence-regional-medical-center-everett_standardcharges.json": {
+  "etag": "W/\"196c46f3b0c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:29:27 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/wamt/live/910573108_providence-centralia-hospital_standardcharges.json": {
+  "etag": "W/\"f6b061dcb1c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:35:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/wamt/live/910567732_providence-st-peter-hospital_standardcharges.json": {
+  "etag": "W/\"81e48adb1c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:34:39 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/wamt/live/910655392_kadlec-regional-medical-center_standardcharges.json": {
+  "etag": "W/\"53cb714fb0c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:24:52 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/wamt/live/352345508_providence-holy-family-hospital_standardcharges.json": {
+  "etag": "W/\"45d28dc2b0c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:28:06 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/51492878d96ce15d3ad32eec16ccc830/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://pricetransparency.providence.org/wamt/live/320260353_providence-mount-carmel-hospital_standardcharges.json": {
+  "etag": "W/\"2ff1cca0b0c3dc1:0\"",
+  "last_modified": "Fri, 03 Apr 2026 21:27:09 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/17195844a80108c8ef58c2ef7b741afc/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://wearesamaritan.org/wp-content/uploads/2026/06/916001698_grant-county-public-hospital-district-1-dba-samaritan_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Tue, 23 Jun 2026 19:58:05 GMT",
+  "length": "10760614",
+  "seen": null
+ },
+ "https://cleverleypteusstatic.blob.core.windows.net/readable/1861432726_overlake-medical-center-&-clinics_standardcharges.json": {
+  "etag": "0x8DEA138674A385C",
+  "last_modified": "Thu, 23 Apr 2026 13:01:15 GMT",
+  "length": "71022706",
+  "seen": null
+ },
+ "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/health-plan-documents/coverage-information/machine-readable/910511770-central-hospital-standard-charges-wa-en.csv": {
+  "etag": null,
+  "last_modified": "Fri, 30 Oct 2026 09:26:56 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.trioshealth.org/docs/ahtrioshealthlibraries/hcl/mrf3q262/82-3962056_trios-health_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 17 Sep 2026 21:46:36 GMT",
+  "length": "11135899",
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/ClallamCounty/916001709_clallam-county-public-hospital-district-2-dba-olympic-medical-center_standardcharges.json": {
+  "etag": "\"0x8DED2E3599BE53C\"",
+  "last_modified": "Thu, 25 Jun 2026 17:58:23 GMT",
+  "length": "120711884",
+  "seen": null
+ },
+ "https://www.valleymed.org/916000986-1649209230_PUBLIC-HOSPITAL-DISTRICT-NO-1-OF-KING-COUNTY-WASHINGTON-dba-VALLEY-MEDICAL-CENTER_standardcharges.csv": {
+  "etag": "\"1dd08b27a1ba19f\"",
+  "last_modified": "Tue, 30 Jun 2026 17:04:22 GMT",
+  "length": "84627103",
+  "seen": null
+ },
+ "https://www.legacyhealth.org/-/media/Files/JSON/331065485_legacy-salmon-creek-medical-center_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 27 May 2026 22:22:03 GMT",
+  "length": "56267646",
+  "seen": null
+ },
+ "https://cchd.goredde.com/Estimator/Files/91-0741968_Columbia_County_Health_System_Standardcharges.csv": {
+  "etag": "\"2761163a0c0dc1:0\"",
+  "last_modified": "Mon, 30 Mar 2026 23:53:20 GMT",
+  "length": "81298921",
+  "seen": null
+ },
+ "https://couleemedical.goredde.com/Estimator/Files/91-1557904_Coulee_Medical_Center_standardcharges.csv": {
+  "etag": "\"7ebb27eb4cc0dc1:0\"",
+  "last_modified": "Mon, 30 Mar 2026 13:55:50 GMT",
+  "length": "101450557",
+  "seen": null
+ },
+ "https://lakechelanhealth.org/wp-content/uploads/2021/01/91-0881595_LakeChelanCommunityHospital_standardcharges.csv": {
+  "etag": "\"ff86d-5f9001c612cc0\"",
+  "last_modified": "Mon, 10 Apr 2023 19:09:15 GMT",
+  "length": "1046637",
+  "seen": null
+ },
+ "https://www.yourlourdes.com/docs/ahlourdeshealthlibraries/hcl/mrf3q263/364850536_lourdes-health_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 17 Sep 2026 21:30:24 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://snoqualmievalleyhealth.org/wp-content/uploads/2026/04/910908129_PublicHospitalDistrictNo4KingCountyWA_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 29 Apr 2026 21:24:36 GMT",
+  "length": "30849791",
+  "seen": null
+ },
+ "https://www.seattlechildrens.org/globalassets/documents/for-patients-and-families/910564748_seattle-childrens-hospital_standardcharges.csv": {
+  "etag": "\"9cc7135015890526f8f5c489187d97cb\"",
+  "last_modified": "Wed, 28 Oct 2026 19:40:56 GMT",
+  "length": "954276953",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8109/610461753_deaconess-health-system-henderson-hospital_standardcharges.csv": {
+  "etag": "0x8DE69BE73B9EA84",
+  "last_modified": "Wed, 11 Feb 2026 22:39:43 GMT",
+  "length": "987261617",
+  "seen": null
+ },
+ "https://apim.services.craneware.com/api-pricing-transparency/api/public/34ac41c1e7d6ab1cdbf6e81b5b7c3142/charges/mrf": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://cbh.goredde.com/Estimator/Files/91-6001946_Columbia_Basin_Hospital_standardcharges.csv": {
+  "etag": "\"62da30a0c0dc1:0\"",
+  "last_modified": "Mon, 30 Mar 2026 23:51:54 GMT",
+  "length": "26242262",
+  "seen": null
+ },
+ "https://www.sjchs.org/docs/default-source/default-document-library/58-0568702_st-josephs-hospital-savannah_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Tue, 31 Mar 2026 18:51:10 GMT",
+  "length": "4849685",
+  "seen": null
+ },
+ "https://www.ahcs.org/wp-content/uploads/2021/02/586002659_ApplingHealthcare_standardcharges.csv": {
+  "etag": "\"6033c274-e8f7\"",
+  "last_modified": "Mon, 22 Feb 2021 14:40:52 GMT",
+  "length": "59639",
+  "seen": null
  }
 }

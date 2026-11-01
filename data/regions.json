@@ -320,8 +320,8 @@
  },
  "ga": {
   "file": "ga.json",
-  "updated": "2026-10-28",
-  "hospitals": 18,
+  "updated": "2026-10-31",
+  "hospitals": 78,
   "procedures": 58,
   "states": [
    "GA"
@@ -330,9 +330,21 @@
    "300",
    "301",
    "302",
+   "303",
+   "304",
+   "305",
+   "306",
+   "307",
+   "309",
+   "310",
+   "312",
+   "313",
    "314",
    "315",
-   "317"
+   "316",
+   "317",
+   "319",
+   "398"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-ga"
  },

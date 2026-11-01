@@ -298,8 +298,9 @@
   "verified_source": false,
   "lat": 34.51176,
   "lng": -84.92058,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.adventhealth.com/sites/default/files/CDM/2022/581425000_AdventHealthGordon_standardcharges.json",
+  "geo_approx": false,
+  "source_url": "https://www.adventhealth.com/sites/default/files/CDM/2022/581425000_AdventHealthGordon_standardcharges.json"
  },
  {
   "id": "ccn-110024",
@@ -604,8 +605,9 @@
   "verified_source": false,
   "lat": 34.5756,
   "lng": -83.5696,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://www.habershammedical.com/wp-content/uploads/2021/01/586002961_HabershamMedicalCenter_standardcharges.csv",
+  "geo_approx": true,
+  "source_url": "https://www.habershammedical.com/wp-content/uploads/2021/01/586002961_HabershamMedicalCenter_standardcharges.csv"
  },
  {
   "id": "ccn-110042",
@@ -647,12 +649,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "sjchs.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 31.98577,
   "lng": -81.15305,
-  "mrf_url": null,
+  "mrf_url": "https://www.sjchs.org/docs/default-source/default-document-library/58-0568702_st-josephs-hospital-savannah_standardcharges.json",
   "geo_approx": false,
-  "price_page": "https://www.sjchs.org/pay-my-bill"
+  "price_page": "https://www.sjchs.org/pay-my-bill",
+  "source_url": "https://www.sjchs.org/docs/default-source/default-document-library/58-0568702_st-josephs-hospital-savannah_standardcharges.json"
  },
  {
   "id": "ccn-110044",
@@ -673,9 +676,10 @@
   "verified_source": false,
   "lat": 32.06049,
   "lng": -84.26832,
-  "mrf_url": null,
+  "mrf_url": "https://www.phoebehealth.com/media/file/BillPay/PSMC_CDM_PricingTransparencyDec2020.csv",
   "geo_approx": false,
-  "price_page": "https://urldefense.com/v3/__https:/hospitalpricedisclosure.com/default.aspx?ci=jZlMrXy92UZxgxqL*__*9*_*vqA*-*__;KioqKioq!!PA8yTw!tmmw67Yvc7ehtMfleRemJMwglCblMCXEoLxYH246xwMAmLPtJFDTqNQSUNJquWFXi_r33hea5Vm-x89eHcDnZoEK$"
+  "price_page": "https://urldefense.com/v3/__https:/hospitalpricedisclosure.com/default.aspx?ci=jZlMrXy92UZxgxqL*__*9*_*vqA*-*__;KioqKioq!!PA8yTw!tmmw67Yvc7ehtMfleRemJMwglCblMCXEoLxYH246xwMAmLPtJFDTqNQSUNJquWFXi_r33hea5Vm-x89eHcDnZoEK$",
+  "source_url": "https://www.phoebehealth.com/media/file/BillPay/PSMC_CDM_PricingTransparencyDec2020.csv"
  },
  {
   "id": "ccn-110045",
@@ -744,8 +748,9 @@
   "verified_source": false,
   "lat": 34.7589,
   "lng": -84.7943,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://www.adventhealth.com/sites/default/files/CDM/2022/581425000_AdventHealthMurray_standardcharges.json",
+  "geo_approx": true,
+  "source_url": "https://www.adventhealth.com/sites/default/files/CDM/2022/581425000_AdventHealthMurray_standardcharges.json"
  },
  {
   "id": "ccn-110051",
@@ -858,8 +863,9 @@
   "verified_source": false,
   "lat": 31.76952,
   "lng": -82.35574,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.ahcs.org/wp-content/uploads/2021/02/586002659_ApplingHealthcare_standardcharges.csv",
+  "geo_approx": false,
+  "source_url": "https://www.ahcs.org/wp-content/uploads/2021/02/586002659_ApplingHealthcare_standardcharges.csv"
  },
  {
   "id": "ccn-110073",
@@ -1725,8 +1731,9 @@
   "verified_source": false,
   "lat": 34.27815,
   "lng": -85.19333,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.adventhealth.com/sites/default/files/CDM/2022/581123037_AdventHealthRedmond_standardcharges.json",
+  "geo_approx": false,
+  "source_url": "https://www.adventhealth.com/sites/default/files/CDM/2022/581123037_AdventHealthRedmond_standardcharges.json"
  },
  {
   "id": "ccn-110177",
@@ -2213,12 +2220,14 @@
   "type": "Acute Care Hospitals",
   "stars": null,
   "hasER": false,
-  "domain": null,
-  "verified_source": false,
+  "domain": "southgeorgiaspecialtyhospital.com",
+  "verified_source": true,
   "lat": 31.60459,
   "lng": -84.17027,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://southgeorgiaspecialtyhospital.com/wp-content/uploads/2025/05/844617179_affabilis-ii-llc-dba-south-georgia-specialty-hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://southgeorgiaspecialtyhospital.com/price-transparency-hpt/",
+  "source_url": "https://southgeorgiaspecialtyhospital.com/wp-content/uploads/2025/05/844617179_affabilis-ii-llc-dba-south-georgia-specialty-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-110256",
@@ -2459,12 +2468,14 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "millercountyhospital.com",
+  "verified_source": true,
   "lat": 31.1749,
   "lng": -84.73462,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/8026/586010601_hospital-authority-of-miller-county_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://search.hospitalpriceindex.com/hpi2/machineReadable/MillerCountyHospital/8026",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/8026/586010601_hospital-authority-of-miller-county_standardcharges.csv"
  },
  {
   "id": "ccn-111306",
@@ -2831,12 +2842,14 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": false,
-  "domain": null,
-  "verified_source": false,
+  "domain": "baconcountyhospital.com",
+  "verified_source": true,
   "lat": 31.5402,
   "lng": -82.45941,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://rca.elevatepfs.com/ptapp/api/cdm/export/oneclick?recno=64b090e9230d0a7820a0da64fcf12a15e107940e4f0fc0a6af4cb1fe5cd401c2",
+  "geo_approx": false,
+  "price_page": "https://www.baconcountyhospital.com/getpage.php?name=Price_Transparency&sub=Price+Transparency",
+  "source_url": "https://rca.elevatepfs.com/ptapp/api/cdm/export/oneclick"
  },
  {
   "id": "ccn-111328",
@@ -2857,9 +2870,10 @@
   "verified_source": false,
   "lat": 31.51253,
   "lng": -83.84051,
-  "mrf_url": null,
+  "mrf_url": "https://www.phoebehealth.com/media/file/BillPay/PWMC_CDM_PricingTransparencyDec2020.csv",
   "geo_approx": false,
-  "price_page": "https://urldefense.com/v3/__https:/hospitalpricedisclosure.com/default.aspx?ci=jZlMrXy92UZxgxqL*__*9*_*vqA*-*__;KioqKioq!!PA8yTw!tmmw67Yvc7ehtMfleRemJMwglCblMCXEoLxYH246xwMAmLPtJFDTqNQSUNJquWFXi_r33hea5Vm-x89eHcDnZoEK$"
+  "price_page": "https://urldefense.com/v3/__https:/hospitalpricedisclosure.com/default.aspx?ci=jZlMrXy92UZxgxqL*__*9*_*vqA*-*__;KioqKioq!!PA8yTw!tmmw67Yvc7ehtMfleRemJMwglCblMCXEoLxYH246xwMAmLPtJFDTqNQSUNJquWFXi_r33hea5Vm-x89eHcDnZoEK$",
+  "source_url": "https://www.phoebehealth.com/media/file/BillPay/PWMC_CDM_PricingTransparencyDec2020.csv"
  },
  {
   "id": "ccn-111329",
@@ -2920,12 +2934,14 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "archbold.org",
+  "verified_source": true,
   "lat": 31.22931,
   "lng": -84.20632,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://hospitalpricedisclosure.com/download.aspx?pi=6A9Tvh1Xp4FdNkBVhNfrkA*-*",
+  "geo_approx": false,
+  "price_page": "https://hospitalpricedisclosure.com/default.aspx?ci=G*__*Z8NUFPd0POQzXwg*__*32OA*-*",
+  "source_url": "https://hospitalpricedisclosure.com/download.aspx"
  },
  {
   "id": "ccn-111332",
@@ -2942,12 +2958,14 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "archbold.org",
+  "verified_source": true,
   "lat": 30.79526,
   "lng": -83.55946,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://hospitalpricedisclosure.com/download.aspx?pi=u2RAQgdfsMbGN*__*Ecx*_*Fsvg*-*",
+  "geo_approx": false,
+  "price_page": "https://hospitalpricedisclosure.com/default.aspx?ci=G*__*Z8NUFPd0POQzXwg*__*32OA*-*",
+  "source_url": "https://hospitalpricedisclosure.com/download.aspx"
  },
  {
   "id": "ccn-111333",
@@ -2964,12 +2982,14 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "jeffdavishospital.org",
+  "verified_source": true,
   "lat": 31.85909,
   "lng": -82.60598,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://jeffdavis.pg.quadax.revenuemasters.com/cdm-files/580903829_jeff_davis_hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://jeffdavis.pg.quadax.revenuemasters.com/disclaimer",
+  "source_url": "https://jeffdavis.pg.quadax.revenuemasters.com/cdm-files/580903829_jeff_davis_hospital_standardcharges.csv"
  },
  {
   "id": "ccn-111334",
@@ -3034,12 +3054,14 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "mountainlakesmedicalcenter.com",
+  "verified_source": true,
   "lat": 34.8826,
   "lng": -83.4066,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://hospitalpricetransparencyfiles.com/professional-resource-mgmt-of-rabun-llc/202012765_Professional-Resource-Mgmt-of-Rabun-LLC_standardcharges.csv",
+  "geo_approx": true,
+  "price_page": "https://ezcost.info/mountainlakeshospital",
+  "source_url": "https://hospitalpricetransparencyfiles.com/professional-resource-mgmt-of-rabun-llc/202012765_Professional-Resource-Mgmt-of-Rabun-LLC_standardcharges.csv"
  },
  {
   "id": "ccn-111337",
