@@ -795,6 +795,15 @@ GENERIC_TOKENS = {
     "ctr", "med", "svcs", "hosp",
 }
 
+# 'joseph' vs 'josephs' / 'douglass' vs 'douglas': the CMS name and the file's
+# name differ only by a possessive or plural 's'. _flatten keeps apostrophes
+# out but each side tokenizes differently ('joseph' from "Joseph's", 'josephs'
+# from the filename 'st-josephs-...'). Fold trailing 's' on both sides when
+# rescuing a zero/low overlap — never on short tokens, so 'bus' vs 'bush'
+# style collisions can't fuse campuses.
+def _fold_s(t: str) -> str:
+    return t[:-1] if len(t) > 4 and t.endswith("s") else t
+
 
 # Filenames carry boilerplate that dilutes the real name: an EIN, the words
 # "standard charges", a region code, a language code, the extension. Kaiser's
@@ -809,10 +818,46 @@ FILE_NOISE = {
 
 
 def name_tokens(s: str) -> set[str]:
-    toks = {t for t in _flatten(s).split()
+    # split glued CamelCase runs: 'AdventHealthGordon' -> 'Advent Health Gordon'
+    spaced = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", str(s or ""))
+    toks = {t for t in _flatten(spaced).split()
             if len(t) > 2 and not t.isdigit()}
     distinctive = toks - GENERIC_TOKENS - FILE_NOISE
+    distinctive = _expand_glued(distinctive) or distinctive
     return distinctive or (toks - FILE_NOISE) or toks
+
+
+# System brand words. Not facility-distinguishing (every AdventHealth campus
+# shares "advent"), and spelled differently across CMS vs filename
+# ("Adventhealth" one-word vs "AdventHealthGordon" glued), so the tokenizers
+# produce different brand tokens. match_score discounts them when a
+# distinctive token already matches. Keep this list to unambiguous parent
+# brands; adding a distinctive word here would wrongly fuse campuses.
+BRAND_TOKENS = {
+    "advent", "adventhealth", "advhealth",
+    "piedmont", "wellstar", "wellness", "northside", "scripps", "sharp",
+    "dignity", "hca", "methodist", "baylor", "covenant", "christus",
+    "ascension", "seton", "providence", "kaiser", "sutter", "banner",
+    "novant", "atrium", "vidant", "carle", "geisinger", "montefiore",
+    "hackensack", "meridian", "promedica", "bronson", "trinity",
+}
+
+# Filename abbreviations that are initials of one specific CMS facility name.
+# Only add an entry when the expansion is unambiguous: PSMC expands to
+# 'phoebe sumter medical center' and still cross-scores 0.50 (below threshold)
+# against the OTHER Phoebe facilities, so sibling mix-ups stay rejected.
+NAME_ABBREVIATIONS = {
+    "psmc": "phoebe sumter medical center",
+    "pwmc": "phoebe worth medical center",
+}
+
+
+def _expand_glued(toks: set[str]) -> set[str]:
+    out = set(toks)
+    for t in toks:
+        if t in NAME_ABBREVIATIONS:
+            out |= {w for w in _flatten(NAME_ABBREVIATIONS[t]).split() if len(w) > 2}
+    return out
 
 
 def match_score(expected: str, actual: str) -> float:
@@ -825,7 +870,33 @@ def match_score(expected: str, actual: str) -> float:
         return 1.0
     shared = a & b
     if not shared:
-        return 0.0
+        folded = {_fold_s(t) for t in a} & {_fold_s(t) for t in b}
+        if not folded:
+            return 0.0
+        # possessive/plural variant: 'joseph' == 'josephs'. fold both sides and
+        # score the folded sets so the variants count as evidence, not dilution
+        a = {_fold_s(t) for t in a}
+        b = {_fold_s(t) for t in b}
+        shared = a & b
+    # A system brand ("adventhealth", or its CamelCase-glued form "advent") is
+    # spelled differently in the CMS name vs the filename, so one side carries
+    # an *unmatched* brand token that only dilutes the score. Remove brand
+    # tokens that are NOT shared (never a shared token, which is real evidence)
+    # before scoring. Guarded so a name that is brand-only keeps its tokens.
+    # Distinctive tokens are never in BRAND_TOKENS, so sibling campuses
+    # (Sharp Memorial vs Sharp Chula Vista share no distinctive token) still
+    # return 0.0 above and are never fused.
+    unshared_brand = {t for t in ((a | b) - shared) if t in BRAND_TOKENS}
+    if unshared_brand and (shared - unshared_brand):
+        a = (a - unshared_brand) or a
+        b = (b - unshared_brand) or b
+    # possessive/plural near-miss on an otherwise-matching pair:
+    # 'joseph' vs 'josephs' keeps overlap at 1/2 when it should be 2/2.
+    # Count folded variants as shared evidence (still scored over full
+    # denominators, so extra words on either side keep diluting).
+    folded_shared = {_fold_s(t) for t in a} & {_fold_s(t) for t in b}
+    if len(folded_shared) > len(shared):
+        shared = folded_shared
     return max(len(shared) / len(a), len(shared) / len(b))
 
 
@@ -1324,7 +1395,7 @@ def find_code_columns(keys: list[str]) -> list[tuple[str, Optional[str]]]:
     """
     pairs = []
     for k in keys:
-        kl = k.lower()
+        kl = k.lower().strip()
         if "code" not in kl or "type" in kl:
             continue
         if any(skip in kl for skip in ("zip", "postal", "geo")):
@@ -1625,7 +1696,8 @@ def extract_prices(hospital_id: str, url: str, verbose: bool = True,
     meta = {"quality": quality,
             "codes_with_cash": len(coded_with_cash),
             "catalogued": len(all_codes),
-            "drugs": drugs}
+            "drugs": drugs,
+            "scanned": scanned, "std_types_seen": dict(types_seen)}
     if found:
         found[0]["_meta"] = meta
     elif CATALOGUE_DIR is not None:
@@ -1804,6 +1876,7 @@ STATUS_OK = "ok"                  # prices collected
 STATUS_NO_FILE = "no_file"        # nothing published at the standard location
 STATUS_UNREACHABLE = "unreachable"  # published but server refused / timed out
 STATUS_WRONG_FILE = "wrong_file"  # only found a file belonging to another facility
+STATUS_UNMATCHED_FORMAT = "unmatched_format"  # file is this hospital's but carries only internal CDM codes (no CPT/HCPCS/DRG) — nothing cross-hospital comparable
 STATUS_EMPTY = "empty"            # file parsed but contained none of our procedures
 STATUS_EXEMPT = "exempt"          # federal facility, rule doesn't apply
 
@@ -2067,7 +2140,9 @@ def main():
                 "name": h["name"],
                 "status": st,
                 "detail": detail,
-                "rows": rows if st == STATUS_OK else prior.get("rows", 0),
+                "rows": rows if st == STATUS_OK
+                        else (0 if st == STATUS_UNMATCHED_FORMAT
+                              else prior.get("rows", 0)),
                 "source_url": url or prior.get("source_url"),
                 "last_attempt": today,
                 "last_success": today if ok and reparsed else prior.get("last_success"),
@@ -2340,12 +2415,35 @@ def main():
                 with lock:
                     all_rows.extend(rows)
                     stats["found"] += 1
-                cat_n = next((r["_meta"]["catalogued"] for r in rows
-                              if isinstance(r, dict) and r.get("_meta")
-                              and "catalogued" in r["_meta"]), 0)
-                record(h, STATUS_OK if rows else STATUS_EMPTY,
-                       "" if rows else "file parsed but held none of our procedures",
-                       rows=len(rows), url=cb, catalogued=cat_n)
+                # Pull parse metadata from the raw (pre-filter) extraction.
+                raw = cache.get(cb) or []
+                meta = next((r["_meta"] for r in raw
+                             if isinstance(r, dict) and r.get("_meta")), {})
+                cat_n = meta.get("catalogued", 0)
+                # Real curated matches exclude the empty-procedure carrier
+                # record (which only transports _meta); counting it as a match
+                # was what made CDM-only files look like ok/1-row.
+                real_rows = [r for r in rows
+                             if isinstance(r, dict) and r.get("procedure")]
+                # A file that verifiably belongs to this hospital but yields no
+                # standard code types at all (only internal CDM/chargemaster
+                # codes: no CPT/HCPCS/DRG/APC) has nothing cross-hospital
+                # comparable. Classify unmatched_format rather than a misleading
+                # ok/empty. std_types_seen empty + nothing catalogued + no
+                # curated row is the signal, regardless of scanned count.
+                if (not real_rows and not cat_n
+                        and not meta.get("std_types_seen")):
+                    stats["unmatched_format"] = stats.get("unmatched_format", 0) + 1
+                    scanned_n = meta.get("scanned", 0)
+                    record(h, STATUS_UNMATCHED_FORMAT,
+                           f"file belongs to this hospital but publishes no "
+                           f"standard CPT/HCPCS/DRG codes (internal CDM codes "
+                           f"only; scanned {scanned_n:,} rows)", rows=0, url=cb)
+                    print(f"    ~ {h['name']}: unmatched format (no standard codes)")
+                else:
+                    record(h, STATUS_OK if real_rows else STATUS_EMPTY,
+                           "" if real_rows else "file parsed but held none of our procedures",
+                           rows=len(real_rows), url=cb, catalogued=cat_n)
                 checkpoint()
             except Exception as e:
                 short = str(e).split("(Caused by")[0][:110]

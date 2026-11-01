@@ -98,13 +98,19 @@ def status_counts(state: str) -> tuple[int, Counter]:
     return len(st), Counter(v.get("status") for v in st.values())
 
 
-def coherence(state: str) -> tuple[list[str], list[str]]:
-    """(ok-without-rows, priced-but-not-ok) hospital ids."""
+def coherence(state: str) -> tuple[list[str], list[str], list[str]]:
+    """(ok-without-rows, priced-but-not-ok, never-attempted) hospital ids.
+
+    never-attempted = hospitals in the published registry (<state>-hospitals.json)
+    with no entry at all in <state>-status.json, i.e. a harvest pass that crashed
+    partway through (GA 2026-10-28: 27 of 135 attempted, coherence passed)."""
     st = load(DATA / f"{state}-status.json", {})
     prices = load(DATA / f"{state}-prices.json", {})
     priced = {k.split("|")[0] for k in prices if k != "_meta"}
     ok = {hid for hid, v in st.items() if v.get("status") == "ok"}
-    return sorted(ok - priced), sorted(priced - ok)
+    registry = load(DATA / f"{state}-hospitals.json", [])
+    reg_ids = {h.get("id") for h in registry if h.get("id")}
+    return sorted(ok - priced), sorted(priced - ok), sorted(reg_ids - set(st))
 
 
 def catalogue_gap(state: str) -> list[str]:
@@ -186,10 +192,15 @@ def do_finish(state: str, no_publish: bool, no_commit: bool,
     if not c.get("ok"):
         stage_log(state, "finish: STOP — zero ok hospitals, nothing to publish")
         return 4
-    no_rows, orphan = coherence(state)
+    no_rows, orphan, never = coherence(state)
     gap = catalogue_gap(state)
     stage_log(state, f"finish: coherence ok-without-rows={len(no_rows)} "
-                     f"orphan-priced={len(orphan)} ok-without-catalogue={len(gap)}")
+                     f"orphan-priced={len(orphan)} ok-without-catalogue={len(gap)} "
+                     f"never-attempted={len(never)}")
+    if never and not ignore_coherence:
+        stage_log(state, f"finish: STOP — {len(never)} registry hospitals never "
+                         f"attempted; re-run prices WITHOUT --only before publishing")
+        return 5
     if (no_rows or gap) and not ignore_coherence:
         ids = ",".join(sorted(set(no_rows) | set(gap)))
         (LOGS / f"{state}-reharvest-ids.txt").write_text(ids, encoding="utf-8")
@@ -290,9 +301,10 @@ def do_probe(state: str) -> int:
 def do_status(state: str) -> int:
     n, c = status_counts(state)
     print(f"{state}: {n} hospitals {dict(c)}")
-    no_rows, orphan = coherence(state)
+    no_rows, orphan, never = coherence(state)
     print(f"  ok-without-rows={len(no_rows)} orphan-priced={len(orphan)} "
-          f"ok-without-catalogue={len(catalogue_gap(state))} harvest_running={harvest_running(state)}")
+          f"ok-without-catalogue={len(catalogue_gap(state))} never-attempted={len(never)} "
+          f"harvest_running={harvest_running(state)}")
     st = load(DATA / f"{state}-status.json", {})
     cls = Counter((v.get("status"), (v.get("detail") or "")[:60]) for v in st.values()
                   if v.get("status") not in ("ok", "exempt"))
