@@ -193,12 +193,14 @@
   "type": "Acute Care Hospitals",
   "stars": 2,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "insightcoldwater.org",
+  "verified_source": true,
   "lat": 41.93891,
   "lng": -84.99057,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://estimator.myinsightcare.com/static/mrf/386108110_insight-hospital-and-medical-center-coldwater_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://estimator.myinsightcare.com/transparency.html",
+  "source_url": "https://estimator.myinsightcare.com/static/mrf/386108110_insight-hospital-and-medical-center-coldwater_standardcharges.csv"
  },
  {
   "id": "ccn-230024",
@@ -347,12 +349,14 @@
   "type": "Acute Care Hospitals",
   "stars": 3,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "hillsdalehospital.com",
+  "verified_source": true,
   "lat": 41.91203,
   "lng": -84.63177,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.hillsdalehospital.com/wp-content/uploads/2022/06/2026-386005550_Hillsdale-Hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.hillsdalehospital.com/resources/pricing-estimates/",
+  "source_url": "https://www.hillsdalehospital.com/wp-content/uploads/2022/06/2026-386005550_Hillsdale-Hospital_standardcharges.csv"
  },
  {
   "id": "ccn-230038",
@@ -664,11 +668,13 @@
   "stars": null,
   "hasER": false,
   "domain": "straithhospital.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 42.46449,
   "lng": -83.26045,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://straithhospital.org/wp-content/uploads/2026/03/381455020_straith-hospital-for-special-surgery_standardcharges-11.csv",
+  "geo_approx": false,
+  "price_page": "https://www.straithhospital.org/price-transparency/",
+  "source_url": "https://straithhospital.org/wp-content/uploads/2026/03/381455020_straith-hospital-for-special-surgery_standardcharges-11.csv"
  },
  {
   "id": "ccn-230072",
@@ -685,12 +691,14 @@
   "type": "Acute Care Hospitals",
   "stars": 5,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "hollandhospital.org",
+  "verified_source": true,
   "lat": 42.77405,
   "lng": -86.11325,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx?dbName=dbHCHHOLLANDMI&type=CDMWithoutLabel&fileType=CSV",
+  "geo_approx": false,
+  "price_page": "https://apps.para-hcfs.com/PTT/FinalLinks/Holland_V4.aspx",
+  "source_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
  },
  {
   "id": "ccn-230075",
@@ -734,7 +742,8 @@
   "lat": 43.42609,
   "lng": -83.94182,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency"
  },
  {
   "id": "ccn-230078",
@@ -953,12 +962,14 @@
   "type": "Acute Care Hospitals",
   "stars": 1,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "promedica.org",
+  "verified_source": true,
   "lat": 41.92521,
   "lng": -83.38895,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://promedica.canto.com/direct/document/cs74uos52t4bj9nr9esrm8et39/VGvkhFTo56aHol06gNFB7R9ot_g/original?content-type=text%2Fcsv&name=381984289_mercy-memorial-hospital-corporation_standardcharges+4.csv",
+  "geo_approx": false,
+  "price_page": "https://www.promedica.org/pay-my-bill/price-transparency-resources",
+  "source_url": "https://promedica.canto.com/direct/document/cs74uos52t4bj9nr9esrm8et39/VGvkhFTo56aHol06gNFB7R9ot_g/original"
  },
  {
   "id": "ccn-230100",
@@ -976,11 +987,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 44.27527,
   "lng": -83.51136,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/in-csv/350992717_st-joseph-hospital-and-health-center-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/in-csv/350992717_st-joseph-hospital-and-health-center-inc_standardcharges.csv"
  },
  {
   "id": "ccn-230104",
@@ -1094,7 +1107,8 @@
   "lat": 42.30561,
   "lng": -85.5598,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency"
  },
  {
   "id": "ccn-23011F",
@@ -1133,12 +1147,14 @@
   "type": "Acute Care Hospitals",
   "stars": 3,
   "hasER": true,
-  "domain": "hcahealthcare.com",
-  "verified_source": false,
+  "domain": "memorialhealthcare.org",
+  "verified_source": true,
   "lat": 43.00509,
   "lng": -84.18035,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://memorialhealthcare.org/wp-content/uploads/2026/03/381358208_memorial-healthcare_standardcharges-1.json",
+  "geo_approx": false,
+  "price_page": "https://memorialhealthcare.org/patient-information/price-transparency/",
+  "source_url": "https://memorialhealthcare.org/wp-content/uploads/2026/03/381358208_memorial-healthcare_standardcharges-1.json"
  },
  {
   "id": "ccn-23012F",
@@ -1380,11 +1396,13 @@
   "stars": 1,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 42.41903,
   "lng": -82.91493,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/ok-csv/730579286_st-john-medical-center-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/ok-csv/730579286_st-john-medical-center-inc_standardcharges.csv"
  },
  {
   "id": "ccn-230167",
@@ -1520,7 +1538,8 @@
   "lat": 42.50712,
   "lng": -83.00342,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency"
  },
  {
   "id": "ccn-230197",
@@ -1538,11 +1557,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 42.9282,
   "lng": -83.6264,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv",
+  "geo_approx": true,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv"
  },
  {
   "id": "ccn-230207",
@@ -1630,11 +1651,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "oaklawnhospital.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 42.27308,
   "lng": -84.95769,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://oaklawnhospital.org/oaklawn-hospital_standard-charges.csv.zip",
+  "geo_approx": false,
+  "price_page": "https://oaklawnhospital.org/tools-resources/price-transparency/",
+  "source_url": "https://oaklawnhospital.org/oaklawn-hospital_standard-charges.csv.zip"
  },
  {
   "id": "ccn-230222",
@@ -1764,11 +1787,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 42.78575,
   "lng": -82.47807,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv"
  },
  {
   "id": "ccn-230244",
@@ -1786,11 +1811,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "gch.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 42.3242,
   "lng": -83.3402,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://gch.org/wp-content/uploads/2026/09/1060000095%20_GardenCityHospital_standardcharges.json",
+  "geo_approx": true,
+  "price_page": "https://gch.org/financial-assistance/",
+  "source_url": "https://gch.org/wp-content/uploads/2026/09/1060000095%20_GardenCityHospital_standardcharges.json"
  },
  {
   "id": "ccn-230254",
@@ -1857,7 +1884,8 @@
   "lat": 42.45075,
   "lng": -83.08348,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://estimator.myinsightcare.com/transparency.html"
  },
  {
   "id": "ccn-230269",
@@ -1941,11 +1969,13 @@
   "stars": null,
   "hasER": true,
   "domain": "healthsourcesaginaw.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 43.45675,
   "lng": -84.05199,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.healthsourcesaginaw.org/wp-content/uploads/2026/01/386004889_healthsource-saginaw_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.healthsourcesaginaw.org",
+  "source_url": "https://www.healthsourcesaginaw.org/wp-content/uploads/2026/01/386004889_healthsource-saginaw_standardcharges.csv"
  },
  {
   "id": "ccn-230277",
@@ -1989,7 +2019,8 @@
   "lat": 42.51764,
   "lng": -83.69613,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency"
  },
  {
   "id": "ccn-230297",
@@ -2030,12 +2061,14 @@
   "type": "Acute Care Hospitals",
   "stars": null,
   "hasER": false,
-  "domain": null,
-  "verified_source": false,
+  "domain": "surgeonschoice.com",
+  "verified_source": true,
   "lat": 42.45744,
   "lng": -83.20275,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://surgeonschoice.com/383162435_southfield-rehabilitation-company_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://surgeonschoice.com/patient/main/right_column_links/Transparency-Billing",
+  "source_url": "https://surgeonschoice.com/383162435_southfield-rehabilitation-company_standardcharges.csv"
  },
  {
   "id": "ccn-230302",
@@ -2209,11 +2242,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 43.98275,
   "lng": -83.96725,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/in-csv/350869065_st-marys-health-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/in-csv/350869065_st-marys-health-inc_standardcharges.csv"
  },
  {
   "id": "ccn-231306",
@@ -2231,11 +2266,13 @@
   "stars": null,
   "hasER": true,
   "domain": "mackinacstraitshealth.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 45.89107,
   "lng": -84.72756,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx?dbName=dbMSHSTIGNACEMI&type=CDMWithoutLabel&fileType=CSV",
+  "geo_approx": false,
+  "price_page": "https://apps.para-hcfs.com/PTT/FinalLinks/Mackinac_Straits_HS.aspx",
+  "source_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
  },
  {
   "id": "ccn-231307",
@@ -2253,11 +2290,13 @@
   "stars": null,
   "hasER": true,
   "domain": "bcmh.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 46.73273,
   "lng": -88.42793,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://bcmh.org/wp-content/uploads/2026/06/382892565_baraga-county-memorial-hospital_standardcharges-1.csv",
+  "geo_approx": false,
+  "price_page": "https://bcmh.org/patients-visitors/bcmh-hospital-charge-information/",
+  "source_url": "https://bcmh.org/wp-content/uploads/2026/06/382892565_baraga-county-memorial-hospital_standardcharges-1.csv"
  },
  {
   "id": "ccn-231308",
@@ -2389,7 +2428,8 @@
   "lat": 43.42342,
   "lng": -82.83286,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://www.mckenziehealth.org/patients-visitors/billing-insurance/"
  },
  {
   "id": "ccn-231315",
@@ -2407,11 +2447,13 @@
   "stars": null,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 41.98231,
   "lng": -86.1147,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv"
  },
  {
   "id": "ccn-231316",
@@ -2451,11 +2493,13 @@
   "stars": null,
   "hasER": true,
   "domain": "aspirus.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 46.10432,
   "lng": -88.61831,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/383236977_1497750830_aspirus-iron-river-hospital_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.aspirus.org/price-estimate",
+  "source_url": "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/383236977_1497750830_aspirus-iron-river-hospital_standardcharges.json"
  },
  {
   "id": "ccn-231319",
@@ -2473,11 +2517,13 @@
   "stars": null,
   "hasER": true,
   "domain": "aspirus.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 47.23905,
   "lng": -88.44299,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/381443361_1326115569_aspirus-keweenaw-hospital_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.aspirus.org/price-estimate",
+  "source_url": "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/381443361_1326115569_aspirus-keweenaw-hospital_standardcharges.json"
  },
  {
   "id": "ccn-231320",
@@ -2584,12 +2630,14 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "eatonrapidsmedicalcenter.org",
+  "verified_source": true,
   "lat": 42.49642,
   "lng": -84.65746,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://eatonrapidsmedicalcenter.pg.quadax.revenuemasters.com/cdm-files/381559180_eaton-rapids-medical-center_standard_charges.csv",
+  "geo_approx": false,
+  "price_page": "https://eatonrapidsmedicalcenter.pg.quadax.revenuemasters.com/disclaimer?",
+  "source_url": "https://eatonrapidsmedicalcenter.pg.quadax.revenuemasters.com/cdm-files/381559180_eaton-rapids-medical-center_standard_charges.csv"
  },
  {
   "id": "ccn-231325",
@@ -2677,7 +2725,8 @@
   "lat": 42.51838,
   "lng": -85.85773,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency"
  },
  {
   "id": "ccn-231329",
@@ -2785,11 +2834,13 @@
   "stars": null,
   "hasER": true,
   "domain": "aspirus.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 46.4819,
   "lng": -90.10566,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/382908586_1609034099_aspirus-ironwood-hospital_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.aspirus.org/price-estimate",
+  "source_url": "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/382908586_1609034099_aspirus-ironwood-hospital_standardcharges.json"
  },
  {
   "id": "ccn-231337",
@@ -2807,11 +2858,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "osfhealthcare.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 45.74569,
   "lng": -87.1009,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/370813229_1699288449_osf-healthcare-system_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.osfhealthcare.org/patients-visitors/billing-insurance/price-transparency",
+  "source_url": "https://osf-p-001.sitecorecontenthub.cloud/api/public/content/370813229_1699288449_osf-healthcare-system_standardcharges.json"
  },
  {
   "id": "ccn-231338",

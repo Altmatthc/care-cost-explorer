@@ -464,5 +464,31 @@
    "246"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-va"
+ },
+ "in": {
+  "file": "in.json",
+  "updated": "2026-11-03",
+  "hospitals": 36,
+  "procedures": 58,
+  "states": [
+   "IN"
+  ],
+  "zip3": [
+   "460",
+   "461",
+   "462",
+   "463",
+   "465",
+   "467",
+   "468",
+   "469",
+   "472",
+   "473",
+   "474",
+   "475",
+   "477",
+   "478",
+   "479"
+  ]
  }
 }

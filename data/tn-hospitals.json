@@ -64,7 +64,7 @@
   "verified_source": true,
   "lat": 36.2445,
   "lng": -86.75643,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1560757_TRISTAR-SKYLINE-MEDICAL-CENTER_standardcharges.json",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1560757_TRISTAR-SKYLINE-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1560757_TRISTAR-SKYLINE-MEDICAL-CENTER_standardcharges.json"
@@ -329,12 +329,14 @@
   "type": "Acute Care Hospitals",
   "stars": 2,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "morristownhamblen.com",
+  "verified_source": true,
   "lat": 36.21198,
   "lng": -83.30442,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/620545814_morristown-hamblen-hospital-association_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.covenanthealth.com/patients-visitors/price-estimation/",
+  "source_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/620545814_morristown-hamblen-hospital-association_standardcharges.json"
  },
  {
   "id": "ccn-440031",
@@ -489,7 +491,7 @@
   "verified_source": true,
   "lat": 36.07205,
   "lng": -87.37517,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1620866_TRISTAR-HORIZON-MEDICAL-CENTER_standardcharges.json",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1620866_TRISTAR-HORIZON-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1620866_TRISTAR-HORIZON-MEDICAL-CENTER_standardcharges.json"
@@ -626,12 +628,14 @@
   "type": "Acute Care Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "claibornemedicalcenter.com",
+  "verified_source": true,
   "lat": 36.471,
   "lng": -83.5552,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/464420358_claiborne-medical-center_standardcharges.json",
+  "geo_approx": true,
+  "price_page": "https://www.covenanthealth.com/patients-visitors/price-estimation/",
+  "source_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/464420358_claiborne-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-440058",
@@ -764,7 +768,7 @@
   "verified_source": true,
   "lat": 36.5018,
   "lng": -86.8769,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4366763_TRISTAR-NORTHCREST-MEDICAL-CENTER_standardcharges.json",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4366763_TRISTAR-NORTHCREST-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
   "geo_approx": true,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4366763_TRISTAR-NORTHCREST-MEDICAL-CENTER_standardcharges.json"
@@ -785,11 +789,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "starrregional.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.4406,
   "lng": -84.60825,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.starrregional.com/docs/ahstarrregionalmedicalcenterlibraries/hcl/mrf3q26/621866028_athens-etowah-starr-regional_standardcharges.csv.zip",
+  "geo_approx": false,
+  "price_page": "https://www.starrregional.com/hospital-charges-listing",
+  "source_url": "https://www.starrregional.com/docs/ahstarrregionalmedicalcenterlibraries/hcl/mrf3q26/621866028_athens-etowah-starr-regional_standardcharges.csv.zip"
  },
  {
   "id": "ccn-440072",
@@ -852,12 +858,14 @@
   "type": "Acute Care Hospitals",
   "stars": 5,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "lecontemedicalcenter.com",
+  "verified_source": true,
   "lat": 35.85509,
   "lng": -83.53838,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/621114867_leconte-medical-center_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.covenanthealth.com/patients-visitors/price-estimation/",
+  "source_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/621114867_leconte-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-440082",
@@ -920,12 +928,14 @@
   "type": "Acute Care Hospitals",
   "stars": 5,
   "hasER": false,
-  "domain": "memorialhcs.org",
-  "verified_source": false,
+  "domain": "memorialhealthcare.org",
+  "verified_source": true,
   "lat": 35.03987,
   "lng": -85.26035,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://memorialhealthcare.org/wp-content/uploads/2026/03/381358208_memorial-healthcare_standardcharges-1.json",
+  "geo_approx": false,
+  "price_page": "https://memorialhealthcare.org/patient-information/price-transparency/",
+  "source_url": "https://memorialhealthcare.org/wp-content/uploads/2026/03/381358208_memorial-healthcare_standardcharges-1.json"
  },
  {
   "id": "ccn-440102",
@@ -943,11 +953,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "lincolnhealthsystem.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.14801,
   "lng": -86.5549,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://hhlincolnhealth.org/wp-content/uploads/882472117_hh-health-system-lincoln-inc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://hhlincolnhealth.org/patients-visitors/price-transparency/",
+  "source_url": "https://hhlincolnhealth.org/wp-content/uploads/882472117_hh-health-system-lincoln-inc_standardcharges.csv"
  },
  {
   "id": "ccn-440104",
@@ -965,11 +977,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "erlanger.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.04783,
   "lng": -85.29055,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://erlanger.pt.panaceainc.com/MRFDownload/erlanger/baroness",
+  "geo_approx": false,
+  "price_page": "https://www.erlanger.org/patient-and-family-resources/billing-and-insurance/price-transparency",
+  "source_url": "https://erlanger.pt.panaceainc.com/MRFDownload/erlanger/baroness"
  },
  {
   "id": "ccn-440109",
@@ -986,12 +1000,14 @@
   "type": "Acute Care Hospitals",
   "stars": 2,
   "hasER": true,
-  "domain": null,
-  "verified_source": false,
+  "domain": "hardinmedicalcenter.org",
+  "verified_source": true,
   "lat": 35.2272,
   "lng": -88.23048,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://mrfs.hyvehealthcare.com/HardinCountyGeneralHospital/626002428_hardin-medical-center_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.hardinmedicalcenter.org/pricing-transparency",
+  "source_url": "https://mrfs.hyvehealthcare.com/HardinCountyGeneralHospital/626002428_hardin-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-440110",
@@ -1031,11 +1047,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "nashvillegeneral.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 36.16631,
   "lng": -86.8056,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://hospitalpricedisclosure.com/download.aspx?pi=9g8QBtWNOUgTiaQxrsd8yQ*-*",
+  "geo_approx": false,
+  "price_page": "https://nashvillegeneral.org/patient-visitor-info/patient-price-information-list",
+  "source_url": "https://hospitalpricedisclosure.com/download.aspx"
  },
  {
   "id": "ccn-440120",
@@ -1057,7 +1075,8 @@
   "lat": 36.05619,
   "lng": -83.99825,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://www.tennovanorthknoxville.com/pricing-information"
  },
  {
   "id": "ccn-440125",
@@ -1075,11 +1094,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "fsregional.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.9572,
   "lng": -83.9363,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/620528340_fort-sanders-regional-medical-center_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "https://www.covenanthealth.com/patients-visitors/price-estimation/",
+  "source_url": "https://mrfs.hyvehealthcare.com/CovenantHealth/620528340_fort-sanders-regional-medical-center_standardcharges.json"
  },
  {
   "id": "ccn-440130",
@@ -1259,7 +1280,7 @@
   "verified_source": true,
   "lat": 36.1755,
   "lng": -86.60746,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SUMMIT-MEDICAL-CENTER_standardcharges.json",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SUMMIT-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SUMMIT-MEDICAL-CENTER_standardcharges.json"
@@ -1280,11 +1301,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.69902,
   "lng": -85.74195,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/474063149_saint-thomas-river-park-hospital-llc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/474063149_saint-thomas-river-park-hospital-llc_standardcharges.csv"
  },
  {
   "id": "ccn-440152",
@@ -1323,12 +1346,14 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "domain": "hcahealthcare.com",
-  "verified_source": false,
+  "domain": "tennovanewport.com",
+  "verified_source": true,
   "lat": 35.96501,
   "lng": -83.18165,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.tennovanewport.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/452528314_tennova-newport-medical-center_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.tennovanewport.com/pricing-information",
+  "source_url": "https://www.tennovanewport.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/452528314_tennova-newport-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-440156",
@@ -1346,11 +1371,13 @@
   "stars": 4,
   "hasER": true,
   "domain": "parkridgehealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.03381,
   "lng": -85.26887,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0840204_PARKRIDGE-EAST-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "geo_approx": false,
+  "price_page": "https://parkridgehealth.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0840204_PARKRIDGE-EAST-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-440159",
@@ -1393,7 +1420,7 @@
   "verified_source": true,
   "lat": 36.15293,
   "lng": -86.8077,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=vdmkLz8lCE1qb%2BnsaFfL8tcI7Gg6B%2B3s%2Fny3TPZ1kqs%3D",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json"
@@ -1462,7 +1489,8 @@
   "lat": 35.26009,
   "lng": -87.32443,
   "mrf_url": null,
-  "geo_approx": false
+  "geo_approx": false,
+  "price_page": "https://www.southerntnlawrenceburg.com/hospital-charges-listing"
  },
  {
   "id": "ccn-440176",
@@ -1590,11 +1618,13 @@
   "stars": 2,
   "hasER": true,
   "domain": "mylivingstonhospital.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 36.38446,
   "lng": -85.32794,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://hospitalpricedisclosure.com/Download.aspx?pi=H9YBLIdJLmIpMHghfMTl5w*-*",
+  "geo_approx": false,
+  "price_page": "https://hospitalpricedisclosure.com/Default.aspx?pi=H9YBLIdJLmIpMHghfMTl5w*-*",
+  "source_url": "https://hospitalpricedisclosure.com/Download.aspx"
  },
  {
   "id": "ccn-44018F",
@@ -1634,11 +1664,13 @@
   "stars": null,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.94815,
   "lng": -85.47714,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/474063406_saint-thomas-highlands-hospital-llc-_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/474063406_saint-thomas-highlands-hospital-llc-_standardcharges.csv"
  },
  {
   "id": "ccn-440193",
@@ -1703,7 +1735,7 @@
   "verified_source": true,
   "lat": 36.07849,
   "lng": -86.72212,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SOUTHERN-HILLS-MEDICAL-CENTER_standardcharges.json",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SOUTHERN-HILLS-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SOUTHERN-HILLS-MEDICAL-CENTER_standardcharges.json"
@@ -1724,11 +1756,13 @@
   "stars": null,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.83245,
   "lng": -86.07294,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/474063232_saint-thomas-stones-river-hospital-llc_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/474063232_saint-thomas-stones-river-hospital-llc_standardcharges.csv"
  },
  {
   "id": "ccn-440218",
@@ -1746,11 +1780,13 @@
   "stars": null,
   "hasER": false,
   "domain": "sthspecialtysurgery.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 36.15578,
   "lng": -86.80375,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://mrfs.hyvehealthcare.com/USPI/621772195_baptist-womens-health-center-llc_standardcharges.json",
+  "geo_approx": false,
+  "price_page": "http://www.sthspecialtysurgery.com/hospital-pricing-information",
+  "source_url": "https://mrfs.hyvehealthcare.com/USPI/621772195_baptist-womens-health-center-llc_standardcharges.json"
  },
  {
   "id": "ccn-440227",
@@ -1771,7 +1807,7 @@
   "verified_source": true,
   "lat": 35.97247,
   "lng": -86.56399,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-STONECREST-MEDICAL-CENTER_standardcharges.json",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-STONECREST-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-STONECREST-MEDICAL-CENTER_standardcharges.json"
@@ -1814,11 +1850,13 @@
   "stars": null,
   "hasER": false,
   "domain": "trustpointhospital.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.87696,
   "lng": -86.42435,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.trustpointhospital.com/wp-content/uploads/pricing/2026/397/20-5850135_Trustpoint-Hospital-LLC_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.trustpointhospital.com/admissions/insurance-payment/price-transparency/",
+  "source_url": "https://www.trustpointhospital.com/wp-content/uploads/pricing/2026/397/20-5850135_Trustpoint-Hospital-LLC_standardcharges.csv"
  },
  {
   "id": "ccn-440238",
@@ -1858,11 +1896,13 @@
   "stars": null,
   "hasER": false,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.78135,
   "lng": -87.46168,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/581737573_saint-thomas-hickman-hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tn-csv/581737573_saint-thomas-hickman-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-441301",
@@ -1902,11 +1942,13 @@
   "stars": null,
   "hasER": true,
   "domain": "healthcare.ascension.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 36.0997,
   "lng": -87.7991,
-  "mrf_url": null,
-  "geo_approx": true
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv",
+  "geo_approx": true,
+  "price_page": "https://healthcare.ascension.org/price-transparency",
+  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/tx-csv/741109643-1356446686_ascension-seton_standardcharges.csv"
  },
  {
   "id": "ccn-441304",
@@ -1946,11 +1988,13 @@
   "stars": 3,
   "hasER": true,
   "domain": "mcgh.net",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 36.51969,
   "lng": -86.02545,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://maconcommunityhospital.com/wp-content/uploads/2026/03/620988604_macon-community-hospital_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://maconcommunityhospital.com/for-patients/hospital-pricing/",
+  "source_url": "https://maconcommunityhospital.com/wp-content/uploads/2026/03/620988604_macon-community-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-441306",
@@ -1968,11 +2012,13 @@
   "stars": null,
   "hasER": true,
   "domain": "erlanger.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.62169,
   "lng": -85.18927,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://erlanger.pt.panaceainc.com/MRFDownload/erlanger/bledsoe",
+  "geo_approx": false,
+  "price_page": "https://www.erlanger.org/patient-and-family-resources/billing-and-insurance/price-transparency",
+  "source_url": "https://erlanger.pt.panaceainc.com/MRFDownload/erlanger/bledsoe"
  },
  {
   "id": "ccn-441307",
@@ -2012,11 +2058,13 @@
   "stars": null,
   "hasER": true,
   "domain": "marshallmedical.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.46446,
   "lng": -86.7866,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.marshallmedical.org/documents/standard_charges/941450151_marshall-medical-center_standardcharges.csv",
+  "geo_approx": false,
+  "price_page": "https://www.marshallmedical.org/patients-visitors/patient-information/insurance-billing-information/",
+  "source_url": "https://www.marshallmedical.org/documents/standard_charges/941450151_marshall-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-441310",
@@ -2078,11 +2126,13 @@
   "stars": null,
   "hasER": true,
   "domain": "lauderdalehospital.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 35.72175,
   "lng": -89.56607,
-  "mrf_url": null,
-  "geo_approx": false
+  "mrf_url": "https://www.lauderdalehospital.org/docs/LCH_FINAL_MRF_2026.csv",
+  "geo_approx": false,
+  "price_page": "https://www.lauderdalehospital.org/getpage.php?name=Chargemaster&sub=Patients%20%26%20Visitors",
+  "source_url": "https://www.lauderdalehospital.org/docs/LCH_FINAL_MRF_2026.csv"
  },
  {
   "id": "ccn-441316",
