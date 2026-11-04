@@ -523,5 +523,24 @@
    "658"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-mo"
+ },
+ "md": {
+  "file": "md.json",
+  "updated": "2026-11-04",
+  "hospitals": 20,
+  "procedures": 58,
+  "states": [
+   "MD"
+  ],
+  "zip3": [
+   "206",
+   "207",
+   "208",
+   "209",
+   "210",
+   "212",
+   "217",
+   "218"
+  ]
  }
 }

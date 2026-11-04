@@ -6820,5 +6820,101 @@
   "last_modified": "Tue, 31 Mar 2026 16:39:53 GMT",
   "length": "32897816",
   "seen": null
+ },
+ "https://www.frederickhealth.org/documents/billing%20and%20finance/52-0591612_FrederickHealthHospital_standardcharges.csv": {
+  "etag": "\"d84aa612239fdb1:0\"",
+  "last_modified": "Thu, 27 Mar 2025 14:18:12 GMT",
+  "length": "34277381",
+  "seen": null
+ },
+ "https://www.meritushealth.com/price-transparency/52-0607949-MeritusMedicalCenter-standardcharges-06102026.csv": {
+  "etag": "\"r0pcdvn0tv43jh9\"",
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://jhm-web-assets.s3.amazonaws.com/hopkinsmedicine/prod/charge-fees/520591656_JohnsHopkinsHospital_standardcharges.csv": {
+  "etag": "\"1bde16db3cd8eecdb96f793318ce54fa\"",
+  "last_modified": "Mon, 07 Jul 2025 06:12:13 GMT",
+  "length": "11665882",
+  "seen": null
+ },
+ "https://jhm-web-assets.s3.amazonaws.com/hopkinsmedicine/prod/charge-fees/520610545_SuburbanHospital_standardcharges.csv": {
+  "etag": "\"d5bbc998ebadc74c89e871f56e0d5c74\"",
+  "last_modified": "Mon, 07 Jul 2025 06:12:17 GMT",
+  "length": "4364400",
+  "seen": null
+ },
+ "https://www.medstarhealth.org/-/media/project/mho/medstar/billing-and-insurance/2026/520608007_medstar_franklin_square_medical_center_standardcharges.csv": {
+  "etag": "dad548d51b0f453bb12cc24bbb01bb7d",
+  "last_modified": "Wed, 01 Apr 2026 18:03:44 GMT",
+  "length": "112167260",
+  "seen": null
+ },
+ "https://www.medstarhealth.org/-/media/project/mho/medstar/billing-and-insurance/2026/520646893_medstar_montgomery_medical_center_standardcharges.csv": {
+  "etag": "892be686549f4708ad014865d733cf61",
+  "last_modified": "Wed, 01 Apr 2026 18:04:45 GMT",
+  "length": "111310383",
+  "seen": null
+ },
+ "https://www.medstarhealth.org/-/media/project/mho/medstar/billing-and-insurance/2026/520591685_medstar_union_memorial_hospital_standardcharges.csv": {
+  "etag": "7e9b0b18eef44d6fa7c43da017939534",
+  "last_modified": "Wed, 01 Apr 2026 18:03:20 GMT",
+  "length": "113014791",
+  "seen": null
+ },
+ "https://www.medstarhealth.org/-/media/project/mho/medstar/billing-and-insurance/2026/520619006_medstar_st_marys_hospital_standardcharges.csv": {
+  "etag": "6e97ecd9e68a446d8bc04d38f783d343",
+  "last_modified": "Wed, 01 Apr 2026 18:04:07 GMT",
+  "length": "111726479",
+  "seen": null
+ },
+ "https://www.medstarhealth.org/-/media/project/mho/medstar/billing-and-insurance/2026/520491660_medstar_harbor_hospital_standardcharges.csv": {
+  "etag": "06d8fe589e714df1864756c179ad2bd1",
+  "last_modified": "Wed, 01 Apr 2026 18:02:24 GMT",
+  "length": "111516863",
+  "seen": null
+ },
+ "https://www.medstarhealth.org/-/media/project/mho/medstar/billing-and-insurance/2026/460726303_medstar_southern_maryland_hospital_center_standardcharges.csv": {
+  "etag": "50b86103dba14402884b1abb46732860",
+  "last_modified": "Wed, 01 Apr 2026 18:01:57 GMT",
+  "length": "111659265",
+  "seen": null
+ },
+ "https://jhm-web-assets.s3.amazonaws.com/hopkinsmedicine/prod/charge-fees/521341890_JohnsHopkinsBayview_standardcharges.csv": {
+  "etag": "\"8cb90ea1aec6e22e925244f15c0c9ceb\"",
+  "last_modified": "Mon, 07 Jul 2025 06:12:20 GMT",
+  "length": "4640181",
+  "seen": null
+ },
+ "https://jhm-web-assets.s3.amazonaws.com/hopkinsmedicine/prod/charge-fees/522093120_HowardCountyGeneralHospital_standardcharges.csv": {
+  "etag": "\"03f2b3c435cc6c579e9cf8f0084c782e\"",
+  "last_modified": "Mon, 07 Jul 2025 06:12:23 GMT",
+  "length": "4779710",
+  "seen": null
+ },
+ "https://www.gbmc.org/sites/default/files/documents/52-6049658_gbmc_standardcharges.csv": {
+  "etag": "\"6a454d07-14cdd66\"",
+  "last_modified": "Wed, 01 Jul 2026 17:23:19 GMT",
+  "length": "21814630",
+  "seen": null
+ },
+ "https://www.luminishealth.org/sites/default/files/2026-01/1730136532_doctorscommunitymedicalcenter_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 20 Jan 2026 20:06:26 GMT",
+  "length": "44364653",
+  "seen": null
+ },
+ "https://www.tidalhealth.org/sites/default/files/2026-05/521656507_atlantic-general-hospital_standardcharges.csv": {
+  "etag": "\"6a075930-196ec5\"",
+  "last_modified": "Fri, 15 May 2026 17:34:40 GMT",
+  "length": "1666757",
+  "seen": null
+ },
+ "https://www.kennedykrieger.org/sites/default/files/library/documents/about-us/Financial%20Docs/520607971-1619075926_kennedy-krieger-institute_standardcharges.csv.csv": {
+  "etag": null,
+  "last_modified": "Tue, 01 Sep 2026 20:36:23 GMT",
+  "length": "103092",
+  "seen": null
  }
 }
