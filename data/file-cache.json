@@ -2682,9 +2682,9 @@
   "seen": null
  },
  "https://hospitalpricedisclosure.com/download.aspx": {
-  "etag": "0x8DF1D7B28BB4C22",
-  "last_modified": "Mon, 28 Sep 2026 16:11:31 GMT",
-  "length": "38328405",
+  "etag": "0x8DF08784037243D",
+  "last_modified": "Tue, 01 Sep 2026 22:27:47 GMT",
+  "length": "88973001",
   "seen": null
  },
  "https://sthpiprd.blob.core.windows.net/machine-readable-files/100287/131740127_st-josephs-hospital-yonkers_standardcharges.csv": {
@@ -6573,6 +6573,252 @@
   "etag": null,
   "last_modified": "Tue, 08 Sep 2026 16:56:44 GMT",
   "length": null,
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/270814858_mercy-hospital-joplin_standardcharges.zip": {
+  "etag": "\"0x8DED3AC7462B761\"",
+  "last_modified": "Fri, 26 Jun 2026 17:57:57 GMT",
+  "length": "144683373",
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/430687077_mercy-hospital-jefferson_standardcharges.zip": {
+  "etag": "\"0x8DED214540FA9AC\"",
+  "last_modified": "Wed, 24 Jun 2026 17:16:28 GMT",
+  "length": "43644288",
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/562410022_mercy-hospital-washington_standardcharges.zip": {
+  "etag": "\"0x8DED3AC43C7A0EA\"",
+  "last_modified": "Fri, 26 Jun 2026 17:56:35 GMT",
+  "length": "102653128",
+  "seen": null
+ },
+ "https://www.nermc.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/364395800_northeast-regional-medical-center_standardcharges.csv": {
+  "etag": "\"2df21ac7435ddb1:0\"",
+  "last_modified": "Thu, 02 Jan 2025 18:26:02 GMT",
+  "length": "46055210",
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/431767432_mercy-hospital-lebanon_standardcharges.zip": {
+  "etag": "\"0x8DED21456C99C62\"",
+  "last_modified": "Wed, 24 Jun 2026 17:16:33 GMT",
+  "length": "57894361",
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/440552485_mercy-hospital-springfield_standardcharges.zip": {
+  "etag": "\"0x8DED3AC65390D4E\"",
+  "last_modified": "Fri, 26 Jun 2026 17:57:31 GMT",
+  "length": "237864395",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/54-2092552_RESEARCH-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF2965339B45A1\"",
+  "last_modified": "Tue, 13 Oct 2026 20:04:34 GMT",
+  "length": "464504384",
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/430980256_mercy-hospital-south_standardcharges.zip": {
+  "etag": "\"0x8DED3AC6AE1CE6D\"",
+  "last_modified": "Fri, 26 Jun 2026 17:57:41 GMT",
+  "length": "103029386",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/45-0503121_CENTERPOINT-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF2F055212E3A9\"",
+  "last_modified": "Tue, 20 Oct 2026 23:53:20 GMT",
+  "length": "396234970",
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/431936696_mercy-hospital-aurora_standardcharges.zip": {
+  "etag": "\"0x8DED3AC6B767839\"",
+  "last_modified": "Fri, 26 Jun 2026 17:57:42 GMT",
+  "length": "24352986",
+  "seen": null
+ },
+ "https://www.bjc.org/hpt/6/237309937_BarnesJewishHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Thu, 26 Mar 2026 17:37:54 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bjc.org/hpt/31/430652656_MissouriBaptistMedicalCenter_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 08:24:40 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/431936699_mercy-hospital-cassville_standardcharges.zip": {
+  "etag": "\"0x8DED3AC6CCE76B7\"",
+  "last_modified": "Fri, 26 Jun 2026 17:57:44 GMT",
+  "length": "18110859",
+  "seen": null
+ },
+ "https://www.bjc.org/hpt/41/431332368_ParklandHealthCenter_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 08:41:02 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bjc.org/hpt/21/436057893_ChristianHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 11:09:20 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/472219204_mercy-hospital-lincoln-FamilyMedicine900EastCherry_RHC_standardcharges.zip": {
+  "etag": "\"0x8DEE678ECA35214\"",
+  "last_modified": "Mon, 20 Jul 2026 16:06:57 GMT",
+  "length": "4497653",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/20-0851062_BELTON-REGIONAL-MEDICAL-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF1732B9F941E3\"",
+  "last_modified": "Sun, 20 Sep 2026 16:17:54 GMT",
+  "length": "312796058",
+  "seen": null
+ },
+ "https://www.bjc.org/hpt/46/412140764_ProgressWestHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Thu, 26 Mar 2026 16:24:30 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.bjc.org/hpt/51/430654870_StLouisChildrensHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Fri, 27 Mar 2026 08:36:04 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.mercy.net/content/dam/mercy/en/web-assets/charge-files/453808607_mercy-hospital-carthage_standardcharges.zip": {
+  "etag": "\"0x8DED3AC47B89D97\"",
+  "last_modified": "Fri, 26 Jun 2026 17:56:42 GMT",
+  "length": "79348493",
+  "seen": null
+ },
+ "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/48-1301817_LAFAYETTE-REGIONAL-HEALTH-CENTER_standardcharges.json": {
+  "etag": "\"0x8DF16D445F5E876\"",
+  "last_modified": "Sun, 20 Sep 2026 05:01:47 GMT",
+  "length": "137709590",
+  "seen": null
+ },
+ "https://cdn.coxhealth.com/documents/440577118_lester-e-cox-medical-centers_standardcharges.csv": {
+  "etag": "\"d612248af0db28de0887077cfdf26288\"",
+  "last_modified": "Tue, 28 Apr 2026 20:03:45 GMT",
+  "length": "508568997",
+  "seen": null
+ },
+ "https://www.saintlukeskc.org/hpt/26/440565393_SaintLukesNorthHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 24 Jun 2026 13:43:18 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://cdn.coxhealth.com/documents/440584290_skaggs-community-hospital-association_standardcharges.csv": {
+  "etag": "\"5fa023daf4d173b292d436295dd24434\"",
+  "last_modified": "Tue, 28 Apr 2026 19:20:11 GMT",
+  "length": "450117152",
+  "seen": null
+ },
+ "https://cdn.coxhealth.com/documents/823300758_cox-barton-county-hospital_standardcharges.csv": {
+  "etag": "\"14c6f2a40f8f7148443071fabfba726f\"",
+  "last_modified": "Mon, 27 Apr 2026 20:56:32 GMT",
+  "length": "192161212",
+  "seen": null
+ },
+ "https://www.saintlukeskc.org/hpt/21/440545297_SaintLukesHospitalofKansasCity_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 24 Jun 2026 13:44:26 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://cdn.coxhealth.com/documents/431656689_cox-monett-hospital-inc_standardcharges.csv": {
+  "etag": "\"8a633296fa028451f5bddb9183e4834e\"",
+  "last_modified": "Wed, 29 Apr 2026 14:54:59 GMT",
+  "length": "295919349",
+  "seen": null
+ },
+ "https://www.saintlukeskc.org/hpt/16/562488077_SaintLukesEastHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 24 Jun 2026 16:07:40 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.moberlyregionalmedicalcenter.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/431651906_moberly-regional-medical-center_standardcharges.csv": {
+  "etag": "\"f38cc12c445ddb1:0\"",
+  "last_modified": "Thu, 02 Jan 2025 18:28:52 GMT",
+  "length": "35236108",
+  "seen": null
+ },
+ "https://www.saintlukeskc.org/hpt/36/431707306_WrightMemorialHospital_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 24 Jun 2026 13:44:58 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.saintlukeskc.org/hpt/11/431735565_HedrickMedicalCenter_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Wed, 24 Jun 2026 13:44:44 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://app.vestacare.com/download/csv/43-0633449_missourideltamedicalcenter_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.pbrmc.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/431238701_poplar-bluff-regional-medical-center_standardcharges.csv": {
+  "etag": "\"a489972e445ddb1:0\"",
+  "last_modified": "Thu, 02 Jan 2025 18:28:55 GMT",
+  "length": "356776443",
+  "seen": null
+ },
+ "https://www.libertyhospital.org/clientfiles/getfile/431684627_Liberty_Hospital_standardcharges.csv": {
+  "etag": null,
+  "last_modified": null,
+  "length": null,
+  "seen": null
+ },
+ "https://www.sfmc.net/wp-content/uploads/237246265_saint-francis-medical-center_standardcharges.json": {
+  "etag": null,
+  "last_modified": "Tue, 14 Apr 2026 14:41:19 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://mrfs.hyvehealthcare.com/TenetHealth/752932830_st.-marys-medical-center,-inc_standardcharges.json": {
+  "etag": "\"0x8DF0A009A9744F8\"",
+  "last_modified": "Thu, 03 Sep 2026 21:16:21 GMT",
+  "length": "85019704",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/excelsior-springs-city-hospital/431080811_Excelsior-Springs-City-Hospital_standardcharges.csv": {
+  "etag": "\"bd04fac003adb298229fada7ea0b6166\"",
+  "last_modified": "Tue, 28 Jul 2026 18:21:35 GMT",
+  "length": "3715372",
+  "seen": null
+ },
+ "https://www.childrensmercy.org/siteassets/media-documents-for-depts-section/documents-for-your-visit/billing-and-insurance/440605373_childrens-mercy-adele-hall-campus_standardcharges.csv": {
+  "etag": "\"1dcce87e67baf10\"",
+  "last_modified": "Fri, 17 Apr 2026 16:33:11 GMT",
+  "length": "120640144",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8493/430666765_ranken-jordan-home-for-convalescent-crippled-children-hospital_standardcharges.csv": {
+  "etag": "0x8DEA20CD56669F5",
+  "last_modified": "Fri, 24 Apr 2026 14:21:53 GMT",
+  "length": "48358549",
+  "seen": null
+ },
+ "https://pemiscotmhs.pg.revenuemasters.com/cdm-files/436004544_pemiscot-memorial-health-system_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Wed, 21 Oct 2026 18:47:06 GMT",
+  "length": "31075816",
+  "seen": null
+ },
+ "https://www.nkchealth.org/sites/default/files/2026-03/Price%20Transparency/446005747_nkc-health_standardcharges%20(2).zip": {
+  "etag": "\"69cbf8d9-1f5fb18\"",
+  "last_modified": "Tue, 31 Mar 2026 16:39:53 GMT",
+  "length": "32897816",
   "seen": null
  }
 }
