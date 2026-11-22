@@ -64,7 +64,7 @@
   "verified_source": true,
   "lat": 36.2445,
   "lng": -86.75643,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1560757_TRISTAR-SKYLINE-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1560757_TRISTAR-SKYLINE-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1560757_TRISTAR-SKYLINE-MEDICAL-CENTER_standardcharges.json"
@@ -491,7 +491,7 @@
   "verified_source": true,
   "lat": 36.07205,
   "lng": -87.37517,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1620866_TRISTAR-HORIZON-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1620866_TRISTAR-HORIZON-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1620866_TRISTAR-HORIZON-MEDICAL-CENTER_standardcharges.json"
@@ -768,7 +768,7 @@
   "verified_source": true,
   "lat": 36.5018,
   "lng": -86.8769,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4366763_TRISTAR-NORTHCREST-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4366763_TRISTAR-NORTHCREST-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": true,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4366763_TRISTAR-NORTHCREST-MEDICAL-CENTER_standardcharges.json"
@@ -1280,7 +1280,7 @@
   "verified_source": true,
   "lat": 36.1755,
   "lng": -86.60746,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SUMMIT-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SUMMIT-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SUMMIT-MEDICAL-CENTER_standardcharges.json"
@@ -1374,7 +1374,7 @@
   "verified_source": true,
   "lat": 35.03381,
   "lng": -85.26887,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0840204_PARKRIDGE-EAST-HOSPITAL_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0840204_PARKRIDGE-EAST-HOSPITAL_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://parkridgehealth.com/about/legal/pricing-transparency-cms-required-file-of-standard-charges.dot",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-0840204_PARKRIDGE-EAST-HOSPITAL_standardcharges.json"
@@ -1420,7 +1420,7 @@
   "verified_source": true,
   "lat": 36.15293,
   "lng": -86.8077,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=vdmkLz8lCE1qb%2BnsaFfL8tcI7Gg6B%2B3s%2Fny3TPZ1kqs%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json"
@@ -1735,7 +1735,7 @@
   "verified_source": true,
   "lat": 36.07849,
   "lng": -86.72212,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SOUTHERN-HILLS-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SOUTHERN-HILLS-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-SOUTHERN-HILLS-MEDICAL-CENTER_standardcharges.json"
@@ -1807,7 +1807,7 @@
   "verified_source": true,
   "lat": 35.97247,
   "lng": -86.56399,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-STONECREST-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2026-02-06&sr=c&sig=ks%2BgfAjyEHlZmeP2PYJ%2f9NpMuCoRStjTb2bhIy9Y6LM%3D",
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-STONECREST-MEDICAL-CENTER_standardcharges.json",
   "geo_approx": false,
   "price_page": "https://www.tristarhealth.com/patient-resources/patient-financial-resources/pricing-transparency-cms-required-file-of-standard-charges",
   "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-STONECREST-MEDICAL-CENTER_standardcharges.json"

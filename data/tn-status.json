@@ -186,7 +186,7 @@
   "status": "unreachable",
   "detail": "403 Client Error: Server failed to authenticate the request. Make sure the value of Authorization header is fo",
   "rows": 0,
-  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json?si=dpx-pt-json-access-policy&spr=https&sv=2024-11-04&sr=c&sig=vdmkLz8lCE1qb%2BnsaFfL8tcI7Gg6B%2B3s%2Fny3TPZ1kqs%3D",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113737_TRISTAR-CENTENNIAL-MEDICAL-CENTER_standardcharges.json",
   "last_attempt": "2026-11-01",
   "last_success": null,
   "last_verified": null,

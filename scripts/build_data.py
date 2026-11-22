@@ -2042,8 +2042,11 @@ def main():
                 h["lat"], h["lng"] = old["lat"], old["lng"]
                 reused += 1
             # Keep a discovered URL, but never override a hand-verified one.
+            # Strip any query string on the way back in: a registry written
+            # before the SAS-stripping fix still holds signed URLs, and copying
+            # one verbatim re-leaks a live token into the committed file.
             if not h.get("mrf_url") and old.get("mrf_url"):
-                h["mrf_url"] = old["mrf_url"]
+                h["mrf_url"] = base_url(old["mrf_url"])
                 h["verified_source"] = old.get("verified_source", False)
         print(f"[registry] {len(hospitals)} hospitals "
               f"({reused} coordinates reused from previous run)")
