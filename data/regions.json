@@ -543,5 +543,34 @@
    "218"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-md"
+ },
+ "wi": {
+  "file": "wi.json",
+  "updated": "2026-11-22",
+  "hospitals": 77,
+  "procedures": 58,
+  "states": [
+   "WI"
+  ],
+  "zip3": [
+   "530",
+   "531",
+   "532",
+   "534",
+   "535",
+   "537",
+   "538",
+   "539",
+   "540",
+   "541",
+   "542",
+   "543",
+   "544",
+   "545",
+   "546",
+   "547",
+   "548",
+   "549"
+  ]
  }
 }

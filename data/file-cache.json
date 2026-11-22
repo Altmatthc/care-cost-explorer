@@ -2682,9 +2682,9 @@
   "seen": null
  },
  "https://hospitalpricedisclosure.com/download.aspx": {
-  "etag": "0x8DF08784037243D",
-  "last_modified": "Tue, 01 Sep 2026 22:27:47 GMT",
-  "length": "88973001",
+  "etag": "0x8DF08784EA5693D",
+  "last_modified": "Tue, 01 Sep 2026 22:28:11 GMT",
+  "length": "27460114",
   "seen": null
  },
  "https://sthpiprd.blob.core.windows.net/machine-readable-files/100287/131740127_st-josephs-hospital-yonkers_standardcharges.csv": {
@@ -6915,6 +6915,414 @@
   "etag": null,
   "last_modified": "Tue, 01 Sep 2026 20:36:23 GMT",
   "length": "103092",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390808443_1538112230_aspirus-stevens-point-hospital_standardcharges.json": {
+  "etag": "\"1c10abccdeccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:50:20 GMT",
+  "length": "197364266",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/391390638_1356391247_aspirus-rhinelander-hospital_standardcharges.json": {
+  "etag": "\"c67b6420dfccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:52:40 GMT",
+  "length": "198473826",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/wi-csv/390806315_columbia-st-marys-hospital-milwaukee-inc_standardcharges.csv": {
+  "etag": "64857a487db14c6e9663671fde980702:dtagent10345260810170330mf0Z",
+  "last_modified": "Mon, 30 Mar 2026 23:52:23 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/391138241_1558363986_aspirus-wausau-hospital_standardcharges.json": {
+  "etag": "\"75583770deccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:47:45 GMT",
+  "length": "211734650",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/Bill/StandardCharges/390868982_aspirus-riverview-hospital_standardcharges.json": {
+  "etag": "\"7d486c5225d91:0\"",
+  "last_modified": "Tue, 10 Jan 2023 14:49:40 GMT",
+  "length": "6252960",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390806250_1124083894_aspirus-divine-savior-hospital_standardcharges.json": {
+  "etag": "\"90b55fb6dfccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:56:52 GMT",
+  "length": "207513186",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390873606_1134183171_howard-young-medical-center_standardcharges.json": {
+  "etag": "\"122fafbdcccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:37:20 GMT",
+  "length": "191962057",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390985690_1346204385_aspirus-eagle-river-hospital_standardcharges.json": {
+  "etag": "\"82fa43c9dfccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:57:24 GMT",
+  "length": "160583311",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390807065_1053391730_aspirus-stanley-hospital_standardcharges.json": {
+  "etag": "\"c2ef58f6deccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:51:30 GMT",
+  "length": "163336146",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/391390638_1598715401_aspirus-tomahawk-hospital_standardcharges.json": {
+  "etag": "\"a9850a1deccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:49:07 GMT",
+  "length": "161930182",
+  "seen": null
+ },
+ "https://bellin-ghs.pt.panaceainc.com/MRFDownload/bellin-ghs/bellin-memorial": {
+  "etag": null,
+  "last_modified": null,
+  "length": "8694144",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390964813_1619079597_aspirus-medford-hospital_standardcharges.json": {
+  "etag": "\"73b6313743ccdc1:0\"",
+  "last_modified": "Tue, 14 Apr 2026 19:16:37 GMT",
+  "length": "166813171",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/wi-csv/391264986_ascension-all-saints-hospital-inc_spring_street_standardcharges.csv": {
+  "etag": "f57ac798106e4a868c4cf7166885355d:dtagent10345260810170330mf0Z",
+  "last_modified": "Tue, 22 Sep 2026 15:43:29 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390808503_1124084678_aspirus-merrill-hospital_standardcharges.json": {
+  "etag": "\"f3ccd67bdfccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:55:14 GMT",
+  "length": "162264940",
+  "seen": null
+ },
+ "https://www.aspirus.org/Uploads/Public/Documents/PriceEstimate/TransparencyFY27/390806429_1639187412_aspirus-langlade-hospital_standardcharges.json": {
+  "etag": "\"74812a1dfccdc1:0\"",
+  "last_modified": "Wed, 15 Apr 2026 13:56:16 GMT",
+  "length": "167779491",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/wi-csv/390816857-1427007384_ascension-se-wisconsin-hospital-inc-st-joseph_standardcharges.csv": {
+  "etag": "f6310fc1dab24b10b83441e445599943:dtagent10345260810170330mf0Z",
+  "last_modified": "Thu, 02 Apr 2026 18:18:57 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.marshfieldclinic.org/-/media/marshfieldclinic/files/patient%20resources/cms-hpt-documents/390837206_marshfield-medical-center--rice-lake_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 20 May 2026 16:50:11 GMT",
+  "length": "37088397",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/wi-csv/392015655_orthopaedic-hospital-of-wisconsin-llc_standardcharges.csv": {
+  "etag": "49bb50a468554805b189a34f63e387bb:dtagent10345260810170330mf0Z",
+  "last_modified": "Tue, 09 Jun 2026 20:01:52 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.marshfieldclinic.org/-/media/marshfieldclinic/files/patient%20resources/cms-hpt-documents/810977948_marshfield-medical-center--marshfield_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 20 May 2026 15:32:32 GMT",
+  "length": "37786685",
+  "seen": null
+ },
+ "https://www.marshfieldclinic.org/-/media/marshfieldclinic/files/patient%20resources/cms-hpt-documents/810977948_marshfield-medical-center--weston_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 20 May 2026 15:31:18 GMT",
+  "length": "37842758",
+  "seen": null
+ },
+ "https://www.marshfieldclinic.org/-/media/marshfieldclinic/files/patient%20resources/cms-hpt-documents/810977948_marshfield-medical-center--eau-claire_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 20 May 2026 15:34:38 GMT",
+  "length": "37865773",
+  "seen": null
+ },
+ "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/wi-csv/390905385_ascension-calumet-hospital-inc_standardcharges.csv": {
+  "etag": "b0035f98fb604aa7b850df76865df6e8",
+  "last_modified": "Tue, 07 Apr 2026 16:43:24 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.marshfieldclinic.org/-/media/marshfieldclinic/files/patient%20resources/cms-hpt-documents/390806828_marshfield-medical-center--neillsville_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 20 May 2026 16:49:55 GMT",
+  "length": "43970181",
+  "seen": null
+ },
+ "https://www.marshfieldclinic.org/-/media/marshfieldclinic/files/patient%20resources/cms-hpt-documents/810977948_marshfield-medical-center--ladysmith_standardcharges.zip": {
+  "etag": null,
+  "last_modified": "Wed, 20 May 2026 15:31:33 GMT",
+  "length": "41818440",
+  "seen": null
+ },
+ "https://www.hshs.org/getmedia/a3a50e01-863e-49b4-857a-94427057dca3/390808480_st-nicholas-hospital-of-the-hospital-sisters-of-the-third-order-of-st-francis_standardcharges.zip": {
+  "etag": "\"639183267797686088\"",
+  "last_modified": "Mon, 29 Jun 2026 15:46:19 GMT",
+  "length": "6533080",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11248/391211629_aurora-medical-center-manitowoc_standardcharges.csv": {
+  "etag": "0x8DF3A99EAA17A77",
+  "last_modified": "Wed, 04 Nov 2026 17:34:45 GMT",
+  "length": "112662721",
+  "seen": null
+ },
+ "https://www.hshs.org/getmedia/aa25aee9-926d-4a3b-9697-b98148e40f18/390848401_st-clare-memorial-hospital-inc_standardcharges.zip": {
+  "etag": "\"639183268048779611\"",
+  "last_modified": "Mon, 29 Jun 2026 15:46:44 GMT",
+  "length": "5079955",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/thedacare-regional-medical-center-neenah-inc/390830664_ThedaCare-Regional-Medical-Center-Neenah-Inc_standardcharges.csv": {
+  "etag": "\"440b0314a507481aa7f112c975808514\"",
+  "last_modified": "Thu, 27 Aug 2026 18:31:55 GMT",
+  "length": "89460945",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/thedacare-medical-center-new-london-inc/390869788_ThedaCare-Medical-Center-New-London-Inc_standardcharges.csv": {
+  "etag": "\"bc1ce285583cfc517d647989a6329b0a\"",
+  "last_modified": "Thu, 27 Aug 2026 18:28:50 GMT",
+  "length": "75608643",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/thedacare-medical-center-waupaca-inc/390871113_ThedaCare-Medical-Center-Waupaca-Inc_standardcharges.csv": {
+  "etag": "\"bd93776dd297407d5299dfbb1e959a90\"",
+  "last_modified": "Thu, 27 Aug 2026 18:30:10 GMT",
+  "length": "73206985",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/thedacare-medical-center-berlin-inc/390806359_Thedacare-Medical-Center-Berlin-Inc_standardcharges.csv": {
+  "etag": "\"1c196cb21d5d30014df295aea3419c26\"",
+  "last_modified": "Thu, 27 Aug 2026 22:21:50 GMT",
+  "length": "65940843",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11255/390930748_aurora-medical-center-sheboygan-county_standardcharges.csv": {
+  "etag": "0x8DF3A9FD47E4E65",
+  "last_modified": "Wed, 04 Nov 2026 18:17:04 GMT",
+  "length": "133571998",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11250/391150165_aurora-medical-center-washington-county_standardcharges.csv": {
+  "etag": "0x8DE8A8347D90A59",
+  "last_modified": "Wed, 25 Mar 2026 15:29:18 GMT",
+  "length": "111725941",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11246/390806347_aurora-medical-center-burlington_standardcharges.csv": {
+  "etag": "0x8DE8A7338886426",
+  "last_modified": "Wed, 25 Mar 2026 13:34:20 GMT",
+  "length": "115426399",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11244/390806347_aurora-lakeland-medical-center_standardcharges.csv": {
+  "etag": "0x8DF3A927D504006",
+  "last_modified": "Wed, 04 Nov 2026 16:41:35 GMT",
+  "length": "103394286",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11260/391528430_aurora-medical-center-bay-area_standardcharges.csv": {
+  "etag": "0x8DF3A7AAC594363",
+  "last_modified": "Wed, 04 Nov 2026 13:51:06 GMT",
+  "length": "108769437",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11257/390806181_aurora-st-lukes-medical-center-of-aurora-health-care-metro-inc_standardcharges.csv": {
+  "etag": "0x8DE8B3EA80862B8",
+  "last_modified": "Thu, 26 Mar 2026 13:50:35 GMT",
+  "length": "215060918",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11259/391022464_aurora-west-allis-medical-center_standardcharges.csv": {
+  "etag": "0x8DE8AAAFAA7DF4B",
+  "last_modified": "Wed, 25 Mar 2026 20:13:28 GMT",
+  "length": "137165528",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11251/390806347_aurora-medical-center-kenosha_standardcharges.csv": {
+  "etag": "0x8DE8A7F02E688D2",
+  "last_modified": "Wed, 25 Mar 2026 14:58:44 GMT",
+  "length": "133902472",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11243/391947472_aurora-baycare-medical-center_standardcharges.csv": {
+  "etag": "0x8DF3A912B57D4FD",
+  "last_modified": "Wed, 04 Nov 2026 16:32:08 GMT",
+  "length": "170190845",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11252/391027676_aurora-medical-center-oshkosh_standardcharges.csv": {
+  "etag": "0x8DF3A9EB4B35088",
+  "last_modified": "Wed, 04 Nov 2026 18:09:02 GMT",
+  "length": "131298063",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11249/390806347_aurora-medical-center-summit_standardcharges.csv": {
+  "etag": "0x8DE8B3E9F09C629",
+  "last_modified": "Thu, 26 Mar 2026 13:50:20 GMT",
+  "length": "145555786",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/11247/272953799_aurora-medical-center-grafton_standardcharges.csv": {
+  "etag": "0x8DF3A95ABD4482D",
+  "last_modified": "Wed, 04 Nov 2026 17:04:21 GMT",
+  "length": "167968645",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/10297/390806395_holy-family-memorial-inc_standardcharges.csv": {
+  "etag": "0x8DE6E682D9E70DA",
+  "last_modified": "Tue, 17 Feb 2026 21:04:45 GMT",
+  "length": "300172967",
+  "seen": null
+ },
+ "https://www.milebluff.com/documents/standard_charges/390992883_mile-bluff-medical-center_standardcharges.csv": {
+  "etag": "\"a12679615eb6dc1:0\"",
+  "last_modified": "Tue, 17 Mar 2026 22:35:39 GMT",
+  "length": "15574973",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/390806374_mayo-clinic-health-system-franciscan-healthcare-la-crosse_standardcharges.csv": {
+  "etag": "0x8DE8B7A98406F31",
+  "last_modified": "Thu, 26 Mar 2026 20:59:38 GMT",
+  "length": "5342258252",
+  "seen": null
+ },
+ "https://www.healthpartners.com/content/dam/brand-identity/pdfs/care/390908320_AmeryHospital_HospitalStandardCharges.csv": {
+  "etag": "\"14b18a1-65f76a56d373a\"",
+  "last_modified": "Wed, 04 Nov 2026 17:24:06 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.healthpartners.com/content/dam/brand-identity/pdfs/care/390804125_hudsonhospital_standardcharges.csv": {
+  "etag": "\"fd5e69-65f77b7940166\"",
+  "last_modified": "Wed, 04 Nov 2026 18:40:45 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.healthpartners.com/content/dam/brand-identity/pdfs/care/390908320_WestfieldsHospital_standardcharges.csv": {
+  "etag": "\"124926a-65f77bff4e4ef\"",
+  "last_modified": "Wed, 04 Nov 2026 18:43:06 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://bellin-ghs.pt.panaceainc.com/MRFDownload/bellin-ghs/gundersen-moundview": {
+  "etag": null,
+  "last_modified": null,
+  "length": "2546419",
+  "seen": null
+ },
+ "https://bellin-ghs.pt.panaceainc.com/MRFDownload/bellin-ghs/gundersen-tricounty": {
+  "etag": null,
+  "last_modified": null,
+  "length": "2382358",
+  "seen": null
+ },
+ "https://bellin-ghs.pt.panaceainc.com/MRFDownload/bellin-ghs/gundersen-boscobel": {
+  "etag": null,
+  "last_modified": null,
+  "length": "2681386",
+  "seen": null
+ },
+ "https://www.edgertonhospital.com/media/3405/390819992_edgerton-hospital-and-health-services_standardcharges.csv": {
+  "etag": "\"cc1315394a24dd1:0\"",
+  "last_modified": "Tue, 04 Aug 2026 19:48:29 GMT",
+  "length": "2610457",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/spooner-health-system-inc/390892183_Spooner-Health-System%2C-Inc_standardcharges.csv": {
+  "etag": "\"a42eb66705b81ab55caeb30b90b2facb\"",
+  "last_modified": "Tue, 28 Jul 2026 18:21:07 GMT",
+  "length": "1593643",
+  "seen": null
+ },
+ "https://www.saintcroixhealth.org/documents/financial-information/390890676_St-Croix-Regional-Medical-Center_standardcharges.csv": {
+  "etag": "\"97aa1f67d2dc1:0\"",
+  "last_modified": "Wed, 22 Apr 2026 14:48:19 GMT",
+  "length": "46902572",
+  "seen": null
+ },
+ "https://www.allinahealth.org/-/media/allina-health/files/customer-service/billing-and-insurance/price-transparency/363261413_river-falls-area-hospital_standardcharges.csv": {
+  "etag": "6e78b46ccd5f406886cd1e15cac7b7e8",
+  "last_modified": "Wed, 24 Jun 2026 13:01:59 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://7pgcgohua4yc5gik.public.blob.vercel-storage.com/390812532-1750482022_Childrens-Hospital-of-Wisconsin_standardcharges.csv": {
+  "etag": "W/\"903495cb5526597bafa02de81ac234c7-24\"",
+  "last_modified": "Thu, 05 Nov 2026 04:45:23 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/9451/390872080_sauk-prairie-healthcare_standardcharges.csv": {
+  "etag": "0x8DE5F459C9D618C",
+  "last_modified": "Thu, 29 Jan 2026 14:49:31 GMT",
+  "length": "138292215",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/390813418_mayo-clinic-health-system-eau-claire_standardcharges.csv": {
+  "etag": "0x8DE8B7BF9E5EEA2",
+  "last_modified": "Thu, 26 Mar 2026 21:09:32 GMT",
+  "length": "5961022315",
+  "seen": null
+ },
+ "https://pricetransparency.healthcare/beloit-memorial-hospital/charges/export": {
+  "etag": "\"de48425b38ce92f2b6d6d90714512233-12\"",
+  "last_modified": "Thu, 15 Oct 2026 17:38:18 GMT",
+  "length": "189009899",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/thedacare-regional-medical-center-appleton-inc/390824015_thedacare-regional-medical-center-appleton-inc_standardcharges.csv": {
+  "etag": "\"78bf372131703bd43cc74c4c86b0a7ef\"",
+  "last_modified": "Thu, 27 Aug 2026 20:17:48 GMT",
+  "length": "100040393",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/390813418_mayo-clinic-health-system-oakridge_standardcharges.csv": {
+  "etag": "0x8DE8B78B344A43B",
+  "last_modified": "Thu, 26 Mar 2026 20:46:05 GMT",
+  "length": "3242263507",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8215/843381796_froedtert-community-hospital-new-berlin_standardcharges.csv": {
+  "etag": "0x8DE6E661EAD7EBB",
+  "last_modified": "Tue, 17 Feb 2026 20:50:01 GMT",
+  "length": "260517240",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/390813418_mayo-clinic-health-system-chippewa-valley_standardcharges.csv": {
+  "etag": "0x8DE8B7B8CA241DE",
+  "last_modified": "Thu, 26 Mar 2026 21:06:28 GMT",
+  "length": "3563041962",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/390813418_mayo-clinic-health-system-northland_standardcharges.csv": {
+  "etag": "0x8DE8B7C6C72A042",
+  "last_modified": "Thu, 26 Mar 2026 21:12:44 GMT",
+  "length": "3106926137",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/390813418_mayo-clinic-health-system-red-cedar_standardcharges.csv": {
+  "etag": "0x8DE8B791B4D4AC4",
+  "last_modified": "Thu, 26 Mar 2026 20:48:59 GMT",
+  "length": "3409079149",
+  "seen": null
+ },
+ "https://hospitalpricetransparencyfiles.com/thedacare-medical-center-shawano-inc/390869788_ThedaCare-Medical-Center-Shawano-Inc_standardcharges.csv": {
+  "etag": "\"9427fc35fa80ea39e7d5293e9b383142\"",
+  "last_modified": "Thu, 27 Aug 2026 18:29:28 GMT",
+  "length": "80726197",
+  "seen": null
+ },
+ "https://bellin-ghs.pt.panaceainc.com/MRFDownload/bellin-ghs/bellin-oconto": {
+  "etag": null,
+  "last_modified": null,
+  "length": "2357682",
   "seen": null
  }
 }
