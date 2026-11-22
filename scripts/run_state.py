@@ -198,6 +198,7 @@ def do_finish(state: str, no_publish: bool, no_commit: bool,
                      f"orphan-priced={len(orphan)} ok-without-catalogue={len(gap)} "
                      f"never-attempted={len(never)}")
     if never and not ignore_coherence:
+        (LOGS / f"{state}-never-ids.txt").write_text(",".join(never), encoding="utf-8")
         stage_log(state, f"finish: STOP — {len(never)} registry hospitals never "
                          f"attempted; re-run prices WITHOUT --only before publishing")
         return 5

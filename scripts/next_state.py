@@ -196,6 +196,7 @@ def refresh_due() -> list[tuple[str, str]]:
 def start_next(st: dict, out: list[str]) -> None:
     st["finish_attempts"] = 0
     st["reharvested"] = False
+    st["never_reharvested"] = False
     # A published state whose data has aged past REFRESH_DAYS takes priority
     # over the next first-pass state: trend history only grows on re-harvest,
     # and the GitHub Actions schedule that was meant to do this never fires.
@@ -253,7 +254,11 @@ def tick(st: dict) -> list[str]:
             return out
         out.append(f"{state.upper()}: harvest finished — {counts(state)}")
         args = [RUN_STATE, state, "finish"]
-        if phase == "reharvest":
+        # Only the rc==3 coherence gap is legitimately ignorable (a file with no
+        # standard codes can never produce a catalogue). An rc==5 re-harvest must
+        # be re-checked honestly: --ignore-coherence there would suppress the
+        # never-attempted guard and publish a state with unharvested hospitals.
+        if phase == "reharvest" and st.get("reharvested"):
             args.append("--ignore-coherence")
         launch_detached(args, LOGS / f"{state}-finish-driver.out", LOGS / f"{state}-finish.rc")
         st["phase"] = "finish"
@@ -296,6 +301,23 @@ def tick(st: dict) -> list[str]:
             out.append(f"{state.upper()}: no usable price files at all — moving on")
             start_next(st, out)
             return out
+        if rc == 5 and not st.get("never_reharvested"):
+            # Registry hospitals with no status entry at all: a harvest that died
+            # partway. Retrying the identical finish can never clear this (the
+            # guard is deterministic), so harvest the missing ids before trying
+            # again. No --refresh-all here, unlike the rc==3 path: these were
+            # never fetched, so there is no not-modified cache entry to bypass.
+            ids_path = LOGS / f"{state}-never-ids.txt"
+            ids = ids_path.read_text(encoding="utf-8").strip() if ids_path.exists() else ""
+            if ids:
+                st["never_reharvested"] = True
+                launch_detached([RUN_STATE, state, "prices", "--only", ids],
+                                LOGS / f"{state}-prices-driver.out", LOGS / f"{state}-prices.rc")
+                st["phase"] = "reharvest"
+                st["phase_since"] = now()
+                out.append(f"{state.upper()}: {ids.count(',') + 1} hospitals never attempted "
+                           f"— harvesting them before publish")
+                return out
         if st.get("finish_attempts", 0) >= MAX_FINISH_ATTEMPTS:
             st["failed"][state] = f"finish rc={rc} after {MAX_FINISH_ATTEMPTS} attempts"
             out.append(f"{state.upper()}: finish FAILED (rc={rc}) {MAX_FINISH_ATTEMPTS}x — "
