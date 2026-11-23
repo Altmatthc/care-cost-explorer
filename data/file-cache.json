@@ -7324,5 +7324,245 @@
   "last_modified": null,
   "length": "2357682",
   "seen": null
+ },
+ "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthjclmc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 16:13:56 GMT",
+  "length": "2919198",
+  "seen": null
+ },
+ "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthsomc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 16:14:09 GMT",
+  "length": "2850281",
+  "seen": null
+ },
+ "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthssmc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 16:14:18 GMT",
+  "length": "2851082",
+  "seen": null
+ },
+ "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthdvmc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 16:13:55 GMT",
+  "length": "2870947",
+  "seen": null
+ },
+ "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthstpmc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 16:14:19 GMT",
+  "length": "2112799",
+  "seen": null
+ },
+ "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthscmc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 16:14:05 GMT",
+  "length": "2072935",
+  "seen": null
+ },
+ "https://www.dignityhealth.org/content/dam/dignity-health/arizona/pdfs/941196203_St-Josephs-Westgate-Medical-Center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 06 Nov 2026 18:53:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.canyonvistamedicalcenter.com/docs/ahcanyonvistamedicalcenterlibraries/hcl/mrf3q26/90-0942222_canyon-vista-medical-center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 24 Jul 2026 16:51:20 GMT",
+  "length": "11673123",
+  "seen": null
+ },
+ "https://www.healthiertucson.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/621762430_northwest-medical-center-tucson_standardcharges.csv": {
+  "etag": "\"5337b2ea7177dd1:0\"",
+  "last_modified": "Wed, 18 Nov 2026 15:31:44 GMT",
+  "length": "534445854",
+  "seen": null
+ },
+ "https://www.healthiertucson.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/522379881_oro-valley-hospital_standardcharges.csv": {
+  "etag": "\"c6885c6d6f77dd1:0\"",
+  "last_modified": "Wed, 18 Nov 2026 15:13:55 GMT",
+  "length": "488379428",
+  "seen": null
+ },
+ "https://www.warmc.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/860982071_western-arizona-regional-medical-center_standardcharges.csv": {
+  "etag": "\"3166daad7577dd1:0\"",
+  "last_modified": "Wed, 18 Nov 2026 15:58:40 GMT",
+  "length": "162026834",
+  "seen": null
+ },
+ "https://www.dignityhealth.org/content/dam/dignity-health/arizona/pdfs/815009488_Chandler-Regional-Medical-Center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 06 Nov 2026 18:53:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.dignityhealth.org/content/dam/dignity-health/arizona/pdfs/941196203_Mercy-Gilbert-Medical-Center_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Fri, 06 Nov 2026 18:53:51 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.dignityhealth.org/content/dam/dignity-health/documents/pricing-procedure-spreadsheets-2020/price-transparency-4-30-2022/arizona/471587223_Arizona-General-Hospital-Laveen_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Tue, 22 Sep 2026 18:20:10 GMT",
+  "length": null,
+  "seen": null
+ },
+ "https://www.valleyviewmedicalcenter.net/docs/ahvalleyviewmedicalcenterlibraries/hcl/mrf3q262/320063628_valley-view-medical-center_standardcharges.csv.zip": {
+  "etag": null,
+  "last_modified": "Wed, 12 Aug 2026 01:04:23 GMT",
+  "length": "1702347",
+  "seen": null
+ },
+ "https://cdn.accureg.net/trans/wickenburg/860096775_Wickenburg-Community-Hospital_standardcharges.csv": {
+  "etag": "\"0x8DF35D5FDB51C86\"",
+  "last_modified": "Thu, 29 Oct 2026 16:02:11 GMT",
+  "length": "174819240",
+  "seen": null
+ },
+ "https://phoenixchildrens.pt.panaceainc.com/MRFDownload/phoenixchildrens/phoenixchildrens": {
+  "etag": null,
+  "last_modified": null,
+  "length": "14706368",
+  "seen": null
+ },
+ "https://mcorgstatic.blob.core.windows.net/cms-price/860800150_mayo-clinic-arizona_standardcharges.csv": {
+  "etag": "0x8DEFA28690A8EE4",
+  "last_modified": "Fri, 14 Aug 2026 17:21:00 GMT",
+  "length": "21529997739",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8123/866007695_benson-hospital-corporation_standardcharges.csv": {
+  "etag": "0x8DEB13EB845ABA0",
+  "last_modified": "Wed, 13 May 2026 22:26:47 GMT",
+  "length": "24398190",
+  "seen": null
+ },
+ "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthfpmc_standardcharges.csv": {
+  "etag": null,
+  "last_modified": "Thu, 02 Apr 2026 20:40:28 GMT",
+  "length": "2961637",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/8289/860137567_tucson-medical-center_standardcharges.csv": {
+  "etag": "0x8DEA6FCC0326753",
+  "last_modified": "Thu, 30 Apr 2026 21:09:21 GMT",
+  "length": "510613074",
+  "seen": null
+ },
+ "https://sthpiprd.blob.core.windows.net/machine-readable-files/9275/860208451_northern-cochise-community-hospital_standardcharges.csv": {
+  "etag": "0x8DEED91A5654CE2",
+  "last_modified": "Wed, 29 Jul 2026 16:51:33 GMT",
+  "length": "20072915",
+  "seen": null
+ },
+ "https://valleywise.pt.panaceainc.com/MRFDownload/valleywise/valleywise": {
+  "etag": null,
+  "last_modified": null,
+  "length": "539835870",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/270036499_banner-university-medical-center-phoenix_standardcharges.csv": {
+  "etag": "\"32e4d8e9361318c79d1380cb4489029b\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:06 GMT",
+  "length": "141241152",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-casa-grande-medical-center_standardcharges.csv": {
+  "etag": "\"2e22a5d6d5f0b252bf6adb34dd286ffa\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:31 GMT",
+  "length": "85035668",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/363386394_banner-baywood-medical-center_standardcharges.csv": {
+  "etag": "\"2980e3961ae7a1c10e20799b299901ca\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:35 GMT",
+  "length": "100076693",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/270036484_banner-thunderbird-medical-center_standardcharges.csv": {
+  "etag": "\"938d8e9be30f87d9c15c42abcd032550\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:49 GMT",
+  "length": "130125205",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/900065118_banner-estrella-medical-center_standardcharges.csv": {
+  "etag": "\"6b43cc692e412bb5302d4e5bb32c5c8d\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:06 GMT",
+  "length": "111686119",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/900220728_banner-gateway-medical-center_standardcharges.csv": {
+  "etag": "\"ff7d1d8e7f87bfd48be316c15afa8946\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:50 GMT",
+  "length": "120623468",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-payson-medical-center_standardcharges.csv": {
+  "etag": "\"2d9228ab13e3c677843c805c2d7441f2\"",
+  "last_modified": "Wed, 30 Sep 2026 20:18:05 GMT",
+  "length": "81945770",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/900389314_banner-boswell-medical-center_standardcharges.csv": {
+  "etag": "\"30d74eab04042dc20abd33da409aaf4e\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:43 GMT",
+  "length": "101402816",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/901074557_banner-university-medical-center-tucson_standardcharges.csv": {
+  "etag": "\"6cd7dc1b4bf517884d39b0b5c754fe09\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:06 GMT",
+  "length": "147135870",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/900054201_banner-desert-medical-center_standardcharges.csv": {
+  "etag": "\"7afe56062cdac554688fbeeaca9f0d4e\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:24 GMT",
+  "length": "131574431",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/900389312_banner-del-e-webb-medical-center_standardcharges.csv": {
+  "etag": "\"5fe436221077ebc9547159d3dc9d12c5\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:52 GMT",
+  "length": "102076885",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/861035549_banner-heart-hospital_standardcharges.csv": {
+  "etag": "\"7a8132607815a2b4a3bed7795bf1f516\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:37 GMT",
+  "length": "91721837",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/901074558_banner-university-med-center-south_standardcharges.csv": {
+  "etag": "\"c4205f0d3e49ba7f069f04cf39bb0411\"",
+  "last_modified": "Tue, 13 Oct 2026 22:51:56 GMT",
+  "length": "99734071",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/900412842_banner-ironwood-medical-center_standardcharges.csv": {
+  "etag": "\"0e01f223e6a3cfd3be61b20482a647e8\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:43 GMT",
+  "length": "84484791",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/900981239_banner-goldfield-medical-center_standardcharges.csv": {
+  "etag": "\"e92a5d51bf8560e1c0f42cb7c7a7db46\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:27 GMT",
+  "length": "70562586",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-ocotillo-medical-center_standardcharges.csv": {
+  "etag": "\"c8a58903094421ec43593eb7437b202b\"",
+  "last_modified": "Wed, 30 Sep 2026 20:17:06 GMT",
+  "length": "82060476",
+  "seen": null
+ },
+ "https://images.pricetransparency.healthcare/public-mrfs/banner/860394148_page-hospital_standardcharges.csv": {
+  "etag": "\"fe221fe59ef9b2555e469eee92eb258b\"",
+  "last_modified": "Wed, 30 Sep 2026 20:18:04 GMT",
+  "length": "81820430",
+  "seen": null
  }
 }

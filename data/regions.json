@@ -573,5 +573,25 @@
    "549"
   ],
   "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-wi"
+ },
+ "az": {
+  "file": "az.json",
+  "updated": "2026-11-23",
+  "hospitals": 38,
+  "procedures": 58,
+  "states": [
+   "AZ"
+  ],
+  "zip3": [
+   "850",
+   "851",
+   "852",
+   "853",
+   "855",
+   "856",
+   "857",
+   "860",
+   "864"
+  ]
  }
 }

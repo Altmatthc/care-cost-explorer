@@ -15,10 +15,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.46565,
   "lng": -112.05949,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/270036499_banner-university-medical-center-phoenix_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/270036499_banner-university-medical-center-phoenix_standardcharges.csv"
  },
  {
   "id": "ccn-030006",
@@ -36,10 +38,12 @@
   "stars": 2,
   "hasER": true,
   "domain": "tmcaz.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.25073,
   "lng": -110.87976,
-  "mrf_url": null
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/8289/860137567_tucson-medical-center_standardcharges.csv",
+  "price_page": "https://search.hospitalpriceindex.com/hpi2/machineReadable/BensonHospital/8123",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/8289/860137567_tucson-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030007",
@@ -183,10 +187,12 @@
   "stars": 2,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.87964,
   "lng": -111.71002,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-casa-grande-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-casa-grande-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030022",
@@ -204,10 +210,12 @@
   "stars": 1,
   "hasER": false,
   "domain": "valleywisehealth.org",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.4585,
   "lng": -112.02499,
-  "mrf_url": null
+  "mrf_url": "https://valleywise.pt.panaceainc.com/MRFDownload/valleywise/valleywise",
+  "price_page": "https://valleywisehealth.org/patients/hospital-price-transparency/",
+  "source_url": "https://valleywise.pt.panaceainc.com/MRFDownload/valleywise/valleywise"
  },
  {
   "id": "ccn-030023",
@@ -312,7 +320,8 @@
   "verified_source": false,
   "lat": 33.45149,
   "lng": -112.0433,
-  "mrf_url": null
+  "mrf_url": "",
+  "price_page": "https://www.honorhealth.com/patients-visitors/average-pricing"
  },
  {
   "id": "ccn-030038",
@@ -393,10 +402,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.60545,
   "lng": -112.26892,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900389314_banner-boswell-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900389314_banner-boswell-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030062",
@@ -435,10 +446,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.24194,
   "lng": -110.94407,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/901074557_banner-university-medical-center-tucson_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/901074557_banner-university-medical-center-tucson_standardcharges.csv"
  },
  {
   "id": "ccn-030065",
@@ -456,10 +469,12 @@
   "stars": 2,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.38923,
   "lng": -111.87473,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900054201_banner-desert-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900054201_banner-desert-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030069",
@@ -666,10 +681,12 @@
   "stars": 2,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.4105,
   "lng": -111.68797,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/363386394_banner-baywood-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/363386394_banner-baywood-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030089",
@@ -687,10 +704,12 @@
   "stars": 4,
   "hasER": false,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.61069,
   "lng": -112.18039,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/270036484_banner-thunderbird-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/270036484_banner-thunderbird-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030092",
@@ -729,10 +748,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.65851,
   "lng": -112.37155,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900389312_banner-del-e-webb-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900389312_banner-del-e-webb-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030094",
@@ -813,10 +834,12 @@
   "stars": 2,
   "hasER": false,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.41044,
   "lng": -111.68552,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/861035549_banner-heart-hospital_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/861035549_banner-heart-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-030107",
@@ -897,10 +920,12 @@
   "stars": 4,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.17789,
   "lng": -110.93194,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/901074558_banner-university-med-center-south_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/901074558_banner-university-med-center-south_standardcharges.csv"
  },
  {
   "id": "ccn-030112",
@@ -981,10 +1006,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.4913,
   "lng": -112.2468,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900065118_banner-estrella-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900065118_banner-estrella-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030117",
@@ -1044,10 +1071,12 @@
   "stars": 2,
   "hasER": true,
   "domain": "honorhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.3782,
   "lng": -111.6406,
-  "mrf_url": null
+  "mrf_url": "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthfpmc_standardcharges.csv",
+  "price_page": "https://www.honorhealth.com/patients-visitors/average-pricing",
+  "source_url": "https://www.honorhealth.com/sites/default/files/2023-12/860181654_honorhealthfpmc_standardcharges.csv"
  },
  {
   "id": "ccn-030122",
@@ -1065,10 +1094,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.38438,
   "lng": -111.71951,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900220728_banner-gateway-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900220728_banner-gateway-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030123",
@@ -1128,10 +1159,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.21459,
   "lng": -111.56353,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900412842_banner-ironwood-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900412842_banner-ironwood-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030134",
@@ -1149,10 +1182,12 @@
   "stars": 5,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.39339,
   "lng": -111.56664,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900981239_banner-goldfield-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/900981239_banner-goldfield-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030136",
@@ -1275,10 +1310,12 @@
   "stars": 3,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 33.28656,
   "lng": -111.85866,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-ocotillo-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-ocotillo-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-030148",
@@ -1506,10 +1543,12 @@
   "stars": null,
   "hasER": true,
   "domain": "tmcaz.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 32.2643,
   "lng": -109.83767,
-  "mrf_url": null
+  "mrf_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/9275/860208451_northern-cochise-community-hospital_standardcharges.csv",
+  "price_page": "https://search.hospitalpriceindex.com/hpi2/machineReadable/BensonHospital/8123",
+  "source_url": "https://sthpiprd.blob.core.windows.net/machine-readable-files/9275/860208451_northern-cochise-community-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-031304",
@@ -1527,10 +1566,12 @@
   "stars": null,
   "hasER": true,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 36.9108,
   "lng": -111.502,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/860394148_page-hospital_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/860394148_page-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-031305",
@@ -1758,10 +1799,12 @@
   "stars": 4,
   "hasER": false,
   "domain": "bannerhealth.com",
-  "verified_source": false,
+  "verified_source": true,
   "lat": 34.2314,
   "lng": -111.32126,
-  "mrf_url": null
+  "mrf_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-payson-medical-center_standardcharges.csv",
+  "price_page": "https://www.bannerhealth.com/patients/billing/pricing-resources/hospital-price-transparency",
+  "source_url": "https://images.pricetransparency.healthcare/public-mrfs/banner/450233470_banner-payson-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-031319",
