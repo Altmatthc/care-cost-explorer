@@ -13,11 +13,140 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import statistics
+from collections import Counter
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+
+# --- contract-level figures masquerading as procedure prices ---------------
+# Some hospitals publish ONE number across nearly every line of their file:
+# a per-diem, a case rate, or a self-pay floor. It is not a price for the
+# procedure on that row, but it parses as one, so the site would show e.g. a
+# $4,748 "negotiated rate" for a strep test. Verified sources:
+#   Barnesville Hospital (oh) - $4,748 in the BCBS Traditional column on
+#       7,101 of 7,559 rows: a strep test, a drug screen, a tracheostomy
+#       revision and a tibia graft all carry the identical figure.
+#   Nocona General (tx)       - discounted_cash 27.85 on every row.
+# The file is wrong, not the parser, so the fix is to withhold the value and
+# say why rather than to re-parse. Two conditions, because either alone is
+# wrong: dominance alone flags genuinely common low prices (a critical-access
+# hospital repeating $55 on 91% of its procedures is real, and only 3.3x its
+# other rates), while absurdity alone flags a single expensive outlier. A
+# contract-level figure is BOTH repeated AND wildly out of line with the rest
+# of that hospital's prices. Calibrated against all 17 published regions:
+# these thresholds flag 2 hospitals, a bare 30% share would flag 18.
+FLAT_MIN_PROCS = 8
+FLAT_DOMINANCE = 0.3
+FLAT_ABSURDITY = 5.0
+# A junk figure is indifferent to what the procedure IS: it lands on cheap labs
+# and major surgery alike. A real bundled rate is coherent -- one price for a
+# category of similar work. 13 New Jersey hospitals publish a single same-day
+# surgery price across exactly these 19 procedures while still pricing labs,
+# imaging and inpatient work separately; that is deliberate pricing and the
+# most useful number an uninsured patient can get, so it must survive.
+# Treat a repeated value as REAL when the procedures carrying it are all drawn
+# from one coherent band, and as junk when they span the full price range.
+_SURGICAL = {
+    "appendectomy", "biopsy-needle", "carpal-tunnel", "cast-fracture",
+    "cataract", "colonoscopy", "endoscopy", "epidural-inj", "gallbladder",
+    "hernia-repair", "hysterectomy", "iud-insertion", "joint-injection",
+    "knee-scope", "laceration", "lithotripsy", "prostate-biopsy",
+    "shoulder-scope", "tonsillectomy", "hip-replacement", "knee-replacement",
+}
+_ER = {"er-level1", "er-level2", "er-level3", "er-level4", "er-level5"}
+# Minor work a hospital plausibly folds into an ER/urgent-care flat fee. The
+# real ccn-310008 shape is $600 across ER levels PLUS these, so the ER band
+# has to admit them or a legitimate bundle reads as junk.
+_MINOR = {"cast-fracture", "laceration", "joint-injection", "urgent-care",
+          "ekg", "strep-test", "iv-hydration"}
+_COHERENT_BANDS = (_SURGICAL, _ER | _MINOR)
+
+
+def _is_coherent_bundle(carriers: set[str]) -> bool:
+    """Do the procedures sharing one price form a plausible bundle?
+
+    A bundled rate covers one kind of work. If every procedure at the mode
+    sits inside a single band (same-day surgery, ER levels), the hospital is
+    pricing a category, not mis-publishing a contract figure.
+    """
+    if len(carriers) < 3:
+        return False
+    return any(carriers <= band for band in _COHERENT_BANDS)
+
+
+def _flat_figure(pairs: list[tuple[str, float]]) -> tuple[float, int] | None:
+    """The dominant, out-of-line value in `pairs`, or None.
+
+    `pairs` is (procedure, value). Returns (value, count) when one value
+    repeats on >= FLAT_DOMINANCE of the records, is >= FLAT_ABSURDITY times
+    out of line with the others, and is NOT a coherent bundled rate.
+    """
+    if len(pairs) < FLAT_MIN_PROCS:
+        return None
+    values = [v for _, v in pairs]
+    val, n = Counter(values).most_common(1)[0]
+    if n / len(values) < FLAT_DOMINANCE:
+        return None
+    if _is_coherent_bundle({p for p, v in pairs if v == val}):
+        return None
+    others = [v for v in values if v != val]
+    if not others:
+        # Every single record carries it: nothing to compare against, but a
+        # file with one price for every procedure is not pricing per procedure.
+        return (val, n)
+    omed = statistics.median(others)
+    if not omed:
+        return (val, n)
+    # Symmetric: a flat figure can sit far ABOVE the other prices (a per-diem
+    # stamped on every line) or far BELOW them (a self-pay floor). Nocona's
+    # $27.85 is 1/32 of its other cash prices; Barnesville's $4,748 is 17x
+    # its other rates. Both are contract-level, so compare the ratio in
+    # whichever direction it falls.
+    ratio = val / omed
+    if ratio < 1:
+        ratio = 1 / ratio
+    if ratio < FLAT_ABSURDITY:
+        return None
+    return (val, n)
+
+
+def flat_value_fields(byproc: dict[str, dict], hid: str) -> dict[str, str]:
+    """Which fields for this hospital look contract-level, not per-procedure?
+
+    Returns {field: reason} for 'cash' and/or 'payers'. Judged per field:
+    Barnesville's cash prices are fine and only its negotiated rates are
+    broken, so a single verdict for the whole hospital would be wrong.
+    """
+    recs = [(proc, e) for proc, byh in byproc.items()
+            if isinstance(byh, dict) and isinstance(e := byh.get(hid), dict)]
+    if len(recs) < FLAT_MIN_PROCS:
+        return {}
+
+    flagged: dict[str, str] = {}
+
+    cash_pairs = [(p, e["cash"]) for p, e in recs
+                  if isinstance(e.get("cash"), (int, float))]
+    found = _flat_figure(cash_pairs)
+    if found:
+        val, n = found
+        flagged["cash"] = (f"the file lists ${val:,.0f} as the cash price for "
+                           f"{n} of {len(cash_pairs)} procedures, so it is a "
+                           f"self-pay minimum rather than a per-procedure price")
+
+    # Lowest rate per record is what the site surfaces, so judge that.
+    rate_pairs = [(p, min(e["payers"].values())) for p, e in recs
+                  if isinstance(e.get("payers"), dict) and e["payers"]]
+    found = _flat_figure(rate_pairs)
+    if found:
+        val, n = found
+        flagged["payers"] = (f"the file repeats ${val:,.0f} as a negotiated rate "
+                             f"on {n} of {len(rate_pairs)} procedures, so it is a "
+                             f"contract-level figure, not a procedure price")
+    return flagged
+
 
 # Order matters — first match wins, so put specific patterns before general.
 # Hospitals abbreviate heavily in their files. Tri-City alone publishes "BC",
@@ -129,6 +258,41 @@ def main():
         if rec.get("shared_source"):
             entry["shared"] = True
         site.setdefault(proc, {})[hid] = entry
+
+    # --- withhold contract-level figures -----------------------------------
+    # Done after the full reshape because the test is per hospital across all
+    # of its procedures: one record in isolation cannot reveal that the same
+    # number repeats on 94% of the file's rows.
+    all_hids = {hid for byh in site.values() for hid in byh}
+    suppressed: dict[str, dict[str, str]] = {}
+    for hid in sorted(all_hids):
+        flags = flat_value_fields(site, hid)
+        if not flags:
+            continue
+        suppressed[hid] = flags
+        for byh in site.values():
+            entry = byh.get(hid)
+            if not isinstance(entry, dict):
+                continue
+            for field in flags:
+                entry.pop(field, None)
+            # 'min' mirrors the self-pay floor in these files, so it carries
+            # the same bad figure; drop it alongside a suppressed cash price.
+            if "cash" in flags:
+                entry.pop("min", None)
+        # An entry stripped of every price is noise on the site: it would
+        # render as a hospital row with nothing in it. Drop those outright,
+        # the status block already explains the hospital.
+        for proc_key, byh in list(site.items()):
+            e = byh.get(hid)
+            if isinstance(e, dict) and not any(
+                    k in e for k in ("cash", "gross", "payers", "min", "max")):
+                del byh[hid]
+    if suppressed:
+        print(f"\nwithheld contract-level figures at {len(suppressed)} hospital(s):")
+        for hid, flags in suppressed.items():
+            for field, why in flags.items():
+                print(f"  {hid} {field}: {why}")
 
     # Fold in scan status so the site can explain missing hospitals
     status = {}
