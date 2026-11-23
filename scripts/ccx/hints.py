@@ -20,6 +20,22 @@ from __future__ import annotations
 # Add entries here as you expand to new regions.
 # ---------------------------------------------------------------------------
 DOMAIN_HINTS = [
+    # --- Arizona systems (verified 2026-11-22 against each parent's
+    # cms-hpt.txt; 22 of AZ's 64 no_file hospitals are named in these four
+    # manifests, and none of them had a domain in the registry at all, which
+    # is why the first AZ pass reached only 17/87) ---
+    # Banner is Arizona's dominant system: 31 locations / 31 mrf urls, and 18
+    # of them are AZ no_file hospitals. Sub-brands carry no "banner" token
+    # (Page Hospital), so they need their own keys.
+    ("banner",                 "bannerhealth.com"),
+    ("page hospital",          "bannerhealth.com"),
+    ("honorhealth",            "honorhealth.com"),
+    # Tucson Medical Center appears in BOTH the Banner and TMC manifests;
+    # tmcaz.com lists it as its own first entry, so TMC is the owner.
+    ("tucson medical",         "tmcaz.com"),
+    ("northern cochise",       "tmcaz.com"),
+    ("valleywise",             "valleywisehealth.org"),
+
     # --- San Diego (verified) ---
     ("scripps",              "scripps.org"),
     ("sharp",                "sharp.com"),
