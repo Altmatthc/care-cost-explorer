@@ -69,6 +69,17 @@ from ccx.hints import DOMAIN_HINTS, KNOWN_MRF
 from ccx.seeds import seed_domain, seed_url
 
 UA = {"User-Agent": "care-cost-explorer (public CMS data; github.com/Altmatthc/care-cost-explorer)"}
+# Some systems put their price-transparency page behind a WAF that refuses any
+# non-browser user agent. Banner Health (Arizona's largest system, 31 hospitals
+# in one manifest) answers the honest UA above with a Cloudflare 403 challenge
+# page and a browser UA with the real file. CMS requires these files to be
+# publicly accessible without barriers, so the block is a misconfiguration on
+# their side rather than a request to stay out; we keep identifying ourselves
+# first and only fall back when a fetch is actively refused.
+BROWSER_UA = {"User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                             "AppleWebKit/537.36 (KHTML, like Gecko) "
+                             "Chrome/131.0.0.0 Safari/537.36")}
+
 
 # Hospitals' file servers throttle or refuse repeated automated requests —
 # Scripps began refusing connections after several runs. Retry with backoff
@@ -108,12 +119,28 @@ def _manifest_text(r) -> str:
     return raw.decode(r.apparent_encoding or "utf-8", "replace")
 
 
+def _manifest_fetch(base: str, timeout: int):
+    """GET a cms-hpt.txt, retrying once as a browser if a WAF refuses us.
+
+    Centralised because two call sites fetch manifests (_manifest_urls and
+    discover_mrf_candidates); fixing only one leaves half the pipeline blind
+    to WAF-gated systems.
+    """
+    r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=timeout)
+    if r.status_code in (401, 403, 405):
+        # A WAF refusing the honest UA, not a missing file. Without this the
+        # hospital is recorded as "no website could be determined": 16 Banner
+        # hospitals went unharvested while their manifest served 31 files.
+        r = SESSION.get(f"{base}/cms-hpt.txt", headers=BROWSER_UA, timeout=timeout)
+    return r
+
+
 def _manifest_urls(domain: str, timeout: int = 20) -> list[str]:
     """All mrf-url lines from a domain's cms-hpt.txt, signed URLs as published."""
     urls: list[str] = []
     for base in (f"https://{domain}", f"https://www.{domain}"):
         try:
-            r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=timeout)
+            r = _manifest_fetch(base, timeout)
             if not r.ok:
                 continue
             text = _manifest_text(r)
@@ -563,7 +590,7 @@ def discover_mrf_candidates(domain: str, timeout: int = 20) -> list[str]:
     urls: list[str] = []
     for base in (f"https://{domain}", f"https://www.{domain}"):
         try:
-            r = SESSION.get(f"{base}/cms-hpt.txt", headers=UA, timeout=timeout)
+            r = _manifest_fetch(base, timeout)
             if not r.ok:
                 continue
             text = _manifest_text(r)
