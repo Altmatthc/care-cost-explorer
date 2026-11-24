@@ -104,7 +104,7 @@
  },
  "tx": {
   "file": "tx.json",
-  "updated": "2026-10-21",
+  "updated": "2026-11-23",
   "hospitals": 185,
   "procedures": 58,
   "states": [
