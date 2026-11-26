@@ -244,8 +244,8 @@ def tick(st: dict) -> list[str]:
     st.setdefault("refreshed", {})
     st.setdefault("mode", "first")
     if not state:
-        # Queue drained: keep ticking for refreshes only.
-        if phase != "complete" or refresh_due():
+        # Either queue has states, or a refresh is due — start the next.
+        if st.get("queue") or refresh_due():
             start_next(st, out)
         return out
 
