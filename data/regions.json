@@ -615,6 +615,7 @@
    "019",
    "021",
    "023"
-  ]
+  ],
+  "catalogue_base": "https://github.com/Altmatthc/care-cost-explorer/releases/download/data-ma"
  }
 }
