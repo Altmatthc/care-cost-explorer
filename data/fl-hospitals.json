@@ -40,7 +40,8 @@
   "verified_source": true,
   "lat": 26.50365,
   "lng": -80.06903,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/592447554_bethesda-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/592447554_bethesda-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/592447554_bethesda-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100006",
@@ -105,7 +106,8 @@
   "verified_source": true,
   "lat": 25.68787,
   "lng": -80.33658,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590910342_baptist-hospital-of-miami_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590910342_baptist-hospital-of-miami_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590910342_baptist-hospital-of-miami_standardcharges.zip"
  },
  {
   "id": "ccn-100012",
@@ -242,7 +244,7 @@
  {
   "id": "ccn-100023",
   "ccn": "100023",
-  "name": "Hca Florida Citrus Hospital",
+  "name": "HCA Florida Citrus Hospital",
   "system": "Government - Hospital District Or Authority",
   "ownership": "Government - Hospital District or Authority",
   "city": "Inverness",
@@ -408,7 +410,7 @@
   "type": "Acute Care Hospitals",
   "stars": 3,
   "hasER": true,
-  "domain": null,
+  "domain": "msmc.com",
   "verified_source": true,
   "lat": 25.81501,
   "lng": -80.13795,
@@ -484,7 +486,7 @@
  {
   "id": "ccn-100040",
   "ccn": "100040",
-  "name": "Ascension St Vincent'S Riverside",
+  "name": "Ascension St Vincent's Riverside",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Jacksonville",
@@ -594,7 +596,7 @@
  {
   "id": "ccn-100049",
   "ccn": "100049",
-  "name": "Hca Florida Highlands Hospital",
+  "name": "HCA Florida Highlands Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Sebring",
@@ -632,8 +634,7 @@
   "verified_source": true,
   "lat": 25.86665,
   "lng": -80.31234,
-  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx",
-  "source_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
+  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
  },
  {
   "id": "ccn-100051",
@@ -704,7 +705,7 @@
  {
   "id": "ccn-100054",
   "ccn": "100054",
-  "name": "Hca Florida Twin Cities Hospital",
+  "name": "HCA Florida Twin Cities Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Niceville",
@@ -896,7 +897,7 @@
   "verified_source": true,
   "lat": 28.5658,
   "lng": -82.3737,
-  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv?rev=66ede8b1358246378c9569f8a1851232&hash=A12A7C1D9A8FCB8BA58899EF7B45B73D",
+  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv",
   "source_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/933040761_tampa-general-hospital-brooksville_standardcharges.csv"
  },
  {
@@ -990,7 +991,7 @@
  {
   "id": "ccn-100080",
   "ccn": "100080",
-  "name": "Hca Florida Jfk Hospital",
+  "name": "HCA Florida Jfk Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Atlantis",
@@ -1116,8 +1117,7 @@
   "verified_source": false,
   "lat": 29.8625,
   "lng": -81.31805,
-  "mrf_url": null,
-  "price_page": "https://HospitalPriceDisclosure.com/Default.aspx?ci=RsbcVwMa5jfnDZuYpIqAxQ*-*"
+  "mrf_url": null
  },
  {
   "id": "ccn-100093",
@@ -1166,7 +1166,7 @@
  {
   "id": "ccn-10009F",
   "ccn": "10009F",
-  "name": "Bay Pines Va Medical Center",
+  "name": "Bay Pines VA Medical Center",
   "system": "Veterans Health Administration",
   "ownership": "Veterans Health Administration",
   "city": "Bay Pines",
@@ -1209,7 +1209,7 @@
  {
   "id": "ccn-100107",
   "ccn": "100107",
-  "name": "Hca Florida Lehigh Hospital",
+  "name": "HCA Florida Lehigh Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Lehigh Acres",
@@ -1253,7 +1253,7 @@
  {
   "id": "ccn-100110",
   "ccn": "100110",
-  "name": "Hca Florida Osceola Hospital",
+  "name": "HCA Florida Osceola Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Kissimmee",
@@ -1335,7 +1335,7 @@
   "verified_source": true,
   "lat": 29.47765,
   "lng": -81.19019,
-  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx?pi=Bq2z8FAZBWl*_*OEKSmuVm3w*-*",
+  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx",
   "source_url": "https://HospitalPriceDisclosure.com/download.aspx"
  },
  {
@@ -1379,7 +1379,8 @@
   "verified_source": true,
   "lat": 30.73689,
   "lng": -86.56296,
-  "mrf_url": "https://www.northokaloosa.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650460321_north-okaloosa-medical-center_standardcharges.csv"
+  "mrf_url": "https://www.northokaloosa.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650460321_north-okaloosa-medical-center_standardcharges.csv",
+  "source_url": "https://www.northokaloosa.com/Uploads/Public/Documents/charge-masters/charge-masters-2024/650460321_north-okaloosa-medical-center_standardcharges.csv"
  },
  {
   "id": "ccn-100124",
@@ -1422,12 +1423,13 @@
   "verified_source": true,
   "lat": 25.4906,
   "lng": -80.438,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/650232993_homestead-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/650232993_homestead-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/650232993_homestead-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100126",
   "ccn": "100126",
-  "name": "Hca Florida Pasadena Hospital A Part Of Hca Florid",
+  "name": "HCA Florida Pasadena Hospital A Part Of HCA Florid",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Saint Petersburg",
@@ -1487,13 +1489,13 @@
   "verified_source": true,
   "lat": 27.9306,
   "lng": -82.4653,
-  "mrf_url": "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv?rev=7c310c7c008b4517a240a5892e37ed20",
+  "mrf_url": "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv",
   "source_url": "https://www.tgh.org/-/media/files/patients-and-visitors/593458145_tampa-general-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-100130",
   "ccn": "100130",
-  "name": "Lakeside Medical Center",
+  "name": "Health Care District Lakeside Medical Center",
   "system": "Government - Hospital District Or Authority",
   "ownership": "Government - Hospital District or Authority",
   "city": "Belle Glade",
@@ -1515,7 +1517,7 @@
  {
   "id": "ccn-100131",
   "ccn": "100131",
-  "name": "Hca Florida Aventura Hospital",
+  "name": "HCA Florida Aventura Hospital",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Aventura",
@@ -1553,7 +1555,8 @@
   "verified_source": true,
   "lat": 28.01565,
   "lng": -82.13802,
-  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590594631_SouthFloridaBaptistHospital_standardcharges.zip"
+  "mrf_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590594631_SouthFloridaBaptistHospital_standardcharges.zip",
+  "source_url": "https://baycare.org/-/media/project/baycare/consumer-portal/billing-and-insurance/pricing-files-compressed/590594631_SouthFloridaBaptistHospital_standardcharges.zip"
  },
  {
   "id": "ccn-100134",
@@ -1661,7 +1664,8 @@
   "verified_source": true,
   "lat": 30.65365,
   "lng": -81.44929,
-  "mrf_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistnassau"
+  "mrf_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistnassau",
+  "source_url": "https://baptistjacksonville.pt.panaceainc.com/MRFDownload/baptistjacksonville/baptistnassau"
  },
  {
   "id": "ccn-100142",
@@ -1754,7 +1758,7 @@
  {
   "id": "ccn-100156",
   "ccn": "100156",
-  "name": "Hca Florida Lake City Hospital",
+  "name": "HCA Florida Lake City Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Lake City",
@@ -1798,7 +1802,7 @@
  {
   "id": "ccn-10015F",
   "ccn": "10015F",
-  "name": "Va North Florida/South Georgia Healthcare System - Lake City",
+  "name": "VA North Florida/South Georgia Healthcare System - Lake City",
   "system": "Veterans Health Administration",
   "ownership": "Veterans Health Administration",
   "city": "Lake City",
@@ -1835,12 +1839,13 @@
   "verified_source": true,
   "lat": 28.81615,
   "lng": -81.28371,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1978725_HCA-FLORIDA-LAKE-MONROE-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1978725_HCA-FLORIDA-LAKE-MONROE-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1978725_HCA-FLORIDA-LAKE-MONROE-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100166",
   "ccn": "100166",
-  "name": "Hca Florida Sarasota Doctors Hospital",
+  "name": "HCA Florida Sarasota Doctors Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Sarasota",
@@ -1862,7 +1867,7 @@
  {
   "id": "ccn-100167",
   "ccn": "100167",
-  "name": "Hca Florida Mercy Hospital",
+  "name": "HCA Florida Mercy Hospital",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Plantation",
@@ -1900,7 +1905,8 @@
   "verified_source": true,
   "lat": 26.35939,
   "lng": -80.10279,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591006663_boca-raton-regional-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591006663_boca-raton-regional-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/591006663_boca-raton-regional-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100173",
@@ -1965,7 +1971,8 @@
   "verified_source": true,
   "lat": 26.83062,
   "lng": -80.08747,
-  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
+  "mrf_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip",
+  "source_url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/43775926_doctors-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-100177",
@@ -1992,7 +1999,7 @@
  {
   "id": "ccn-100179",
   "ccn": "100179",
-  "name": "Hca Florida Memorial Hospital",
+  "name": "HCA Florida Memorial Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Jacksonville",
@@ -2014,7 +2021,7 @@
  {
   "id": "ccn-100180",
   "ccn": "100180",
-  "name": "Hca Florida St Petersburg Hospital",
+  "name": "HCA Florida St Petersburg Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Saint Petersburg",
@@ -2052,8 +2059,7 @@
   "verified_source": true,
   "lat": 25.70562,
   "lng": -80.29342,
-  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx",
-  "source_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
+  "mrf_url": "https://apps.para-hcfs.com/PTT/FinalLinks/Reports.aspx"
  },
  {
   "id": "ccn-100183",
@@ -2102,7 +2108,7 @@
  {
   "id": "ccn-100189",
   "ccn": "100189",
-  "name": "Hca Florida Northwest Hospital",
+  "name": "HCA Florida Northwest Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Margate",
@@ -2124,7 +2130,7 @@
  {
   "id": "ccn-100191",
   "ccn": "100191",
-  "name": "Hca Florida Trinity Hospital",
+  "name": "HCA Florida Trinity Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Trinity",
@@ -2168,7 +2174,7 @@
  {
   "id": "ccn-100204",
   "ccn": "100204",
-  "name": "Hca Florida North Florida Hospital",
+  "name": "HCA Florida North Florida Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Gainesville",
@@ -2190,7 +2196,7 @@
  {
   "id": "ccn-100206",
   "ccn": "100206",
-  "name": "Hca Florida South Tampa Hospital",
+  "name": "HCA Florida South Tampa Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Tampa",
@@ -2212,7 +2218,7 @@
  {
   "id": "ccn-100209",
   "ccn": "100209",
-  "name": "Hca Florida Kendall Hospital",
+  "name": "HCA Florida Kendall Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Miami",
@@ -2272,12 +2278,13 @@
   "verified_source": true,
   "lat": 29.17517,
   "lng": -82.13781,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1479652_HCA-FLORIDA-WEST-MARION-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1479652_HCA-FLORIDA-WEST-MARION-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/59-1479652_HCA-FLORIDA-WEST-MARION-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100213",
   "ccn": "100213",
-  "name": "Hca Florida Blake Hospital",
+  "name": "HCA Florida Blake Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Bradenton",
@@ -2364,7 +2371,7 @@
  {
   "id": "ccn-100223",
   "ccn": "100223",
-  "name": "Hca Florida Fort Walton-Destin Hospital",
+  "name": "HCA Florida Fort Walton-Destin Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Fort Walton Beach",
@@ -2402,12 +2409,13 @@
   "verified_source": true,
   "lat": 26.212,
   "lng": -80.2696,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/32-0583104_HCA-FLORIDA-UNIVERSITY-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/32-0583104_HCA-FLORIDA-UNIVERSITY-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/32-0583104_HCA-FLORIDA-UNIVERSITY-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100226",
   "ccn": "100226",
-  "name": "Hca Florida Orange Park Hospital",
+  "name": "HCA Florida Orange Park Hospital",
   "system": "Voluntary Non-Profit - Other",
   "ownership": "Voluntary non-profit - Other",
   "city": "Orange Park",
@@ -2445,7 +2453,8 @@
   "verified_source": true,
   "lat": 26.1255,
   "lng": -80.2644,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2482249_HCA-FLORIDA-WESTSIDE-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2482249_HCA-FLORIDA-WESTSIDE-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/75-2482249_HCA-FLORIDA-WESTSIDE-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100230",
@@ -2466,12 +2475,13 @@
   "verified_source": true,
   "lat": 26.0296,
   "lng": -80.2489,
-  "mrf_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalpembrokestandardchargescsv.zip"
+  "mrf_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalpembrokestandardchargescsv.zip",
+  "source_url": "https://www.mhs.net/-/media/Files/Standard%20charges/596014973memorialhospitalpembrokestandardchargescsv.zip"
  },
  {
   "id": "ccn-100231",
   "ccn": "100231",
-  "name": "Hca Florida West Hospital",
+  "name": "HCA Florida West Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Pensacola",
@@ -2493,7 +2503,7 @@
  {
   "id": "ccn-100232",
   "ccn": "100232",
-  "name": "Hca Florida Putnam Hospital",
+  "name": "HCA Florida Putnam Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Palatka",
@@ -2515,7 +2525,7 @@
  {
   "id": "ccn-100236",
   "ccn": "100236",
-  "name": "Hca Florida Fawcett Hospital",
+  "name": "HCA Florida Fawcett Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Port Charlotte",
@@ -2537,7 +2547,7 @@
  {
   "id": "ccn-100238",
   "ccn": "100238",
-  "name": "Hca Florida Northside Hospital",
+  "name": "HCA Florida Northside Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Saint Petersburg",
@@ -2559,7 +2569,7 @@
  {
   "id": "ccn-100242",
   "ccn": "100242",
-  "name": "Hca Florida Gulf Coast Hospital",
+  "name": "HCA Florida Gulf Coast Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Panama City",
@@ -2581,7 +2591,7 @@
  {
   "id": "ccn-100243",
   "ccn": "100243",
-  "name": "Hca Florida Brandon Hospital",
+  "name": "HCA Florida Brandon Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Brandon",
@@ -2625,7 +2635,7 @@
  {
   "id": "ccn-100246",
   "ccn": "100246",
-  "name": "Hca Florida Lawnwood Hospital",
+  "name": "HCA Florida Lawnwood Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Fort Pierce",
@@ -2647,7 +2657,7 @@
  {
   "id": "ccn-100248",
   "ccn": "100248",
-  "name": "Hca Florida Largo Hospital",
+  "name": "HCA Florida Largo Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Largo",
@@ -2685,13 +2695,13 @@
   "verified_source": true,
   "lat": 28.9584,
   "lng": -82.5993,
-  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv?rev=ed34afd9191341488fe45684872bfa7d&hash=7C088E15BFAD8BB158C086F6AD4645C2",
+  "mrf_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv",
   "source_url": "https://www.tghnorth.org/-/media/files/tgh-north-files/93-3085834_tampa-general-hospital-crystal-river_standardcharges.csv"
  },
  {
   "id": "ccn-100252",
   "ccn": "100252",
-  "name": "Hca Florida Raulerson Hospital",
+  "name": "HCA Florida Raulerson Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Okeechobee",
@@ -2735,7 +2745,7 @@
  {
   "id": "ccn-100254",
   "ccn": "100254",
-  "name": "Hca Florida Capital Hospital",
+  "name": "HCA Florida Capital Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Tallahassee",
@@ -2757,7 +2767,7 @@
  {
   "id": "ccn-100256",
   "ccn": "100256",
-  "name": "Hca Florida Bayonet Point Hospital",
+  "name": "HCA Florida Bayonet Point Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Hudson",
@@ -2795,12 +2805,13 @@
   "verified_source": true,
   "lat": 26.43925,
   "lng": -80.12737,
-  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752922687_delray-medical-center,-inc._standardcharges.json"
+  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752922687_delray-medical-center,-inc._standardcharges.json",
+  "source_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752922687_delray-medical-center,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100259",
   "ccn": "100259",
-  "name": "Hca Florida South Shore Hospital",
+  "name": "HCA Florida South Shore Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Sun City Center",
@@ -2838,12 +2849,13 @@
   "verified_source": true,
   "lat": 27.29168,
   "lng": -80.29394,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-ST.-LUCIE-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-ST.-LUCIE-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/62-1113740_HCA-FLORIDA-ST.-LUCIE-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100264",
   "ccn": "100264",
-  "name": "Hca Florida Oak Hill Hospital",
+  "name": "HCA Florida Oak Hill Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Brooksville",
@@ -2903,12 +2915,13 @@
   "verified_source": true,
   "lat": 30.35881,
   "lng": -87.15639,
-  "mrf_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/glfbreeze"
+  "mrf_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/glfbreeze",
+  "source_url": "https://baptisthealthcare.pt.panaceainc.com/MRFDownload/baptisthealthcare/glfbreeze"
  },
  {
   "id": "ccn-100267",
   "ccn": "100267",
-  "name": "Hca Florida Englewood Hospital",
+  "name": "HCA Florida Englewood Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Englewood",
@@ -2946,12 +2959,13 @@
   "verified_source": true,
   "lat": 26.35557,
   "lng": -80.20328,
-  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752922710_west-boca-medical-center,-inc._standardcharges.json"
+  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752922710_west-boca-medical-center,-inc._standardcharges.json",
+  "source_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752922710_west-boca-medical-center,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100269",
   "ccn": "100269",
-  "name": "Hca Florida Palms West Hospital",
+  "name": "HCA Florida Palms West Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Loxahatchee",
@@ -3032,7 +3046,8 @@
   "verified_source": true,
   "lat": 25.82373,
   "lng": -80.19186,
-  "mrf_url": "https://www.miamijewishhealth.org/wp-content/uploads/2026/07/590624414_DouglesGardensHospital_standardcharges.csv"
+  "mrf_url": "https://www.miamijewishhealth.org/wp-content/uploads/2026/07/590624414_DouglesGardensHospital_standardcharges.csv",
+  "source_url": "https://www.miamijewishhealth.org/wp-content/uploads/2026/07/590624414_DouglesGardensHospital_standardcharges.csv"
  },
  {
   "id": "ccn-100281",
@@ -3140,12 +3155,13 @@
   "verified_source": true,
   "lat": 26.72444,
   "lng": -80.04986,
-  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752932824_good-samaritan-medical-center,-inc._standardcharges.json"
+  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752932824_good-samaritan-medical-center,-inc._standardcharges.json",
+  "source_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752932824_good-samaritan-medical-center,-inc._standardcharges.json"
  },
  {
   "id": "ccn-100288",
   "ccn": "100288",
-  "name": "St Mary'S Medical Center",
+  "name": "St Mary's Medical Center",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "West Palm Beach",
@@ -3161,7 +3177,8 @@
   "verified_source": true,
   "lat": 26.75317,
   "lng": -80.06266,
-  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752932830_st.-marys-medical-center,-inc_standardcharges.json"
+  "mrf_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752932830_st.-marys-medical-center,-inc_standardcharges.json",
+  "source_url": "https://mrfs.hyvehealthcare.com/TenetHealth/752932830_st.-marys-medical-center,-inc_standardcharges.json"
  },
  {
   "id": "ccn-100289",
@@ -3204,7 +3221,8 @@
   "verified_source": true,
   "lat": 28.94947,
   "lng": -81.95853,
-  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-villages"
+  "mrf_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-villages",
+  "source_url": "https://ufhealth.pt.panaceainc.com/MRFDownload/ufhealth/uf-villages"
  },
  {
   "id": "ccn-100291",
@@ -3287,7 +3305,7 @@
   "type": "Acute Care Hospitals",
   "stars": null,
   "hasER": false,
-  "domain": null,
+  "domain": "myflfamilies.com",
   "verified_source": false,
   "lat": 30.70654,
   "lng": -84.83574,
@@ -3308,7 +3326,7 @@
   "type": "Acute Care Hospitals",
   "stars": 4,
   "hasER": true,
-  "domain": null,
+  "domain": "lakewoodranchmedicalcenter.com",
   "verified_source": true,
   "lat": 27.39084,
   "lng": -82.43338,
@@ -3340,7 +3358,7 @@
  {
   "id": "ccn-100307",
   "ccn": "100307",
-  "name": "Ascension St Vincent'S Southside",
+  "name": "Ascension St Vincent's Southside",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Jacksonville",
@@ -3471,7 +3489,7 @@
  {
   "id": "ccn-100320",
   "ccn": "100320",
-  "name": "Hca Florida Poinciana Hospital",
+  "name": "HCA Florida Poinciana Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Kissimmee",
@@ -3492,7 +3510,7 @@
  {
   "id": "ccn-100321",
   "ccn": "100321",
-  "name": "Ascension St Vincent'S Clay County",
+  "name": "Ascension St Vincent's Clay County",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Middleburg",
@@ -3508,8 +3526,7 @@
   "verified_source": true,
   "lat": 30.084,
   "lng": -81.8645,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip",
-  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/461523194_united-states-catholic-conference-st-vincents-medical-center-clay-county-inc_standardcharges.zip"
  },
  {
   "id": "ccn-100329",
@@ -3530,7 +3547,8 @@
   "verified_source": true,
   "lat": 28.65625,
   "lng": -81.23103,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/46-4660005_OVIEDO-MEDICAL-CENTER_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/46-4660005_OVIEDO-MEDICAL-CENTER_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/46-4660005_OVIEDO-MEDICAL-CENTER_standardcharges.json"
  },
  {
   "id": "ccn-100330",
@@ -3573,7 +3591,8 @@
   "verified_source": true,
   "lat": 28.3693,
   "lng": -81.28619,
-  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4247323_UCF-LAKE-NONA-HOSPITAL_standardcharges.json"
+  "mrf_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4247323_UCF-LAKE-NONA-HOSPITAL_standardcharges.json",
+  "source_url": "https://stctrprodsnsvc00455826e6.blob.core.windows.net/pt-final-posting-files/85-4247323_UCF-LAKE-NONA-HOSPITAL_standardcharges.json"
  },
  {
   "id": "ccn-100359",
@@ -3600,7 +3619,7 @@
  {
   "id": "ccn-100360",
   "ccn": "100360",
-  "name": "Hca Florida University Hospital",
+  "name": "HCA Florida University Hospital",
   "system": "Proprietary",
   "ownership": "Proprietary",
   "city": "Davie",
@@ -3621,7 +3640,7 @@
  {
   "id": "ccn-100361",
   "ccn": "100361",
-  "name": "Ascension St Vincent'S St Johns County",
+  "name": "Ascension St Vincent's St Johns County",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "St. Johns",
@@ -3637,8 +3656,7 @@
   "verified_source": true,
   "lat": 30.0956,
   "lng": -81.6217,
-  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/593650609_st-vincents-health-system-inc_standardcharges.zip",
-  "source_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/593650609_st-vincents-health-system-inc_standardcharges.zip"
+  "mrf_url": "https://healthcare.ascension.org/-/media/project/ascension/healthcare/price-transparency-files/fl-csv/593650609_st-vincents-health-system-inc_standardcharges.zip"
  },
  {
   "id": "ccn-100362",
@@ -3681,7 +3699,7 @@
   "verified_source": true,
   "lat": 29.55156,
   "lng": -81.24362,
-  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx?pi=Bq2z8FAZBWl*_*OEKSmuVm3w*-*",
+  "mrf_url": "https://HospitalPriceDisclosure.com/download.aspx",
   "source_url": "https://HospitalPriceDisclosure.com/download.aspx"
  },
  {
@@ -3731,7 +3749,7 @@
  {
   "id": "ccn-10057F",
   "ccn": "10057F",
-  "name": "Va North Florida/South Georgia Healthcare System - Gainesville",
+  "name": "VA North Florida/South Georgia Healthcare System - Gainesville",
   "system": "Veterans Health Administration",
   "ownership": "Veterans Health Administration",
   "city": "Gainesville",
@@ -3752,7 +3770,7 @@
  {
   "id": "ccn-10063F",
   "ccn": "10063F",
-  "name": "Tampa Va Medical Center",
+  "name": "Tampa VA Medical Center",
   "system": "Veterans Health Administration",
   "ownership": "Veterans Health Administration",
   "city": "Tampa",
@@ -3773,7 +3791,7 @@
  {
   "id": "ccn-10064F",
   "ccn": "10064F",
-  "name": "Miami Va Medical Center",
+  "name": "Miami VA Medical Center",
   "system": "Veterans Health Administration",
   "ownership": "Veterans Health Administration",
   "city": "Miami",
@@ -3794,7 +3812,7 @@
  {
   "id": "ccn-10065F",
   "ccn": "10065F",
-  "name": "W Palm Beach Va Medical Center",
+  "name": "W Palm Beach VA Medical Center",
   "system": "Veterans Health Administration",
   "ownership": "Veterans Health Administration",
   "city": "West Palm Beach",
@@ -3815,7 +3833,7 @@
  {
   "id": "ccn-10099F",
   "ccn": "10099F",
-  "name": "Orlando Va Medical Center",
+  "name": "Orlando VA Medical Center",
   "system": "Veterans Health Administration",
   "ownership": "Veterans Health Administration",
   "city": "Orlando",
@@ -3874,7 +3892,8 @@
   "verified_source": true,
   "lat": 30.02349,
   "lng": -82.3285,
-  "mrf_url": "https://lakebutlerhospital.com/wp-content/uploads/2026/04/593218382_medlink-management-services-inc.-_standardcharges.csv"
+  "mrf_url": "https://lakebutlerhospital.com/wp-content/uploads/2026/04/593218382_medlink-management-services-inc.-_standardcharges.csv",
+  "source_url": "https://lakebutlerhospital.com/wp-content/uploads/2026/04/593218382_medlink-management-services-inc.-_standardcharges.csv"
  },
  {
   "id": "ccn-101304",
@@ -3891,7 +3910,7 @@
   "type": "Critical Access Hospitals",
   "stars": null,
   "hasER": true,
-  "domain": null,
+  "domain": "calhounlibertyhospital.com",
   "verified_source": true,
   "lat": 30.4394,
   "lng": -85.062,
@@ -3917,7 +3936,8 @@
   "verified_source": true,
   "lat": 29.72332,
   "lng": -84.9925,
-  "mrf_url": "https://www.weemsmemorial.com/wp-content/uploads/2024/11/061766026_george-e-weems-memorial-hospital_standardcharges.csv"
+  "mrf_url": "https://www.weemsmemorial.com/wp-content/uploads/2024/11/061766026_george-e-weems-memorial-hospital_standardcharges.csv",
+  "source_url": "https://www.weemsmemorial.com/wp-content/uploads/2024/11/061766026_george-e-weems-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-101307",
@@ -3982,7 +4002,8 @@
   "verified_source": true,
   "lat": 26.75318,
   "lng": -80.94074,
-  "mrf_url": "https://hospitalpricetransparencyfiles.com/hendry-county-hospital-authority/596002318_Hendry-County-Hospital-Authority_standardcharges.csv"
+  "mrf_url": "https://hospitalpricetransparencyfiles.com/hendry-county-hospital-authority/596002318_Hendry-County-Hospital-Authority_standardcharges.csv",
+  "source_url": "https://hospitalpricetransparencyfiles.com/hendry-county-hospital-authority/596002318_Hendry-County-Hospital-Authority_standardcharges.csv"
  },
  {
   "id": "ccn-101311",
@@ -4003,12 +4024,13 @@
   "verified_source": true,
   "lat": 30.4713,
   "lng": -83.41983,
-  "mrf_url": "https://madisoncounty.pg.quadax.revenuemasters.com/cdm-files/592319288_madison-county-memorial-hospital_standardcharges.csv"
+  "mrf_url": "https://madisoncounty.pg.quadax.revenuemasters.com/cdm-files/592319288_madison-county-memorial-hospital_standardcharges.csv",
+  "source_url": "https://madisoncounty.pg.quadax.revenuemasters.com/cdm-files/592319288_madison-county-memorial-hospital_standardcharges.csv"
  },
  {
   "id": "ccn-101312",
   "ccn": "101312",
-  "name": "Fishermen'S Community Hospital",
+  "name": "Fishermen's Community Hospital",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Marathon",
@@ -4096,7 +4118,7 @@
  {
   "id": "ccn-103300",
   "ccn": "103300",
-  "name": "Johns Hopkins All Children'S Hospital",
+  "name": "Johns Hopkins All Children's Hospital",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Saint Petersburg",
@@ -4117,7 +4139,7 @@
  {
   "id": "ccn-103301",
   "ccn": "103301",
-  "name": "Nicklaus Children'S Hospital",
+  "name": "Nicklaus Children's Hospital",
   "system": "Voluntary Non-Profit - Private",
   "ownership": "Voluntary non-profit - Private",
   "city": "Miami",
@@ -4133,7 +4155,8 @@
   "verified_source": true,
   "lat": 25.74254,
   "lng": -80.29521,
-  "mrf_url": "https://www.nicklauschildrens.org/NCH/media/docs/pdf/Finance/590638499_1871540237_nicklaus-childrens-hospital_standardcharges.zip"
+  "mrf_url": "https://www.nicklauschildrens.org/NCH/media/docs/pdf/Finance/590638499_1871540237_nicklaus-childrens-hospital_standardcharges.zip",
+  "source_url": "https://www.nicklauschildrens.org/NCH/media/docs/pdf/Finance/590638499_1871540237_nicklaus-childrens-hospital_standardcharges.zip"
  },
  {
   "id": "ccn-103304",
